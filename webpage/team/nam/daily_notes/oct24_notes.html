@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+               <h1 class="section">CHAPTER 5.4.2: The Ethernet</h1>
+               <ul>
+                  <li>Ethernet was the first widely deployed high-speed LAN.</li>
+                  <li>Token ring, FDDI, and ATM were more complex and expensive than Ethernet, which further discouraged network administrators from switching over.</li>
+                  <li>The most compelling reason to switch to another LAN technology (such as FDDI or ATM) was usually the higher data rate of the new technology</li>
+                  <li>The original Ethernet LAN used a coaxial bus to interconnect the nodes.</li>
+                  <li>A <bold>hub</bold> is a physical-layer device that acts on individual bits rather than frames. When a bit, representing a zero or a one, arrives from one interface, the hub simply re-creates the bit, boosts its energy strength, and transmits the bit onto all the other interfaces.</li>
+                  <li>
+                     Frame Structure:
+                     <ul>
+                        <li>Data field (46 to 1,500 bytes)</li>
+                        <li>Destination address (6 bytes)</li>
+                        <li>Source address (6 bytes)</li>
+                        <li>Type field (2 bytes)</li>
+                        <li>Cyclic redundancy check (CRC) (4 bytes)</li>
+                        <li>Preamble (8 bytes)</li>
+                  </li>
+               </ul>
+         </div>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

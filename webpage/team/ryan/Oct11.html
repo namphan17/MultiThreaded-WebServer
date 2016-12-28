@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<title>
+			October 11th
+		</title>
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+	</head>
+	<body>
+		<h1>October 11th</h1>
+		<h2>Lecture</h2>
+			<ul>
+				<li><b>Apache</b>: Feather logo.  "A patchy" program, name comes from a 'fix to a program', needed a lot of fixes.  Webserver.  Has a module to interpret php in a website.  Port 80 (by default)</li>
+				<li><b>GlassFish</b>: Webserver, displays java servers.  Finds requested file, looks for 'special' java code, executes java, produces html, sends it back to client.  Same way apache looks for php.  May run with another webserver service. Port 88 (by default)</li>
+				<li>Use other softwear so when you see a request for a specific part of a url, redirect to other webserver (such as glassfish), and then get returned data to return to users.</li>
+				<li><b>Framework</b>: Programming language, and a collection of classes that can be used.  (ie. Ruby on rails, cake for php, jango for python).</li>
+				<li><b>Bean</b>:Name of a java class in a java webserver network.  One of the beans <b>MUST</b> take no parameters.</li>
+				<li>"Java webservers are difficult" -- Leon</li>
+				<li><b>Student Notes: UDP</b></li>
+					<ul>
+						<li>Less reliable than TCP</li>
+						<li>More flexibility, speed, light weight</li>
+						<li>No throttling--all messages immediatly sent</li>
+						<li>No consistant connection</li>
+						<li>Used by steaming services,DNS, etc.</li>
+						<li>Uses checksum to detect errors</li>
+							<ul>
+								<li>Adds 4 lines, 3 are 16 bit numbers, 4th is 1s compliment, checks to see if 1s compliment is accurate</li>
+								<li>possible for false positive, or false negative</li>
+							</ul>
+					</ul>
+				<li><b>Student Notes: 8.3.1 Reading notes</b></li>
+					<ul>
+						<li>logical communication: From application perspective hosts are directly connected.</li>
+						<li>TCP: Reliable, connection-oriented service</li>
+						<li>UDP: Unreliable, connectionless service</li>
+						<li>IP: Best effort to deliver segments, no guarentee</li>
+						<li>Transport-layer multiplexing and demultiplexing: Extending host-to-host deliver to process-to-process.  Both in TCP and UDP.</li>
+						<li>Congestion control: Prevents any 1 TCP connection from swapping links between communicating links</li>
+						<li>flow control: limits amount of data a sender can send.  Keeps from over filling a reciever's buffer</li>
+						<li>Socket: dat passes from process to network</li>
+						<li>well known ports: 0-1023</li>
+						<li>Hand shake: before and fter data transmissions via TCP host sends a synchronized method to server, and the server sends back a synchronized method to open comunications</li>
+					</ul>
+			</ul>
+		<h2>Lab</h2>
+			<p>Nothing, more wireshark labs</p>
+		<div style="text-align:left">
+			<a href="Oct10.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="Oct12.html">Next</a>
+		</div>
+	</body>
+</html>

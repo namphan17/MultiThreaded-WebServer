@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ASGN1 Questions</title>
+</head>
+
+<body>
+<h3>ASGN1 Questions</h3>
+<h4>By Jeremy Novak</h4>
+
+	<p>
+	&emsp;Here is a selection of questions with topics ranging from chapters 2 and 3 of the reading. Before starting make sure that you have read both chapters and have taken notes on each big idea from the sections. Try to answer as many of them as you can without referring to the answers (found below each question) or referring to the textbook. <br><br>
+
+&emsp;Note: If this were a real assignment I would not place the answers to the questions below them, however having the answers there makes the questions easier to read off in class. 
+	</p>
+
+	<ol>
+<!-- Q1 -->
+		<li>Describe the path that a DNS request might follow from your computer to reach a website: example.org, that you have never been to before.</li>
+			<ul><li>The DNS request could go from your computer to your router. Your router would send the request up the chain of command, because you have never been to that website. The request would go from your router to other DNS servers until one of them possibly the &ldquo;ORG&rdquo; server, recognizes the website that you requested and would send back the IP address of the website. Your local router would then cache the IP address for later use.</li></ul>
+<!-- Q2 --><br>
+		<li>In Go-Back-N protocol what condition(s) needs to be met before the system knows a packet was lost?</li>
+			<ol type="a"><li>Receiving 3 identical and consecutive ACKs (Correct)</li>
+				<li>Receiving an ACK out of order (Correct) </li>
+				<li> Receiving a NACK</li>
+				<li> Receiving a &ldquo;404 packet not found&rdquo; message</li></ol>
+<!-- Q3 --><br>
+<!--&#x03B1 is alpha -->
+		<li>In the Round-Trip Time formula: <b>EstimatedRTT = (1 - &#x03B1 ) x EstimatedRTT + &#x03B1 x SampleRTT</b>. What will changing the value of &#x03B1 do to the equasion?</li>
+			<ul><li>Changing values of &#x03B1 allow the equation to better represent current conditions, with values closer to 0, or to represent conditions without much short term variance, with values closer to 1.</li></ul>
+<!-- Q4 --><br>
+		<li>What is the Timeout Interval used for?</li>
+			<ul><li>The Timeout Interval is used to determine if a packet or ACK was lost in transit.</li></ul>
+<!-- Q5 --><br>
+		<li>What kind of growth does a Slow Start congestion control system use?</li>
+			<ul><li>Exponential growth, specifically quadratic growth. </li></ul>
+<!-- Q6 --><br>
+		&ensp;Using the diagram provided answer the following 2 questions: <br>
+		<img src="http://www.networkinginfoblog.com/contentsimages/UDP%20segment%20structure.JPG" alt="UDP diagram" style="width:351px;height:327px;">
+		<img src="http://www.networkinginfoblog.com/contentsimages/TCP%20segment%20structure.JPG" alt="TCP diagram" style="width:355px;height:347px;">
+<br><br>
+		<li>How many bits are used for Checksum in a UDP segment? Does this differ from a TCP Checksum?</li>
+			<ul><li>A UDP checksum uses 16 bits and so does a TCP Checksum.</li></ul>
+<!-- Q7 --><br>
+		<li>Describe the use of TCPs sequence and acknowledgment numbers in the process of sending information too large to be sent in just one packet.</li>
+			<ul><li> The first packet sent by host 1 will have a sequence number representing the number of the first byte in the packet and an acknowledgment number representing the number of the first byte host 1 expects to receive back from host 2. The next packet whcih is sent by host 2 will have a sequence number equal to the previous acknowledgment number and an acknowledgment number representing the number of the first byte that host 2 expects to receive back. This pattern continues until all data has been transmitted. </li></ul>
+<!-- Q8 --><br>
+		<li>What are cookies used for?</li>
+			<ul><li>Cookies are used to identify you as a user of a website and load relevant data to you.</li></ul>
+<!-- Q9 --><br>
+		<li>What are the differences between Peer-to-Peer applications and Client-Host applications?</li>
+			<ul><li>Peer-to-Peer applications use Peer-to-Peer connections to deliver data to one another, where a large number of &ldquo;personal&rdquo; computers send small parts of the larger file</li>
+			<li>Client-Host applications use Client-Host connections to deliver data from one centralized server to a number of different clients.</li></ul>
+<!-- Q10 --><br>
+		<li>DNS has a critical weakness in the form of what kind of cyber-attack? Describe what takes place during such an attack.</li>
+			<ul><li>DNS is weak to a DDoS attack or Distributed Denial of Service, where many computers flood a server with junk requests preventing actual users of the server from reaching the server.</li></ul>
+	</ol>
+</body>
+</html>

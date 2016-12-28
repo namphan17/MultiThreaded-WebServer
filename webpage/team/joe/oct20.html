@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <style>
+h1, h2 {
+    text-align:center;
+    color:OrangeRed;
+}
+h3, h4 {
+text-align:center;
+}
+  </style>
+  
+  <head>
+    <title>
+      OCTOBER 20th
+      </title>
+  </head>
+  <body>
+    <h1>Oct 20th Notes</h1>
+    <br>
+    <h2>Homecoming Week</h2>
+    <br>
+    <h1>Ethernet</h1>
+    <p>Ethernet is the most popular physical layer LAN technology in use today. It defines the number of conductors that are required for a connection, the performance thresholds that can be expected, and provides the framework for data transmission.</p>
+    <p>Ethernet is popular because it strikes a good balance between speed, cost and ease of installation. These benefits, combined with wide acceptance in the computer marketplace and the ability to support virtually all popular network protocols, make Ethernet an ideal networking technology for most computer users today.</p>
+    <br>
+    <h2>Ethernet Frame</h2>
+    <p>A data packet on an Ethernet link is called an Ethernet packet, which transports an Ethernet frame as its payload</p>
+    <br>
+    <h4>The six fields of the Ethernet frame</h4>
+    <ol>
+    <li><b>Data Field</b> -- <i>46 to 1500 bytes</i> ---> This field carries the IP datagram. MTU is 1500 bytes. If the IP datagram exceeds 150 bytes, then the host has to fragment the datagram. If the IP is less than 46 bytes, the IP needs to be "stuffed" to 46 bytes.</li>
+    <li><b>Destination Address</b> -- <i>6 bytes</i> ---> This field contains the MAC address of the destination adapter.</li>
+    <li><b>Source Address</b> -- <i>6 bytes</i> ---> This field contains the MAC address of the adapter that transmits the frame onto the LAN.</li>
+    <li><b>Type Field</b> -- <i>2 bytes</i> ---> The type field permits Ethernet to multiplex network-layer protocols.</li>
+    <li><b>Cyclic Redundancy Check</b> -- <i>4 bytes</i> ---> The purpose of the CRC field is to allow the receiving adapter to detect bit errors in the frame.</li>
+    <li><b>Preamble</b> -- <i>8 bytes</i> ---> The preamble of an Ethernet packet consists of a 56-bit (seven-byte) pattern of alternating 1 and 0 bits, allowing devices on the network to easily synchronize their receiver clocks, which is followed by the SFD to mark a new incoming frame. For Ethernet variants transmitting single bits instead of larger symbols, the on-the-wire bit pattern for the preamble together with the SFD portion of the frame is 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101011 (Notice the last bit is a 1).  The SFD is the eight-bit (one-byte) value that marks the end of the preamble, which is the first field of an Ethernet packet, and indicates the beginning of the Ethernet frame. The SFD is designed to break the bit pattern of the preamble and signal the start of the actual frame.</li>
+  </body>
+</html>

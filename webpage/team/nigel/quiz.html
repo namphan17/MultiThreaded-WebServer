@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id='mB'></div>
+<div id='ans'><table id='ant'><tr></tr></table></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script language='javascript'>
+var qs = [];
+var rs = [];
+
+var gT = 'test';
+var selQ=-1,selR=-1;
+
+function initPage(t)
+{
+	gT = t;
+	getQs(gT);
+}
+
+function generateButtons()
+{
+	var s = "<table>";
+	var tq = qs[gT],tr = rs[gT];
+	var ti = 0;
+
+	for(var i=0;i<qs[gT].length;i++)
+	{
+		s+='<tr><td>';
+		s+="<button id='bq"+i+"' onclick=\"clickQ("+i+")\">"+qs[gT][i]+"</button>";
+		s+='</td><td>';
+		s+="<button id='br"+i+"' onclick=\"clickR("+i+")\">"+rs[gT][i]+"</button>";
+		s+='</td></tr>';
+	}
+
+	s+="</table>";
+	$('#mB')[0].innerHTML=s;
+}
+
+function clickQ(n,b=true)
+{
+	for(var i=0;i<qs[gT].length;i++)
+	{
+		if($('#bq'+i)[0])
+			$('#bq'+i)[0].disabled = false;
+	}
+	$('#bq'+n)[0].disabled=true;
+	selQ = n;
+	if(b)checkMatch();
+}
+function clickR(n,b=true)
+{
+	for(var i=0;i<qs[gT].length;i++)
+	{
+		if($('#br'+i)[0])
+			$('#br'+i)[0].disabled = false;
+	}
+	$('#br'+n)[0].disabled=true;
+	selR = n;
+	if(b)checkMatch();
+}
+function checkMatch()
+{
+	if(selQ>-1&&selR>-1)
+	{
+		checkValidation(gT,$('#bq'+selQ)[0].innerHTML,$('#br'+selR)[0].innerHTML);
+	}
+}
+function doAction()
+{
+	$('#ant')[0].innerHTML+='<tr><td><b>'+$('#bq'+selQ)[0].innerHTML+'</b></td><td>'+$('#br'+selR)[0].innerHTML+'</td></tr>';
+	if(selQ!=selR)
+	{
+		var tmp = $('#br'+selR)[0].innerHTML;
+		$('#br'+selR)[0].innerHTML = $('#br'+selQ)[0].innerHTML;
+		$('#br'+selQ)[0].innerHTML = tmp;
+	}
+	$('#bq'+selQ)[0].style.display='none';
+	$('#br'+selQ)[0].style.display='none';
+	clickR(selQ,false);
+}
+
+function checkValidation(t,q,r)
+{
+	$.post( "validator1.php", {
+	'gV':t,
+	'q':q,
+	'r':r
+	},function( data ) {
+		if(data)
+			doAction();
+	});
+}
+
+function getQs(t)
+{
+	$.post( "validator1.php", {
+	'gQ':t
+	},function( data ) {
+		if(data)
+		{
+			qs[t] = data.split('|');
+			getRs(t);
+		}
+	});
+}
+function getRs(t)
+{
+	$.post( "validator1.php", {
+	'gR':t
+	},function( data ) {
+		if(data)
+		{
+			rs[t] = data.split('|');
+			generateButtons();
+		}
+	});
+}
+
+initPage('sec');
+</script>
+</html>

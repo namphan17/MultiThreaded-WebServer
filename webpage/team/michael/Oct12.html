@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+h1{
+    text-align:center;
+}
+h3{
+    text-align:center;
+}
+p{
+    padding-left:50px;
+    padding-right:50px;
+}
+</style>
+
+<title>
+Oct 12
+</title>
+
+
+<head>
+<h1>
+Principles of Congestion Control
+</h1>
+</head>
+
+<body>
+    <p>Packet loss typically results from
+the overflowing of router buffers as the network becomes congested. Packet retransmission is a way
+to treat the problem of network congestion, but does not solve the the underlying issue: many sources
+sending data at too high of a rate. </p>
+<ul>
+    <li>Available bit-rate (ABR) service</li>
+    <li>Asynchronous transfer mode (ATM) network</li>
+</ul>
+<h3>Causes of Congestion</h3>
+<ul>
+    <li>Allergies, hay fever, enviornmental irritants, chronic sinusitis, deviated Setpum.(Jokes)</li>
+    <li>Two senders and infinite router buffer</li>
+    <li>Two senders and finite router buffer</li>
+    <li> Four Senders, Routers with Finite Buffers, and
+Multihop Paths</li>
+</ul>
+<h3>Vocab</h3>
+<ul>
+    <li>Per-Connection througput: <i>number of bytes per second at the reciever</i></li>
+    <li>Offered Load: <i>The rate at which the transport layer sends segments into the 
+        network in bytes/second</i></li>
+<li>End-to-end congestion control: <i>no explicit support to transport layer. </i></li>
+<li>Network-assisted congestion control: <i>network-layer components provide explicit
+     feedback to the sender regarding congestion state</i></li>
+     <li>Choke packet: <i>direct feedback from network router to sender about congestion</i></li>
+<li>Resource-management cells(RMC): <i>used to convey congestion-related information 
+    among hosts and switches</i></li>
+    <li>Explicit forward congestion indication bit(EFCI bit): <i>each data cell contains an EFCI
+         bit. Set to one means there is congestion.</i></li>
+</ul>
+</body>
+
+
+</html>
+

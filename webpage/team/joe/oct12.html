@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <style>
+h1, h2 {
+    text-align:center;
+    color:OrangeRed;
+    }
+  </style>
+  
+  <head>
+    <title>
+      OCTOBER 12th HOMIE
+      </title>
+  </head>
+  <body>
+    <h1>October 12 Notes</h1>
+    <br>
+    <h2>Causes and the Cost of Congestion</h2>
+    <p>Focus on understanding what happens as host increasae their transmission rate and the network becomes congested</p>
+    <br>
+    <h4>What is Congestion?</h4>
+      <ul>
+	<li>Congestion occurs when the number of packets being transmitted through the network approaches the packet handling capacity of the network</li>
+	<li>Congestion control aims to keeps number of packets below level at which performance falls off dramatically</li>
+	<li>Data network is a network of queues</li>
+      </ul>
+      <h4>Effects of Congestion</h4>
+      <ul>
+	<li>Packets arriving are stored at inputs buffers</li>
+	<li>Routing decision made</li>
+	<li>Packets moves to output buffer</li>
+	<li>Packets queued for output transmitted as fast as possible</li>
+	<li>If packets arrive to fast to be routed, or to be output, buffers will fill</li>
+	<li>Can discard packets</li>
+      </ul>
+    <br>
+    <h4>Scenario 1: Two Senders, a Router with Infinite Buffers</h4>
+    <p>Large queuing delays are experienced as the packet arrival rate nears the link capacity.</p>
+    <h4>Scenario 2: Two Senders and a Router with finite Buffers</h4>
+    <p>The sender must perform retransmissions in order to compensate for dropped packets due to buffer overflow. Unneeded retransmissions by the sender in the face of large delays amy cause a router to use its link bandwidth to forward unneeded copies of a packet.</p>
+    <h4>Scenario 3: Four Senders, Routers with Finite Buffers, and Multihop Paths</h4>
+    <p>When a packet is dropped along a path, the transmission capacity that was used at each of the upstream links to forward that packet to the point at which it is dropped ends up having been wasted.</p>
+  </body>
+</html>

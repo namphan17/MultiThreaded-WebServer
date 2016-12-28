@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+            <h1 class="section">CHAPTER 3.1-3.3</h1>
+         </div>
+         <h2 class="section">1. Transport-Layer Services Overview</h2>
+         <p>A transport-layer protocol provides for logical communication between application processes running on different hosts.</p>
+         <p>Application processes use the <b>logical</b> communication provided by the transport layer to send messages to each other, free from the worry of the details of the physical infrastructure used to carry these messages.</p>
+         <p>Transport-layer <b>segments</b>: the transport-layer packets, which are converted from application-layer messages, receiving from a sending application process.</p>
+         <p>Extending host-to-host delivery to process-to-process delivery is called transport-layer <b>multiplexing</b> and <b>demultiplexing.</b></p>
+         <p>The job of delivering the data in a transport-layer segment to the correct socket is called demultiplexing.</p>
+         <p>The job of gathering data chunks at the source host from different sockets, encapsulating each data chunk with header information (that will later be used in demultiplexing) to create segments, and passing the segments to the network layer is called multiplexing.</p>
+         <br>
+         <h2 class="section">2. Connectionless Transport: UDP</h2>
+         <p><b>UDP (User Datagram Protocol)</b> takes messages from the application process, attaches source and destination port number fields for the multiplexing/demultiplexing service, adds two other small fields, and passes the resulting segment to the network layer.</p>
+         <p>DNS is an example of an application-layer protocol that typically uses UDP.</p>
+         <p>Some reasons that many applications are better suited for UDP are:</p>
+         <ul>
+            <li>
+               <p><b>Finer application-level control over what data is sent, and when:</b> Since real-time applications often require a minimum sending rate, do not want to overly delay segment transmission, and can tolerate some data loss, TCP’s service model is not particularly well matched to these applications’ needs.</p>
+            </li>
+            <li>
+               <p><b>No connection establishment:</b> TCP uses a three-way handshake before it starts to transfer data while UDP just blasts away without any formal preliminaries. Thus UDP does not introduce any delay to establish a connection.</p>
+            </li>
+            <li>
+               <p><b>No connection state:</b></p>
+               A server devoted to a particular application can typically support many more active clients when the application runs over UDP rather than TCP.
+            </li>
+            <li>
+               <p><b>Small packet header overhead:</b></p>
+               The TCP segment has 20 bytes of header overhead in every segment, whereas UDP has only 8 bytes of overhead.
+            </li>
+         </ul>
+         <br>
+         <img class="display" src="application_and_their_transport_protocols.PNG"/>
+         <ul>
+            <li>
+               <h2>
+               UDP Segment Structure</h3>
+               <img class="display" src="UDP_segment_structure.PNG"/>
+               <p>The UDP header has only four fields, each consisting of two bytes.</p>
+               <p>The length field specifies the number of bytes in the UDP segment (header plus data).</p>
+               <p>The checksum is used by the receiving host to check whether errors have been introduced into the segment.</p>
+            </li>
+            <li>
+               <h2>UDP Checksum</h2>
+               <p>UDP at the sender side performs the 1s complement of the sum of all the 16-bit words in the segment, with any overflow encountered during the sum being wrapped around. This result is put in the checksum field of the UDP segment.</p>
+               <p>If no errors are introduced into the packet, then clearly the sum at the receiver will be 1111111111111111. If one of the bits is a 0, then we know that errors have been introduced into the packet.Although UDP provides error checking, it does not do anything to recover from an error.</p>
+            </li>
+         </ul>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

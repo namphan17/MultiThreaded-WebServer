@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<body>
+</body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+/** This function will create randomly placed nodes with edges between them
+  *@param n  Number of Nodes
+  *@param e  Number of Edges
+  *@param x  Max X Coordinate
+  *@param y  Max Y Coordinate
+  *@return graph  an array that contains an array of nodes & an array of edges  --> graph{ nodes[], edges[] }
+**/
+function randomGraph(n, e, x, y) {
+    //This is an array that ultimately gets returned
+    var graph = { nodes: [], edges: [] };
+    //temp variables
+    tmpEdges = [];
+    var i, j, k;
+        for (i = 0; i < n; i++)
+        {
+            //Randomly generate n Nodes with random x and y coordinates
+            graph.nodes.push({ label: i, x: Math.floor((Math.random() * x) + 1), y: Math.floor((Math.random() * y) + 1)});
+            //create a a handful of edges. we will select a subset of theses later.
+            for (j = i+1; j < n; j++)
+            {
+                tmpEdges.push({ source: i, target: j, len: 0 });
+            }
+        }
+        // pick m random edges from tmpEdges
+        k = tmpEdges.length - 1;
+            for (i = 0; i < e; i++)
+            {
+                graph.edges.push(tmpEdges.splice(Math.floor(Math.random()*k), 1)[0]);
+                k--;
+            }
+        //find the length of each edge
+        var x1, x2, y1, y2, distance;
+        for (i = 0; i < e; i++)
+        {
+            x1 = graph.nodes[graph.edges[i].source].x;
+            y1 = graph.nodes[graph.edges[i].source].y;
+            x2 = graph.nodes[graph.edges[i].target].x;
+            y2 = graph.nodes[graph.edges[i].target].y;
+            //distance formula
+            distance = Math.sqrt( Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2) ) ;
+            //adding distance to the edges
+            graph.edges[i].len = distance;
+        }
+    return graph;
+}
+/**
+*  Creates Nodes for SVG circles
+*@param graph a graph
+*@return nodeCir an array of svg circle elements
+*/
+function makeNodeCircles(graph)
+{
+    colors = ["red", "green", "coral", "blue", "gold", "forestgreen", "plum", "sandybrown", "salmon", "turquoise", "violet", "yellow"]
+    nodeCir = []
+    for( i = 0; i < graph.nodes.length; i++)
+    {
+        nodeCir.push({ "x_axis": graph.nodes[i].x, "y_axis": graph.nodes[i].y, "radius": 10, "color": colors[i]} );
+    }
+    return nodeCir;
+}
+//creating our graph
+graph = randomGraph(10, 15, 600, 600);
+//creating our circles for svg
+nodeCircles = makeNodeCircles(graph);
+//using D3js we select the body, add an SVG element.
+var svgContainer = d3.select("body").append("svg")
+                                    .attr("width", 625)
+                                    .attr("height", 625);
+//First, we are going to draw our edges
+for(i = 0; i < graph.edges.length; i++)
+{
+   //Draw the line
+   var line = svgContainer.append("line")
+                          .attr("x1", graph.nodes[graph.edges[i].source].x)
+                          .attr("y1", graph.nodes[graph.edges[i].source].y)
+                          .attr("x2", graph.nodes[graph.edges[i].target].x)
+                          .attr("y2", graph.nodes[graph.edges[i].target].y)
+                          .attr("stroke-width", 2)
+                          .attr("stroke", "black");
+}
+//Then we get our data from our nodeCircles array and create circles
+var circles = svgContainer.selectAll("circle")
+                          .data(nodeCircles)
+                          .enter()
+                          .append("circle");
+//Last, we give our circles attributes
+var circleAttributes = circles
+                      .attr("cx", function (d) { return d.x_axis; })
+                      .attr("cy", function (d) { return d.y_axis; })
+                      .attr("r", function (d) { return d.radius; })
+                      .style("fill", function(d) { return d.color; });
+
+//Djkstra's Shortest Path Algorithm
+function djikstra(graph, startVertex) {
+var Q = [];
+var distance = [];
+var previous = [];
+//create a Vertex set Q
+for(node in graph.nodes)
+{
+  //unknown distance from source to Node
+  distance.push(Number.POSITIVE_INFINITY);
+  //unknown pervious node in optimal path from source
+  previous.push(undefined);
+  //all nodes initially in Q (unvisited)
+  Q.push(node.label);
+}
+
+//distance from source to source
+distance[startVertex] = 0;
+
+while( Q.length != 0 )
+{
+  // U = source node with minimum distance
+  var u = minDist(graph, Q);
+  // Remove U in Q
+  Q.splice(u, 1);
+
+}
+}
+
+
+function minDist(graph, Q)
+{
+  var minimumDist = Number.POSITIVE_INFINITY;
+  var minNode; 
+  for (node in Q)
+  {
+    for (i = 0; i < graph.edges.length; i++)
+    {
+      if( ((node == graph.edges[i].source) || (node == graph.edges[i].target)) && (graph.edges[node].len <= minimumDist) )
+      {
+        minimumDist = graph.edges[node].len;
+        minNode = node;
+      }
+    }
+  }
+  return minNode;
+}
+
+/**
+ * Just a utility method to check if an Object is empty or not
+ * @param obj
+ * @returns {boolean}
+ */
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
+
+</script>
+</html>

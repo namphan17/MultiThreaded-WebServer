@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Hello
+</title>
+</head>
+<body>
+    <h3>
+        Broadcast Routing Algorithm
+    </h3>
+    <ul>
+        <li><b>N-way-unicast approach: </b>Given N destination nodes, the source node makes N copies of the packet, addresses each copy to a different destination and then transmits the N copies to the N destinations using unicast routing.</li>
+        <ul>
+            <li>This is simple because no new network-layer routing protocol, packet-duplication, or forwarding functionality is needed.</li>
+        </ul>
+        <li>It is very inefficient: it would be easier to just send one copy of the same packet instead of N copies.</li>
+        <li>There is unnecessary overhead because of the extra copies</li>
+        <li>There are three ways of doing this.</li>
+        <li><b>Uncontrolled Flooding</b></li>
+        <ul>
+            <li>Flooding is the easiest way of broadcasting. One node sends to all its neighbors, then those neighbors pass it on to their own neighbors</li>
+        <li><b>Broadcast Storm: </b>On a large scale, there would be so many broadcasts, that the packets would become useless.</li>
+        </ul>
+        <li>Controlled Flooding</li>
+        <ul>
+            <li>This chooses when to flood a packet more carefully.</li>
+            <li><b>Sequence-number-controlled flooding</b>: a source node puts its address as well as a broadcast sequence number into a broadcast packet then sends the packet to all of its neighbors.</li>
+            <li><b>Reverse Path Flooding</b> a router transmits the packet on all of its outging links only if the packet arrived on the link that is on its own shortest unicast path back to the source.</li>
+        </ul>
+        <li>Spanning Tree Broadcast.</li>
+        <ul>
+            <li><b>Spanning Tree: </b> a tree that contains each and every node in a graph.</li>
+            <li><b>Minimum Spanning Tree: </b>each link has an associated cost and the cost of the tree is the sum of link costs. That cost is the minimum of all the graphs trees.</li>
+            <li>The Spanning Tree Broadcast will use the minimum spanning tree to find the best way of sending data.</li>
+        </ul>
+    </ul>
+    
+</body>
+</html>

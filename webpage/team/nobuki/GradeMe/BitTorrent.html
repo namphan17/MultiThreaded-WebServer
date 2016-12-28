@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    BitTorrent 2.6.1
+</title>
+</head>
+<body>
+    <h1>BitTorrent</h1>
+    
+    <ul>
+        <li>BitTorrent is a popular p2p protocol for file distribution</li>
+        <li>Torrent: a collection of peers participating in the distribution of a file</li>
+        <ul>
+            <li>These peers in the torrent download chunks</li>
+            <li>The chunks are usually 256 KBytes each</li>
+            <li>The chunks are always equal size</li>
+        </ul>
+        <li>There are no chunks initially, but when a peer joins a torrent, that peer uploads and downloads chunks.</li>
+        <li> A peer can do one of two things:</li>
+        <ul>
+            <li>Selfishly download chunks then leave</li>
+            <li>Altruistically remain in the torrent to upload chunks</li>
+            <li>A peer can also leave at any time with a subset of chunks, then rejoin later.</li>
+        </ul>
+        <li>A tracker is used to keep track of who is in the torrent. It periodically checks to stay updated on who is in the torent.</li>
+        <li>Neighboring peers: a subset of peers that are connected to each other by a TCP connetion. A neighbor can leave or another could join, so the number is not constant.</li>
+        <li>These neighboring peers have subsets of chunks. When someone requests the data, it will request chunks from many of the neighbors until it has a complete set. </li>
+        <li>Rarest First: a technique used that requests the rarest chunks first out of the chunks the requester doesn't already have. Doing this will even out the scarcity of each chunk, so it will be even</li>
+        <li>A peer is Unchoked when another peer determines this peer as one if it's top senders and starts sending their data to them.</li>
+        <li>This peer will periodically start sending to another person to test for other good people to trade with. The other person is called optimistically unchoked, because they are hoping to add them to their top peers.</li>
+        <li>The other peers are considered choked, because they do not recieve chunks.</li>
+        <li>Choking is an incentive for people to stay in the torrent and not be selfish as mentioned above. </li>
+    </ul>
+
+</body>
+</html>

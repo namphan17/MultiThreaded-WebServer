@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+	</head>
+	<body>
+		<script src="jquery-3.1.1.min.js"></script>
+		<div class="nav-bar">
+			<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+		</div>
+      	<div class="detail">
+      	<div class="col-1">
+      	</div>
+      	
+      	<div class="col-2">
+	      	<div class="title">
+			<h1 class="section">CHAPTER 3.4: Principles of Reliable Data Transfer</h1>
+			</div>
+			<h3 class="section">1. Building a Reliable Data Transfer Protocol</h3>
+			<p><b>A finite-state machine:</b></p>
+			<ul>
+				<li>An abstract machine that can be in one of a finite number of states. The machine is in only one state at a time; the state it is in at any given time is called the current state. It can change from one state to another when initiated by a triggering event or condition; this is called a transition. A particular FSM is defined by a list of its states, its initial state, and the triggering condition for each transition</li>
+			</ul>
+			<p>There are separate FSMs for the sender and for the receiver.</p>
+				<h4 class="section">1. Reliable Data Transfer over a Perfectly Reliable Channel: rdt1.0</h4>
+				<p>This is the simplest case, in which the underlying channel is completely reliable.</p>
+				<figure>
+					<img class="display" src="../img/rdt0.PNG"/>
+					<figcaption class="display">Fig1. A rdt1.0</figcaption>
+				</figure>
+				<ul>
+					<li>Figure a defines the operation of the sender</li>
+					<li>Figure b defines the operation of the receiver</li>
+					<li>The blue arrows in the FSM description indicate the transition of the protocol from one state to another.</li>
+					<li>The event causing the transition is shown above the horizontal line labeling the transition</li>
+					<li>The actions taken when the event occurs are shown below the horizontal line.</li>
+				</ul>
+				<h4 class="section">2. Reliable Data Transfer over a Channel with Bit Errors: rdt2.0</h4>
+				<p>A more realistic model of the underlying channel is one in which bits in a packet may be corrupted.</p>
+				<figure>	
+					<img class="display" src="../img/rdt1.PNG"/>
+					<figcaption class="display" >Fig2. - A rdt2.0</figcaption>
+				</figure>
+				<ul>
+					<li>This message-dictation protocol uses both positive acknowledgments (“OK”) and negative acknowledgments (“Please repeat that.”).</li>
+					<li>In a computer networksetting, reliable data transfer protocols based on such retransmission are known as <b>ARQ (Automatic Repeat reQuest)</b> protocols.</li>
+					<li>
+						Fundamentally, three additional protocol capabilities are required in ARQ protocols to handle the presence of bit errors:
+						<ul>
+							<li><b>Error detection:</b> First, a mechanism is needed to allow the receiver to detect when bit errors have occurred.</li>
+							<li><b>Receiver feedback:</b> The positive (ACK) and negative (NAK) acknowledgment replies in the message-dictation scenario are examples of such feedback.</li>
+							<li><b>Retransmission</b>: A packet that is received in error at the receiver will be retransmitted by the sender.</li>
+						</ul>
+					</li>
+					<li>The sender will not send a new piece of data until it is sure that the receiver has correctly received the current packet. Because of this behavior, protocols such as rdt2.0 are known as stop-and-wait protocols.</li>
+					<li>In particular, we haven’t accounted for the possibility that the ACK or NAK packet could be corrupted!</li>
+				</ul>
+				<p>Protocol rdt2.1 uses both positive and negative acknowledgments from the receiver to the sender.</p>
+				<figure>	
+					<img class="display" src="../img/rdt2-1.PNG"/>
+					<figcaption class="display">Fig3. - A rdt2.1 sender.</figcaption>
+				</figure>
+				<figure>
+					<img class="display" src="../img/rdt2-1-receiver.PNG"/>
+					<figcaption class="display">Fig4. - A rdt2.1 receiver</figcaption>
+				</figure>
+				<ul>
+					<li>We add a new field to the data packet and have the sender number its data packets by putting a sequence number into this field.</li>
+					<li>The receiver then need only check this sequence number to determine whether or not the received packet is a retransmission.</li>
+					<li>The sender knows that a received ACK or NAK packet (whether garbled or not) was generated in response to its most recently transmitted data packet.</li>
+					<li>The rdt2.1 sender and receiver FSMs each now have twice as many states as before.</li>
+					<li>When an out-of-order packet is received, the receiver sends a positive acknowledgment for the packet it has received.</li>
+					<li>When a corrupted packet is received, the receiver sends a negative acknowledgment.</li>
+
+				</ul>
+				<p>Protocol rdt2.2 use only ACK by letting isNAK(rcvpkt) == isACK(rcvpkt, 1) when waiting for ACK or NAK 0.</p>
+				<figure>
+					<img class="display" src="../img/rdt2-2.PNG"/>
+					<figcaption class="display">Fig4. - A rdt2.2 sender</figcaption>
+				</figure>
+				<figure>
+					<img class="display" src="../img/rdt2-2-receiver.PNG"/>
+					<figcaption class="display">Fig5. - A rdt2.2 receiver</figcaption>
+				</figure>
+		</div>
+		<script src="script.js"></script>
+		<div class="col-3"></div>
+	</div>
+	</body>
+</html>

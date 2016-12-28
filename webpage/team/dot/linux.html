@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Linux
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Linux Terminal Basics
+    </h1>
+    <h3>Open the terminal</h3>
+    <ul>
+        <li>Click the "Terminal" icon (grey box filled with black with an arrow and underscore inside) in the sidebar</li>
+	<li>Search the computer for "Terminal"</li>
+	<li>Keyboard shortcut: Ctrl+Alt+T</li>
+    </ul>
+    <h3>Basic Information</h3>
+    <ul>
+        <li>Press the up arrow on the keyboard to see the previously entered command</li>
+        <li>If a directory or file name contains a space, it must be either escaped out (file\ name) or contained in quotes ('file name' or "file name")</li>
+	<li>File names include the extension: 'file.txt' and 'file' are treated by Linux as two separate objects</li>
+	<li>If you are ever asked for a password, it will not appear in the terminal as it is typed</li>
+	<li>Press Tab to autocomplete a file or directory name. If more than one name is possible from the characters entered, it will complete as much as possible without knowing which you wish to select. (Ex: 'tyler a' vs 'tyler b', pressing Tab after entering 't' will give you 'tyler ')</li>
+	<li>Copy: Ctrl-Shift-C</li>
+	<li>Paste: Ctrl-Shift-V</li>
+	<li><span class="code">?</span> can be used to replace any one character</li>
+	<li><span class="code">*</span> can be used to replace any number of characters, including zero</li>
+	<li><span class="code">man [command]</span> will provide a manual for that command and its uses, though not all commands have a manual</li>
+	<li>All commands are case-sensitive</li>
+	<li>File names are displayed in <span style="color:white">white</span></li>
+	<li>Directory names are displayed in <span style="color:cornflowerblue">blue</span></li>
+    </ul>
+    <h3>Common Commands</h3>
+    <ul>
+        <li class="code">clear</li>
+        <ul>
+	    <li>Clears the console</li>
+	    <li>Previous commands are still stored, simply no longer visible</li>
+	    <li>Keyboard shortcut <span class="code">Ctrl+L</span></li>
+	</ul>
+    </ul>
+    <ul>
+	<li class="code">pwd</li>
+	<ul>
+	    <li>Give the full path of the current directory</li>
+	</ul>
+        <li class="code">ls</li>
+	<ul>
+	    <li>List all files and directories within the current directory</li>
+	    <li><span class="code">ls -a</span> to list hidden files as well</li>
+	</ul>
+	<li class="code">locate</li>
+	<ul>
+	    <li>Find all matching files and return their paths</li>
+	    <li><span class="code">locate *.png</span> returns all .png image files</li>
+	    <li><span class="code">locate test.*</span> returns all files, whatever the file type, which are named 'test'</li>
+	</ul>
+        <li class="code">cd</li>
+	<ul>
+	    <li>Change Directory</li>
+	    <li><span class="code">cd ..</span> to go up a directory</li>
+	    <li><span class="code">cd [sub-directory]</span></li>
+	    <li><span class="code">cd [sub-drectory]/[sub-sub-directory]</span></li>
+	    <li><span class="code">cd ~/</span> to go to the root directory</li>
+	    <li>These commands can be arranged and stacked as much as needed to define the complete directory path</li> 
+	</ul>
+        <li class="code">mv</li>
+	<ul>
+	    <li>Move a file to a new location</li>
+	    <li>Analogous to cut, not copy</li>
+	    <li>File location defined in the same manner as in cd</li>
+	    <li><span class="code">mv [file path] [path to new directory]</span></li>
+	    <li><span class="code">mv [filename] [new filename]</span> to rename a file</li>
+	    <li>If the file is in the current directory, only the name is needed</li>
+	    <li>If the file is in a different directory, its filepath must be specified</li>
+	    <li><span class="code">mv [path]/[file] .</span> to move a file into the current directory</li>
+	    <li>Can also be used to move entire directories at once</li>
+	</ul>
+	<li class="code">cp</li>
+	<ul>
+	    <li>Copies a file</li>
+	    <li><span class="code">cp [filename] [new filename]</span> within the same directory</li>
+	    <li><span class="code">cp [filename] [path]/[new filename]</span> into a new directory</li>
+	    <li>If the file is moved to a new directory, the new filename may be the same as the original</li>
+	</ul>
+        <li class="code">rm</li>
+	<ul>
+	    <li>Delete a file</li>
+	    <li><span class="code">rm [file]</span> will delete the specified file</li>
+	    <li>File path specified in the same manner as mv</li>
+	    <li><span class="code">rm -r [directory]</span> to delete an entire directory and all of its contents</li>
+	    <li><span class="code">rm *.png</span> to delete all .png files in the current directory</li>
+	</ul>
+	<li class="code">mkdir</li>
+	<ul>
+	    <li>Create a new directory</li>
+	    <li><span class="code">mkdir [name]</span> creates a sub-directory within the current directory</li>
+	    <li>Can be used in conjunction with directory paths</li>
+	    <li>Ex: <span class="code">mkdir ~/[name]</span> creates a sub-directory within the root directory</li>
+        </ul>
+	<li class="code">touch</li>
+	<ul>
+	    <li>Create a new file of the given type</li>
+	    <li><span class="code">touch [file].[extension]</span></li>
+	    <li>If the file already exists, it will not be changed, but the 'last modified' timestamp will be updated</li>
+	</ul>
+    </ul>
+    <h3>Advanced Commands</h3>
+    <ul>
+        <li class="code">echo</li>
+        <ul>
+	    <li>Insert text into the console or a file</li>
+	    <li><span class="code">echo "[text]"</span> prints text to the console</li>
+	    <li><span class="code">echo "[text]" > [file]</span> inserts text into a new file</li>
+	    <li><b>If [file] is the name of a pre-existing file, its contents will be completely overwritten</b></li>
+	    <li><span class="code">echo "[text]" >> [file]</span> appends text to the end of a file</li>
+	    <li>> and >> can be used with other commands (ls, locate, etc.) to save terminal output to a file</li>
+	</ul>
+	<li><span class="code">more</span> and <span class="code">less</span></li>
+	<ul>
+	    <li>Shows results of a command which has a long result in a more readable way</li>
+	    <li><span class="code">[command] | more</span> shows results one page at a time</li>
+	    <li>Cycle through pages by pressing Space</li>
+	    <li><span class="code">[command] | less</span> shows the first page of results and allows scrolling</li>
+	    <li>Scroll through pages with the up and down arrow keys</li>
+	    <li>Exit both less and more by pressing <span class="code">q</span></li>
+	</ul>
+	<li class="code">wc</li>
+	<ul>
+	    <li>Gives the wordcount of a file</li>
+	    <li class="code">wc [file]</li>
+	</ul>
+        <li class="code">PS1</li>
+        <ul>
+	    <li>Change the command prompt</li>
+	    <li><span class="code">PS1='==>'</span> sets the command prompt to ==></li>
+	    <li>Can be done with single or double quotes</li>
+	    <li>Once the command prompt is set, the current folder hierarchy will no longer be shown as part of the prompt</li>
+	    <li>To reset the prompt to the default, enter <span class="code">PS1='\e[1;32m[\u@\h \W]\$ \e[m '</span></li>
+	    <ul>
+	        <li><span class="code">\e[1;32m</span> defines the color of the prompt</li>
+	        <li><span class="code">\u@h</span> inserts username and host name</li>
+		<li><span class="code">\W</span> puts the directory path at the end of the prompt</li>
+		<li><span class="code">\$</span> displays the user ID, or a $ if the effective UID is 0</li>
+		<li><span class="code">\e[m</span> marks the end of the color range</li>
+	    </ul>
+	</ul>
+    </ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

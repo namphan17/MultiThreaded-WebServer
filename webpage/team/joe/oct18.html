@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <style>
+h1, h2 {
+    text-align:center;
+    color:OrangeRed;
+}
+h3, h4 {
+text-align:center;
+}
+  </style>
+  
+  <head>
+    <title>
+      OCTOBER 19th
+      </title>
+  </head>
+  <body>
+    <h1>Oct 18th Notes</h1>
+    <br>
+    <h2>Homecoming Week</h2>
+    <br>
+    <h1>Dijkstra's Algorithm</h1>
+    <p> Djikstra's algorithm (named after its discover, E.W. Dijkstra) solves the problem of finding the shortest path from a point in a graph (the source) to a destination. It turns out that one can find the shortest paths from a given source to all points in a graph in the same time, hence this problem is sometimes called the single-source shortest paths problem.</p>
+    <h3>Least Effort / Lowest Cost</h3>
+    <br>
+    <p> Steps to create Dijkstra's Algorithm</p>
+    <ol>
+      <li>Initialization of all nodes with distance "infinite". Initalization of the starting node with 0.</li>
+      <li>Marking of the distance of the starting node as permanent.</li>
+      <li>Setting of starting node as active.</li>
+      <li>Calculation of the distanced of all neighboring nodes by summing up its distance with the weights of the edges</li>
+      <li>If a calculated distance of a node is smaller than the current one, update the distance and set the current node as antecessor. **<b>Dijkstra's Central Idea</b>**</li>
+      <li>Setting of the node with the minimal distance as active. Mark its distance as permanent</li>
+      <li>Repeat steps 4 - 7 until there aren't any nodes left with a permanenet distance, with neighbors that have temporary distances</li>
+    </ol>
+    <img src="http://2.bp.blogspot.com/-zog-0TI1lhs/U_-LvZysNwI/AAAAAAAABkQ/3Rz0Zqgm8bM/s1600/dij.png"/>
+    <p>Credits to <a href="http://www.codebytes.in/2014/08/dijkstras-algorithm-implementation-in.html">CodeBytes</a> for the image. 
+  </body>
+</html>

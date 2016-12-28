@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+
+<title>
+Excersize 1
+</title>
+
+
+<head>
+    <style>
+h1{
+    text-align:center;
+}
+h3{
+    text-align:center;
+}
+/* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+</style>
+
+<h1>
+Excersize 1
+</h1>
+<h3>Book Questions</h3>
+</head>
+<button class="accordion">The physical layer is concerned with the movement of _______ over the physical medium.</button>
+<div class="panel">
+  <p>Programs</p>
+</div>
+<button class="accordion">How many bytes are in the physical address used in Ethernet?</button>
+<div class="panel">
+  <p>6-byte</p>
+</div>
+<button class="accordion">TCP provides a flow-control service to its applications, why and whats its purpose?</button>
+<div class="panel">
+  <p>Eliminates the possibility of the sender overflowing the buffer of the reciever. It essentially matches the rate at which the sender is sending in opposition to the rate the reciever is reading.
+  </p>
+</div>
+<button class="accordion">In TCP, what is a receive window?  Define the calculation that disallows overflow to the buffer.</button>
+<div class="panel">
+  <p>It gives the sender info about how much free buffer space is available at the receiver. LastByteRcvd - LastByteRead <= RcvBuffer </p>
+</div>
+<button class="accordion">What is a 'whois' database?</button>
+<div class="panel">
+  <p>An online repository of information associated with registered domain names. It stores and displays publicaly domain name information. Used to determine if a given domain name is available.</p>
+</div>
+<button class="accordion">What is a handshaking protocol?</button>
+<div class="panel">
+  <p>A protocol uses handshaking if the two communicating entities first exchange control packets before sending data to each other. SMTP uses handshaking at the application layer whereas HTTP does not.</p>
+</div>
+<button class="accordion">What information is used by a process running on one host to identify a process running on another host?</button>
+<div class="panel">
+  <p>The IP address of the destination host and the port number of the destination socket.</p>
+</div>
+<button class="accordion">What is the difference between MAIL FROM: in SMTP and From: in the mail message itself?</button>
+<div class="panel">
+  <p>The MAIL FROM: in SMTP is a message from the SMTP client that identifies the sender 
+of the mail message to the SMTP server. The From: on the mail message itself is NOT an 
+SMTP message, but rather is just a line in the body of the mail message.</p>
+</div>
+<button class="accordion"> Suppose you wanted to do a transaction from a remote client to a server as fast as possible. Would you use UDP or TCP? Why?</button>
+<div class="panel">
+  <p>UDP. The transaction can be done in one round trip time. With TCP a minimum of two round trips are required. </p>
+</div>
+<button class="accordion">What is the Apache Web server? How much does it cost? </button>
+<div class="panel">
+  <p>It is a web server that implements compiled modules that extend core funcionality. It is highly scalable, runs in a process-based hybrid to better match each infrastructures needs. Best of all Apache is FREE, it even comes pre-installed on some systems. </p>
+</div>
+
+<h3>Problems from the book</h3>
+<button class="accordion"> Is it possible for an application to enjoy reliable data transfer even when the
+application runs over UDP? If so, how?</button>
+<div class="panel">
+  <p>Yes. The application developer can put reliable data transfer into the application layer protocol</p>
+</div>
+<button class="accordion">Argue for or against this statement:Packets are lost only when network failures occur. But when the network heals, packets do not get lost</button>
+<div class="panel">
+  <p>When the network fails packets that cross that link may be lost. When the network heals, packets may cross shorter paths to get to the destination. 
+      Shorter paths have a delay-bandwidth product less than longer paths so can hold fewer bytes in the pipe. Using a TCP connection with a high traffic over a shorter path may also cause packet loss, since the shorter paths will get congested, and buffers may overflow causing multiple packet losses.
+  </p>
+</div>
+<h3>Wireshark Lab: TCP</h3>
+<button class="accordion">What is the IP address and TCP port number used by the client computer (source) that is
+transferring the file to gaia.cs.umass.edu? To answer this question, it is probably easiest to
+select an HTTP message and explore the details of the TCP packet used to carry this HTTP
+message, using the "details of the selected packet header window"</button>
+<div class="panel">
+  <p>CLient IP: 192.168.1.102 port number:1161</p>
+</div>
+<button class="accordion">What is the IP address of gaia.cs.umass.edu? On what port number is it sending and
+receiving TCP segments for this connection?</button>
+<div class="panel">
+  <p>IP of gai.cs.umass.edu: 128.119.245.12 port number:80</p>
+</div>
+<button class="accordion">What is the IP address and TCP port number used by your client computer (source) to
+transfer the file to gaia.cs.umass.edu?</button>
+<div class="panel">
+  <p>My IP: 192.167.1.8 port:60706</p>
+</div>
+<button class="accordion">What is the sequence number of the TCP SYN segment that is used to initiate the TCP
+connection between the client computer and gaia.cs.umass.edu? What is it in the segment
+that identifies the segment as a SYN segment?</button>
+<div class="panel">
+  <p>0 because it is used to imitate the TCP connection
+between the client computer and gaia.cs.umass.edu. Syn flag is set to 1 which indicates that this
+segment is a SYN segment</p>
+</div>
+<button class="accordion">What is the sequence number of the SYNACK segment sent by gaia.cs.umass.edu to the
+client computer in reply to the SYN? What is the value of the Acknowledgement field in the
+SYNACK segment? How did gaia.cs.umass.edu determine that value? What is it in the segment
+that identifies the segment as a SYNACK segment?</button>
+<div class="panel">
+  <p>SYNACK segment from gaia.cs.umass.edu in reply to the SYN is 0. Acknowledgement field in SYNACK is 1. It is 
+      determined by the server gaia.cs.umass.edu. A segment will be identified as a SYNACK segment if both SYN flag and Acknowledgement are set to 1. 
+  </p>
+</div>
+<button class="accordion">What is the sequence number of the TCP segment containing the HTTP POST command?
+Note that in order to find the POST command, you'll need to dig into the packet content field
+at the bottom of the Wireshark window, looking for a segment with a "POST" within its DATA
+field.</button>
+<div class="panel">
+  <p>the segment No.6 is the HTTP POST command, the sequence
+number for the segment is 1.</p>
+</div>
+<button class="accordion">Consider the TCP segment containing the HTTP POST as the first segment in the TCP
+connection. What are the sequence numbers of the first six segments in the TCP connection
+(including the segment containing the HTTP POST)? At what time was each segment sent?
+When was the ACK for each segment received? Given the difference between when each TCP
+segment was sent, and when its acknowledgement was received, what is the RTT value for
+each of the six segments? What is the Estimated RTT value (see Section 3.5.3, page 239 in text)
+after the receipt of each ACK? Assume that the value of the Estimated RTT is equal to the
+measured RTT for the first segment, and then is computed using the Estimated RTT equation
+on page 239 for all subsequent segments.</button>
+<div class="panel">
+  <p>The segments 1-6 are No. 6, 7, 8, 9, 11 and 14. The ACK of segments
+1-6 are No. 10, 12, 13, 16, 19 and 22.</p>
+<ul>
+    <li>Segment:Sequence number</li>
+    <li>1 : 1</li>
+    <li>2 : 579</li>
+    <li>3 : 716</li>
+    <li>4 : 2164</li>
+    <li>5 : 3612</li>
+    <li>6 : 5060</li>
+
+</ul>
+<ul>
+    <li>Segment:Sent time:ACK recieved time:RTT</li>
+    <li>1 : 0.2712:0.3669 : 0.0956</li>
+    <li>2 : 0.2714 : 0.3672 : 0.0958</li>
+    <li>3 : 0.2714 : 0.3672 : 0.0968</li>
+    <li>4 : 0.2717 : 0.3699 : 0.0981</li>
+    <li>5 : 0.3670 : 0.4799 : 0.1128</li>
+    <li>5 : 0.3687 : 0.4824 : 0.1137</li>
+
+</ul>
+</div>
+<button class="accordion">What is the length of each of the first six TCP segments?</button>
+<div class="panel">
+  <p>The first TCP segment is 578 bytes, the second TCP segment is 137
+bytes. The following five TCP segments are 1448 bytes.</p>
+</div>
+<button class="accordion">What is the minimum amount of available buffer space advertised at the received for the
+entire trace? Does the lack of receiver buffer space ever throttle the sender?</button>
+<div class="panel">
+  <p>5792 bytes. The receiver window grows unitl it reaches the maximun receiver buffer size of 62780 bytes. The sender is not throttled due to lacking receiver buffer space.</p>
+</div>
+<button class="accordion">Are there any retransmitted segments in the trace file? What did you check for (in the
+trace) in order to answer this question?</button>
+<div class="panel">
+  <p>There are no retransimtted segments in the trace file becuase all sequence numbers increase.</p>
+</div>
+<button class="accordion">How much data does the receiver typically acknowledge in an ACK? Can you identify cases
+where the receiver is ACKing every other received segment?</button>
+<div class="panel">
+  <p>The difference between the acknowledged sequence numbers of consecutive ACKs tell you 
+      the data received by the server between the two ACKs. The receiver is ACKing every other segment.
+  </p>
+</div>
+
+<button class="accordion">What is the throughput (bytes transferred per unit time) for the TCP connection? Explain
+how you calculated this value.</button>
+<div class="panel">
+  <p>alice.txt is 152,138 bytes, download time of 1.5787 - 0.2712 = 1.3074 (First TCP - Last ACK). The throughput
+       is calculated as 152,138/1.3074 = 116359.8038 bytes/second.
+  </p>
+</div>
+<button class="accordion">Use the Time-Sequence-Graph(Stevens) plotting tool to view the sequence number versus
+time plot of segments being sent from the client to the gaia.cs.umass.edu server. Can you
+identify where TCP's slowstart phase begins and ends, and where congestion avoidance takes
+over? Comment on ways in which the measured data differs from the idealized behavior of
+TCP that we've studied in the text.</button>
+<div class="panel">
+  <p>The slow start appears to begin at about 0.27 seconds and then ends around 0.35. Congestion avoidance occurs at 0.7 because it throttled the ammount sended.</p>
+</div>
+
+</body>
+<script>
+    /* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+
+</html>
+

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<title>
+OCt 13
+</title>
+
+
+<head>
+    <style>
+h1{
+    text-align:center;
+}
+h3{
+    text-align:center;
+}
+/* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+</style>
+<h1>
+ 4.3
+</h1>
+
+</head>
+
+<body>
+    <h3>Routers</h3>
+    <button class="accordion">Architecture</button>
+    <div class="panel">
+        <img src="rA.png" alt="ra"style="width:415px;height:130/3px;">
+    </div>
+    <button class="accordion">Forwarding function</button>
+    <div class="panel">
+        <p>
+            The transfer of packets from a routers incoming links to the appropriate
+                outbound links at the router. The terms forwarding and switching are
+                    often used interchangably. 
+    </p>
+    </div>
+    
+ <button class="accordion">Input Ports</button>
+    <div class="panel">
+        <p>
+            <ul>
+                <li>Performs the termination of a physical link at a router.</li>
+                <li>Performs link layer functions needed to interopolate with the link layer at the otherside of the incoming link</li>
+           <li>Lookup function performed at the input port: forwarding table consulted, determines output port for packet to be forwarded to</li>
+           
+            </ul>
+             
+    </p>
+    </div>
+    
+<button class="accordion">Switching fabric</button>
+    <div class="panel">
+<p>
+    <ul>
+        <li>Connects routers input ports to output ports.</li>
+        <li>Completely contained inside router.</li>
+    </ul>
+     
+</p>
+    </div>
+<button class="accordion">Output ports</button>
+    <div class="panel">
+        <p>
+              <ul>
+        <li>stores packets recieved from switching fabric</li>
+        <li>transmits packets on outgoing link</li>
+    </ul>
+            </p>
+    </div>
+
+<button class="accordion">Routing processor</button>
+    <div class="panel">
+        <p>    <ul>
+        <li>Executes routing protocols</li>
+        <li>maintains routing tables and link state information</li>
+        <li>computes forwarding table</li>
+        <li>Network management functions</li>
+    </ul></p>
+    </div>
+<button class="accordion">Routing Forwarding Plane</button>
+    <div class="panel">
+        <p>Collective forwarding functions; input ports, output ports, switching fabric
+            <ul>
+                <li>Hardware implementation required because software implementation too slow</li>
+                <li>Operates at the nanosecond time scale</li>
+                <li>Execution of routing protocols operates in software</li>
+            </ul>
+        </p>
+    </div>
+
+
+
+</body>
+<script>
+    /* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+
+</html>
+

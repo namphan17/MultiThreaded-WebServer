@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/5/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 5th
+    </h1>
+    <ul>
+	<li>Application Architecture</li>
+	<ul>
+		<li>Designed by application developer</li>
+		<li>Dictates how application is structured over various end systems</li>
+		<li>Two main models: client-server and peer-to-peer</li>
+	</ul>
+	<li>Client-server</li>
+	<ul>
+		<li>Always-on host (<b>server</b>) services requests from many hosts (<b>clients</b>)</li>
+		<li>Ex: Web, FTP, Telnet, e-mail</li>
+		<li>Server receives request and responds by sending the requested object to the client</li>
+		<li>Clients do not directly communicate with each other</li>
+		<li>Server has a fixed, well-known unique <b>IP address</b></li>
+		<li>Client sends packets to server's IP</li>
+		<li>When a single-server host is insufficient, many servers can be connected in a <b>data center</b></li>
+	</ul>
+	<li>Peer-to-peer</li>
+	<ul>
+		<li>Often abbreviated P2P</li>
+		<li>No single dedicated server</li>
+		<li>Distributed between pairs of intermittently connected hosts, <b>peers</b></li>
+		<li>Peers are owned by users, not the service provider</li>
+		<li>Ex: BitTorrent, Xunlei, Kankan, PPstream</li>
+		<li>Significant problems</li>
+		<ul>
+			<li>Not ISP friendly: modern residential ISP configured for 'assymetric' usage, not equal uploading and downloading<li>
+			<li>Difficult to secure: distributed and open by nature</li>
+			<li>Require incentive: must convince users to volunteer resources to the operation of the P2P system</li>
+		</ul>
+	</ul>
+	<li>Hybrid example: IM applications</li>
+	<ul>
+		<li>Server used to track IP addresses of uses</li>
+		<li>Messages sent directly with P2P</li>
+	</ul>
+</ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

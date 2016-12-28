@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="./HenryStyleSheet.css" />
+    <meta charset="utf-8" />
+    <title>Henrys Notes October 10th 2016</title>
+</head>
+<body>
+    <h2 id="pageHeader">Henry's Notes October 12<sup>th</sup></h2>
+    <h4>Congestion Control: 3.6</h4>
+    <p>As always, it is best to examine this topic by looking at increasingly complex scenarios until we understand 
+    the full concept</p>
+    <ol>
+        <li>
+            Scenario 1: Two Senders, a Router with Infinite Buffers
+            <ul>
+                <li>
+                    Assume that hosts A and B share a connection link which has infinite buffer space and a sending rate 
+                    of R.
+                </li>
+                <li>
+                    In this scenario, neither host can achieve a throughput higher than R/2.  Not only that, but as each 
+                    host approaches a throughput of R/2, the delay on the connection link will rise exponentially.
+                    <br/>
+                    <img href="./Figure3-44.png" />
+                    <br/>
+                </li>
+                <li>
+                    When the sending rate exceeds R/2, the number of queued packets is unbounded, and the average delay 
+                    between sender and receiver becomes infinite.
+                </li>
+                <li>
+                    In this scenario, operating at a sending rate near R is optimal for maximum throughput and for keeping the router busy, but is 
+                    problematic in terms of delay times.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Scenario 2: Two Senders and a Router with Finite Buffers
+            <ul>
+                <li>
+                    When a router has a finite buffer space as it would in the real world, incoming packets are dropped 
+                    when they arrive at a router with a full queue.
+                </li>
+                <li>
+                    The second assumption we make in this scenario is that both connections are reliable.
+                </li>
+                <li>
+                    If a packet is dropped, the host will eventually resend it.  This means that our use of the term 
+                    <i>sending rate</i> is slightly altered.
+                </li>
+                <li>
+                    The rate at which the original data <i>and</i> retransmitted data is send to the transport layer 
+                    is referred to as the <i>offered load</i>.
+                </li>
+                <li>
+                    The added complication of this layer is that our performance is now heavily dependent on how we handle
+                    retransmission. If a host could somehow (magically!) determine whether the router has a free buffer 
+                    space, no packets would be lost.
+                </li>
+                <li>
+                    In a realistic scenario, some duplicate packets will be sent when the host reaches its timeout value 
+                    and the packet is delayed in the network and not yet at the receiver.  This is a cost of a congested 
+                    network.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Scenario 3: Four Senders, Routers with Finite Buffers, and Multihop Paths
+            <ul>
+                <li>
+                    This scenario contains a number of new assumptions that are best handled one at a time.  The first 
+                    is that we now have four hosts as opposed to two.
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+</body>
+</html>

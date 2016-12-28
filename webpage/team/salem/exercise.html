@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Exercise
+</title>
+</head>
+<body>
+<style>
+.answer{color:red;}
+
+a:visited{
+text-decoration:underline;
+color:blue;
+}
+
+a:link{
+text-decoration:underline;
+color:blue;
+}
+
+a:hover{color:#EF4264}
+
+body{background:#7FFFD4}
+</style>
+
+<button onclick = oc('ex0')>Exercise 0</button>
+<button onclick = oc('ex1')>Exercise 1</button>
+<button onclick = oc('ex2')>Exercise 2</button>
+<div id = "ex0" style = "display:none">
+<h1>Exercise  0</h1>
+<button onclick = "oc(123)">Q&A </button>
+<button onclick =  "oc(234)">About Tim Berners-Lee</button>
+<button onclick = "oc(345)">Git remote fetch</button>
+<div id = "123" style = "display:none">
+<h1>Q&A
+</h1>
+<ul>
+	<li><h2>Give a brief definition of a protocol?</h2></li>
+			<ul>
+				<li class = "answer"><u>Answer: The format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or other event.</u></li>
+			</ul>
+	<li><h2>Who were the two people who built on Adramson's multiple-access protocal work when they developed the Ethernet protocol work when they developed the Ethernet protocol for wire-based shared broadcast networks?</h2></li>
+			<li>Robert Metcalfe and David Boggs</li>
+			<li>Norman Abramson and Minitel</li>
+			<li>Tim Berners-Lee and Ted Nelson</li>
+			<li>Donald Davies and Roger Scantlebury</li>
+		<ul>
+			<li class = "answer"><u>Answer: Robert Metcalfe and David Boggs</u></li>
+		</ul>
+	<li><h2>What is the difference between a virus and a worm</h2></li>
+		<ul>
+			<li class = "answer">Answer: Require some form of user interaction to infect the user's device, but a worm can enter a device without any explicit user interaction.</li>
+		</ul>
+	<li><h2>Match the Layers with the correct packet names.</h2></li>
+	
+		<ul class  = "answer">
+			<li>Answer:
+			<ul>
+				<li>Application : message</li>
+				<li>Transport : segment</li>
+				<li>Network : datagrams</li>
+				<li>Link : frames</li>
+				<li>Physical : none</li>
+			</ul>
+		</ul>
+	</li>
+	<li><h2>What are cookies?  Where are they stored?</h2></li>
+		<ul>
+			<li class = "answer">Answer: They allow sites to keep track of users.  They are stored in the user's end system.</li>
+		</ul>
+	<li><h2>What are the major difference between time-division multiplexing(TDM) and frequency-division multiplexing(FDM)?</h2></li>
+		<ul>
+			<li class = "answer">Answer: FDMs are frequency spectrum of a link that is divided up among the connections established across the link, whereas; TDMs are based on time that are divided into frames of fixed duration which are divided into time slots.</li>
+		</ul>
+	<li><h2>What are the two fundamental approaches to moving data through a network of links and switches?  Why would you use one over the other?</h2></li>
+		<ul>
+			<li class = "answer">Answer: Circuit switching and packet switching.  Packet over circuit because dedicated circuits are idle while nothing is going through.</li>
+		</ul>
+	<li><h2>What are the criterias for whether you want to use a TCP or UDP?</h2></li>
+		<ul>
+			<li class = "answer">Reliable data transfer, throughput, timing, and security.</li>
+		</ul>
+</ul>
+<hr style = "height:3px;border:none;color:#333;background-color:#333;">
+</div>
+<div id = "234" style = "display:none">
+<h1>About Tim Berners-Lee</h1>
+<div>Tim Berners-Lee&#39s is a prominent and respected member of the development of data communications.  He was the inventor of the World Wide Web.  In addition, he also has some titles and accomplishments:</div>
+<ul>
+	<li>The inventor of the World Wide Web (2).</li>
+	<li>Successfully started the connection between a HTTP client and server (2).</li>
+	<li>Founded and currently directs the World Wide Web Consortium (W3C), which is the main international standards organization for the World Wide Web (2)(3).</li>
+	<li>Is a senior researcher and holder of the founders chair at MIT Computer Science and Artificial Intelligence Laboratory (CSAIL) (2).  In addition to Artificial Intelligence, they also do research on computational biology, graphics and vision, language and learning, theory of computation, robotics, and others (4).</li>
+	<li>The director of the Web Science Research Initiative (WSRI) (2).</li>
+</ul>
+<div>He had an interview at the Web 2.0 summit.  There was a cover done by cnet.  One of topics was about law and whether technology should handle law.  He beleives policemen and courts should decide right from wrong, not technology.  He also gave advise on how &#34If you want it everywhere, give it away.&#34  This was the idea that if you want it everywhere, you do not charge for the service.  He warned that large companies are a threat.  Social networks, like Facebook, might monopolize communication because they are not open to other systems.  However, he gave hope.  If small companies connection their network on a standard connection, then they could topple large companies.  Trust was one of the last subject he talked about.  He says that in order for the world of web apps to take off is trust.  Unfortunately, he did not have the answer to this. (1)</div>
+
+<h4>Reference</h4>
+<ol>
+	<li><a href = "https://www.cnet.com/news/tech-advice-from-tim-berners-lee/">https://www.cnet.com/news/tech-advice-from-tim-berners-lee/</a></li>
+	<li><a href = "https://en.wikipedia.org/wiki/Tim_Berners-Lee">https://en.wikipedia.org/wiki/Tim_Berners-Lee</a></li>
+	<li><a href = "https://en.wikipedia.org/wiki/World_Wide_Web_Consortium">https://en.wikipedia.org/wiki/World_Wide_Web_Consortium</a></li>
+	<li><a href = "https://en.wikipedia.org/wiki/MIT_Computer_Science_and_Artificial_Intelligence_Laboratory">https://en.wikipedia.org/wiki/MIT_Computer_Science_and_Artificial_Intelligence_Laboratory</a></li>
+</ol>
+<hr style = "height:3px;border:none;color:#333;background-color:#333;">
+</div>
+<div id = "345" style = "display:none">
+<h1>Git Remote, Fetch, Upstream</h1>
+	<ul>
+		<li>After you make changes to your repo and finished merging it to the the repo that you forked from.  You can take these steps to grab the repo that you forked from and add it to your local computer, then push that to your repository in your github account.</li>
+		<li>First you need to have pulled the deposit that you have in your github account.  I would also recommend using ubuntu.</li>
+		<ol>
+			<li>Open to the command prompt.</li>
+			<li>Type: git remote add upstream “url of the repo you forked from”</li>
+			<ul>
+				<li>This will add the original repo to your list of upstreams you may or may not have.</li>
+			</ul>
+			<li>Type: git pull upstream master</li>
+			<ul>
+				<li>This will fetch the original repository and add to your local deposit.</li>
+			</ul>
+			<li>Type: git push origin master</li>
+			<ul>
+				<li>This will add the deposit on your local to the repository that is located on your github account.</li>
+			</ul>
+		</ol>
+	</ul>
+	<h4>These are other resources to help with fetch and upstream
+		<ul>
+			<li><a href = "https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/">Merging an upstream repository into your fork</a></li>
+			<li><a href = "https://help.github.com/articles/fork-a-repo/">Fork A Repo</a></li>
+			<li><a href = "https://help.github.com/articles/syncing-a-fork/">Syncing a fork</a></li>
+			<li><a href = "https://2buntu.com/articles/1459/keeping-your-forked-repo-synced-with-the-upstream-source/">Provided by my teacher</a></li>
+		</ul>
+	<h4>
+<hr style = "height:3px;border:none;color:#333;background-color:#333;">
+</div>
+</div>
+
+<div id = "ex1" style = "display:none">
+<h1>Exercise 1</h1>
+<button onclick = "oc(456)">Q&A</button>
+<button onclick =  "oc(567)">Two Problems</button>
+<button onclick = "oc(678)">Wireshark</button>
+
+<div id = "456" style = "display:none">
+	<h1 style = "text-align:center">Q&A</h1>
+	<ol>
+		<li>What are the two requirements for transport-layer multiplexing? (page 192)</li>
+			<ol class = "answer">
+				<li>Sockets have unique identifiers.</li>
+				<li>Each segment has special fields that indicate the socket to which the segment is to be delivered.
+		</li>
+			</ol>
+
+		<li>Give a quick definition for demultiplexing and multiplexing. (page 191)</li>
+			<ul class = "answer">
+				<li>Demultiplexing: The receiving end, the transport layer examines these fields to identify the receiving socket and then directs the segment to that socket.</li>
+				<li>Multiplexing: Gathering data chunks at the source host from different sockets, encapsulating each data chunk with header information</li>
+			</ul>
+
+		<li>Why would you chose UDP over TCP? (page 199)</li>
+			<ul class = "answer">
+				<li>as soon as an application process passes data to UDP, UDP will package the data inside a UDP segment and immediately pass the segment to the network layer.</li>
+				<li>UDP just blasts away without any formal preliminaries.</li>
+				<li>TCP segment has 20 bytes of header overhead in every segment, but UDP only has 8 bytes of overhead.</li>
+			</ul>
+
+		<li>What is checksums and how is it used? (page 202 to page 204)</li>
+			<ul class = "answer">
+				<li>It is 16-bits that is added to a packet and is used to prevent corruption.</li>
+				<li>By converting all the 0s to 1s and converting all 1s to 0s.  When added it should produce 1111111111111111.  If there is a 0 in the sum, then there is an error in that packet.</li>
+			</ul>
+
+		<li>Match the correct rdt with the correct added feature or basic feature. (page 206 to page 215)</li>
+			<ul class = "answer"><li>Answer:</li>
+			<ul class = "answer">
+				<li>rdt 1.0</li>
+				<ul>
+					<li>sender and receiver.</li>
+					<li>Just one state.</li>
+					<li>Perfectly reliable.</li>
+				</ul>
+
+				<li>rdt 2.0</li>
+				<ul>
+					<li>Positive acknowledgments and negative acknowledgments.</li>
+					<li>Reliable data transfer protocols based on such retransmission are known as ARQ (Automatic Repeat reQuest) protocols.</li>
+					<ul><li>Error detection</li><li>Receiver feedback</li><li>Retransmission</li></ul>
+				<li>This deals with the problem of corrupt packets.</li>
+				</ul>
+
+				<li>rdt 2.1</li>
+				<ul>
+					<li>Field that has a sequence number into the field, which is 1-bit sequence number. It will allow the receiver to know whether the sender is resending the previously transmitted packet.  This is to deal with the problem of ACK or NAK packets being corrupt.</li>
+				</ul>
+
+				<li>rdt 2.2</li>
+				<ul>
+					<li>The receiver must now include the sequence number of the packet being acknowledged by an ACK message</li>
+					<li>The sender must now check the sequence number of the packet being acknowledged by a received ACK message.</li>
+				</ul>
+				<li>rdt 3.0</li>
+			</ul>
+				<ul>
+					<li>Countdown Timer, which needs to be able to:</li>
+					<ul>
+						<li>Start the timer each time a packet is sent.</li>
+						<li>Respond to a timer interruption.</li>
+						<li>Stop the timer.</li>
+					</ul>
+					<li>This is to deal with lost packets.</li>
+				</ul>
+			</ul>
+
+		<li>What are the names of the three major components of a TCP congestion-control algorithm? (page 272 to page 277)</li>
+			<ul class = "answer"><li>Answer:</li></ul>
+			<ul class = "answer">
+				<li>Slow Start</li>
+				<li>Congestion Avoidence</li>
+				<li>Fast Recovery</li>
+			</ul>
+
+			<li>What is the well-known port numbers.  And, what are they used for? (page 192)</li>
+			<ul class = "answer">
+				<li>0 to 1023.</li>
+				<li>Those ports are used for things such as HTTP (port number 80) and FTP (port number 21).</li>
+			</ul>
+
+		<li>How does sequential number help with rdt? (page 210)</li>
+			<ul class = "answer">
+				<li>It helps distinguish between packets and to keep track of which ACK or NAK responded to which packet.</li>
+			</ul>
+
+		<li>What is a three-way handshake? (page 232)</li>
+			<ol class = "answer">
+				<li>The client first sends a special TCP segment.</li>
+				<li>The server responds with a second special TCP segment</li>
+				<li>The client responds again with a third special segment, confirming their connection.</li>
+			</ol>
+
+		<li>What is a congestion window? (page 269)</li>
+			<ul class = "answer">
+				<li>Imposes a constraint on the rate at which a TCP sender can send traffic into the network, denoted cwnd.</li>
+			</ul>
+	</ol>
+
+
+
+<hr style = "height:3px;border:none;color:#333;background-color:#333;">
+
+</div>
+
+
+
+
+
+
+<div id = "567" style = "display:none">
+	<h1 style = "text-align:center">Two Problems</h1>
+	<ol>
+		<li><h4>P29 pg 294:</h4></li>
+		<ol>
+			<ul>
+				<li>Question: Why is it necessary for the server to use a special initial sequence number in the SYNACK?</li>
+				<li class = "answer">Answer: To make sure that the user trying to connect is an actual person and not part of an attack because the hash that is stored in a cookie is gained from the source and destination IP and port numbers of the SYN segment.</li>
+			</ul>
+
+			<ul>
+				<li>Question: Suppose an attacker knows that a target host uses SYN cookies. Can the attacker create half-open or fully open connections by simply sending an ACK packet to the target? Why or why not?</li>
+				<li class = "answer">Answer: No, you cannot do a half-open connection, however; if you sniffed the network and got the packet and etc.  then you can spoof and make a full connection with the ACK.</li>
+			</ul>
+
+			<ul>
+				<li>Question: Suppose an attacker collects a large amount of initial sequence numbers sent by the server. Can the attacker cause the server to create many fully open connections by sending ACKs with those initial sequence numbers? Why? </li>
+				<li class = "answer">Answer: Yes, because you can just spoof yourself and use the initial sequential numbers to make full-connections.</li>
+			</ul>
+
+		</ol>
+<div style = "margin-top:15px"><b><i>I collaborated with Nigel Ticknor for P29.</i></b></div>
+
+		<li><h4>P16 pg 290:</h4></li>
+			<ul>
+				<li>Question: Suppose an application uses rdt 3.0 as its transport layer protocol. As the stop-and-wait protocol has very low channel utilization (shown in the crosscountry example), the designers of this application let the receiver keep sending back a number (more than two) of alternating ACK 0 and ACK 1 even if the corresponding data have not arrived at the receiver. Would this application design increase the channel utilization? Why? Are there any potential problems with this approach? Explain.</li>
+				<li class = "answer">Answer: Yes, it might increase the channel utilization, however; it would be at the risk of corruption because the ACK 0 and ACK 1 were made to keep track of which ACK went with which packet.  If there is a corrupted packet, then the server cannot ask for another transmission of that packet because it does not keep track of which packet needs to be resent.</li>
+			</ul>
+<div style = "margin-top:15px"><b><i>I did P16 with the knowledge I have on rdt.</i></b></div>
+	</ol>
+
+
+
+<hr style = "height:3px;border:none;color:#333;background-color:#333;">
+
+</div>
+
+
+
+
+
+
+<div id = "678" style = "display:none">
+	<h1 style = "text-align:center">Wireshark</h1>
+	<div>I have completed the lab on HTTP and worked a little on TCP. Here is the link to <a href = "lab.html">my lab</a>.  
+
+
+One of the exercise that was about authorization.  In order to do this lab you will need to know a little bit of how Wireshark works and know what HTTP is.  If you need help on Wireshark or need a refresher, <a href = "http://www-net.cs.umass.edu/wireshark-labs/Wireshark_Intro_v7.0.pdf">read this pdf</a>.  Or if you would like to read about HTTP before starting Wireshark, here is a <a href = "https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol"> Wikipedia article about HTTP</a>.  Now when we talk about authorization.  Authorization in computer science is a way to have only certain people have access to something, like bank account, amazon account, or school email.  In order to get an authorization you need credentials.  Credentials is usally a username and password.  We will look at how HTTP deals with authorization.
+
+
+
+If you type http://gaia.cs.umass.edu/wireshark-labs/protected_pages/HTTP-wireshark-file5.html into the url, it will take you to another screen, and a pop up will appear asking for you username and password.  Meanwhile on Wireshark, the client sent a GET HTTP and the server responded with a 401 Unauthorized.</div>
+	<img src = "pic/401.png" style = "margin:20px">
+
+	<div>401 Unauthorizated means that we did not have the right authentication/credential.  However, if we type in the correct username and password (in this case, username is "wireshark-students" and password is "network"), then the client sends another GET HTTP, except with a new field called Authorization with the credentials.</div>
+<img src = "pic/authorization.png" style = "margin:20px">
+
+	<div>Since you have the correct authorization, you gain access to the web page which give you the contect and we have a 200 OK instead 401 Unauthorized.</div>
+<img src = "pic/200.png" style = "margin:20px">
+
+
+<h1 style = "text-align:center">Lab</h1>
+<div>If you would like to do any of the <a href = "http://www-net.cs.umass.edu/wireshark-labs/">wireshark labs</a>.  If you would like to look at the lab that I did, <a href = "http://www-net.cs.umass.edu/wireshark-labs/Wireshark_HTTP_v7.0.pdf">click here</a></div>
+
+
+
+<hr style = "height:3px;border:none;color:#333;background-color:#333;">
+</div>
+</div>
+
+
+<div id = "ex2" style = "display:none">
+<h1>Exercise 2</h1>
+<button onclick = "oc(8910)">LinkedIn</button>
+<button onclick =  "oc(91011)">Link-State Routing Algorithm</button>
+<button onclick = "oc(246)">Github Project</button>
+
+<div id = "8910" style = "display:none">
+	<h1 style = "text-align:center">LinkedIn</h1>
+<div>This is my LinkedIn account.  If this does not work, then you can type in my name, Salem Ozaki, in LinkedIn.</div>
+<a href = "https://www.linkedin.com/in/salem-ozaki-a26770122?trk=hp-identity-name" style = "margin-top:15px">LinkedIn Account</a>
+
+
+<hr style = "height:3px;border:none;color:#333;background-color:#333;">
+</div>
+
+
+<div id = "91011" style = "display:none">
+	<h1 style = "text-align:center">Link-State Routing Algorithm</h1>
+<h2>Dijkstra's Algorithm</h2>
+<!--<h3>Book's example</h3>
+<img src = "pic/path.png" style = "display:block">
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/path1.png">
+<img src = "pic/link-state.png">
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/path2.png">
+<img src = "pic/link-state.png">
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/path3.png">
+<img src = "pic/link-state.png">
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/path4.png">
+<img src = "pic/link-state.png">
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/path5.png">
+<img src = "pic/link-state.png">
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/path6.png">
+<img src = "pic/least.png" style = "margin-bottom:30px">
+
+<hr style = "height:3px;border:none;color:red;background-color:red;">
+-->
+
+
+<h3>Sample Example</h3>
+<img src = "pic/net.png">
+<ul><li><div>We will use the graph you see below to make a least cost path and a forwarding table for A.</div></li>
+<li><div>For clarification:
+<ul>
+<li>D(v): cost of the least&#45cost path from the source node to destination v as of this iteration of the algorithm.</li>
+<li>p(v): previous node (neighbor of v) along the current least&#45cost path from the source to v.</li>
+<li>N&#39: subset of nodes; v is in N&#39 if the least&#45cost path from the source to v is definitively known.</li>
+</ul></div></li>
+</ul>
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/net1.png">
+<img src = "pic/link1.png">
+<div>2,a in the graph above means that 2 is the distance from the root (A), and a is the previous node.</div>
+<div>All of the distance from A starts at infinity.  We start from A and grab all of A's neighbors(B, C, and D).
+<ul><li>The distance between A and B is 2 which is less than infinity, so B's distance is switched to 2 and the previous node is A.</li>
+<li>The distance between A and C is 3 which is less than infinity, so C's distance is stwitched to 3 and the previous node is A.</li>
+<li>The distance between A and D is 4 which is less than infinity, so D's distance is stwitched to 4 and the previous node is A.</li>
+<li>E and F are not direct neighbors of A, so their distance are infinity</li></ul>
+<div>A is added to N&#39 which indicates that A has been checked.</div>
+</div>
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/net2.png">
+<img src = "pic/link2.png">
+<div>B is the closest to the starting node A and that is not already in N&#39. So it will be checked next.</div>
+<ul>
+	<li>C has a distance of 7 from B and the distance from A to C is 3, so C&#39s status is not updated because 7 is greater than 3.</li>
+	<li>F has a distance of 7 from B and the distance is currently infinity, so F&#39s status is updated to 7 with the previous node set to B, because 7 is less than infinity.</li>
+	<li>A is in N&#39 , which means that A has already checked all of its neighbors.</li>
+</ul>
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/net3.png">
+<img src = "pic/link3.png">
+<div>C is the closest to the starting node A and is not in N&#39. So C will be checked next.</div>
+<ul>
+	<li>D has a distance of 8 from C and the distance from A to D is 4, so D&#39s status is not updated because 8 is greater than 4.</li>
+	<li>E has a distance of 4 from C and the distance is currently infinity, so E&#39s status is updated to 4 with the previous node set to C, because 4 is less than infinity.</li>
+	<li>F has a distance of 6 from C and the distance from B to F is 7, so F&#39s status is updated to 6 with the previous node set to C, because 6 is less than 7.</li>
+</ul>
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/net4.png">
+<img src = "pic/link4.png">
+<div>D is the closest to the starting node A and is not in N&#39 (Note: we could have also chosen E). So C will be checked next.</div>
+<ul>
+	<li>E has a distance of 8 from D and the distance from A to D is 4, so D&#39s status is not updated because 8 is greater than 4.</li>
+	<li>Again, C and A are not included because they are already in N&#39.</li>
+</ul>
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/net5.png">
+<img src = "pic/link5.png">
+<div>E is the closest to the starting node A and is not in N&#39. So E will be checked next.</div>
+<ul>
+	<li>F has a distance of 5 from E and the distance from C to F is 6, so F&#39s status is updated to 5 with the previous node set to E, because 5 is less than 6.</li>
+</ul>
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/net6.png">
+<img src = "pic/link6.png">
+<div>Finally, F is the only node that is not in N&#39. So F will be checked.</div>
+<ul>
+	<li>Since all of the F&#39s neighbors are in N&#39, we do not do anything with F.</li>
+</ul>
+<hr style = "height:2px;border:none;color:red;background-color:red;">
+<img src = "pic/net7.png">
+<img src = "pic/forwarding-table.png">
+<ul><li><div>Now the least cost path has been found and we can make a forwarding table.</div></li>
+<li><div>On the left side we have the destinations and on the left side we have the link we are going to use to send the packet (Note: each node has its own forwarding table, so this node only needs to know which node to send the packet to that is on the shortest path to the destination.</div></li>
+<h3>This concludes our lesson.  Please feel free to visit these websites that could help you.</h3>
+<ul>
+	<li><a href = "https://www.youtube.com/watch?v=1nnzBNPo78Y">https://www.youtube.com/watch?v=1nnzBNPo78Y</a></li>
+	<li><a href = "https://www.youtube.com/watch?v=2_0AwfQWKUk">https://www.youtube.com/watch?v=2_0AwfQWKUk</a></li>
+	<li><a href = "http://www.ciscopress.com/articles/article.asp?p=2180210&seqNum=11">http://www.ciscopress.com/articles/article.asp?p=2180210&seqNum=11</a></li>
+	<li><a href = "https://en.wikipedia.org/wiki/Link-state_routing_protocol">https://en.wikipedia.org/wiki/Link-state_routing_protocol</a></li>
+</ul>
+<hr style = "height:3px;border:none;color:#333;background-color:#333;">
+</div>
+
+
+
+
+
+
+<div id = "246" style = "display:none">
+	<h1 style = "text-align:center">Github Project</h1>
+<div>This is the project on multithreading that I worked on and modified.</div>
+<a href = "https://github.com/STOzaki/WebServer">My Multithreading Project</a>
+
+
+
+
+<hr style = "height:3px;border:none;color:#333;background-color:#333;">
+
+</div>
+
+</div>
+
+
+
+<script>
+function oc(id){
+	if(document.getElementById(id).style.display == "none"){
+		document.getElementById(id).style.display = "block";
+	} else {
+		document.getElementById(id).style.display = "none";
+	}
+}
+</script>
+<!-- style="height:3px;border:none;color:#333;background-color:#333;" was taken from http://stackoverflow.com/questions/4151743/how-i-change-the-thickness-of-my-hr-tag  and I take no credit!
+-->
+</body>
+</html>

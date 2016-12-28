@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {color:red;}
+p {color:blue;}
+
+canvas { background:url(ls.jpg); }
+
+</style>
+<title>
+    Hello
+</title>
+</head>
+<body style="background-color:powderblue;">
+    <h1>
+        Use WASD keys to move black a black circle
+    </h1>
+  
+<canvas id="myCanvas" width="720" height="480" style="border:1px solid #000000;">
+<script>
+var canvas = document.querySelector('canvas');
+var ctx = canvas.getContext('2d');
+var W = canvas.width;
+var H = canvas.height;
+var radius=5;
+// Velocity x
+var vx = 0;
+// Velocity y
+var vy = 1;
+
+var gravity = 0.5; // Just a random value
+
+function Ball() {
+    this.radius = radius;
+    this.x = canvas.width / 2;
+    this.y = canvas.height - this.radius - 20;
+ 
+    this.draw = function(ctx) {
+        ctx.fillStyle = 'black';
+        ctx.beginPath();
+ 
+        ctx.arc(
+            this.x,
+            this.y,
+            this.radius,
+            0,
+            Math.PI*2,
+            false
+        );
+ 
+        ctx.closePath();
+        ctx.fill();
+    }
+}
+ 
+var ball = new Ball();
+var ball2 = new Ball();
+
+(function renderFrame() {
+    requestAnimationFrame(renderFrame);
+    ctx.clearRect(0, 0, W, H);
+ 
+    ball.x += vx;
+    ball.y += vy;
+ //vy += gravity; // adding gravity to velocity 
+ if(ball.y+radius>H){
+ ball.y= H-radius;
+ }
+ if(ball.y-radius<0){
+ ball.y=0+radius;
+ }
+ if(ball.x+radius>W){
+ ball.x=W-radius;
+ }
+ if(ball.x-radius<0){
+ ball.x=0+radius;
+ }
+    ball.draw(ctx);
+    ball2.draw(ctx);
+}());
+
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 65) {
+       vx=-10;
+    }
+    else if(event.keyCode == 68) {
+       vx=10;
+    }
+    if(event.keyCode==87){
+		vy=-10;    
+    }else if(event.keyCode==83){
+    	vy=10;
+    }
+    
+    
+});
+document.addEventListener('keyup', function(event) {
+    if(event.keyCode == 65) {
+       vx=0;
+    }
+    else if(event.keyCode == 68) {
+       vx=0;
+    }
+    if(event.keyCode==87){
+		vy=0;    
+    }else if(event.keyCode==83){
+    	vy=0;
+    }
+    
+});
+
+</script>
+</canvas> 
+</body>
+</html>
+ 
+

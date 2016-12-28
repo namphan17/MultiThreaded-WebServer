@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+               <h1 class="section">CHAPTER 4.7 Broadcast and Multicast Routing</h1>
+         </div>
+               <h3 class="section">Broadcast Routing Algorithm</h3>
+               <ul>
+                  <li>N-wayunicast approach: Given N destination nodes, the source node simply makes N copies of the packet, addresses each copy to a different destination, and then transmits the N copies to the N destinations using unicast routing.</li>
+                  <li>Drawback: If the source node is connected to the rest of the network via a single link, then N separate copies of the (same) packet will traverse this single link. It would clearly be more efficient to send only a single copy of a packet over this first hop and then have the node at the other end of the first hop make and forward any additional needed copies.</li>
+               </ul>
+               <ol>
+                  <li>
+                     <h4 class="section">Uncontrolled Flooding</h4>
+                     <p>A source node sends a copy of the packet to all of its neighbors. When a node receives a broadcast packet, it duplicates the packet and forwards it to all of its neighbors (except the neighbor from which it received the packet).</p>
+                  </li>
+                  <li>
+                     <h4 class="section">Controlled Flooding</h4>
+                     <p>A source node puts its address (or other unique identifier) as well as a broadcast sequence number into a broadcast packet, then sends the packet to all of its neighbors. Each node maintains a list of the source address and sequence number of each broadcast packet it has already received, duplicated, and forwarded. When a node receives a broadcast packet, it first checks whether the packet is in this list. If so, the packet is dropped; if not, the packet is duplicated and forwarded to all the node’s neighbors (except the node from which the packet has just been received).</p>
+                  </li>
+                  <li>
+                     <h4 class="section">Spanning-Tree Broadcast</h4>
+                     <p>A spanning tree—a tree that contains each and every node in a graph. More formally, a spanning tree of a graph G = (N,E) is a graph G' = (N,E') such that E' is a subset of E, G' is connected, G' contains no cycles, and G' contains all the original nodes in G.</p>
+                     <p>Another approach to providing broadcast is for the network nodes to first construct a spanning tree. When a source node wants to send a broadcast packet, it sends the packet out on all of the incident links that belong to the spanning tree.</p>
+                  </li>
+               </ol>
+               <h3 class="section">Multicast</h3>
+               <p>Multicast service: a multicast packet is delivered to only a subset of network nodes. A number of emerging network applications require the delivery of packets from one or more senders to a group of receivers.</p>
+               <div style="height:50px"></div>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

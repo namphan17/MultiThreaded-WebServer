@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    6th October
+</title>
+</head>
+<body>
+    <h1>
+        October 6th Notes
+    </h1>
+    
+    <p>
+        <h3>File Transfer: FTP</h3>
+    
+        <ul>
+            <li>HTTP and FTP are file transfer protocols with similar characteristics (both run on top of TCP)</li>
+            <li>Differences: </li>
+                <ul>
+                    <li>FTP uses two parallel TCP connections (a control connection and a data connection) to transfer a file.</li>
+                    <li>Since FTP uses a different control connection it is said to send control information out-of-band. HTTP meanwhile send this information in-band.
+                        <ul>
+                            <li>A control connection sends information such as user identification, password, commands to change remote directory, and commands to put/get files.</li>
+                            <li>Data connection is used to actually transfer the file</li>
+                        </ul>
+                    </li>
+                </ul>    
+            <li>Commands sent in 7-bit ASCII format (people readable)</li>
+                <ul>
+                    <li>USER: send user information to the server</li>
+                    <li>PASS: Send user password to server</li>
+                    <li>LIST: retrieve lists of file in the directory</li>
+                    <li>RETR: retrieve file from directory</li>
+                    <li>STOR: store file in directory</li>
+                </ul>
+        </ul>
+
+        <h3>Electronic Mail in the Internet</h3>
+        
+        <ul>
+            <li>User agents: allow users to read, reply to, forward, save and compose messages. Like Microsoft Outlook or Apple Mail.</li>
+            <li>Mail Server: Forms the core of the email infrastructure. This where mailboxes are stored which are responsible sending and receiving emails.</li>
+            <li>Simple Mail Transfer Protocol (SMTP): Principal application layer protocol for email. It uses the reliable data transfer service of TCP to transfer mail. It has two sides: a client side and a server side.</li>
+        </ul>
+    
+        <h3>HTTP and SMTP</h3>
+    
+        <ul>
+            <li>HTTP</li>
+                <ul>
+                    <li>Persistenet Connection</li>
+                    <li>HTTP is a pull protocol: Users use HTTP to pull information from a web server.</li>
+                    <li>HTTP encapsulates each object(text, images etc) as its own HTTP response messages</li>
+                </ul>
+            <li>SMTP</li>
+                <ul>
+                    <li>Persistenet Connection</li>
+                    <li>SMTP is a push protocol: the sending mail server pushes the file to the receiving mail server</li>
+                    <li>SMTP requires 7-bit ASCII format. Therefore multimedia data needs to be encoded when it is sent over SMTP and decoded back once it is received.</li>
+                </ul>
+        </ul>
+    
+        <h3>Mail Access Protocols</h3>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+    </p>
+</body>
+</html>

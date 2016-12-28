@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+   Oct 12
+</title>
+</head>
+<body><body bgcolor="#6699ff">
+<h1>
+ <b>(Oct 12) Transport Layer pages 269-272</b>
+    	</h1>
+	<h2>3.7 TCP Congestion Control</h2>
+	<ul> 
+<li>Another key component of TCP is its congestion-control mechanism.TCP must use end-to-end congestion control rather than network-assisted congestion control becauaw the IP layer provides no sxplict feedback to the end system regarding network conjestion. </li>
+<li>The approach taken by TCP is to have each sender limit the rate at which it
+sends traffic into its connection as a function of perceived network congestion. This basically means that TCP sender perceives the level of use and sends the approprate amount.</li>
+<li>how a TCP sender limits the rate at which it sends traffic
+into its connection? well TCP congestion-control mechanism operating at the sender keeps
+track  of  an  additional  variable,  the congestion  window. (whats a congestion window you ask? well it is a denoted cwnd) what does this congestion window do you ask? whell it imposes a constrant on the rate at which a TCP sender can send traffic into the network. <b>let us hence-forth assume that the TCP receive buffer is so large that the receive-window constraint can be ignored; thus, the amount of unacknowledged data at the sender is solely limited by cwnd.</b></li>
+<li>onstraint above limits the amount of unacknowledged data at the sender
+and therefore indirectly limits the sender&lsquo;s send rate. Thus the sender’s send rate is roughly cwnd/RTT bytes/sec. By adjusting the value of cwnd, the sender can therefore adjust the rate at which it sends data into its connection.</li>
+<li>how a TCP sender perceives that there is congestion on the path between itself and the destination? The dropped datagram, in turn, results in a  loss  event  at  the  sender—either  a  timeout  or  the  receipt  of  three  duplicate ACKs—which is taken by the sender to be an indication of congestion on the sender-to-receiver path.. On the other hand, if acknowledgments arrive at a high rate, then the congestion   window   will   be   increased   more   quickly.   Because   TCP   uses acknowledgments to trigger (or clock) its increase in congestion window size, TCP is said to be self-clocking</li>
+<ul>
+<li>A lost segment implies congestion, and hence, the TCP sender’s rate should be
+decreased when a segment is lost.</li>
+<li>An acknowledged segment indicates that the network is delivering the sender’s
+segments to the receiver, and hence, the sender&lsquo;s rate can be increased when an
+ACK arrives for a previously unacknowledged segment </li>
+<li>Bandwidth probing </li>
+</ul>
+<li>Given this overview of TCP congestion control, we&lsquo;re now in a position to consider the details of the celebrated TCP congestion-control algorithm: The algorithm has three major components: (1) slow start, (2) congestion avoidance, and (3) fast recovery.</li>
+<h3>Fun facts I learned online about congestion control in use </h3>
+
+
+
+</ul> 
+
+</body>
+</html>

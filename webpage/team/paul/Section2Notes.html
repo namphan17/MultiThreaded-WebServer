@@ -1,0 +1,73 @@
+<html>
+<head> 
+<title>
+Section 2 Notes: HTTP
+</title>
+<style> 
+body{
+	background-color:black;
+	color:green;
+}
+</style> 
+<h1>Notes on HTTP (Section 2)</h1>
+</head>
+<body>
+<ol>
+	<li>HTTP is called the Hypertext Transfer Protocol</li> 
+	<ul><li>Used in practice to get website files (.html files, .shtml files, etc.) which are then displayed in the browser</li> 
+	<li>Client performs a request in HTTP:<br>
+	<br><hr>
+	GET /index.html HTTP/1.1<br>
+	Host: www.google.com<br><br><hr>
+	</li>
+	<li>Server Responds with an acknowledgement:<br>
+	<br><hr>
+	HTTP/1.1 200 OK<br>
+Date: Mon, 27 Jul 2009 12:28:53 GMT<br>
+Server: Apache/2.2.14 (Win32)<br>
+Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT<br>
+Content-Length: 88<br>
+Content-Type: text/html<br>
+Connection: Closed<br><br><hr> 
+</li></ul><br>Types of Requests</li> 
+	<ul> 
+	<li>GET: Grabbing a specific file from the webpage (which is most likely a .html, .shtml, etc.) for the browser to display</li><br>
+	<li>POST: Sending information to grab a file from the webpage, but after information is submitted (the client POSTS something to webpage first)<li><br>
+	<li>PUT: Client is putting a file on a webserver</li><br>
+	<li>DELETE: Client is requesting a deletion of a file on a webserver</li><br>
+	</ul><br>
+<li>User-Agent Usefullness: </li> 
+	<ul> 
+	<li>User-Agent: When client requests a webpage via a browser, a user-agent is sent to tell the webserver how to display the data that it transmits</li><br>
+	<li>Ex. Mozilla 5/0, Gecko/30909, etc.</li><br>
+	</ul><br> 
+<li>Cookies and Us</li> 
+	<ul>
+	<li>Cookies are often sent to the user in a response request (or after a POST request) to help the browser remember who the user was when the website was visited</li> <br>
+	<li>Example of cookie getting set:
+	
+	<br><hr>
+	HTTP/1.1 200 OK<br>
+Date: Mon, 27 Jul 2009 12:28:53 GMT<br>
+Server: Apache/2.2.14 (Win32)<br>
+Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT<br>
+Content-Length: 88<br>
+Content-Type: text/html<br>
+Connection: Closed<br>
+Set-Cookie: 345234<br><br><hr>
+</li></ul> 
+<li>HTTP vs. HTTPS</li> 
+	<ul>
+		<li>HTTP often sends data in cleartext, so those sniffing any HTTP request or response packets will be able to clearly see the data being transferred (even if it's sensitive)</li><br> 
+		<li>HTTPS encrypts the transport layer of a packet, making it hard to see the cleartext of the website responses because it because it becomes encrypted in SSL</li><br>
+	</ul>
+<li>HTTP is stateless</li> 
+	<ul>
+		<li>HTTP is terminated after the client is done interacting with the webserver (either non-persistent or persistent), unless cookies are used or placed in the browsers cache.</li><br>
+	</ul> 
+</ol> 
+
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/> 
+</body>
+</html>
+

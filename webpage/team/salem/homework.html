@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+</script>
+<title>
+CSC-317 Notes
+</title>
+<script type = "text/javascript" src = "jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<button onclick = "oc(822)">1.5-1.8 Notes</button>
+<button onclick = "oc(823)">2.1-2.2 Notes</button>
+<button onclick = "oc(824)">2.37-2.5 Notes</button>
+<button onclick = "oc(825)">2.6-2.8 Notes</button>
+<button onclick = "oc(826)">3.1-3.3 Notes</button>
+<button onclick = "oc(827)">3.4-3.5 Notes</button>
+<button onclick = "oc(828)">3.6-3.8 Notes</button>
+<button onclick = "oc(829)">4.1-4.3 Notes</button>
+<button onclick = "oc(8210)">4.4 Notes</button>
+<button onclick = "oc(8211)">4.5-4.6 Notes</button>
+<button onclick = "oc(8212)">4.7-4.8 Notes</button>
+<button onclick = "oc(8213)">5.1-5.3 Notes</button>
+<button onclick = "oc(8214)">5.4-5.5 Notes</button>
+<button onclick = "oc(8215)">5.6-5.8 Notes</button>
+<style>
+body{background-color:#7FFFD4}
+</style>
+<div id = "822" style = "display:none">
+    <h1>1.5-1.8 Notes</h1>
+	<ul>
+		<li>1961 to 1972</li>
+			<ul>
+				<li>Leonard Kleinrock</li>
+				<ul>
+					<li>The first published work on packet-switching techniques</li>
+					<li>He used queuing theory to demonstrated the effectiveness of the packet-switching approach for bursty traffic sources.</li>
+				</ul>
+				<li>Paul Baran</li>
+				<ul>
+					<li>worked at the National Physical Laboratory in England</li>
+					<li>investigated the use of packet switching for secure voice over military networks</li>
+				</ul>
+			</ul>
+		<li>1972 to 1980</li>
+		<ul>
+			<li>Norman Abramson</li>
+				<ul>
+					<li>developing ALOHAnet, a packet-based radio network that allowed multiple remote sites on the Hawaiian Islands to communicate with each other</li>
+					<li>The program was the first multiple-access protocol, allowing geographically distributed users to share a single broadcast communication medium (a radio frequency).</li>
+				</ul>
+			<li>Vinton Cerf and Robert Kahn</li>
+				<ul>
+					<li>They worked on interconnecting networks (under the sponsorship of the Defense Advanced Research Projects Agency (DARPA)), in essence creating a network of networks</li>
+					<li><a href = "https://en.wikipedia.org/wiki/Vint_Cerf">About Vinton Cerf</a></li>
+					<li><a href = "https://en.wikipedia.org/wiki/Bob_Kahn">About Rovert Kahn</a></li>
+				</ul>
+			<li>Metcalfe and Boggs</li>
+			<ul>
+				<li>built on Abramson’s multiple-access protocol work when they developed the Ethernet protocol</li>
+			</ul>
+		</ul>
+		<li>1980 to 1990</li>
+		<ul>
+			<li>Minitel project</li>
+			<ul>
+				<li>In the early 1980s the French launched the Minitel project.</li>
+				<li>Used consisted of a public packet-switched network, Minitel servers, and inexpensive terminals with built-in low-speed modems.</li>
+				<li>Succeeded in 1984</li>
+				<li>Included free sites—such as a telephone directory site—as well as private sites, which collected a usage-based fee from each user.</li>
+				<li>Was in a large proportion of French homes 10 years before most Americans had ever heard of the Internet.</li>
+			</ul>
+		</ul>
+		<li>1990s</li>
+		<ul>
+			<li>Tim Berners-Lee</li>
+				<li>Worked at CERN</li>
+				<li>developed initial versions of HTML, HTTP, a Web server, and a browser based on ideas originating in earlier work on hypertext from</li>
+			<ul>
+				<li>Vannevar Bush (1940s)</li>
+				<li>Ted Nelson (1960s)</li>
+			</ul>
+		</ul>
+	</ul>
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+</div>
+
+
+<div id = "823" style  ="display:none">
+	<h1>2.1-2.2 Notes</h1>
+		<ul>
+			<li><h2>P2P(Peer To Peer)</h2></li>
+			<li>future challenges:
+			<ul>
+				<li>ISP Friendly: If switching from downstream to upstream will change from server to redsidential ISP, so there will be significant pressure on ISPs.</li>
+				<li>Security: because P2P is so open and highly distributed, so securing it will be difficult.</li>
+				<li>Incentives: volunteers supply the bandwidth, storyage, and computation resources to application, so their might be a challenge in incentive design.</li>
+			</ul>
+
+
+			<li><h2>process</h2></li>
+			<ul>
+				<li>can be thought of as a program that is running within an end system.</li>
+			</ul>
+
+
+			<li><h2>client and server</h2></li>
+			<ul>
+				<li>browser is a client process.</li>
+				<li>Web server is a server process.</li>
+			</ul>
+
+
+			<li><h2>socket</h2></li>
+			<ul>
+				<li>When a process wants to send a message to antoher process on another host, it shoves the message out its socket.</li>
+			</ul>
+
+
+			<li><h2>IP address</h2></li>
+			<ul>
+				<li>the host identified</li>
+			</ul>
+
+
+			<li><h2>Services along four dimensions:</h2></li>
+			<ul>
+
+
+			<li><h3>Reliable Data Transfer</h3></li>
+			<ul>
+				<li>a transport-layer protocol can potentially provide to an application is process-to-process reliable data transfer.  However, there is a loss-tolerant applications that may not arrive but that is acceptable.</li>
+			</ul>
+
+
+			<li><h2>Throughput</h2></li>
+			<ul>
+				<li>rate at which the sending process can deliver bits to the receiving process.</li>
+			</ul>
+
+
+			<li><h2>Timing</h2></li>
+			<ul>
+				<li>a transport-layer protocol can guarantee that time contraints on data delivery will be achieved.</li>
+			</ul>
+
+
+			<li><h2>Security</h2></li>
+			<ul>
+				<li>A transport protocol can provide an application with one or more security services.</li>
+			</ul>
+
+			</ul>
+		</ul>
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+<div id = "824" style  ="display:none">
+	<h1>2.37-2.5 Notes</h1>
+		<ul>
+			<li><h2>SMTP</h2></li>
+			<ul>
+				<li>Once the SMTP client and server have introduced themselves to each other, the client sends the message. SMTP can count on the reliable data transfer service of TCP to get the message to the server without errors. The client then repeats this process over the same TCP connection if it has other messages to send to the server; otherwise, it instructs TCP to close the connection.
+</li>
+
+				<li>SMTP uses persistent connections</li>
+			</ul>
+			<li><h2>HTTP comparing SMTP</h2></li>
+			<ol>
+				<li><ul><li>HTTP transfers files (also called objects) from a Web server to a Web client (typically a browser)</li>
+				<li>SMTP transfers files (that is, e-mail messages) from one mail server to another mail server.</li></ul></li>
+				
+				<hr>
+
+
+				<li><ul><li>HTTP is mostly uses the pull protocol:</li>
+					<ul><li>someone loads information on a Web server and users use HTTP to pull the information from the server at their convenience.</li></ul>
+				<li>SMTP mostly uses the push protocal:</li>
+					<ul><li>the sending mail server pushes the file to the receiving mail server.</li></ul>
+				<li>They both use TCP to initialize the connection.</li>
+				</ul></li>
+
+				<hr>
+
+
+				<li><ul><li>SMTP requires each message, including the body of each message, to be in 7-bit ASCII format.  If the message is not in 7-bit ASCII format, then the message has to be encoded into 7-bit ASCII.</li>
+				<li>HTTP data does not impose this restriction</li>
+				</ul></li>
+
+				<hr>
+
+			<li><ul>
+				<li>HTTP encapsulates each object in its own HTTP response message.</li>
+				<li>SMTP places all of objects that belongs to the message into one message.</li>
+			</li></ul>
+			</ol>
+		</ul>
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+
+<div id = "825" style  ="display:none">
+	<h1>2.6-2.8 Notes</h1>
+		<h2>TCP vs UDP</h2>
+		<h3>UDP client</h3>
+		<div>from socket import *<br>serverName = &#39hostname&#39<br>serverPort = 12000<br>clientSocket = socket(socket.AF_INET, socket.SOCK_DGRAM)<br>message = raw_input(&#39Input lowercase sentence:&#39)<br>clientSocket.sendto(message,(serverName, serverPort))<br>modifiedMessage, serverAddress = clientSocket.recvfrom(2048)<br>print modifiedMessage<br>clientSocket.close()<br></div>
+
+
+<div>from socket import *</div>
+<ul>
+	<li>The socket module forms the basis of all network communications in Python. By
+including this line, we will be able to create sockets within our program.</li>
+
+</ul>
+
+<div>serverName = &#39hostname&#39<br>serverPort = 12000<br></div>
+<ul>
+	<li>The first line sets the string serverName to hostname. Here, we provide a string
+containing either the IP address of the server (e.g., &#34128.138.32.126&#34) or the hostname
+of the server (e.g., &#34cis.poly.edu&#34). If we use the hostname, then a DNS lookup
+will automatically be performed to get the IP address.) The second line sets the integer
+variable serverPort to 12000.</li>
+
+</ul>
+
+<div>clientSocket = socket(socket.AF_INET, socket.SOCK_DGRAM)</div>
+<ul>
+	<li>This line creates the client’s socket, called clientSocket. The first parameter indicates the address family; in particular, AF_INET indicates that the underlying
+network is using IPv4.  The second parameter indicates that the socket is of type SOCK_DGRAM, which means it is a UDP socket (rather than a TCP socket). Note that we are not specifying the port number of the client socket when we create it; we are instead letting
+the operating system do this for us.</li>
+
+</ul>
+
+
+<div>message = raw_input(&#39Input lowercase sentence:&#39)</div>
+<ul>
+	<li>raw_input() is a built-in function in Python. When this command is executed,
+the user at the client is prompted with the words “Input data:” The user then uses her
+keyboard to input a line, which is put into the variable message. Now that we have
+a socket and a message, we will want to send the message through the socket to the
+destination host.</li>
+
+</ul>
+
+
+<div>clientSocket.sendto(message,(serverName, serverPort))</div>
+<ul>
+	<li>In the above line, the method sendto() attaches the destination address
+(serverName, serverPort) to the message and sends the resulting packet into
+the process&#39s socket, clientSocket. (As mentioned earlier, the source address is
+also attached to the packet, although this is done automatically rather than explicitly
+by the code.) Sending a client-to-server message via a UDP socket is that simple!
+After sending the packet, the client waits to receive data from the server.</li>
+
+</ul>
+
+<div>modifiedMessage, serverAddress = clientSocket.recvfrom(2048)</div>
+<ul>
+	<li>With the above line, when a packet arrives from the Internet at the client&#39s socket, the packet&#39s data is put into the variable modifiedMessage and the packet&#39s source address is put into the variable serverAddress. The variable
+serverAddress contains both the server&#39s IP address and the server&#39s port
+number. The program UDPClient doesn&#39t actually need this server address information,
+since it already knows the server address from the outset; but this line of
+Python provides the server address nevertheless. The method recvfrom also
+takes the buffer size 2048 as input. (This buffer size works for most purposes.)</li>
+
+</ul>
+
+<div>print modifiedMessage</div>
+<ul>
+	<li>This line prints out modifiedMessage on the user’s display. It should be the original line that the user typed, but now capitalized.</li>
+
+</ul>
+
+<div>clientSocket.close()</div>
+<ul>
+	<li>This line closes the socket. The process then terminates.</li>
+
+</ul>
+
+
+<h3>UDP Server</h3>
+<div>from socket import *<br>serverPort = 12000<br>serverSocket = socket(AF_INET, SOCK_DGRAM)<br>serverSocket.bind((&#39&#39, serverPort))<br>print &#34The server is ready to receive&#34<br>while 1:<br><ul><li>message, clientAddress = serverSocket.recvfrom(2048)</li><li>modifiedMessage = message.upper()</li><li>serverSocket.sendto(modifiedMessage, clientAddress)</li></ul></div>
+
+
+<div>serverSocket.bind((&#39&#39, serverPort))</div>
+<ul>
+	<li>The above line binds (that is, assigns) the port number 12000 to the server’s socket. Thus in UDPServer, the code (written by the application developer) is explicitly assigning a port number to the socket. In this manner, when anyone sends a packet to port 12000 at the IP address of the server, that packet will be directed to this
+socket. UDPServer then enters a while loop; the while loop will allow UDPServer
+to receive and process packets from clients indefinitely. In the while loop,
+UDPServer waits for a packet to arrive.</li>
+
+</ul>
+
+<div>message, clientAddress = serverSocket.recvfrom(2048)</div>
+<ul>
+	<li>This line of code is similar to what we saw in UDPClient. When a packet arrives at the server&#39s socket, the packet&#39s data is put into the variable message and the packet&#39s source address is put into the variable clientAddress. The variable
+clientAddress contains both the client&#39s IP address and the client&#39s port number.
+Here, UDPServer will make use of this address information, as it provides a return
+address, similar to the return address with ordinary postal mail. With this source
+address information, the server now knows to where it should direct its reply.</li>
+
+</ul>
+
+<div>modifiedMessage = message.upper()</div>
+<ul>
+	<li>This line is the heart of our simple application. It takes the line sent by the client and uses the method upper() to capitalize it.</li>
+
+</ul>
+
+<div>serverSocket.sendto(modifiedMessage, clientAddress)</div>
+<ul>
+	<li>This last line attaches the client’s address (IP address and port number) to the capitalized message, and sends the resulting packet into the server’s socket. (As mentioned earlier, the server address is also attached to the packet, although this is done automatically rather than explicitly by the code.)</li>
+
+</ul>
+
+
+<h3>TCP Client</h3>
+<div>from socket import *<br>serverName = &#39servername&#39<br>serverPort = 12000<br>clientSocket = socket(AF_INET, SOCK_STREAM)<br>clientSocket.connect((serverName,serverPort))<br>sentence = raw_input(&#39Input lowercase sentence:&#39)<br>clientSocket.send(sentence)<br>modifiedSentence = clientSocket.recv(1024)<br>print &#39From Server:&#39, modifiedSentence<br>clientSocket.close()<br></div>
+
+<div>clientSocket = socket(AF_INET, SOCK_STREAM)</div>
+<ul>
+	<li>This line creates the client’s socket, called clientSocket. The first parameter again indicates that the underlying network is using IPv4. The second parameter
+indicates that the socket is of type SOCK_STREAM, which means it is a TCP socket
+(rather than a UDP socket). Note that we are again not specifying the port number of the client socket when we create it; we are instead letting the operating system
+do this for us.</li>
+
+</ul>
+
+
+<div>clientSocket.connect((serverName,serverPort))</div>
+<ul>
+	<li>Recall that before the client can send data to the server (or vice versa) using a TCP socket, a TCP connection must first be established between the client and server. The above line initiates the TCP connection between the client and server. The
+parameter of the connect() method is the address of the server side of the connection.
+After this line of code is executed, the three-way handshake is performed
+and a TCP connection is established between the client and server.</li>
+
+</ul>
+
+<div>sentence = raw_input(&#39Input lowercase sentence:&#39)</div>
+<ul>
+	<li>As with UDPClient, the above obtains a sentence from the user. The string sentence continues to gather characters until the user ends the line by typing a carriage return. The next line of code is also very different from UDPClient:</li>
+
+</ul>
+
+<div>clientSocket.send(sentence)</div>
+<ul>
+	<li>The above line sends the string sentence through the client&#39s socket and into the TCP connection. Note that the program does not explicitly create a packet and attach the destination address to the packet, as was the case with UDP sockets. Instead the client program simply drops the bytes in the string sentence into the TCP connection.
+The client then waits to receive bytes from the server.</li>
+
+</ul>
+
+<div>modifiedSentence = clientSocket.recv(2048)</div>
+<ul>
+	<li>When characters arrive from the server, they get placed into the string modifiedSentence. Characters continue to accumulate in modifiedSentence until the
+line ends with a carriage return character. After printing the capitalized sentence, we
+close the client’s socket:</li>
+
+</ul>
+
+<div>clientSocket.close()</div>
+<ul>
+	<li>This last line closes the socket and, hence, closes the TCP connection between the client and the server. It causes TCP in the client to send a TCP message to TCP in the server </li>
+
+</ul>
+
+<h3>TCP Server</h3>
+
+<div>from socket import *<br>serverPort = 12000<br>serverSocket = socket(AF_INET,SOCK_STREAM)<br>serverSocket.bind((&#39&#39,serverPort))<br>serverSocket.listen(1)<br>print &#39The server is ready to receive&#39<br>while 1:<br><ul><li>connectionSocket, addr = serverSocket.accept()</li><li>sentence = connectionSocket.recv(1024)</li><li>capitalizedSentence = sentence.upper()</li><li>connectionSocket.send(capitalizedSentence)</li><li>connectionSocket.close()</li></ul></div>
+
+<div>serverSocket=socket(AF_INET,SOCK_STREAM)</div>
+<ul>
+	<li>Similar to UDPServer, we associate the server port number, serverPort, with
+this socket:</li>
+
+</ul>
+
+<div>serverSocket.bind((&#39&#39,serverPort))</div>
+<ul>
+	<li>But with TCP, serverSocket will be our welcoming socket. After establishing
+this welcoming door, we will wait and listen for some client to knock on the
+door:</li>
+
+</ul>
+
+<div>serverSocket.listen(1)</div>
+<ul>
+	<li>This line has the server listen for TCP connection requests from the client. The
+parameter specifies the maximum number of queued connections (at least 1).</li>
+
+</ul>
+
+
+<div>connectionSocket, addr = serverSocket.accept()</div>
+<ul>
+	<li>When a client knocks on this door, the program invokes the accept() method for serverSocket, which creates a new socket in the server, called connectionSocket,
+dedicated to this particular client. The client and server then complete
+the handshaking, creating a TCP connection between the client’s clientSocket
+and the server’s connectionSocket. With the TCP connection established, the
+client and server can now send bytes to each other over the connection. With TCP, all
+bytes sent from one side not are not only guaranteed to arrive at the other side but also
+guaranteed arrive in order.</li>
+
+</ul>
+
+
+<div>connectionSocket.close()</div>
+<ul>
+	<li>In this program, after sending the modified sentence to the client, we close the connection socket. But since serverSocket remains open, another client can now
+knock on the door and send the server a sentence to modify</li>
+
+</ul>
+
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+
+
+<!-- This is a nice formate to just copy and paste into your page
+			<li> -- This is merely to show how everything would be alined.
+
+
+			<li><h2></h2></li>
+			<ul>
+				<li></li>
+			</ul>
+
+-->
+
+<!--<div></div>
+<ul>
+	<li></li>
+
+</ul>
+
+-->
+
+
+
+<!-- All of this information is from Computer Networking: Top-Down Approach (w/Access Code) Edition: 6th and other sources -->
+<!-- style="height:3px;border:none;color:#333;background-color:#333;" was taken from http://stackoverflow.com/questions/4151743/how-i-change-the-thickness-of-my-hr-tag  and I take no credit!
+-->
+
+<div id = "826" style = "display:none">
+    <h1>3.1-3.3 Notes</h1>
+<h2>Demultiplexing</h2>
+<ul><li>At the receiving end, the transport layer examines these fields to identify the receiving socket and then directs the segment to that socket. This job of delivering the data in a transport&#45layer segment to the correct socket is called demultiplexing.
+</li></ul>
+<h2>Multiplexing</h2>
+<ul><li>The job of gathering data chunks at the source host from different sockets, encapsulating each data chunk with header information (that will later be used in demultiplexing) to create segments, and passing the segments to the network layer is called multiplexing.
+</li></ul>
+<h2>UDP rather than over TCP</h2>
+<ul>
+<li><h3>Finer application-level control over what data is sent, and when:</h3></li>
+<ul><li>Under UDP, as soon as an application process passes data to UDP, UDP will package the data inside a UDP segment and immediately pass the segment to the network layer. TCP, on the other hand, has a congestion-control mechanism that throttles the transport-layer TCP sender when one or more links between the source and destination hosts become excessively congested. TCP will also continue to resend a segment until the receipt of the segment has been acknowledged by the destination, regardless of how long reliable delivery takes. Since real-time applications often require a minimum sending rate, do not want to overly delay segment transmission, and can tolerate some data loss, TCP&#39s service model is not particularly well matched to these applications&#39 needs. As discussed below, these applications can use UDP and implement, as part of the application, any additional functionality that is needed beyond UDP&#39s no-frills segment-delivery service.</li></ul>
+<li><h3>No connection establishment:</h3></li>
+<ul><li>As we&#39ll discuss later, TCP uses a three-way handshake before it starts to transfer data. UDP just blasts away without any formal preliminaries. Thus UDP does not introduce any delay to establish a connection. This is probably the principal reason why DNS runs over UDP rather than TCP, DNS would be much slower if it ran over TCP. HTTP uses TCP rather than UDP, since reliability is critical for Web pages with text. But, as we briefly discussed in Section 2.2, the TCP connection-establishment delay in HTTP is an important contributor to the delays associated with downloading Web documents.</li></ul>
+<li><h3>No Connection Stat</h3></li>
+<ul><li>TCP maintains connection state in the end systems. This connection state includes receive and send buffers, congestion-control parameters, and sequence and acknowledgment number parameters. We will see in Section 3.5 that this state information is needed to implement TCP&#39s reliable data transfer service and to provide congestion control. UDP, on the other hand, does not maintain connection state and does not track any of these parameters. For this reason, a server devoted to a particular application can typically support many more active clients when the application runs over UDP rather than TCP.</li></ul>
+<li><h3>Small Packet Header Overhead</h3></li>
+<ul><li>The TCP segment has 20 bytes of header overhead in every segment, whereas UDP has only 8 bytes of overhead.</li></ul>
+</ul>
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+</div>
+
+
+<div id = "827" style  ="display:none">
+	<h1>3.4-3.5 Notes</h1>
+<h2>Reliable Data Transfer over a Perfectly Reliable Channel</h2>
+<h4>finite-state machine (FSM):</h4> <ul><li>is a mathematical model of computation used to design both computer programs and sequential logic circuits.</li></ul>
+<h2>The different FSM</h2>
+		<ul>
+			<li><h3>rdt1.0</h3></li>
+				<ul><li>sender and receiver.  Just one state.</li><li>Just one state</li><li>Perfectly reliable because nothing can go wrong.</li></ul>
+		</ul>
+<div>Problem: <i>what if a packet is corrupted.</i></div>
+		<ul>
+			<li><h3>rdt2.0</h3></li>
+				<ul><li>positive acknowledgments and negative acknowledgments</li><li> reliable data transfer protocols based on such retransmission are known as ARQ (Automatic Repeat reQuest) protocols.<ul><li>Error detection.</li><li>Receiver feedback.</li><li>Retransmission.</li></ul></li><li>Sender sidew with two states:</li><ul><li>Waiting for data to be passed down.</li><li>Waiting for an ACK or a NAK packet from the receiver.</li></ul><li>Receiver:</li><ul><li>Save the data, then send ACK if the packet is not corrupted.  Other wise, send NAK.</li></ul></ul>
+		</ul>
+<div>Problem: <i>what if the ACK or NAK packet is corrupted.</i></div>
+
+		<ul>
+			<li><h3>rdt2.1</h3></li>
+				<ul><li>add a new field to the data packet and
+have the sender number its data packets by putting a sequence number into this
+field.  1-bit sequence number will suffice, since it will allow the receiver
+to know whether the sender is resending the previously transmitted packet</li></ul>
+		</ul>
+<img src = "pic/rdt21.png" style = "border:3px solid black;">
+<img src = "pic/rdt21r.png" style = "border:3px solid black;">
+		<ul>
+			<li><h3>rdt2.2</h3></li>
+				<ul><li>is that the receiver must
+now include the sequence number of the packet being acknowledged by an ACK
+message (this is done by including the ACK,0 or ACK,1 argument in make_pkt()
+in the receiver FSM), and the sender must now check the sequence number of the
+packet being acknowledged by a received ACK message.</li></ul>
+		</ul>
+<div>Problem: <i>What if the packet is lost.</i></div>
+		<ul>
+			<li><h3>rdt3.0</h3></li>
+				<ul><li>Modifying sender.</li><li>Countdown Timer, thus need to be able to</li><ol><li>start the timer each time a packet is sent.</li><li>respond to a timer interrupt.</li><li>stop the timer.</li></ol></ul>
+
+
+</ul>
+
+
+
+
+
+
+<img src = "pic/rdt22r.png" style = "border:3px solid black;">
+<img src = "pic/rdt30.png" style = "border:3px solid black;">
+
+
+<!--put the burden of detecting and recovering from lost packets on the sender.
+--The approach thus adopted in practice is for the
+sender to judiciously choose a time value such that packet loss is likely, although
+not guaranteed, to have happened.
+--This introduces the possibility of duplicate data packets in the sender-to-receiver channel.
+--rdt2.2 already has enough
+functionality (that is, sequence numbers) to handle the case of duplicate packets.
+--mechanism requires a countdown timer that can
+interrupt the sender after a given amount of time has expired. The sender will thus
+need to be able to (1) start the timer each time a packet (either a first-time packet or
+a retransmission) is sent, (2) respond to a timer interrupt (taking appropriate
+actions), and (3) stop the timer.
+-->
+
+<ul>
+
+<li><h4>Fun Facts</h4></li><ul><li><div style = "margin-bottom:30px">Problem: <i>duplicate data packets</i>.  Solution: <i>rdt2.2 already has enough
+functionality (that is, sequence numbers) to handle the case of duplicate packets</i>.</div></li><li><div style = "margin-bottom:30px">Because packet sequence numbers alternate between 0 and 1, protocol
+rdt3.0 is sometimes known as the <b>alternating-bit protocol</b>.</div></li><li><div style = "margin-bottom:30px">These are known as stop-and-wait protocols.</div></li></ul>
+
+</ul>
+
+
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+<div id = "828" style  ="display:none">
+	<h1>3.6-3.8 Notes</h1>
+<h2>Congestion-Control Algorithms</h2>
+
+<ul><li><h3>Slow Start</h3></li>
+<ul>
+	<li>cwnd (The congestion window, which imposes a constraint on the rate at which a TCP sender can send traffic into the network.) begins at 1 MSS and increases by 1 MSS every time a transmitted segment is first acknowledged.
+</li>
+	<li>TCP sends the first segment into the network and waits for an acknowledgment. When this acknowledgment arrives, the TCP sender increases the congestion window by one MSS and sends out two maximum-sized segments.</li>
+</ul>
+<div style = "margin-top:10px;margin-bottom:10px;"><i>When should this exponential growth end? Slow start provides several answers to this question</i>.</div>
+
+<ol>
+	<li>If there is a loss event (i.e., congestion) indicated by a timeout</li>
+	<li>When slow start hits the ssthresh, then it stops doubling and transitions into congestion avoidance mode (TCP increases cwnd more cautiously when in congestion-avoidance mode).</li>
+	<li>When three duplicate ACKs are detected, in which case TCP performs fast retransmit and enters the fast recovery state.</li>
+</ol>
+
+<img src = "pic/ss.png" style = "border:2px solid black;margin-top:20px;">
+
+<li><h3>Congestion Avoidance</h3></li>
+
+<ul>
+	<li>Increases the value of cwnd by just a single MSS every RTT</li>
+	<li>Example:</li>
+	<ul><li>if MSS (Maximum Segment Size) is 1,460 bytes and cwnd is 14,600 bytes, then 10 segments are being sent within an RTT (Round-Trip Time). Each arriving ACK (assuming one ACK per segment) increases the congestion window size by 1/10 MSS, and thus, the value of the congestion window will</li></ul>
+	<li>triple duplicate ACKs received</li>
+	<ul>
+		<li>value of ssthresh to be half the value of cwnd when the triple duplicate ACKs were received.  Then fast-recovery state is then entered.</li>
+	</ul>
+</ul>
+
+<img src = "pic/fast.png" style = "border:2px solid black;margin-top:20px;">
+
+<li><h3>Fast Recovery</h3></li>
+<ul>
+	<li>TCP Tahoe</li>
+	<ul><li>cut its congestion window to 1 MSS and entered the slow-start phase after either a timeout-indicated or triple-duplicate-ACK-indicated loss event.</li></ul>
+	<li>TCP Reno</li>
+	<ul><li>Incorported fast recovery</li>
+		<li>newer version of TCP</li>
+		<li>threshold is initially equal to 8 MSS.</li></ul>
+	<li>Example</li>
+	<ul>
+		<li>For the first eigth transmission reounds, Tahoe and Reno take identical actions.</li>
+		<li>The congestion window then climbs linearly until a triple duplicateACK event occurs, just after transmission round 8.</li>
+		<li>Triple duplicate ACK is detected</li>
+		<li>Under TCP Reno, the congestion window is set to cwnd = 6 X MSS and then grows linearly.</li>
+		<li>Under TCP Tahoe, the congestion window is set to 1 MSS and grows exponentially until it reaches the value of ssthresh, at which point it grows linearly.</li></ul>
+</ul>
+
+<img src = "pic/congestion.png" style = "border:2px solid black;margin-top:20px;">
+
+
+</ul>
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+
+<div id = "829" style  ="display:none">
+	<h1>4.1-4.3 Notes</h1>
+<h2>Router</h2>
+<ul>
+	<li>Forwarding: refers to the router-local action of transferring a packet from an input link interface to the appropriate output link interface.</li>
+	<li>Routing: refers to the network-wide process that determines the end-to-end paths that packets take from source to destination.</li>
+	<li>forwarding table: examine the packet header, get an index for that and pushes it to the outgoing link interface to shich the packet is to be forwarded.</li>
+	<li><h3>Input Processing</h3></li>
+		<ul>
+			<li>The forwarding table is computed and updated
+by the routing processor, with a shadow copy typically stored at each input port.</li>
+			<li>And if the switch fabric is not used, then it will be passed onto the switch fabric.</li>
+		</ul>
+	<li><h3>Switch fabric</h3></li>
+		<ul>
+			<li><h4>Switching via memory:</h4></li>
+			<ul>
+				<li>switching between input and output ports being done under direct control of the CPU (routing processor).</li>
+				<li> Input and output ports functioned as traditional I/O
+devices in a traditional operating system.</li>
+				<li>The packet was then copied
+from the input port into processor memory.</li>
+				<li>the router extracts the destination address and then looks up the direction from the forwarding table.  After that, it sends the packet to the output&#39s port buffer.</li>
+				<li>And if the switch fabric is not used, then it will be passed onto the switch fabric.</li>
+
+			</ul>
+			<li><h4>Swithcing via a bus</h4></li>
+			<ul>
+				<li>an input port transfers a packet directly to the
+output port over a shared bus, without intervention by the routing processor.</li>
+				<li>by having the input port pre-pend a switch-internal label (header) to the packet indicating the local output port to which this packet is being transferred and transmitting the packet onto the bus.</li>
+				<li>The packet is received by all output ports, but only the port that matches the label will keep the packet.</li>
+				<li>label is then removed at the output port</li>
+				<li>If there are multiplies arriving at the same time, then they go one at a time because each packet can cross the bus one at a time.</li>
+				<li>bus is often sufficient for
+routers that operate in small local area and enterprise networks</li>
+
+
+			</ul>
+			<li><h4>Switching via an interconnection network.</h4></li>
+				<ul>
+					<li>A crossbar switch is an interconnection network consisting of 2N buses that connect N input ports to N output ports</li>
+					<li>Each vertical bus intersects each horizontal bus at a crosspoint, which can be opened or closed at any time by the switch fabric controller</li>
+				</ul>
+		</ul>
+<img src = "pic/switch.png" style = "border:3px solid black; margin:15px">
+	<li><h3>Output Processing</h3></li>
+		<ul>
+			<li>takes packets that have been stored in the output port’s memory and transmits them over the output link.</li>
+		</ul>
+		<li><h3>Routing Processor</h3></li>
+<ul><li>maintains routing tables and attached link state information,
+and computes the forwarding table for the router</li></ul>
+</ul>
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+<div id = "8210" style  ="display:none">
+	<h1>4.4 Notes</h1>
+<h2>Comparing IPv4 and IPv6</h2>
+<h3>Structure of IPv4</h3>
+	<ul>
+		<li>Version number: These 4 bits specity the IP protocal version of the datagram.</li>
+		<li>Header length: these 4 bits are needed to dertermine where in the IP datagram the data actually begins.</li>
+		<li>Type of service: The type of service (TOS) bits were included in the IPv4 header to allow different types of IP datagrams (for example, datagrams particularly requiring low delay, high throughput, or reliability) to be distinguished from each other.</li>
+		<li>Datagram length: This is the total length of the IP datagram (header plus data), measured in bytes.</li>
+		<li>Identifier, flags, fragmentation offset: These three fields have to do with so-called IP fragmentation</li>
+		<li>Time-to-Live: The time-to-live (TTL) field is included to ensure that datagrams do not circulate forever (due to, for example, a long-lived routing loop) in the network.  If the TTL field reaches 0, the datagram must be dropped.</li>
+		<li>Protocal: The value of this field indicates the specific transport-layer protocol to which the data portion of this IP datagram should be passed. </li>
+		<li>Header checksum: The header checksum aids a router in detecting bit errors in a received IP datagram. </li>
+		<li>Source and destination IP addresses: When a source creates a datagram, it inserts its IP address into the source IP address field and inserts the address of the ultimate destination into the destination IP address field.</li>
+		<li>Options: The options fields allow an IP header to be extended</li>
+		<li>Data: contains the transport-layer segment (TCP or UDP) to be delivered to the destination. However, the data field can carry other types of data, such as ICMP (Internet Control Message Protocal) messages</li>
+	</ul>
+
+<img src = "pic/IPv4.png" style = "margin:10px">
+
+
+<h3>Differences</h3>
+	<ul>
+		<li>Expanded addressing capabilities: IPv6 increases the size of the IP address from 32 to 128 bits</li>
+		<li>A streamlined 40-byte header: a number of IPv4 fields have
+been dropped or made optional, allowing for faster processing of the IP datagram.</li>
+		<li>Flow labeling and priority: Like the TOS field in IPv4, can be used to give priority to certain datagrams within a flow, or it can be used to give priority to datagrams from certain applications.</li>
+	</ul>
+<h3>Structure of IPv6</h3>
+	<ul>
+		<li>Version: IPv6 carries a value of 6 in this field</li>
+		<li>Traffic class: 8-bit field is similar in spirit to the TOS field we saw in IPv4.</li>
+		<li>Flow label: 20-bit field is used to identify a flow of datagrams.</li>
+		<li>Payload length: 16-bit value is treated as an unsigned integer giving the number of bytes in the IPv6 datagram following the fixed-length, 40-byte datagram header.</li>
+		<li>Next header: Identifies the protocol to which the contents (data field) of this datagram will be delivered (for example, to TCP or UDP). The field uses
+the same values as the protocol field in the IPv4 header</li>
+		<li>Hop limit: The contents of this field are decremented by one by each router that forwards the datagram. If the hop limit count reaches zero, the datagram is
+discarded.</li>
+		<li>Source and destination addresses: Various formats of the IPv6 128-bit address.</li>
+		<li>Data: This is the payload portion of the IPv6 datagram. When the datagram reaches its destination, the payload will be removed from the IP datagram and
+passed on to the protocol specified in the next header field.</li>
+	</ul>
+
+
+<img src = "pic/IPv6.png" style = "margin:10px">
+
+
+<h3>IPv4, but no longer in IPv6</h3>
+	<ul>
+		<li>Fragmentation/Reassembly: IPv6 does not allow for fragmentation and reassembly at intermediate routers; these operations can be performed only by the source
+and destination. If an IPv6 datagram received by a router is too large to be forwarded over the outgoing link, the router simply drops the datagram and sends a &#34Packet Too Big&#34 ICMP error message back to the sender.</li>
+		<li>Header checksum: Because the transport-layer (for example, TCP and UDP) and link-layer (for example, Ethernet) protocols in the Internet layers perform checksumming, the designers of IP probably felt that this functionality was sufficiently
+redundant in the network layer that it could be removed. This allows for faster processing of IP packets.</li>
+		<li>Options: An options field is no longer a part of the standard IP header. However,it has not gone away. Instead, the options field is one of the possible  next headers pointed to from within the IPv6 header.</li>
+	</ul>
+
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+<div id = "8211" style  ="display:none">
+	<h1>4.5-4.6 Notes</h1>
+<h2>The Link-State (LS) Routing Algorithm and The Distance-Vector (DV) Routing Algorithm</h2>
+<h3>The Link-State(LS) Routing Algorithm</h3>
+<ul>
+	<li>Each node floods using link state packets (LSP) to find all of its neighbors.</li>
+	<li>each node will receive every other node&#39s LSP, combining all of the LSPs into a full topology of the network.</li>
+	<li>Each node uses Dijkstra&#39s algorithm (which should give up identical tables).</li>
+	<li>After Dijkstra&#39s is run they will make a forwarding table for each node.</li>
+	<li>When there are any changes, flood update is sent out and recomputed and links are update.</li>
+	<ul>	<li>If a link is missing or removed, then the link is removed.</li>
+		<li>If a node is missing or removed, then the links to that node will be removed, removing the node from the tree.  This is like a tree in programming, if we remove the links to a node in a tree, that node disappears from the tree.</li>
+		<li>If a new node is added or an old one is updated, then a LSP will update all of the links.</li>
+</ul>
+</ul>
+
+
+<img style = "margin:15px" src = "pic/LS.jpg">
+
+<div>Here is an example you can try out.</div>
+
+<img style = "margin:15px" src = "pic/ex.png">
+
+
+
+<h3>The Distance-Vector (DV) Routing Algorithm</h3>
+<ul>
+	<li>asynchronous</li>
+	<li>uses Bellman-Ford equation</li>
+	<li>Example: it is easy to see that dv (z) = 5, dx (z) = 3, and dw(z) = 3. Plugging these values into Equation 4.1, along with the costs c(u,v) = 2, c(u,x) = 1, and c(u,w) = 5, gives du(z) = min{2 + 5, 5 + 3, 1 + 3} = 4
+	<li>With the DV algorithm, each node x maintains the following
+routing information: </li>
+		<ul>
+			<li>For each neighbor v, the cost c(x,v) from x to directly attached neighbor, v</li>
+			<li>Node x&#39s distance vector, that is, Dx = [Dx
+(y): y in N], containing x&#39s estimate of
+its cost to all destinations, y, in N</li>
+			<li>The distance vectors of each of its neighbors, that is, Dv = [Dv (y): y in N] for each neighbor v of x</li>
+		</ul>
+</ul>
+<img src = "pic/DV.GIF">
+
+
+<h2>LS vs DV</h2>
+<h4>Let&#39s conclude our study of LS and DV algorithms with a quick comparison of some of their attributes. Recall that N is the set of nodes (routers) and E is the set of edges (links):</h4>
+
+<ul>
+	<li>Message complexity. We have seen that LS requires each node to know the cost of each link in the network. This requires O(|N| |E|) messages to be sent. Also, whenever a link cost changes, the new link cost must be sent to all nodes. The DV algorithm requires message exchanges between directly connected neighbors at each iteration. We have seen that the time needed for the algorithm to converge can depend on many factors. When link costs change, the DV algorithm will propagate the results of the changed link cost only if the new link cost results in a changed least-cost path for one of the nodes attached to that link.
+</li>
+	<li>Speed of convergence. We have seen that our implementation of LS is an O(|N|2) algorithm requiring O(|N| |E|)) messages. The DV algorithm can converge slowly and can have routing loops while the algorithm is converging. DV also suffers from the count-to-infinity problem.
+</li>
+	<li>Robustness. What can happen if a router fails, misbehaves, or is sabotaged? Under LS, a router could broadcast an incorrect cost for one of its attached links (but no others). A node could also corrupt or drop any packets it received as part of an LS broadcast. But an LS node is computing only its own forwarding tables; other nodes are performing similar calculations for themselves. This means route calculations are somewhat separated under LS, providing a degree of robustness. Under DV, a node can advertise incorrect least-cost paths to any or all destinations. (Indeed, in 1997, a malfunctioning router in a small ISP provided national backbone routers with erroneous routing information. This caused other routers to flood the malfunctioning router with traffic and caused large portions of the Internet to become disconnected for up to several hours [Neumann 1997].) More generally, we note that, at each iteration, a node’s calculation in DV is passed on to its neighbor and then indirectly to its neighbor’s neighbor on the next iteration. In this sense, an incorrect node calculation can be diffused through the entire network under DV.
+</li>
+
+
+</ul>
+
+<a href = "https://www.youtube.com/watch?v=gdmfOwyQlcI">A refresher on Dijkstra&#39s Algorithm</a>
+
+<div>For a refresher on Bellman-Ford <a href = "https://www.youtube.com/watch?v=iTW2yFYd1Nc">click here</a> or <a href = "https://www.youtube.com/watch?v=obWXjtg0L64">click here</a>.</div>
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+
+
+<div id = "8212" style  ="display:none">
+	<h1>4.7-4.8 Notes</h1>
+<h2>Flooding</h2>
+<ul>
+	<li>It sends packets to its neighbors and they send it to their neighbors, except for the one it recived the packet from.  This is simple, but there is a huge flaw.  If there is a cycle, the message would be sent through that in an endless loop, known as <i>broadcast storm</i></li>
+	<ul>	<li>Solution 1: Sequence-number-controlled flooding, which mean a source node adds its address or unique identifier, and broadcast sequence number are attached to the packet.  Each node has a list of the source and sequence number, so if that packet shows up again, it will drop the packet.</li>
+		<li>Solution 2: Reverse path forwarding (RPF) or reverse path broadcast (RPB).  The node will only accept and send the packet to its neighboring node if the link that is on its own shortest unicast path back to the source.</li>
+	</ul>
+	<li>Sequence-number-controlled flooding and RPF avoid broadcast storms, but they do not get rid of redundant broadcast packets.</li>
+	<ul>	<li>Solution: spanning tree</li></ul>
+</ul>
+
+<h2>Spanning Tree</h2>
+<ul>
+	<li> In the center-based approach to building a spanning tree, a center node (also known as a rendezvous point or a core) is defined</li>
+	<li>Example:</li>
+	<ul><li>If we start by making E the center of the tree.  Then F is the first to join the tree, when it sends a tree-join message to E.  the single link EF becomes the initial spaning tree.  Then B joins in by sending a message via D.  After that, A joins the spanning tree.  A will use B to join tree, and since B is already part of the tree, A&#39s tree-join message will result in the AB link being immediatly grafted onto the spanning tree.  C then decides to join, connecting to E.  Finally, G join the tree via D, so GD link is grafted onto the spanning tree at node D.</li></ul>
+</ul>
+
+
+<img src = "pic/tree.png">
+
+<h2>Multicast</h2>
+<ul>
+	<li><h3>Address indirection:</h3> That is, a single identifier is used for the group of receivers, and a copy of the packet that is addressed to the group using this single identifier is delivered to all of the multicast receivers associated with that group.</li>
+	<li><h3>Multicast group:</h3> The group of receivers associated with a class address is referred to as a multicast group.</li>
+</ul>
+
+<ul>
+	<li><h2>IGMP</h2></li>
+	<ul>	<li><h3>Message type 1 and 2:</h3> Membership_query which can be sent to all host on the local network which then the host repsond with a IGMP membership_report.  The host can send a membership_report when that host joins for the first time.</li>
+		<li><h3>Message type 3:</h3> leave_group, however; that is optional.  So how do you leave without that message.  The answer is that you just do not respond to the memebership_query.  This is sometimes called soft state in an Internet protocal.  In a soft state protocal, the state is removed via a timeout event.</li></ul>
+</ul>
+
+	
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+
+<div id = "8213" style  ="display:none">
+	<h1>5.1-5.3 Notes</h1>
+<h2>Multiple Access Links and Protocols</h2>
+<ul>
+	<li><h3>Channel Partitioning Protocols</h3></li>
+	<ul>
+		<li>TDM (Time-Division Multiplexing)</li>
+		<ul>
+			<li>appealing because it eliminates collisions and is perfectly fair: Each node gets a dedicated transmission rate of R/N bps during each frame time.</li>
+			<li>First drawback, a node is limited to an average rate of
+R/N bps even when it is the only node with packets to send.</li>
+			<li>Second drawback, a node must always wait for its turn in the transmission sequence&#45again, even when it is the only node with a frame to send.</li>
+			<li>So, this is a poor choice for this.</li>
+		</ul>
+		<li>FDM (Frequency-Division Multiplexing)</li>
+		<ul>
+			<li>Divides the R bps channel into different frequencies (each with a bandwidth of R/N) and assigns each frequency to one of the N nodes.</li>
+			<li>It avoids collisions and divides the bandwidth fairly among the N nodes.</li>
+			<li>Shares a principal disadvantage with TDM&#45a node is limited
+to a bandwidth of R/N, even when it is the only node with packets to send.</li>
+		</ul>
+		<ul>
+		<li>Code Division Multiple Access (CDMA)</li>
+		<ul>
+			<li>Each node uses its unique code to encode the data bits it sends.</li>
+			<li>CDMA networks have the wonderful property that different nodes can transmit simultaneously and yet have their respective receivers correctly receive a sender&#39s encoded data bits in spite of interfering transmissions by other nodes.</li>
+		</ul>
+	</ul>
+		<li><h3>Random Access Protocols</h3></li>
+		<ul>
+			<li>Slotted ALOHA</li>
+			<ul>
+				<li>Allows a node to transmit continuously at the full rate, R, when that node is the only active node.</li>
+				<li>highly decentralized, because each node detects
+collisions and independently decides when to retransmit.</li>
+				<li>First drawback, a certain fraction of the slots will have collisions and will therefore be &#34wasted.&#34</li>
+				<li>Second drawback, another fraction of the slots will be empty because all active nodes refrain from transmitting</li>
+				<li>The <b>efficiency</b> of a slotted multiple access protocol is defined to be the long-run fraction of successful slots in the case when there are a large number of active nodes, each always having a large number of frames to send. </li>
+
+
+			</ul>
+			<li>pure ALOHA</li>
+			<ul>
+				<li>Unslotted, fully decentralized protocol.</li>
+				<li>When a frame first arrives</li>
+				<li>The node immediately transmits the frame in its entirety into the broadcast channel.</li>
+				<li>If a transmitted frame experiences a collision
+with one or more other transmissions, the node will then immediately retransmit the frame with probability p.</li>
+			</ul>
+
+
+
+			<li>Carrier Sense Multiple Access (CSMA)</li>
+			<ul>
+				<li>Example: B begins transmitting.</li>
+				<li>The downward propagation of B&#39s bits with increasing time indicates that a nonzero amount of time is needed</li>
+				<li>At time t1 (t1 > t0), node D has a frame to send.</li>
+				<li>B is currently transmitting at time t1, the bits being transmitted by B have yet to reach D, and thus D senses the channel idle at t1.</li>
+				<li>D thus begins transmitting its frame.</li>
+				<li>B&#39s transmission begins to interfere with D&#39s transmission at D</li>
+				<li>End-to-end channel propagation delay of a broadcast channel&#45the time it takes for a signal to propagate from one of the nodes to another</li>
+			</ul>
+
+<img src = "pic/CSMA.png" style = "margin:15px">
+
+			<li>Carrier Sense Multiple Access with Collision Dection (CSMA/CD)</li>
+			<ul>
+				<li>The binary exponential backoff algorithm</li>
+				<li>node chooses the value of K at random from {0, 1, 2, . . . . 2n 1}. Thus, the more collisions experienced by a frame, the larger the interval from which K is chosen.</li>
+			</ul>
+		</ul>
+
+<img src = "pic/collision.png" style = "margin:15px">
+
+		<li><h3>Taking-Turns Protocols</h3></li>
+		<ul>
+			<li>Polling protocol</li>
+			<ul>
+				<li>Master node polls each of the nodes in a round-robin fashion.</li>
+				<li>First drawback, the protocol introduces a polling delay&#45the amount of time required to notify a node that it can transmit.</li>
+				<li>Second drawback, master node fails</li>
+			</ul>
+			<li>Token-Passing Protocol</li>
+			<ul>
+				<li>token is exchanged among the nodes in some fixed order</li>
+			</ul>
+		</ul>
+	</ul>
+</ul>
+
+	
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+<div id = "8214" style  ="display:none">
+	<h1>5.4-5.5 Notes</h1>
+<h2>Swithced Local Area Networks</h2>
+<ul>
+	<li>A link-layer address is variously called a LAN address, a physical address, or a MAC address.</li>
+	<li>No two adapters have the same MAC address because the IEEE manes the MAC address space.</li>
+	<li>ARP module in the sending host takes any IP adress on the same LAN as input, and return the corresponding MAC</li>
+	<li>The sender uses the ARP protocal to resolve the address:</li>
+	<ul><li>the sender constructs a special packet called an ARP packet. An ARP packet has several fields, including the sending and receiving IP and MAC addresses. Both ARP query and response packets have the same format.</li></ul>
+</ul>
+<h2>Ethernet</h2>
+<ul>
+	<li>Ethernet&#39s success:</li>
+	<ul>
+		<li>First, Ethernet was the first widely deployed high-speed LAN. Because it was deployed early, network administrators became intimately familiar with Ethernet—its wonders and its quirks— and were reluctant to switch over to other LAN technologies when they came on the scene.</li>
+		<li>Second, token ring, FDDI, and ATM were more complex and expensive than Ethernet, which further discouraged network administrators from switching over.</li>
+		<li>Third, if new technology had higher data rate, ethernet would always fought back, producing versions that operated at equal data rates or higher.</li>
+		<li>Finally, because Ethernet has been so popular, Ethernet hardware (in particular, adapters and switches) has become a commodity and is remarkably cheap.</li>
+		<li></li>
+	</ul>
+	<li>A hub is a physical-layer device that acts on individual bits rather than frames. When a bit, representing a zero or a one, arrives from one interface, the hub simply re-creates the bit, boosts its energy strength, and transmits the bit onto all the other interfaces. Thus, Ethernet with a hub-based star topology is also a broadcast LAN&#45whenever a hub receives a bit from one of its interfaces, it sends a copy out on all of its other interfaces.</li>
+	<li>Ethernet installations continued to use a star topology, but the hub at the center was replaced with a switch.</li>
+	<li>Six fields of the Ethernet frame:</li>
+	<ul>
+		<li>Data field (46 to 1,500 bytes). This field carries the IP datagram. The maximum transmission unit (MTU) of Ethernet is 1,500 bytes.</li>
+		<li>Destination address (6 bytes). This field contains the MAC address of the destination adapter.</li>
+		<li>Source address (6 bytes). This field contains the MAC address of the adapter that transmits the frame onto the LAN.</li>
+		<li>Type field (2 bytes). The type field permits Ethernet to multiplex network-layer protocols.</li>
+		<li>Cyclic redundancy check (CRC) (4 bytes). The purpose of the CRC field is to allow the receiving adapter, adapter B, to detect bit errors in the frame.</li>
+		<li>Preamble (8 bytes). The Ethernet frame begins with an 8-byte preamble field. Each of the first 7 bytes of the preamble has a value of 10101010; the last byte is 10101011. The first 7 bytes of the preamble serve to “wake up” the receiving adapters and to synchronize their clocks to that of the sender&#39s clock.  A receiving adapter can lock onto adapter A’s clock simply by locking onto the bits in the first 7 bytes of the preamble. The last 2 bits of the eighth byte of the preamble (the first two consecutive 1s) alert adapter B that the &#34important stuff&#34 is about to come.</li>
+	</ul>
+	<li>Filtering is the switch function that determines whether a frame should be forwarded to some interface or should just be dropped.</li>
+	<li>Forwarding is the switch function that determines the interfaces to which a frame should be directed, and then moves the frame to those interfaces.</li>
+	<li>Switch filtering and forwarding are done with a switch table, which contains:</li>
+	<ul>
+		<li>a MAC address.</li>
+		<li>the switch interface that leads toward that MAC address.</li>
+		<li>the time at which the entry was placed in the table.</li>
+	</ul>
+	<li>Switches are self-learning. This capability is accomplished as follows:</li>
+	<ul>
+		<li>The switch table is initially empty.</li>
+		<li>For each incoming frame received on an interface, the switch stores in its table:</li>
+		<ol>
+			<li>The MAC address in the frame’s source address field.</li>
+			<li>The interface from which the frame arrived.</li>
+			<li>the current time.</li>
+		</ol>
+		<li>The switch deletes an address in the table if no frames are received with that address as the source address after some period of time (the aging time).</li>
+	</ul>
+</ul>
+
+	
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+<div id = "8215" style  ="display:none">
+	<h1>5.6-5.8 Notes</h1>
+<h2>Overview</h2>
+<div>For this part, they give a great example of what we have learned until now, so I thought I would share that with people.<br>
+The scenario is that someone named Bob wants to get a webpage from Google.  But, this is the first time he pluged his laptop into the school&#39s network.  The first things that needs to happen is to run a DHCP protocal to obtain an IP from the local DHCP server:</div>
+<ol>
+	<li>The operating system on Bob&#39s laptop creates a DHCP request message (Section 4.4.2) and puts this message within a UDP segment (Section 3.3) with destination port 67 (DHCP server) and source port 68 (DHCP client). The UDP segment is then placed within an IP datagram (Section 4.4.1) with a broadcast IP destination address (255.255.255.255) and a source IP address of 0.0.0.0, since Bob&#39s laptop doesn&#39t yet have an IP address.</li>
+	<li>The IP datagram containing the DHCP request message is then placed within an Ethernet frame (Section 5.4.2). The Ethernet frame has a destination MAC addresses of FF:FF:FF:FF:FF:FF so that the frame will be broadcast to all devices connected to the switch (hopefully including a DHCP server); the frame&#39s source MAC address is that of Bob&#39s laptop, 00:16:D3:23:68:8A.</li>
+	<li>The broadcast Ethernet frame containing the DHCP request is the first frame sent by Bob&#39s laptop to the Ethernet switch. The switch broadcasts the incoming frame on all outgoing ports, including the port connected to the router.</li>
+	<li>The router receives the broadcast Ethernet frame containing the DHCP request on its interface with MAC address 00:22:6B:45:1F:1B and the IP datagram is extracted from the Ethernet frame. The datagram&#39s broadcast IP destination address indicates that this IP datagram should be processed by upper layer protocols at this node, so the datagram&#39s payload (a UDP segment) is thus demultiplexed (Section 3.2) up to UDP, and the DHCP request message is extracted from the UDP segment. The DHCP server now has the DHCP request message.</li>
+	<li>Let&#39s suppose that the DHCP server running within the router can allocate IP addresses in the CIDR (Section 4.4.2) block 68.85.2.0/24. In this example, all IP addresses used within the school are thus within Comcast&#39s address block.  Let&#39s suppose the DHCP server allocates address 68.85.2.101 to Bob&#39s laptop. The DHCP server creates a DHCP ACK message (Section 4.4.2) containing this IP address, as well as the IP address of the DNS server (68.87.71.226), the IP address for the default gateway router (68.85.2.1), and the subnet block (68.85.2.0/24) (equivalently, the “network mask”). The DHCP message is put inside a UDP segment, which is put inside an IP datagram, which is put inside an Ethernet frame. The Ethernet frame has a source MAC address of the router&#39s interface to the home network (00:22:6B:45:1F:1B) and a destination MAC address of Bob&#39s laptop (00:16:D3:23:68:8A).</li>
+	<li>The Ethernet frame containing the DHCP ACK is sent (unicast) by the router to the switch. Because the switch is self-learning (Section 5.4.3) and previously received an Ethernet frame (containing the DHCP request) from Bob&#39s laptop, the switch knows to forward a frame addressed to 00:16:D3:23:68:8A only to the output port leading to Bob&#39s laptop.</li>
+	<li>Bob&#39s laptop receives the Ethernet frame containing the DHCP ACK, extracts the IP datagram from the Ethernet frame, extracts the UDP segment from the IP datagram, and extracts the DHCP ACK message from the UDP segment. Bob&#39s DHCP client then records its IP address and the IP address of its DNS server. It also installs the address of the default gateway into its IP forwarding table (Section 4.1). Bob&#39s laptop will send all datagrams with destination address outside of its subnet 68.85.2.0/24 to the default gateway. At this point, Bob&#39s laptop has initialized its networking components and is ready to begin processing the Web page fetch. (Note that only the last two DHCP steps of the four presented in Chapter 4 are actually necessary.)</li>
+	<li>The operating system on Bob&#39s laptop thus creates a DNS query message (Section 2.5.3), putting the string “www.google.com” in the question section of the DNS message. This DNS message is then placed within a UDP segment with a destination port of 53 (DNS server). The UDP segment is then placed within an IP datagram with an IP destination address of 68.87.71.226 (the address of the DNS server returned in the DHCPACK in step 5) and a source IP address of 68.85.2.101.
+</li>
+	<li>Bob&#39s laptop then places the datagram containing the DNS query message in an Ethernet frame. This frame will be sent (addressed, at the link layer) to the gateway router in Bob&#39s school&#39s network. However, even though Bob&#39s laptop knows the IP address of the school&#39s gateway router (68.85.2.1) via the DHCP ACK message in step 5 above, it doesn&#39t know the gateway router&#39s MAC address. In order to obtain the MAC address of the gateway router, Bob&#39s laptop will need to use the ARP protocol (Section 5.4.1).</li>
+	<li>Bob&#39s laptop creates an ARP query message with a target IP address of 68.85.2.1 (the default gateway), places the ARP message within an Ethernet frame with a broadcast destination address (FF:FF:FF:FF:FF:FF) and sends the Ethernet frame to the switch, which delivers the frame to all connected devices, including the gateway router.</li>
+	<li>The gateway router receives the frame containing the ARP query message on the interface to the school network, and finds that the target IP address of 68.85.2.1 in the ARP message matches the IP address of its interface. The gateway router thus prepares an ARP reply, indicating that its MAC address of 00:22:6B:45:1F:1B corresponds to IP address 68.85.2.1. It places the ARP reply message in an Ethernet frame, with a destination address of 00:16:D3:23:68:8A (Bob&#39s laptop) and sends the frame to the switch, which delivers the frame to Bob&#39s laptop.</li>
+	<li>Bob&#39s laptop receives the frame containing the ARP reply message and extracts the MAC address of the gateway router (00:22:6B:45:1F:1B) from the ARP reply message.</li>
+	<li>Bob&#39s laptop can now (finally!) address the Ethernet frame containing the DNS query to the gateway router&#39s MAC address. Note that the IP datagram in this frame has an IP destination address of 68.87.71.226 (the DNS server), while the frame has a destination address of 00:22:6B:45:1F:1B (the gateway router). Bob&#39s laptop sends this frame to the switch, which delivers the frame to the gateway router.</li>
+	<li>The gateway router receives the frame and extracts the IP datagram containing the DNS query. The router looks up the destination address of this datagram (68.87.71.226) and determines from its forwarding table that the datagram should be sent to the leftmost router in the Comcast network in Figure 5.32. The IP datagram is placed inside a link-layer frame appropriate for the link connecting the school&#39s router to the leftmost Comcast router and the frame is sent over this link.</li>
+<img src = "pic/Figure5.32.png">
+	<li>The leftmost router in the Comcast network receives the frame, extracts the IP datagram, examines the datagram&#39s destination address (68.87.71.226) and determines the outgoing interface on which to forward the datagram towards the DNS server from its forwarding table, which has been filled in by Comcast&#39s intra-domain protocol (such as RIP, OSPF or IS-IS, Section 4.6) as well as the Internet&#39s inter-domain protocol, BGP.</li>
+	<li>Eventually the IP datagram containing the DNS query arrives at the DNS server. The DNS server extracts the DNS query message, looks up the name www.google.com in its DNS database (Section 2.5), and finds the DNS resource record that contains the IP address (64.233.169.105) for www.google.com. (assuming that it is currently cached in the DNS server). Recall that this cached data originated in the authoritative DNS server (Section 2.5.2) for googlecom. The DNS server forms a DNS reply message containing this hostname-to-IPaddress mapping, and places the DNS reply message in a UDP segment, and the segment within an IP datagram addressed to Bob&#39s laptop (68.85.2.101). This datagram will be forwarded back through the Comcast network to the school&#39s router and from there, via the Ethernet switch to Bob&#39s laptop.</li>
+	<li>Bob&#39s laptop extracts the IP address of the server www.google.com from the DNS message. Finally, after a lot of work, Bob&#39s laptop is now ready to contact the www.google.com server!</li>
+	<li>Now that Bob&#39s laptop has the IP address of www.google.com, it can create the TCP socket (Section 2.7) that will be used to send the HTTP GET message (Section 2.2.3) to www.google.com. When Bob creates the TCP socket, the TCP in Bob&#39s laptop must first perform a three-way handshake (Section 3.5.6) with the TCP in www.google.com. Bob&#39s laptop thus first creates a TCP SYN segment with destination port 80 (for HTTP), places the TCP segment inside an IP datagram with a destination IP address of 64.233.169.105 (www.google.com), places the datagram inside a frame with a destination MAC address of 00:22:6B:45:1F:1B (the gateway router) and sends the frame to the switch.</li>
+	<li>The routers in the school network, Comcast&#39s network, and Google&#39s network forward the datagram containing the TCP SYN towards www.google.com, using the forwarding table in each router, as in steps 14–16 above. Recall that the router forwarding table entries governing forwarding of packets over the inter-domain link between the Comcast and Google networks are determined by the BGP protocol (Section 4.6.3).</li>
+	<li>Eventually, the datagram containing the TCP SYN arrives at www.google.com. The TCP SYN message is extracted from the datagram and demultiplexed to the welcome socket associated with port 80. A connection socket (Section 2.7) is created for the TCP connection between the Google HTTP server and Bob&#39s laptop. A TCP SYNACK (Section 3.5.6) segment is generated, placed inside a datagram addressed to Bob&#39s laptop, and finally placed inside a link-layer frame appropriate for the link connecting www.google.com to its first-hop router.</li>
+	<li>The datagram containing the TCP SYNACK segment is forwarded through the Google, Comcast, and school networks, eventually arriving at the Ethernet card in Bob&#39s laptop. The datagram is demultiplexed within the operating system to the TCP socket created in step 18, which enters the connected state.</li>
+	<li>With the socket on Bob&#39s laptop now (finally!) ready to send bytes to www.google .com, Bob&#39s browser creates the HTTP GET message (Section 2.2.3) containing the URL to be fetched. The HTTP GET message is then written into the socket, with the GET message becoming the payload of a TCP segment. The TCP segment is placed in a datagram and sent and delivered to www.google.com as in steps 18–20 above.</li>
+	<li>The HTTP server at www.google.com reads the HTTP GET message from the TCP socket, creates an HTTP response message (Section 2.2), places the requested Web page content in the body of the HTTP response message, and sends the message into the TCP socket.</li>
+	<li>The datagram containing the HTTP reply message is forwarded through the Google, Comcast, and school networks, and arrives at Bob&#39s laptop. Bob&#39s Web browser program reads the HTTP response from the socket, extracts the html for the Web page from the body of the HTTP response, and finally ( finally!) displays the Web page!</li>
+</ol>
+
+	
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;">
+		
+</div>
+
+
+
+
+<script>
+var process = true;
+var previous = null;
+function oc(id){
+if (process == false){
+	if(previous == null){
+			process = false;
+			$(document).ready(function(){
+			$("#" + id).fadeIn(2000);});
+			previous = id;
+			process = true;
+	} else if(previous == id){
+			process = false;
+			$(document).ready(function(){
+			$("#" + id).fadeOut(500);});
+			previous = null;
+			process = true;
+	} else {
+			process = false;
+			$(document).ready(function(){
+			$("#" + previous).fadeOut(1000);
+			setTimeout(function(){$("#" + id).fadeIn(1000);},1005);
+			});
+			previous = id;
+			process = true;
+	}
+}
+}
+
+
+
+
+
+/* another code
+var previous = null;
+function oc(id){
+	if(previous == null){
+			$(document).ready(function(){
+			$("button").fadeOut(500);
+			
+			$("#" + id).fadeIn(2000);});
+			$(document).ready(function(){
+			setTimeout(function(){$("button").fadeIn(500);},1000)});
+			previous = id;
+	} else if(previous == id){
+			$(document).ready(function(){
+			$("button").fadeOut(500);
+			$("#" + id).fadeOut(500);});
+			$(document).ready(function(){
+			setTimeout(function(){$("button").fadeIn(500);},1000)});
+			previous = null;
+	}else {
+			$(document).ready(function(){
+			$("button").fadeOut(500);
+			$("#" + previous).fadeOut(1000);
+			setTimeout(function(){$("#" + id).fadeIn(1000);},1005);
+			});
+			$(document).ready(function(){
+			setTimeout(function(){$("button").fadeIn(500);previous = id;},2005)});
+	}
+}*/
+
+		/*This is my old code:
+		
+		if(document.getElementById(id).style.display == "none"){
+			$(document).ready(function(){
+			$("button").hide();
+			$("#" + id).fadeIn(2000);});
+			$(document).ready(function(){
+			setTimeout(function(){$("button").show();},2500)});
+		} else {
+			$(document).ready(function(){
+			$("button").hide();
+			$("#" + id).fadeOut(500);});
+			$(document).ready(function(){
+			setTimeout(function(){$("button").show();},1000)});
+		} */
+</script>
+</body>
+</html>
+

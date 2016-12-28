@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/4/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 4th
+    </h1>
+    <ul>
+        <li>Layering in general</li>
+	<ul>
+	    <li>Process divided into steps which are all performed independently of each other</li>
+	    <li>Each step must be completed before the next step may begin</li>
+	    <li color="green">Allows for one step's implementation (though not function) to change without affecting the other steps/layers</li>
+	    <li color="red">Layers may duplicate lower-layer functionality</li>
+	    <li color="red">Layer may need information only available in another layer</li>
+	</ul>
+	<li>Service Model</li>
+	<ul>
+	    <li>Defined by service offered by each layer</li>
+	    <li>Each layer performs certain actions within the later and/or uses services of the layer below</li>
+	    <li>Layer can be implemented in software, hardware, or a combination</li>
+	    <li>All layers together are called the Protocol Stack</li>
+	</ul>
+	<li>Five-layer Internet Protocol Stack</li>
+	<ol>
+	    <li>Application</li>
+	    <ul>
+	        <li>Ex: HTTP, SMTP, FTP</li>
+	        <li>Nearly always implemented in software</li>
+	        <li>Example function: DNS (Translates human-friendly names into computer-friendly addresses)</li>
+	        <li>Distributed over multiple end systems</li>
+		    <li>Application in one end system uses protocol to exchange packets (<b>messages</b>) with other end systems</li>
+	    </ul>
+	    <li>Transport</li>
+	    <ul>
+	        <li>Nearly always implemented in software</li>
+	        <li>Transports application-layer messages between endpoints</li>
+			<li>TCP</li>
+			<ul>
+				<li>Connection-oriented</li>
+				<li>Guaranteed delivery of messages</li>
+				<li>Flow control</li>
+				<li>Breaks long messages into segments</li>
+				<li>Provides congestion control</li>
+			</ul>
+			<li>UDP</li>
+			<ul>
+				<li>Connectionless</li>
+				<li>No frills: none of TCP's listed benefits</li>
+			</ul>
+			<li>Packet referred to as a <b>segment</b></li>
+	    </ul>
+	    <li>Network</li>
+	    <ul>
+	        <li>Often mixed hardware and software</li>
+			<li>Moves packets called <b>datagrams</b> between hosts</li>
+			<li>Passed a segment and destination by transport layer</li>
+			<li>Delivers segment to designated destination</li>
+			<li>IP Protocol</li>
+			<ul>
+				<li>Defines fields in datagram</li>
+				<li>Defines how end systems/routers act on fields</li>
+				<li>Only one IP Protocol exists</li>
+			</ul>
+			<li>Routing protocols which determine routes datagrams take</li>
+			<li>Administrator runs one of many routing protocols</li>
+			<li>Often referred to as IP layer</li>
+	    </ul>
+	    <li>Link</li>
+	    <ul>
+	        <li>Typically implemented in network interface card</li>
+			<li>Routes datagrams through routers</li>
+			<li>Network layer passes datagram to link layer</li>
+			<li>Link layer passes datagram to next node and back to network layer</li>
+			<li>Protocol examples: Ethernet, WiFi, DOCSIS (cable)</li>
+			<li>Each datagram may use multiple link protocols during its journey</li>
+			<li>Link layer packets are <b>frames</b></li>
+	    </ul>
+	    <li>Physical</li>
+	    <ul>
+	        <li>Typically implemented in network interface card</li>
+			<li>Moves individual bits from the packet</li>
+			<li>Protocol varies depending on medium</li>
+			<li>Ex: twisted-pair copper wire, fiber optics</li>
+	    </ul>
+	</ol>
+	<li>Seven-layer International Organization for Standardization <u>O</u>pen <u>S</u>ystems <u>I</u>nterconnection Reference Model</li>
+	<ol>
+	    <li>Application</li>
+	    <li>Presentation</li>
+		<ul>
+			<li>Provides services allowing applications to interpret the data</li>
+			<li>Data compression, encryption, and description</li>
+		</ul>
+	    <li>Session</li>
+		<ul>
+			<li>Delimits and synchronizes data exchange</li>
+			<li>Provides means to build checkpointing and recovery</li>
+		</ul>
+	    <li>Transport</li>
+	    <li>Network</li>
+	    <li>Link</li>
+	    <li>Physical</li>
+	</ol>
+	<li>Modern Internet uses 5-layer</li>
+	<li>Functions unique to the 7-layer model are the responsibility of the application developer</li>	
+    </ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

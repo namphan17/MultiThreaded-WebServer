@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Chapter 4- Part 1 notes
+</title>
+<style>
+	p {
+    	padding-left: 50px;
+    	padding-right: 150px;
+	}
+	ul {
+		padding-left: 100px;
+    	padding-right: 150px;
+	}
+	h4 {
+		padding-left: 75px;
+    	padding-right: 150px;
+	}
+</style>
+</head>
+<body>
+    <h3>
+	Chapter 4 Sections 4.1 - 4.3
+    </h3>
+    <h4>
+        By: Jeremy Novak
+    </h4>
+	<h4>
+		Where does Queuing Occur?
+	</h4>
+	<p>
+		&emsp;Packet queues may form at both the input ports and the output ports, and queuing will happen at each location biased on the amount of traffic, the speed of the switch and the speed of the connection. <br>
+		&emsp;&emsp;&#9679; Roundabout Analogy 
+		<br><br>
+		&emsp;Queues can only be so big without running out of buffer and packets being lost. Input port queue&rsquo;s don't form as often as output port queue&rsquo;s because the computer acting as the receiver is normally faster at processing packets than the network is at transporting packets.
+		<br><br>
+		<img src="http://www.networkinginfoblog.com/contentsimages/Output%20port%20queuing2.JPG" alt="This image is not that cool anyway..." style="width:494px;height:459px;">
+		<br><br>
+		&emsp;One of the problems of output port queuing is that the packet scheduler at the output port must choose one packet among those queued to be transmission. This selection might be done using one of several methods:
+	</p>
+		<ul><li>First-come-first-served (FCFS)</li>
+		<li>Weighted fair queuing (WFQ)</li></ul>
+	<p>
+		&emsp;Another problem with output port queuing is that if there is not enough memory to add  an incoming packet to the queue than a decision must be made to drop a packet. This can be done by:
+	</p>
+		<ul><li>First-come-first-served (FCFS)</li>
+		<li>Weighted fair queuing (WFQ)</li></ul>
+	<p>
+		&emsp; Ideally this issue gets resolved before it happens using one of the congestion reduction methods we have already talked about.
+	</p>
+	
+	
+</body>
+</html>

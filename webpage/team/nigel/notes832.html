@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notes 8.3.2</title>
+</head>
+<body>
+<h1> Notes 8.3.2</h1>
+<hr>
+<br>
+<b>Reliable Data Transfer Protocol</b> - No bits are corrupted or lost, and all are delivered in the same order.<br>
+<b>Unidirectional Data Transfer</b> - Data dransfer from sender --> reciever.<br>
+<b>Bidirectional (Full Duplex) Data transfer</b> - data from sender <--> reciever.<br>
+<b>Finite State Machine</b> - Abstract machine that can be in a finite number of states.<br>
+<b>Positive/Negative Acknowledgmens</b> - "OK"/"Repeat".<br>
+<b>Automatic Repeat reQuest (ARQ) Protocols</b> - Reliable data transfer protocols based on retransmission.<br>
+<b>Alternating Bit Protocol</b> - Instead of incrementing the packet ID, it alternates between 0 and 1 (only using 1 bit).<br>
+<b>Go-Back-N</b> - Transmit a maximum of N unacknowledged packets until timeout, then go back N packets and retransmit.<br>
+<b>Selective Repeat</b> - Only retransmit packets that were recieved in error or not recieved.<br>
+<b>Connection-Oriented</b> - Before data transfer can occur, the two processes must "handshake".<br>
+<b>Maximum Segment Size (MSS)</b> - Maximum size a segment can have.<br>
+<b>Maximum Transmission Unit (MTU)</b> - Largest link-layer frame that can be sent by the sender.<br>
+<br><hr>
+<h3>TCP Segmemt Structure:</h3><br>
+<img src='tcp.png'></img>
+</body>
+</html>

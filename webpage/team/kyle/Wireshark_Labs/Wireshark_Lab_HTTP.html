@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	th, td {text-align: center;}
+</style>
+<title>
+</title>
+</head>
+<body>
+<h1>Wireshark Lab 1</h1>
+<h2>Part 1 - Basic GET/Response</h2>
+<h3>Capture Files</h3>
+<ul>
+	<li>HTTP_Lab_Get_1.txt</li>
+	<li>HTTP_Lab_Response_1.txt</li>
+</ul>
+<h4>GET Request</h4>
+	<p>
+	Frame 83: 519 bytes on wire (4152 bits), 519 bytes captured (4152 bits) on interface 0
+	</p>
+	<p>
+	Ethernet II, Src: Apple_14:39:e8 (88:1f:a1:14:39:e8), Dst: CiscoInc_57:c8:00 (00:17:df:57:c8:00)
+	</p>
+	<p style="color: limegreen">
+	Internet Protocol Version 4, Src: 10.200.5.234, Dst: 128.119.245.12
+	</p>
+	<p>
+	Transmission Control Protocol, Src Port: 58444, Dst Port: 80, Seq: 1, Ack: 1, Len: 453
+	</p>
+	<p>
+	Hypertext Transfer Protocol
+	</p>
+	<p style="color: crimson">
+    GET /wireshark-labs/HTTP-wireshark-file1.html HTTP/1.1\r\n
+    </p>
+	<p>
+    Host: gaia.cs.umass.edu\r\n
+    </p>
+	<p>
+    Connection: keep-alive\r\n
+    </p>
+	<p>
+    Upgrade-Insecure-Requests: 1\r\n
+    </p>
+	<p>
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36\r\n
+    </p>
+	<p>
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\n
+    </p>
+	<p>
+    DNT: 1\r\n
+    </p>
+	<p>
+    Accept-Encoding: gzip, deflate, sdch\r\n
+    </p>
+	<p style="color: gold">
+    Accept-Language: en-US,en;q=0.8,ja;q=0.6,fr;q=0.4\r\n
+    </p>
+	<p>
+    \r\n
+    </p>
+	<p>
+    [Full request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html]
+    </p>
+	<p>
+    [HTTP request 1/2]
+    </p>
+	<p>
+    [Response in frame: 87]
+    </p>
+	<p>
+    [Next request in frame: 89]
+	</p>
+<h4>GET Response</h4>
+	<p>
+	Frame 87: 554 bytes on wire (4432 bits), 554 bytes captured (4432 bits) on interface 0
+	</p>
+	<p>
+	Ethernet II, Src: CiscoInc_57:c8:00 (00:17:df:57:c8:00), Dst: Apple_14:39:e8 (88:1f:a1:14:39:e8)
+	</p>
+	<p style="color: limegreen">
+	Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.200.5.234
+	</p>
+	<p>
+	Transmission Control Protocol, Src Port: 80, Dst Port: 58444, Seq: 1, Ack: 454, Len: 488
+	</p>
+	<p>
+	Hypertext Transfer Protocol
+	</p>
+	<p style="color: crimson">
+	HTTP/1.1 200 OK\r\n
+	</p>
+	<p>
+    Date: Mon, 10 Oct 2016 18:12:52 GMT\r\n
+    </p>
+	<p>
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16 mod_perl/2.0.9dev Perl/v5.16.3\r\n
+    </p>
+	<p style="color: cornflowerblue">
+    Last-Modified: Mon, 10 Oct 2016 05:59:01 GMT\r\n
+    </p>
+	<p>
+    ETag: "80-53e7c74e56a50"\r\n
+    </p>
+	<p>
+    Accept-Ranges: bytes\r\n
+    </p>
+	<p>
+    Content-Length: 128\r\n
+    </p>
+	<p>
+    Keep-Alive: timeout=5, max=100\r\n
+    </p>
+	<p>
+    Connection: Keep-Alive\r\n
+    </p>
+	<p>
+    Content-Type: text/html; charset=UTF-8\r\n
+    </p>
+	<p>
+    \r\n
+    </p>
+	<p>
+    [HTTP response 1/2]
+    </p>
+	<p>
+    [Time since request: 0.042637000 seconds]
+    </p>
+	<p>
+    [Request in frame: 83]
+    </p>
+	<p>
+    [Next request in frame: 89]
+    </p>
+	<p>
+    [Next response in frame: 90]
+    </p>
+	<p style="color: fuchsia">
+    File Data: 128 bytes
+</p>
+<h3>Questions</h3>
+<ol>
+	<li style="color: crimson">
+		Is your browser running HTTP version 1.0 or 1.1? What version of HTTP is the server running?
+		<br>
+		Both Versions are running 1.1.
+	</li>
+	<br>
+	<li style="color: gold">
+		What languages (if any) does your browser indicate that it can accept to the server?
+		<br>
+		English (US), Japanese, and French.
+	</li>
+	<br>
+	<li style="color: limegreen">
+		What is the IP address of your computer? Of the gaia.cs.umass.edu server?
+		<br>
+		My IP: 10.200.5.234 Server IP: 128.119.245.12
+	</li>
+	<br>
+	<li style="color: crimson">
+		What is the status code returned from the server to your browser?
+		<br>
+		200 OK
+	</li>
+	<br>
+	<li style="color: cornflowerblue">
+		When was the HTML file that you are retrieving last modified at the server?
+		<br>
+		Mon, 10 Oct 2016 05:59:01 GMT
+	</li>
+	<br>
+	<li style="color: fuchsia">
+		How many bytes of content are being returned to your browser?
+		<br>
+		128 bytes
+	</li>
+	<br>
+	<li>
+		By inspecting the raw data in the packet content window, do you see any headers within the data that are not displayed in the packet-listing window? If so, name one
+		<br>
+		There is HTML text data that says: Congratulations.  You've downloaded the file http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html!
+	</li>
+</ol>
+<h2>Part 2 - Conditional GET/Response</h2>
+<h3>Capture Files</h3>
+<ul>
+	<li>HTTP_Lab_Get_2.txt</li>
+	<li>HTTP_Lab_Response_2.txt</li>
+	<li>HTTP_Lab_Conditional_Get_1.txt</li>
+	<li>HTTP_Lab_Conditional_Get_Response_1.txt</li>
+</ul>
+<h3>Questions</h3>
+<ol>
+	<li>
+		Inspect the contents of the first HTTP GET request from your browser to the server. Do you see an "IF-MODIFIED-SINCE" line in the HTTP GET?
+		<br>
+		No
+	</li>
+	<br>
+	<li>
+		Inspect the contents of the server response. Did the server explicitly return the contents of the file? How can you tell?
+		<br>
+		Yes. I can see the HTML text in the response. There's also a content type header that lists Text/HTML encoded in UTF-8.
+	</li>
+	<br>
+	<li>
+		Now inspect the contents of the second HTTP GET request from your browser to the server. Do you see an "IF-MODIFIED-SINCE" line in the HTTP GET? If so, what information follows the "IF-MODIFIED-SINCE" header?
+		<br>
+		Yes. Full request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html.
+	</li>
+	<br>
+	<li>
+		What is the HTTP status code and phrase returned from the server in response to this second HTTP GET? Did the server explicitly return the contents of the file? Explain.
+		<br>
+		304 Not Modified. No, there is no HTML/Text data in the message, and no content type header.
+	</li>
+</ol>
+<h2>Part 3 - Retrieving Long Documents</h2>
+<h3>Capture Files</h3>
+<ul>
+	<li>HTTP_Lab_Get_3.txt</li>
+	<ul>HTTP_Lab_Response_3.txt</ul>
+</ul>
+<h3>Questions</h3>
+<ol>
+	<li>
+		How many HTTP GET request messages did your browser send? Which packet number in the trace contains the GET message for the Bill or Rights?
+		<br>
+		1. 6
+	</li>
+	<br>
+	<li>
+		Which packet number in the trace contains the status code and phrase associated with the response to the HTTP GET request?
+		<br>
+		Frame #8
+	</li>
+	<br>
+	<li>
+		What is the status code and phrase in the response?
+		<br>
+		200 OK
+	</li>
+	<br>
+	<li>
+		How many data-containing TCP segments were needed to carry the single HTTP response and the text of the Bill of Rights?
+		<br>
+		4
+	</li>
+	<br>
+</ol>
+<h2>Part 4 - Embedded Objects</h2>
+<h3>Capture Files</h3>
+<ul>
+	<li>HTTP_Lab_Get_4.txt</li>
+	<li>HTTP_Lab_Get_5.txt</li>
+	<li>HTTP_Lab_Get_6.txt</li>
+	<li>HTTP_Lab_Get_7.txt</li>
+</ul>
+<h3>Questions</h3>`
+<ol>
+	<li>
+		How many HTTP GET request messages did your browser send? To which Internet addresses were these GET requests sent?
+		<br>
+		4. 128.119.245.12 and 128.119.240.90
+	</li>
+	<br>
+	<li>
+		Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain.
+		<br>
+		Serially. The timestamps are different and sequential.
+	</li>
+	<br>
+</ol>
+<h2>Part 5 - Authentication</h2>
+<h3>Capture Files</h3>
+<ul>
+	<li>HTTP_Lab_Response_Unauthorized.txt</li>
+	<li>HTTP_Lab_Get_Authorize.txt</li>
+</ul>
+<h3>Questions</h3>
+<ol>
+	<li>
+		What is the server's response (status code and phrase) in response to the initial HTTP GET message from your browser?
+		<br>
+		401 Unauthorized
+	</li>
+	<br>
+	<li>
+		When your browser's sends the HTTP GET message for the second time, what new field is included in the HTTP GET message?
+		<br>
+		Authorization
+	</li>
+</ol>
+</body>
+</html>

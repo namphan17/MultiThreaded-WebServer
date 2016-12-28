@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="HenryStyleSheet.css">
+    <meta charset="utf-8" />
+    <title>Henry Weeks Graded Assignment 0</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="HenrysJSFunctions.js"></script>
+</head>
+<body>
+    <h1 id="pageHeader">Henry Weeks: Graded Assignment 1</h1>
+
+    <h3 id="questionsHeader">10 Sample Questions About The Material With Answers</h3>
+    <h4>Chapter 1 Questions</h4>
+    <div class="buttons">
+    <button type="button" id="questionsListShow">Show Questions</button>
+    <button type="button" id="questionsListHide">Hide Questions</button>
+    </div>
+    <div id="questionsListDiv">
+        <ol id="questionsList">
+            <li id="question1">
+                <p>
+                    Q:  What are the different types of delay at a node in a packet-switch network?
+                </p>
+                <p>
+                    A:  A node in a packet-switch network may suffer from processing, queuing, transmission, and
+                    propogation delays together make up what is called total nodal delay.
+                </p> 
+            </li>
+            <li id="question2">
+                <p>
+                    Q:  What is meant by the phrase "A Network of Networks"?
+                </p>
+                <p>
+                    A:  This is part of our theme of layers of abstraction.  There are routers and communication
+                    links which span the entire globe, and this in itself is a network.  However, there is not
+                    one single ISP which manages this entire global network.  Instead, ISPs charge and segment
+                    networks on an individual basis, or sometimes in small chunks of routers.  These are each networks
+                    as well, and we therefore call this system a network of interconnected networks.
+                </p>
+            </li>
+            <li id="question3">
+                <p>
+                    Q:  In our context, what is a protocol?
+                </p>
+                <p>
+                    A:  A protocol defines the format and the order of messages exchanged between
+                    two or more communicating entities, as well as the actions taken on the transmission
+                    and/or receipt of a message or other event.
+                </p>
+            </li>
+        </ol>
+        </div>
+        <h4>Chapter 2 Questions</h4>
+        <div class="buttons">
+            <button type="button" id="questionsList2Show">Show Questions</button>
+            <button type="button" id="questionsList2Hide">Hide Questions</button>
+        </div>
+        <div id="questionsList2Div">
+        <ol id="questionsList2">
+            <li id="question1">
+                <p>
+                    Q:  Please name the two network application architectures and give one advantage of each.
+                </p>
+                <p>
+                    A:  The two architectures are client-server and peer to peer or P2P.  Client-server models
+                    have many advantages, the primary one being a simple structure which allows end users to
+                    access the entire network by connecting solely to the central server, providing ease of access
+                    as well as relative security.  Peer to peer has the advantage of a direct connection to other
+                    users, so that the network connections are not dependent on a single point of failure.
+                </p>
+            </li>
+            <li id="question5">
+                <p>
+                    Q:  For what kind of application is it critical to have low delay, and for what kind is it not
+                    ciritical for low delays, but desirable for high throughput?
+                </p>
+                <p>
+                    A:  Internet telephony, video calling, and gaming requires low delay because the real-time information
+                    is critical.  For file transfering it is not critical to have low delays, but it is desirable
+                    to have high throughput to get the entire file quickly.
+                </p>
+            </li>
+            <li id="question6">
+               <p>
+                   Q:  What is the relationship between a socket and a port?  What are the well known port numbers?
+               </p>
+                <p>
+                    A:  In the context of this course a socket is an application level software component that allows 
+                    the application to transmit and receive data, and a port is an endpoint on a network which is defined 
+                    at an operating system level.  A socket on an application is designated a port number, allowing the 
+                    computer to porperly deliver data from the network to the correct process on the local machine.<br/>
+                    
+                </p>
+            </li>
+            </ol>
+            </div>
+        <h4>Chapter 3 Questions</h4>
+    
+        <div class="buttons">
+            <button type="button" id="questionsList3Show">Show Questions</button>
+            <button type="button" id="questionsList3Hide">Hide Questions</button>
+        </div>
+    <div id="questionsList3Div">
+        <ol id="questionsList3">
+            <li id="question7">
+               
+            </li>
+            <li id="question8">
+               
+            </li>
+        </ol>
+    </div>
+    
+    <h3 id="descriptionHeader">Two Problems From Chapters 1-3</h3>
+    <div class="buttons">
+    <button type="button" id="descriptionShow">Show Problems</button>
+    <button type="button" id="descriptionHide">Hide Problems</button>
+    </div>
+    <div id="description">
+                <p>
+                    <b>P26 from Chapter 2.  Page 177</b> Suppose Bob joins a BitTorrent torrent, but he does not 
+                    want to upload any data to any other peers (so called free-riding).<br/><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;a. Bob claims that he can receive a complete copy of the file 
+                    that is shared by the swarm. Is Bob’s claim possible? Why or why not?<br/><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;b. Bob further claims that he can further make his “free-riding” more efficient
+                    by using a collection of multiple computers (with distinct IP
+                    addresses) in the computer lab in his department. How can he do that?
+                </p>
+                <p>
+                    Answer to part A:  Bob's claim is possible.  There is nothing inherent in the peer-to-peer architecture 
+                    to prevent someone from "free-riding".  For a time BitTorrent's primary weakness was its reliance on a base 
+                    of altruistic users.  Because of the legal gray area that file sharing services represent, some users are 
+                    reluctant to expose themselves by sharing parts of files themselves and instead stick strictly to downloading.    
+                    As recently as five years ago, BitTorrent has been implementing reward systems for users who have a good record 
+                    of contributing to the community, punishing those who take advantage of the services it has to offer.
+                </p>
+        <p>
+            Answer to part B:  Bob could make his file harvesting more efficient by using multiple computers.  Consider the answer to 
+            part A which demonstrates that BitTorrent uses a reward system to prevent users from downloading files without contributing themselves.  
+            There is nothing to stop Bob from sharing the same piece of a file from multiple different computers, wile using those distinct computers to 
+            download distinct portions of a file.  This would allow Bob to gain more file fragments per shared fragment, proportional to the number of computers 
+            Bob was able to use.
+        </p>
+                <p>
+                    <b>P26 from Chapter 3. Page 293</b>Consider transferring an enormous file of L bytes from Host A to Host B.
+                    Assume an MSS of 536 bytes.<br /><br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;a. What is the maximum value of L such that TCP sequence numbers are not
+                    exhausted? Recall that the TCP sequence number field has 4 bytes.<br /><br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;b. For the L you obtain in (a), find how long it takes to transmit the file.
+                    Assume that a total of 66 bytes of transport, network, and data-link header
+                    are added to each segment before the resulting packet is sent out over a
+                    155 Mbps link. Ignore flow control and congestion control so A can pump
+                    out the segments back to back and continuously.
+                </p>
+                <p>
+                    Answer to Part A:  If the Maximum Segment Size is 536 bytes, and the TCP sequence flag requires 4 bytes, then the 
+                    maximum amount of data in each TCP segment is 536 - 4 = 532 bytes.  Since the sequence number is alloted 4 bytes, 
+                    there can be 2 ^ 32 or 4,294,967,295 distinct segments in the file.  This means that the maximum size of L is 
+                    (2 ^ 32) x 532 bytes = 2.284 terabytes.
+                </p>
+        <p>
+            Answer to Part B:  On a 155 Mbps network, ignoring flow and congestion control, this download should take 2,464.1 hours.  
+            Around 100 days.
+        </p>
+    </div>
+    <h3 id="instructionsHeader">Wireshark Lab #3: TCP</h3>
+    <div class="buttons">
+    <button type="button" id="instructionsShow">Show Lab</button>
+    <button type="button" id="instructionsHide">Hide Lab</button>
+    </div>
+    <div id="instructionsDiv">
+        <p>The lab instructions simply ask us to answer the questions.</p>
+        <ol>
+            <li>
+                <p>
+                    Q: What is the IP address and TCP port number used by your client computer to transfer the
+                    file to gaia.cs.umass.edu?  What is the IP address and port number used by gaia.cs.umass.edu to 
+                    receive the file?
+                </p>
+                <p>
+                    A: The source computer's IP address is 10.128.6.4 and the TCP port number is 4444.  The destination 
+                    computer's IP address is 128.119.245.12 and it uses port 80.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Q:  What is the sequence number of the TCP SYN segment that is used to initiate the TCP connection 
+                    between the client computer and gaia.cs.umass.edu?  What is it in the segment that identifies the 
+                    segment as a SYN segment?
+                </p>
+                <p>
+                    A:  The sequence number of the TCP SYN segment is the value used to intitiate the TCP handshake between 
+                    the two computers.  The value is 0.  The SYN flag has a value of 1 which is what denotes that this 
+                    is a SYN segment.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Q:  What is the sequence number of the SYNACK segment sent by gaia.cs.umass.edu to the client computer 
+                    in reply to the SYN?  What is the value of the ACKnowledgement field in the SYNACK segment?  How did 
+                    gaia.cs.umass.edu determine that value? What is it in the segment that identifies the segment as a 
+                    SYNACK segment?
+                </p>
+                <p>
+                    A:  The sequence number in reply to the SYN is 0.  The ACK value in the SYNACK segment is 1.  The 
+                    gaia.cs.umass.edu computer adds 1 to the initial field in the SYNACK segment from the client computer 
+                    to achieve the SYNACK segment flags.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Q:  What is the sequence number of the TCP segment containing the HTTP POST command?  Note that 
+                    in order to find the POST command, you'll need to dig into the packet content field at the bottom 
+                    of the Wireshark window, looking for a segment with a "POST" within its DATA field.
+                </p>
+                <p>
+                    A:  The sequence number of the segment containing the HTTP POST command is 1.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Q:   Consider the TCP segment containing the HTTP POST as the first
+                    segment in the TCP connection. What are the sequence numbers of the first six
+                    segments in the TCP connection (including the segment containing the HTTP
+                    POST)? At what time was each segment sent? When was the ACK for each
+                    segment received? Given the difference between when each TCP segment was
+                    sent, and when its acknowledgement was received, what is the RTT value for each
+                    of the six segments? What is the EstimatedRTT value (see page 237 in text)
+                    after the receipt of each ACK? Assume that the value of the EstimatedRTT is
+                    equal to the measured RTT for the first segment, and then is computed using the
+                    EstimatedRTT equation on page 249 for all subsequent segments.<br/><br/>
+                    Note: Wireshark has a nice feature that allows you to plot the RTT for
+                    each of the TCP segments sent. Select a TCP segment in the “listing of
+                    captured packets” window that is being sent from the client to the
+                    gaia.cs.umass.edu server. Then select: Statistics->TCP Stream Graph-
+                    >Round Trip Time Graph.
+                </p>
+                <p>
+                    A:  The HTTP POST segment is the first segment.  The sequence numbers for segments 1-6 are 
+                    1, 566, 2026, 3486, 4946, and 6406, respectively.  The sending and receiving times can be listed as 
+                    follows:
+                </p>
+                <table>
+                    <tr>
+                        <td>Segment Number</td>
+                        <td>Sent Time</td>
+                        <td>ACK received time</td>
+                        <td>RTT</td>
+                    </TR>
+                    <tr>
+                        <td>Segment 1</td>
+                        <td>0.0274</td>
+                        <td>0.0538</td>
+                        <td>0.0254</td>
+                    </tr>
+                    <tr>
+                        <td>Segment 2</td>
+                        <td>0.0453</td>
+                        <td>0.0765</td>
+                        <td>0.0346</td>
+                    </tr>
+                    <tr>
+                        <td>Segment 3</td>
+                        <td>0.0497</td>
+                        <td>0.1352</td>
+                        <td>0.0691</td>
+                    </tr>
+                    <tr>
+                        <td>Segment 4</td>
+                        <td>0.0502</td>
+                        <td>0.1715</td>
+                        <td>0.1164</td>
+                    </tr>
+                    <tr>
+                        <td>Segment 5</td>
+                        <td>0.0762</td>
+                        <td>0.2159</td>
+                        <td>0.1421</td>
+                    </tr>
+                    <tr>
+                        <td>Segment 6</td>
+                        <td>0.0774</td>
+                        <td>0.2714</td>
+                        <td>0.1852</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>
+                    Q:  What is the length of each of the first six TCP segments?
+                </p>
+                <p>
+                    A:  THe first segment is 565 bytes, this is the HTTP POST. The next five are all 1460 bytes, 
+                    these are MSS.
+                </p>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

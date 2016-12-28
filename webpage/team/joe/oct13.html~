@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <style>
+h1, h2 {
+    text-align:center;
+    color:OrangeRed;
+    }
+  </style>
+  
+  <head>
+    <title>
+      OCTOBER 13th
+      </title>
+  </head>
+  <body>
+    <h1>October 13 Notes</h1>
+    <br>
+    <h1>The Network Layer</h1>
+    <p>The role of the network layer is to move packets from a sending host to a receiving host. 
+    <h2>Forwarding VS Routing</h2>
+    <p><b>Forwarding</b> involves the transfer of a packet from an incoming link to an outgoing link within a <i>SINGLE</i> router. <b>Router-local action</b> </p>
+    <p><b>Routing</b> involves all of a network's routers, whose collective interactions via routing protocols determine the paths thath packets take on their trips from source to destination node. <b>Network-wide processes</b></p>  
+    <br>
+    <h4>All networks have both a forwarding and a routing function.</h4>
+    <br><br><br>
+    <h2>What's inside a Router?</h2>
+    <p><b>Input Ports</b> The input port performs several functions.  It performs the physical layer functionality  of  terminating an incoming physical link to a router.  It performs the data link layer functionality needed to interoperate with the data link layer functionality on the other side of the incoming link. It also performs a lookup and forwarding function  so that a datagram forwarded into the switching fabric of the router emerges at the appropriate output port.  Control packets (e.g., packets carrying routing protocol information such as RIP, OSPF or IGMP) are forwarded from the input port to the routing processor. In practice, multiple ports are often gathered together on a single line card within a router.</p>
+      <p><b>Switching fabric.</b> The switching fabric connects the router's input ports to its output ports. This switching fabric is completely contained with the router - a network inside of a network router!</p>
+      <p><b>Output ports.</b> An output port stores the datagrams that have
+been forwarded to it through the switching fabric, and then transmits the
+datagrams on the outgoing link. The output port thus performs the
+reverse data link and physical layer functionality as the input port.</p>
+<p>
+<b>Routing processor.</b> The routing processor executes the routing protocols, maintains the routing tables, and performs network management functions within the router.</p>
+  </body>
+</html>

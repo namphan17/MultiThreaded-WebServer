@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+   Oct 20
+</title>
+</head>
+<body><body bgcolor="#cc9900">
+	<h1>
+         <b>(Oct 20)Link Layer</b>
+    	</h1>
+	<h2>5.4.1  Link-Layer Addressing and ARP (462-4)</h2>
+<ul>	
+
+<li>Hosts and routers have link-layer addresses. which may be surprising.</li>
+<li>MAC Addresses</li><ul>
+<li>it is not hosts and routers that have link-layer addresses but rather their
+adapters that have link-layer addresses. </li>
+<li>A link-layer address is variously called a <b> LAN address</b>, a <b>physical address</b>, or a <b>MAC address.</b> Because MAC address seems to be the most popular term, we'll henceforth refer to link-layer addresses as MAC addresses</li>
+
+<li>One interesting property of MAC addresses is that no two adapters have the
+same address. HOW? The answer is that the IEEE manages the MAC address space.</li>
+
+<li>An adapter's MAC address has a flat structure and doesn't change no matter where the adapter goes. An  adapter's  MAC  address  is  analogous  to  a  person's social  security  number,  which  also  has  a  flat  addressing  structure  and  which doesn't change no matter where the person goes where as An IP address is analogous to a person's postal address, which is hierarchical and which must be changed whenever a person moves.it is useful for a host and router interfaces to have both a network-layer address and a MAC address </li>
+<li>When an adapter wants to send a frame to some destination adapter, the sending adapter inserts the destination adapter's MAC address into the frame and then
+sends the frame into the LAN. When  an  adapter  receives  a  frame,  it  will  check  to  see whether the destination MAC address in the frame matches its own MAC address.an adapter may receive a frame that isn't addressed  to  it. If there isn't a match, the adapter discards the frame, without passing the network-layer datagram up. The destination only will be interrupted when the frame is received </li>
+<li>sometimes a sending adapter does want all the other adapters on the LAN to receive and process the frame it is about to send. In this case, the sending
+adapter inserts a special MAC <b>broadcast address</b> into the destination address field of the frame.</li>
+</ul>
+<li>Keeping the layers independent</li>
+<ul>
+<li> There are several reasons why hosts and router interfaces have MAC addresses in addition to network-layer addresses</li>
+<li>1) LANs are designed for arbitrary network-layer protocols,
+not just for IP and the Internet. If adapters were assigned IP addresses rather than “neutral”
+MAC addresses, then adapters would not easily be able to support other network-layer
+protocols </li>
+<li>f adapters were to use network-layer addresses instead of MAC addresses, the network-layer address would have to be stored in the adapter RAM and reconfigured every time the adapter was moved </li>
+<li>Another option is to not use any addresses in the adapters and have each adapter pass the data (typically, an IP datagram) of each frame it receives up the protocol stack.The network layer could then check for a matching network-layer address. One problem with this option is that the host would be interrupted by every frame sent on the LAN, including by frames that were destined for other hosts on the same broadcast LAN. In summary, in order for the layers to be largely independent building blocks in a network architecture, different layers need to have their own addressing scheme</li>
+
+</ul>
+
+</ul>
+
+</body>
+</html>

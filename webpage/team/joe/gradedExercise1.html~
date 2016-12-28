@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd; 
+}
+
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
+div.panel.show {
+    display: block;
+}
+</style>
+</head>
+<body>
+  <h1> Graded Exercise 1
+<button class="accordion">Describe the basic difference between GO-BACK-N and SLECETIVE REPEAT</button>
+<div class="panel">
+  <p> GO-BACK-N ->Retransmits all the frames that sent after the frame which suspects to be damaged or lost.</p>
+  <p> Selective Repeat -> Retransmits only those frames that are suspected to lost or damaged.</p>
+</div>
+
+<button class="accordion">Is TCP's error-recovery Selective Repeat or Go-Back-N?</button>
+<div class="panel">
+  <p> TCP's error-recovery mechanism is best described as a hybrid of GBN and SR protocols.</p>
+</div>
+
+<button class="accordion">What is flow-control service?</button>
+<div class="panel">
+  <p> Flow-control service is added to applications to eliminate the possibilty of the sender overflowing the receiver's buffer. Flow control is thus a speed-matching service. It matches the rate at which the sender is sending against the rate at which the receiving application is reading.</p>
+</div>
+
+<button class="accordion">What is congestion control?</button>
+<div class="panel">
+  <p>Congestion control controls traffic entry into a telecommunications network, to avoid congestive collapse by avoiding oversubscription by reducing the rate of packets. </p>
+</div>
+
+<button class="accordion">Define SCTP, and explain what it is.</button>
+<div class="panel">
+  <p>The Stream Control Transmission Protocol (SCTP) is a reliable, message-oriented protocol that allows several different application-level "streams" to be multiplexed through a single SCTP connection (an approach known as "multi-streaming").</p>
+</div>
+
+<button class="accordion">Using Go-Back-N, if 48 packets were sent but packet 36 was not recieved correctly. How many packets will be resent?</button>
+<div class="panel">
+  <p> 13 packets </p>
+</div>
+
+<button class="accordion">Using Selective Repeat, if 48 packets were sent but packet 21 was not recieved correctly.How many packets will be resent?</button>
+<div class="panel">
+  <p> 1 packet </p>
+</div>
+
+<button class="accordion">Multiplexing, Demultiplexing, UDP, TCP, Reliable Data Transfer, and congestion control all belong to which protocol layer?</button>
+<div class="panel">
+  <p>Transport layer</p>
+</div>
+
+<button class="accordion">What is a socket?</button>
+<div class="panel">
+  <p> A socket is one-end point of a two-way communication link between two programs running on a network.</p>
+</div>
+
+<button class="accordion">Hostnames and IP address are mapped by what service?</button>
+<div class="panel">
+  <p> Domain Name System (DNS).</p>
+</div>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+}
+</script>
+
+</body>
+</html>

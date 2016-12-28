@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    20th October
+</title>
+</head>
+<body>
+    <h1>
+        October 20th Notes
+    </h1>
+    
+    <h3>Switched Local Area Networks</h3>
+    
+    <h4>Link-Layer Addressing and ARP</h4>
+    <ul>
+        <li>A link-layer address is variously called a LAN address, a physical address, or a <b>MAC address</b></li>
+        <ul>
+            <img src="../images/notes/MACAddress.png" alt="MAC Address">
+            <li>MAC address is 6 bytes long, giving 2^48 possible MAC addresses</li>
+            <li>If a sending adapter wants all the other adapters on the LAN to receive and process the frame it is about to send it inserts a special <b>MAC broadcast address</b> into the destination address field of the frame</li>
+        </ul>
+        <li><b>Address Resolution Protocol (ARP)</b> is used to translate between network-layer addresses and link-layer addresses</li>
+        <ul>
+            <li>Each host and router has an <b>ARP table</b> in its memory, which contains mappings of IP addresses to MAC addresses.</li>
+        </ul>
+    </ul>
+</body>
+</html>

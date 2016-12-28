@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Textbook Questions Week 1
+</title>
+</head>
+<body>
+    <h1>
+        Solve 2 problems from the textbook with solutions.
+    </h1>
+    <p>
+    Question 1. Page 171. P5. The text below shows the reply sent from the server in response to the HTTP
+    GET message in the question above. Answer the following questions, indicating
+    where in the message below you find the answer.
+    
+    HTTP/1.1 200 OK<cr><lf>Date: Tue, 07 Mar 2008
+    12:39:45GMT<cr><lf>Server: Apache/2.0.52 (Fedora)
+    <cr><lf>Last-Modified: Sat, 10 Dec2005 18:27:46
+    GMT<cr><lf>ETag: “526c3-f22-a88a4c80”<cr><lf>AcceptRanges:
+    bytes<cr><lf>Content-Length: 3874<cr><lf>
+    Keep-Alive: timeout=max=100<cr><lf>Connection:
+    Keep-Alive<cr><lf>Content-Type: text/html; charset=
+    ISO-8859-1<cr><lf><cr><lf><!doctype html public “-
+    //w3c//dtd html 4.0 transitional//en”><lf><html><lf>
+    <head><lf> <meta http-equiv=”Content-Type”
+    content=”text/html; charset=iso-8859-1”><lf> <meta
+    name=”GENERATOR” content=”Mozilla/4.79 [en] (Windows NT
+    5.0; U) Netscape]”><lf> <title>CMPSCI 453 / 591 /
+    NTU-ST550A Spring 2005 homepage</title><lf></head><lf>
+    <much more document text following here (not shown)>
+    
+     a. Was the server able to successfully find the document or not? What time
+        was the document reply provided?
+            Yes, I think so. The document reply was provided at 12:39:45GMT tme on Tuesday, March 7th, 2008.
+            You can find this via the Date: line, and I can see it found the document because it is presenting an awful
+            lot of information about the document. The very last line actually says the reply shows the text from the
+            document.
+        
+     b. When was the document last modified?
+            The document was last modified on Saturday, December 10th, 2005 at 6:27 PM GMT. You can find this by looking
+            at the 'Last-Modified' line.
+            
+     c. How many bytes are there in the document being returned?
+            3874 bytes I think? Based on these lines here:
+            <cr><lf>AcceptRanges: bytes<cr><lf>Content-Length: 3874<cr><lf>
+
+     d. What are the first 5 bytes of the document being returned? Did the server
+        agree to a persistent connection?
+            I think the first five bytes are "<!doc"? If I'm not mistaken that when the actual document begins being
+            displayed, but honestly I'm not sure.
+            The server does agree to a persistent connection, and you can tell that because of this line: <cr><lf>Connection:
+            Keep-Alive<cr><lf>
+            
+            
+            
+    Question 2. Page 289. P5. Suppose that the UDP receiver computes the Internet checksum for the received
+    UDP segment and finds that it matches the value carried in the checksum field.
+    Can the receiver be absolutely certain that no bit errors have occurred? Explain.
+            No. Checksum is very limited in that it can easily make a mistake. All checksum does is check that the final binary is
+            all 1's. Because of this, it will always notice if one bit is incorrect, but if multiple digits are incorrect, its possible
+            they will still lead to a result of all 1's, even if they have changed drastically.
+            
+            
+    </p>
+</body>
+</html>

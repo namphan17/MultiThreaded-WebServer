@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+   Oct 7
+</title>
+</head>
+<body><body bgcolor="#33cccc">
+	<h1>
+         <b>(Oct 7)Network Application--Peer to Peer Applications</b>
+    	</h1>
+	<h2>Bit Torrent</h2>
+	<ul> 
+   	<li>popular way for file distrubution </li>
+	<li> torrent: the collection of all peers participationg in the distribution of a particlar file</li>
+	<li>Peers download equal sized <i>chunks</i> of the file from one another(typically 256 KBytes)</li>
+	<li>chunks accumulate over time and while peers download chunks they also upload other chunks to other users </li>
+	<li>once a user has got all there parts they can selfishly leave the torrent or they can altruistically stay and continue to upload chunks to other users</li>
+<li>the center of each torrent is a <i>tracker</i> each peer has to register with the tracker and keep telling it they are still appart. the tracker gives each user a subset of peers that they will be trading with</li>
+	<li>any number of people can be apart of any torrent from 10 to thousands</li>
+<li>each peer uses the TCP connection to ask each other for both for a list of what they have and then specific ones to send to them.</li>
+<li><b>rarest first</b>:is how the peers usually ask for chunks from the lists they get back from the each neighbor. </li>
+<li>there is a great visual on page 150</li>
+	<li>BitTorrent chooses to give priority to the neighbors that are currently supplying data at the highest rate</li>
+<li> an <b>unchoked</b>: is four neighbors that are quicky sending the most information and it is going both ways with the information.</li>
+<li> an <b>optimistically unchoked</b> person: is chosen every 30 seconds and for a peer in hopes that you will become one of the top 4 for them and they start sending you information.</li>
+<li> an <b>unchoked</b>: is four neighbors that are quicky sending the most information and it is going both ways with the information.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    li {margin: 10px 0;}
+    h1 {text-align:center;}
+    .answer{color:red;}
+
+    /* Code for tabs obtained from W3schools.com */
+    ul.tab {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+
+    /* Float the list items side by side */
+    ul.tab li {float: left;}
+
+    /* Style the links inside the list items */
+    ul.tab li a {
+        display: inline-block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+    /* Change background color of links on hover */
+    ul.tab li a:hover {background-color: #ddd;}
+
+    /* Create an active/current tablink class */
+    ul.tab li a:focus, .active {
+	background-color: #ccc;
+	color:blue;
+	text-decoration:underline;
+	}
+
+    /* Style the tab content */
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+</style>
+
+<head>
+<title>
+    Graded Exercise 1
+</title>
+    <h1>Graded Exercise 1</h1>
+</head>
+
+<script language='javascript'>
+
+    function openTab(evt, taskName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(taskName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<body>
+    <ul class="tab">
+        <li><a href="#" class="tablinks" onclick="openTab(event, 'Questions')">Questions</a></li>
+        <li><a href="#" class="tablinks" onclick="openTab(event, 'WireShark')">WireShark Lab</a></li>
+        <li><a href="#" class="tablinks" onclick="openTab(event, 'Textbook')">Textbook Questions</a></li>
+    </ul>
+
+    <div id="Questions" class="tabcontent">
+        <h3><u>Questions</u></h3>
+    <ol>
+        <li><b>Define a Finite State Machine</b><br/>
+
+            <p class="answer">A finite-state machine is a mathematical model of computation used to design both computer programs and sequential logic circuits. It is conceived as an abstract machine that can be in one of a finite number of states. (<a href="https://en.wikipedia.org/wiki/Finite-state_machine">Wikipedia</a>)</p>
+        </li>
+
+        <li><b>Explain what is ARQ and state the capabilities required of it</b><br/>
+
+            <p class = "answer"><b>A</b>utomatic <b>R</b>epeat re<b>Q</b>uest(ARQ) protocols are control messages sent back by the receiver to the sender letting them know if the packet was received correctly or if there was an error. (Pg. 207)<br/>
+            
+            <br/>ARQ required capabilities</p>
+            <ul class = "answer">
+                <li>Error Detection</li>
+                <li>Receiver Feedback</li>
+                <li>Retransmission</li>
+            </ul>
+        </li>
+
+        <li><b>What role does the Reliable Data Transfer play in a network connection?</b></li>
+        <p class="answer">TCP&#39;s reliable data transfer service ensures that the data stream that a process reads out of its TCP receive buffer is uncorrupted, without gaps, without duplication, and in sequence; that is, the byte stream is exactly the same byte stream that was sent by the end system on the other side of the connection. (Pg. 242)</p>
+        
+        <li><b>Which range of port numbers are classified as "well-known" or reserved?</b><br/>
+            <p class="answer">The port numbers ranging from 0 to 1023. (Pg. 192)</p>
+        </li>
+
+        <li><b>What is the difference between Go-Back-N (GBN) and Selective Repeat (SR)?</b><br/>
+            <p class="answer">If a missing or damaged packet is detected, GBN would require all the packets after including and after that packet to be resent. On the other hand SR would only resend that particular packet. (Pg. 218 and Pg. 223)</p>
+        </li>
+
+        <li><b>State two network layer services and their function</b><br/>
+            <ol class="answer">
+                <li><b>Guaranteed delivery:</b> Makes sure that the packet arrives at its destination </li>
+                <li><b>Guaranteed delivery with bounded delay:</b> Makes sure a packet is delivered within a specified host-to-host delay bound</li>
+            </ol>
+        </li>
+
+        <li><b>What purpose does a congestion window serve?</b><br/>
+            <p class = "answer">The congestion window, imposes a constraint on the rate at which a TCP sender can send traffic into the network. (Pg. 269)</p>
+        </li>
+
+        <li><b>What is the purpose of a flow-control service</b></li>
+        <p class="answer">TCP provides a flow-control service to its applications to eliminate the possibility of the sender overflowing the receiver&#39;s buffer. Flow control is thus a speed-matching service matching the rate at which the sender is sending against the rate at which the receiving application is reading. (Pg. 250)</p>
+
+        <li><b>What is the difference between Routing and Forwarding?</b></li>
+        <p class="answer"><b>Forwarding</b> involves the transfer of a packet from an incoming link to an outgoing link within a single router, while <b>Routing</b> refers to the network-wide process that determines the end-to-end paths that packets take from source to destination. (Pg. 308)</p>
+
+        <li><b>How many bits does an internet checksum comprise of?</b></li>
+        <p class="answer">16 bits</p>
+
+    </ol>
+    </div>
+
+<div id="WireShark" class="tabcontent">
+    <img src="../images/exercise/wireshark.png" alt="WireShark Logo" style="width:244px;height:66px;">
+    <h3><u>Lab 5: IP Protocol</u></h3>
+    <p>All pertinent labs can be found <a href="http://www-net.cs.umass.edu/wireshark-labs/">here</a></p>
+
+    <h4>Description</h4>
+    <p>This lab focuses on the IP datagram. This can be done by analyzing the trace of IP datagrams as they are sent and received by the execution of traceroute.</p>
+
+    <h4>How does traceroute work?</h4>
+    <p>Traceroute as the name suggests is a tool to display the route/path and measure transit delays of packets across an IP network.
+    It operates by sending one or more datagrams with the time-to-live (TTL) field in the IP header set to 1. It carries on doing so incrementing the value by 1 each time.<br/>
+
+    <br/>On the other hand every time a router receives a datagram, it decrements the value by 1. Thus, for each instance where the TTL reaches 0, the router returns an ICMP (Internet Control Message Protocol) message to the host.
+    In this way datagrams will hop between routers based upon their closeness and identify the routers between the host and its destination by looking at the IP addresses in the datagrams containing the ICMP TTL-exceeded messages.
+
+    <img src="../images/exercise/WireSharkLab.png" alt="WireShark Lab">
+    </p>
+      <ol>
+          <li>What is the IP address of your computer?</li>
+          <p class="answer">10.200.6.207</p>
+          <li>What is the value in the Identification field?</li>
+          <p class="answer">51577</p>
+          <li>How many bytes are in the IP header? How many bytes are in the payload of the IP datagram? Explain how you determined the number of payload bytes.</li>
+          <p class="answer">There are 20 bytes in the IP header which leaves 36 bytes for the payload of the IP datagram because we were sending a packet of length 56 bytes.</p>
+          <li>Has this IP datagram been fragmented? Explain how you determined whether or not the datagram has been fragmented.</li>
+          <p class="answer">The fragment offset is set to 0, therefore, the packet has not been fragmented.</p>
+          <li>Which fields in the IP datagram always change from one datagram to the next within this series of ICMP messages sent by your computer?</li>
+          <p class="answer">The header checksum and the Identification changes for each datagram.</p>
+          <li>Which fields stay constant? Which of the fields must stay constant? Which fields must change? Why?</li>
+          <ul class="answer">
+            <li>Fields that stay constant:</li>
+              <ul>
+                <li>Version(IPv4)</li>
+                <li>Length of header</li>
+                <li>Source IP</li>
+                <li>Destination IP</li>
+                <li>Upper layer protocol</li>
+              </ul>
+            <li>Fields that must change:</li>
+              <ul>
+                <li>The header checksum</li>
+                <li>Identification</li>
+              </ul>
+          </ul>
+      </ol>
+</div>
+
+<div id="Textbook" class="tabcontent">
+    <h3><u>Textbook Questions</u></h3>
+    <ul>
+        <h4>P.5 (Pg 289)</h4>
+        <li>Suppose that the UDP receiver computes the Internet checksum for the received UDP segment and finds that it matches the value carried in the checksum field. Can the receiver be absolutely certain that no bit errors have occurred? Explain</li>
+        <p class="answer"> No, the receiver cannot be absolutely certain that no bit errors have occurred because of the way checksum is calculated. If two bits were flipped for instance from 1 and 0 to 0 and 1 the sum would still remain the same even though their is an error.</p>
+        
+        <h4>P24. (Pg 293)</h4>
+        <li>Answer true or false to the following questions:</li>
+            <ol>
+                <li>With the SR protocol, it is possible for the sender to receive an ACK for a packet that falls outside of its current window.</li>
+                <p class="answer">True</p>
+                <li>With GBN, it is possible for the sender to receive an ACK for a packet that falls outside of its current window.</li>
+                <p class="answer">True</p>
+                <li>The alternating-bit protocol is the same as the SR protocol with a sender and receiver window size of 1.</li>
+                <p class="answer">True</p>
+                <li>The alternating-bit protocol is the same as the GBN protocol with a sender and receiver window size of 1.</li>
+                <p class="answer">True</p>
+            </ol>
+    </ul>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+            <h1 class="section">CHAPTER 3.7: TCP Congestion Control</h1>
+         </div>
+         <h3 class="section">1. How a TCP sender limits the rate at which it sends traffic into its connection:</h3>
+         <ul>
+            <li>TCP must use end-to-end congestion control rather than network- assisted congestion control, since the IP layer provides no explicit feedback to the end systems regarding network congestion.</li>
+            <li>The TCP congestion-control mechanism operating at the sender keeps track of an additional variable, <span>the congestion window</span>.</li>
+            <li>The congestion window, denoted <span>cwnd</span>, imposes a constraint on the rate at which a TCP sender can send traffic into the network.</li>
+            <li>LastByteSent – LastByteAcked <= min{cwnd, rwnd}</li>
+         </ul>
+         <h3 class="section">2. How a TCP sender perceives that there is congestion on the path between itself and the destination:</h3>
+         <ul>
+            <li>
+               Because TCP uses acknowledgments to trigger (or clock) its increase in congestion window size, TCP is said to be <span>self-clocking</span>.
+               <ul>
+                  <li>If acknowledgments arrive at a relatively slow rate (e.g., if the end-end path has high delay or contains a low-bandwidth link), then the congestion window will be increased at a relatively slow rate.</li>
+                  <li>On the other hand, if acknowledgments arrive at a high rate, then the congestion window will be increased more quickly.</li>
+               </ul>
+            </li>
+            <li>
+               Optimizing the sending rate:
+               <ul>
+                  <li>A lost segment implies congestion, and hence, the TCP sender’s rate should be decreased when a segment is lost.</li>
+                  <li>An acknowledged segment indicates that the network is delivering the sender’s segments to the receiver, and hence, the sender’s rate can be increased when an ACK arrives for a previously unacknowledged segment.</li>
+                  <li>Bandwidth probing: Given ACKs indicating a congestion-free source-to-destination path and loss events indicating a congested path, TCP’s strategy for adjusting its transmission rate is to increase its rate in response to arriving ACKs until a loss event occurs, at which point, the transmission rate is decreased.</li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

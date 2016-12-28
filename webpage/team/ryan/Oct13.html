@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			October 13th
+		</title>
+	</head>
+	<body>
+		<h1>October 13th</h1>
+		<h2>Reading Notes</h2>
+			<ul>
+				<li>Network congestions caused by too many sources sending data at too high a rate.</li>
+					<ol>
+						<li>Two hosts share single router with infinite buffer-->Delay increases.  Throughput ~= R/2.</li>
+						<li>Two hosts share single router with finite buffer-->Increase in retransmitted packages.  May have unneeded retransmissions.  Throughput ~= R/3 if sender does not waste retransmissions, and ~= R/4 if retransmissions are wasted due to multipule forwards.</li>
+						<li>Four hosts share four routers overlapping two-hop paths-->when a packet is dropped along a path, the transmission capacity that was used at each of the upstream links to forward that packet to the point at which it was dropped ends up having been wasted.</li>
+					</ol>
+				<li><b>Per-connection throughput</b>: Number of bytes per second at the receiver.</li>
+				<li><b>Offered load</b>: Rate at which the transport layer sends segments into the network.</li>
+				<li>Congestion Control:</li>
+					<ol>
+						<li><b>End-to-end</b>: No explicit support to transport layer.  TCP segment loss is taken as an indication of congested network and it decreases the window size.  Also sometimes uses increase in round-trip delay values as indicators of network congestion.</li>
+						<li><b>Network-assisted</b>: Network-layer components provide explicit feedback to the sender about congestion in the network.  Some may even send the specific transmission rate it can support.</li>
+					</ol>
+				<li><b>choke packet</b>: Sent by network router to the sender that informs the sender of network congestion. [Another form the router marks in the packet it sends to the reciever that it is congested, and the reciever alerts the sender.  This takes one round trip]</li>
+				<li><b>Asynchronous transfer mode (ATM)</b>: Virtual-circuit mode of packet switching.  Each switch maintains state about the source-to-destination VC.  Allows switch to track behavior of individual senders and take source-specific congestion-control actions.  Useful for network assisted.</li>
+				<li><b>Available bit-rate (ABR)</b>: Elastic data transfer service, similar to TCP.  Takes advantage of spare bandwith when network is underloaded, but throttles transmission when network is congested.</li>
+				<li><b>Resource Management cell</b>: A type of packet, used to convey congestion related infomration among hosts and switches.  When recieved at destination it is sent back to sender.  Some switches can generate RM cells.</li>
+				<li><b>Explicit forward congestion indication bit (EFCI bit)</b>: Every data cell/packet has one.  Congested network switches can set the bit to 1 to signal congestion to the destination host.  If the bit is set to 1 then destination host sets the congestion indication bit to 1 in the RM cell.</li>
+				<li><b>Congestion indication bit (CI bit)</b>: In RM cells.  Set by a congested network switch(or destination host if EFCI bit is 1).  Set under severe congestion conditions.</li>
+				<li><b>No increase bit (NI bit)</b>: In RM cells.  Set by a congested network switch.  Set under mild congestion in a network.</li>
+				<li><b>Explicit rate (ER)</b>: A 2-byte field in RM cells.  Congested switch can lower the value in passing.  ER field is equal to minimum supportable rate of all switches on source-to-destination path.</li>
+				<li>TCP must use end-to-end network congestion control, rather than network assisted.  Has each sender limit transmission rate as part of precieved traffic.</li>
+				<li><b>Congestion window (cwnd)</b>: Imposes constraint on tate a TCP sender can send traffic.  The amount of unacknowleged data at a sender cannot exceed minimum of cwnd and rwnd (reciever window).</br> LastByteSent - LastByteAcked <= min{cwnd, rwnd}</br> Sender's send rate is roughly cwnd/RTT bytes/sec.</li>
+				<li>TCP looks for lost packets as an indication of congestion: Either timeout or duplicate ACKs.</li>
+				<li><b>Self-Clocking</b>: Uses acknowlegements or lack of to trigger increase in congestion window size, or decreases congestion window size.</li>
+				<li><b>TCP congestion-control algorithm</b> -- Three parts. Slow start, congestion avoidance, fast recovery.</li>
+					<ol>
+						<li><b>Slow start</b>: Value of cwnd begins at 1 MSS (20kbs) and increases by 1 MSS everytime a transmitted segment is acknowleged.  Doubles sending rate every RTT.  When loss occurs ssthresh variable is set at half of the length of the cwnd at the time, and slow start begins anew at 1.  When it reaches the ssthresh it begins congestion avoidance mode.  If three ACK duplicates are recieved then it enteres the fast recovery state.</li>
+						<li><b>Congestion avoidance</b>: Increases value of cwnd by just 1 MSS every RTT.  When timeout occurs then  value of cwnd is set to 1 MSS and ssthresh is set to half the value of cwnd when loss occured.  If triple duplicate ACK is recieved then cwnd is set half (plus 3 MSS) and sets the value of ssthresh to half the value of cwnd when triple duplicate ACKs occured, then it enteres the fast-recovery state.</li>
+						<li><b>Fast recovery</b>: cwnd is increased by 1 MSS for every duplicate ACK recieved.  If ACK for missing segment arrives then it enters congestion avoidance state and deflates cwnd.  If timeout occurs then it gotes to slow-start state, setting ssthresh to half the value of cwnd at timeout occurance.  Recommended, but not required.</li>
+					</ol>
+				<li><b>Additive-increase, multiplicative-decrease (AIMD)</b>: linear increase in cwnd, then a halvind decrease of cwnd.  (all, but slow start)</li>
+				<li><b>TCP Tahoe</b>: Doesn't use fast recovery</li>
+				<li><b>TCP Reno</b>: Uses fast recovery</li>
+			</ul>
+		<h2>Lecture</h2>
+		<h3>Chapter 4 notes</h3>
+			<ul>
+				<li>Forwarding vs Routing</li>
+					<ul>
+						<li><b>Fowarding</b>: PAcket transfer in a single router. (Getting though a single interesction)</li>
+						<li><b>Routing</b>: packets movements though all routers in a network (Plan to get from home to vacation destination_</li>
+					</ul>
+				<li>2 principal states of routing algorithms</li>
+					<ol>
+						<li>Link-state</li>
+						<li>distance-vector</li>
+					</ol>
+				<li>Hierarchical routing algorithms</li>
+					<ul>
+						<li>Intra-autonomous: RIP, OSPF, IS-IS</li>
+						<li>Inter-autonomous: BGP</li>
+					</ul>
+				<li>Routers do not run application or transport layer protocols</li>
+				<li>Routers run netowrk (and link) layer protocols</li>
+				<li>Centralized vs distributed routing algorithms</li>
+					<ul>
+						<li>centralized--all in one area</li>
+						<li>distributed--over several routers</li>
+					</ul>
+				<li>Interaction between frwarding and routing</li>
+					<ul>
+						<li>routing protocol produces messages</li>
+						<li>messages used to configue forwarding tables</li>
+					</ul>
+				<li>Packet switches</li>
+					<ul>
+						<li>routers, switches, hubs</li>
+						<li>router--forward using addresses in a network-layer datagram</li>
+						<li>link-layer switch--forward using addresses in link-layer frame</li>
+					</ul>
+				<li>organization/construcion of a router</li>
+					<ul>
+						<li>input ports</li>
+						<li>output ports</li>
+						<li>switching fabric</li>
+						<li>routing processor</li>
+					</ul>
+				<li>strucsure of IPv4 datagram (* denotes 32 bits)</li>
+					<ul>
+						<li>version (4 bits)</li>
+						<li>header length (4 bits)</li>
+						<li>type of service (8 bits)</li>
+						<li>datagram length (16 bits, max is 65,535)</li>
+						<li>*</li>
+						<li>identifier (16 bit)(for fragmentations)</li>
+						<li>flags (3 bits)(for fragmentation)</li>
+						<li>fragmentation offset (13 bits) (for fragmetation)</li>
+						<li>*</li>
+						<li>time-to-live (8 bits)(prevent endless circulation, decremented eachtime it is processed by a router)</li>
+						<li>upper-layer protocol(8 bits)(TCP, UDP, etc.)</li>
+						<li>header checksum (16 bits)</li>
+						<li>*</li>
+						<li>source IP address (32 bits)</li>
+						<li>*</li>
+						<li>destination IP address (32 bits)</li>
+					</ul>
+				<li>why checksums in network and transport layers</li>
+					<ul>
+						<li>only IP header is checksummed at network layer</li>
+						<li>TCP/UDP checksum computed over whole segment</li>
+						<li>IP can carry data not passed to TCP/UDP</li>
+						<li>TCP/UDP can run through ATM (non IP) network</li>
+					</ul>
+				<li>TCP segment in IP datagram: 20+20 = 40 bytes of headers</li>
+				<li>decisions in the design of routers</li>
+					<ul>
+						<li>size of buffer</li>
+						<li>packet scheduling</li>
+					</ul>
+				<li>routing algorithms</li>
+					<ul>
+						<li>Classifications</li>
+							<ul>
+								<li>global vs decentralized</li>
+								<li>static vs dynamic</li>
+								<li> load sensitive vs load insensitive</li>
+							</ul>
+						<li>Link-state</li>
+							<ul>
+								<li>inputs: network topology, all links costs</li>
+								<li>each node broadcasts link-state packets to all other nodes</li>
+								<li>ie. Dijkstra's algorithm</li>
+							</ul>
+						<li>distance-vector</li>
+							<ul>
+								<li>iterative</li>
+								<li>asynchronous</li>
+								<li>distributed</li>
+								<li>self-terminating</li>
+							</ul>
+					</ul>
+				<li>intra-autonomous systems and inter autonomous routing</li>
+					<ul>
+						<li>autonomous--routers owned/administered by same organization</li>
+						<li>Intra -- within a single autonomous system</li>
+						<li>Inter -- among several autonomous systems</li>
+					</ul>
+				<li>Names of routing algorithms</li>
+					<ul>
+						<li>RIP: Routing information protocol (intra)</li>
+						<li>OSPF: Open shortest path first (intra)</li>
+						<li>IS-IS: closely related to OSPF (not discussed further)</li>
+						<li>BGP: Boarder gate protocol (inter)</li>
+					</ul>
+			</ul>
+		<h2>Lab</h2>
+			<ul>
+			</ul>
+		<div style="text-align:left">
+			<a href="Oct12.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="Oct14.html">Next</a>
+		</div>
+	</body>
+</html>

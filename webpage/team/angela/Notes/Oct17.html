@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+   Oct 17
+</title>
+</head>
+<body><body bgcolor="#ffffcc">
+	<h1>
+         <b>(Oct 17)Network Layer</b>
+    	</h1>
+	<h2>4.5.2 Distance-Vector(DV) Routing Algorithm (372-373)</h2>
+	<ul> 
+<li>As opposed to LS's algorithm use of global information the <b>distance vector</b> algorithm is iterative, asynchronous, and distribute. Meaning:</li>
+<ul>
+<li>asynchronous: does not require all nodes to work in lockstep with each other</li>
+<li>iterative: the process continues until there is no more information is exchanged between neighbors.</li>
+<li> distribute: each node receives some information from one or more of its directly attached neighbors, performs a calculation, and then distributes the results of its calculation back to its neighbors. </li>
+</ul>
+<li>Bellman-Ford equation <i>d<sub>x</sub>(y)</i> = min<i><sub>v</sub>{c(x,y) + d<sub>v </sub>(y)}</i>  Meaning:</li>
+<ul>
+<li> <i>d<sub>x</sub>(y)</i>: cost of the least cost path from node x to node y</li>
+<li>min<i><sub>v</sub></i>: this is take from all of x's neighbors </li>
+<li>it works proof on page 272 </li>
+</ul>
+<li>the solution to the Bellman-Ford equation provides the entries in node x's forwarding table.</il>
+<li>with the DV algorithm each node x maintains the following routing information: </li>
+<ul>
+<li>For each neighbor v, the cost c(x,v) from x to directly attached neighbor, v</li>
+<li>Node x's distance vector, that is, <b> D</b><sub>x</sub> = [D<sub>x</sub>(y):y in N], containing x's estimate of its cost to all destinations, y, in N</il>
+<il>The distance vectors of each of its neighbors, that is <b> D</b><sub>x</sub> = [D<sub>x</sub>(y):y in N] for each neighbor v of x </li><br><br>
+</ul>
+</ul>
+<img src="code.png">
+</body>
+</html>

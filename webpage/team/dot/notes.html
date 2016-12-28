@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Class Notes
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        In-Class Notes
+    </h1>
+    <h3>Class notes 10/7/2016</h3>
+<ul>
+	<li style="color:chartreuse">Finite State Machine</li>
+	<ul>
+		<li>An abstract machine which can be in one of a finite number of states</li>
+		<li>Any given finite state machine described by:</li>
+		<ol>
+			<li>A finite set of states</li>
+			<li>Alphabet - a finite set of symbols</li>
+			<li>Transition function</li>
+			<ul>
+				<li>A set of rules (can be given in a table)</li>
+				<li>If in state [A] and looking at symbol [*], next state is [B]</li>
+			</ul>
+			<li>Starting state</li>
+			<li>Set of accepting states</li>
+		</ol>
+		<li><span style="color:chartreuse">Language</span>: set of symbols and rules to distinguish legal from illegal (describes a machine)</li>
+		<li><span style="color:chartreuse">Machine</span>: set of rules which recognize a language</li>
+		<li>Lexx</li>
+		<ul>
+			<li>Unix program</li>
+			<li>Given a description of a regular language, produces a C program (finite state machine) that recognizes the language</li>
+		</ul>
+	</ul>
+	<li style="color:chartreuse">Regular Expressions</li>
+	<ul>
+		<li>Search for more complicated patterns than exact matches</li>
+	</ul>
+	<li>4 Types of Languages</li>
+	<ul>
+		<li style="color:chartreuse">Regular Languages</li>
+		<ul>
+			<li>Simplest in hierarchy</li>
+		</ul>
+	</ul>
+	<li>4 kinds of codes</li>
+	<ol>
+		<li>Convenience: unicode/ASCII</li>
+		<li>Data compression: ZIP, MP3, JPEG</li>
+		<li>Error detection and correction</li>
+		<li>Encryption</li>
+	</ol>
+</ul>
+	<h3>Class Notes 10/10/2016</h3>
+	<ul>
+		<li>Different forms of identifier are used in different circumstances</li>
+		<li style="color:chartreuse">Hostname</li>
+		<ul>
+			<li>variable-length alphanumeric string identifier</li>
+			<li>provide little information about the site's location</li>
+			<li>difficult for computers to parse</li>
+		</ul>
+		<li style="color:chartreuse">IPv4 Address</li>
+		<ul>
+			<li>4-byte computer-readable numeric identifier</li>
+			<li>describes its location</li>
+			<li>Format: byte.byte.byte.byte (123.45.67.89)</li>
+		</ul>
+		<li><span style="color:chartreuse">Mnemonic</span>: <i>device to help you memorize something</i></li>
+		<li style="color:chartreuse"><b>D</b>omain <b>N</b>ame <b>S</b>ystem</li>
+		<ul>
+			<li>Two part definition</li>
+			<ol>
+				<li style="color:chartreuse">Distributed database</li>
+				<li><span style="color:chartreuse">API</span> for making queries on said database</li>
+			</ol>
+			<li>Popular example: <span style="color:chartreuse"><b>B</b>erkeley <b>I</b>nternet <b>N</b>ame <b>D</b>omain</span></li>
+			<li>DNS runs on <span style="color:chartreuse">port 53</span> over UDP</li>
+			<li>Application-level protocol used by other application-level protocols</li>
+			<li>Process of using the DNS to fetch an IP address adds delay (from milliseconds to seconds</li>
+			<li>To reduce delay, nearby DNS server caches frequently requested IPs</li>
+			<li><span style="color:chartreuse">Cache</span>: <i>local memory that stores what was looked up last</i></li>
+			<li>Specified in <span style="color:chartreuse">RFC 1034</span> and <span style="color:chartreuse">RFC 1035</span>, updated in several more</li>
+			<li>Users do not interact directly with the DNS, only applications do</li>
+		</ul>
+		<li>DNS Services</li>
+		<ul>
+			<li style="color:chartreuse">Host Aliasing</li>
+			<ul>
+				<li>Host with a complicated hostname can have one or more <span style="color:chartreuse">alias names</span></li>
+				<li>Complicated base url is the <span style="color:chartreuse">canonical hostname</span></li>
+				<li>Alias names are usually more mnemonic</li>
+			</ul>
+			<li style="color:chartreuse">Mail Server Aliasing</li>
+			<ul>
+				<li>Translate mnemonic e-mail address endings (@hotmail.com, @gmail.com, etc.)</li>
+				<li>Invoked by mail application</li>
+				<li>MX record permits company's mail server and web server to have identical alias names</li>
+			</ul>
+			<li style="color:chartreuse">Load Distribution</li>
+			<ul>
+				<li>Busy sites have IPs to alleviate strain on the system</li>
+				<li>DNS alternates between which IP it distributes first to prevent all traffic from going to the same IP</li>
+			</ul>
+		</ul>
+		<li>Simple centralized DNS has many problems</li>
+		<ul>
+			<li><span style="color:chartreuse">Single point of failure</span>: if the server fails, the entire internet crashes</li>
+			<li>Traffic volume would be immense, creating a long queue delay</li>
+			<li>Anyone far from the database would have high delays</li>
+			<li>High maintenance requirements</li>
+		</ul>
+		<li style="color:chartreuse">Distributed DNS</li>
+		<ul>
+			<li>No single machine contains all of the mappings</li>
+			<li>Machines are distributed across the world</li>
+			<li>Hierarchy of servers</li>
+			<ol>
+				<li style="color:chartreuse">Root server</li>
+				<li style="color:chartreuse">TLD server</li>
+				<li style="color:chartreuse">Authoritative server</li>
+			</ol>
+		</ul>
+		<li style="color:chartreuse">DNS Message Format</li>
+		<ol>
+			<li><span style="color:chartreuse">Identification/Flags</span> (4 bytes each)</li>
+			<ul>
+				<li><span style="color:chartreuse">Identification</span>: 16-bit number identifying the query</li>
+				<li><span style="color:chartreuse">Flags</span>: Yes/no indicators defining the kind of query</li>
+			</ul>
+			<li><span style="color:chartreuse">Number of questions/Number of answer RRs</span> (4 bytes each)</li>
+			<li><span style="color:chartreuse">Number of Authority RRs/Number of additional RRs</span> (4 bytes each)</li>
+			<li><span style="color:chartreuse">Questions</span> (variable number) (8 bytes)</li>
+			<ul>
+				<li>Name field with the name being queried</li>
+				<li>Type field with the kind of question</li>
+			</ul>
+			<li><span style="color:chartreuse">Answers</span> (variable number)</li>
+			<ul>
+				<li>Resource Records which were queried</li>
+			</ul>
+			<li><span style="color:chartreuse">Authority</span> (variable number)</li>
+			<ul>
+				<li>Records of other authoritative servers</li>
+			</ul>
+			<li><span style="color:chartreuse">Additional Information</span> (variable number)</li>
+			<ul>
+				<li>Other helpful records (canonical hostnames and IPs, etc</li>
+			</ul>
+		</ol>
+		<li>DNS Vulnerabilities</li>
+		<ul>
+			<li style="color:chartreuse">DDoS attack</li>
+			<ul>
+				<li>Flood server with messages</li>
+				<li>Many high-level servers have packet filters, preventing them from being directly attacked</li>
+			</ul>
+			<li style="color:chartreuse">Man-in-the-middle attack</li>
+			<ul>
+				<li>Intercepts queries from hosts and returns bogus replies</li>
+				<li>May then redirect client to the real server so they don't know anything is wrong</li>
+			</ul>
+		</ul>
+	</ul>
+	<h3>Class notes 10/11/2016</h3>
+	<ul>
+		<li style="color:chartreuse">Apache</li>
+		<ul>
+			<li>Represented by a feather icon</li>
+			<li>Named because it is "a patchy program"</li>
+			<li>Runs on <span style="color:chartreuse">port 80</span> by default</li>
+			<li>Good for HTML and PHP pages</li>
+		</ul>
+		<li style="color:chartreuse">Glassfish</li>
+		<ul>
+			<li>Good for HTML and Java pages?</li>
+			<li>Runs on <span style="color:chartreuse">port 8080</span> by default</li>
+		</ul>
+		<li style="color:chartreuse">Cake (PHP Framework)</li>
+		<li style="color:chartreuse">Jango (Java Framework)</li>
+		<li style="color:chartreuse">Java Faces Server</li>
+		<ul>
+			<li>Can use ordinary html tags, but also has instructions to the server to generate html</li>
+			<li>Generated html allows for use of special characters without manually escaping them</li>
+			<li>Allows for neater stylesheet referencing</li>
+			<li>Allows long or frequent output strings to be stored in a 'properties' file, displayed by calling a simple variable</li>
+			<li>Allows for multiple such properties files to support other languages</li>
+			<li>(name the property file the same thing but with the two-letter country tag at the end)</li>
+		</ul>
+		<li style="color:chartreuse"><b>S</b>tandard <b>G</b>eneralized <b>M</b>arkup <b>L</b>anguage</li>
+		<li style="color:chartreuse"><b>H</b>yper<b>T</b>ext <b>M</b>arkup <b>L</b>anguage</li>
+		<li style="color:chartreuse">e<b>X</b>tensible <b>M</b>arkup <b>L</b>anguage</li>
+		<li>HTML and XML derived from SGML, which was a lot more complicated</li>
+		<ul>
+			<li>Lets you create your own tags as long as you follow the specifications</li>
+			<li>Frequently used in configuration files</li>
+		</ul>
+		<li style="color:chartreuse">Java Annotations</li>
+		<ul>
+			<li>Marked with an <span style="color:chartreuse">@</span></li>
+			<li>Tells the server to insert a pre-determined block of code</li>
+		</ul>
+		<li style="color:chartreuse">Session Scope</li>
+		<ul>
+			<li>Introduce some state to HTML</li>
+			<li>Store a cookie until it is no longer necessary</li>
+		</ul>
+		<li style="color:chartreuse">Application Scope</li>
+		<ul>
+			<li>Introduce some state to HTML</li>
+			<li>Store variables from all users who visit the application</li>\
+		</ul>
+	</ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

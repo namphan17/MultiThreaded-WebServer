@@ -1,0 +1,109 @@
+Monday, October 17th
+Routing Algorithms
+
+    The network layer is responsible for determining the best path from the sender to the receiver. It accomlishes this by
+using one of two major routing algorithms, determining the best path through the series of routers.
+    
+    Each host is normally attached directly to a single router, it's 'default router' or 'first-hop router'. Every time the
+host sends or receives a packet, it goes through its default router. The default router of the sender is known as the
+'source router' and the default router of the receiver is called the 'destination router'. So, it stands to reason that we
+determine the 'best path' by finding the fastest path from the source router to the destination router.
+
+    To help determine the best path, router networks are shown as a 'graph'. In this graph, each router is represented by a
+small circle (or square, or anything really) with a name. Each router has several edges that show its connections to other
+routers in the network. Each of these edges also shows a numerical value, the 'cost' of moving from one router to the other.
+These edges represent the physical links between each router. The 'cost' in this instance could be anything from the actual
+cost of building or using such connections, but in general just speaks to the amount of time it takes to travel from one to
+the other by that route. In the real world, many things determine a paths cost, which can make routing algorithms tricky to
+implement, but we're just talking in broad strokes here for the moment, so we won't worry about the specifics of how the cost
+comes to be the way it is, it just is.
+
+    If there exists a connection between two nodes in a network, then those nodes are said to be 'neighbors' of each other.
+The goal of a routing algorithm is to travel between 'paths', a series of neighbors connected together, to get data from the
+source router to the destination router in the most efficient way possible. This most efficient path is called the 'least
+cost path', and, as you might imagine, is the path that requires the least total cost to get from the source to the
+destination. In addition, there is something called the 'shortest path', which is the path that requires the data to enter
+the fewest number of nodes as possible before reaching its destination, regardless of the cost. However, these two terms are
+very often mixed up (I think even our textbook has made this mistake a couple times...), and so if you hear someone refer to
+the 'shortest' path, they're probably actually referring to the least cost path.
+
+    There are two types of routing algorithms. A Global routing algorithm computes the least cost path using complete
+knowledge of the network. It would be as if it had the entire graph in its memory. These are also classified as 'link-state
+algorithms'. The second type is known as a 'decentralized routing algorithm'. These algorithms don't have complete knowledge
+of the network. Instead, each node only begins with knowledge of its own connections, then through a long process of
+information exchange with its neighbors, gradually calculate the least cost path to their destination.
+
+
+
+
+
+Wednesday, October 19th
+Cyclic Redundancy Checks
+
+    For today, I'm going to do something just a wee bit different. I found that the books explanation of CRC calculation pretty
+confusing, so instead, I'm going to briefly go over how its calculated, in laymans terms.
+
+    To begin, we are given two strings of binary of various length, G and D, and are further given a value for the length of r. Our goal
+is to find 'r' through this CRC calculation so that we can determine exactly what bits were transmitted. So, to set-up the 
+problem, we draw the Division Bracket (the symbol you use when you do long hand division like some kind of caveman. [I jest,
+but I seriously don't think I've done long hand division since sixth grade...]) On the left side of the division bracket,
+write 'G', each of its bits. Inside the division bracket, write each bit of 'D' out. Then, in addition, add a number of zeroes
+to the end of 'D''s string equal to the length of 'r'.
+
+    Now that were' set up, lets get into the nitty gritty. Begin by writing 'G' below 'D', lining up the bits starting from the
+left hand side of 'D'. We're going to 'subtract' 'G' from 'D'. But, it's not like you'd normally subtract in your standard
+math course. Instead, beginning from the leftmost column, we're going to use 'Xor'. What that means is, if either, but not both,
+of the binary digits in this column are 1, then the result is also 1. If both are 1, or both are 0, then the result is 0. In
+other words, 'exclusive or'.
+    
+    So again, starting from the leftmost column, (draw a line below to seperate the initial columns from the Xor result.)
+determine the results of each column. If your first column would result in a '0', instead of writing a '0', write nothing
+instead. In fact, continue writing nothing instead of '0' until you get a result of '1' the first time this subtraction. The
+first digit of your result MUST be a 1, as the zeroes are simply left blank. Once that first 1 result is found though, write
+'0's as part of your result when appropriate.
+
+    After this subtraction, look back up at your initial placement of 'D'. Draw a line from the leftmost unused (as in, you
+haven't used it in a subtraction yet) bit, and bring it down and add it to your result of the previous step. Now, if there
+are enough bits in the result to fit all of 'G' under it, subtract again, using the same process as before. Otherwise, bring
+down the next digit.
+
+    You're going to repeat this process of bringing down bits, subtracting, and so on until you run out of bits from 'D' to
+ bring down. Once that happens, look at the final 'r-length' digits of your result, adding zeros to the left of it as necessary.
+ This is r! Using r, we can finally determine what bits were translated. To do so, just take your original 'D' string, and add
+ 'r' in place of the zeroes.
+ 
+ 
+ 
+ 
+ 
+ Thursday, October 20th
+ Switches Vs Routers
+ 
+    Both switches and routers are store-and-forward packet switches that are used for forwarding packets. However, while
+routers forward packets using network-layer addresses and is a layer-3 packet switch, switches forward packets using 
+MAC addresses, and are a layer-2 packet switch. Network admins often have to choose between routers and switches when
+installing interconnection devices. So, obviously, we need to look at the pros and cons of both.
+
+    Let's start with switches. Switches are plug-and-play, meaning they require no intervention from either a user or a
+network administrator. All a network administrator has to do to use a switch is connect the LAN segments to the switch, and
+its good to go. This may not seem like much, but its a HUGE boon to network administrators, who would otherwise have to do
+all the heavy lifting. Switches also have a high filtering and forwarding rates, especially compared to routers. This is due
+to switches unique position of being a layer-2 packet switch, as opposed to routers, which have to process datagrams through
+layer-3.
+
+    That being said though, switches have a lot of downsides as well. A switched network's topology is restricted to that of
+the spanning tree, in order to prevent the cycling of broadcast frames. Switches are also very vulnerable to broadcast storms,
+if one stream goes haywire, it will cause the entire network to collapse.
+
+    Next, we look at routers. Using routers, packets aren't restricted to a spanning tree, and so can use the best path
+ between their source and destination. Routers also provide firewall protection against layer-2 broadcast storms which, as we
+ saw with switches before, could prove to be a huge hassel.
+ 
+    However, routers are not plug-and-play like switches are. They require their IP addresses to be configured. Also, as
+ mentioned before, routers have a larger (per packet) processing time than switches do, due to needing to process datagrams
+ through layer-3.
+ 
+    In conclusion, switches are best used when the network is kept small. Switches downsides aren't so bad in small doses
+really. But were a large switch network go down due to a broadcast storm? The results could be terrible. Routers, on the other
+hand, are better suited for large networks. You get more options and more security, even if you miss out on
+'Plug-and-Play'.

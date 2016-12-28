@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			October 12th
+		</title>
+	</head>
+	<body>
+		<h1>October 12th</h1>
+		<h2>Reading</h2>
+			<ul>
+				<li>3.4 Pipelined data transfer</li>
+					<ul>
+						<li>rdt3.0 is stop-and wait protocol.  Takes a long time, has to wait for confirmation of a recieved package before it sends the next one.  Very low <b>utilization</b></li>
+						<li><b>piping</b>: Sender can send multiple packes without waiting for acknowlegment that previous packers were recieved.  2 main types <b>Go-Back-N</b> and <b>selective repeat</b>.</li>
+						<ul>
+							<li><b>Go-Back-N</b>: Sender can send multipule packets, but can only have maximum number N allowed without recieving acknowlegment of recival.  Packets past N can't be sent till acknowlegment has been recieved.  Frame of N over packets is called the <b>window size</b>.  Checks to see if window is full and if it isn't sends the next package.  There is a timer for each packet, if the acknowlegment is not recieved before the timer times out, then it resends all packets back to that one. (ie. if packet 2 was not acknowleged, but 1,3 and 4 were, then 2,3,4 are resent, but not 1).  The reciever does not save packets in the buffer if they aren't delivered to the upper layer, so when the packets are resent, it has to rerecieve 3 and 4.  This is because the reviever must deliever packets in order to the upper layer.</li>
+							<li><b>Selective Repeat (SR)</b>: Only resends packets that were not acknowleged.  The reciever must individually acknowlege correctly recievd packets.  Out of order packets are buffered by the reciever till missing packets are recieved.</li>
+						</ul>
+					</ul>
+				<li>3.5 Connection Oriented Transport (TCP)</li>
+					<ul>
+						<li><b>TCP</b>: Connection oriented--one application process can send data to another.  Must 'handshake' to start data transfer. Runs only in the end systems, not in the network between them.  <b>Full-duplex service</b> allowing information to flow from one end state to the other, and the same time that information flow in the opposite direction between them, and <b>point-to-point</b> single sender and single reciever.  </li>
+					</ul>
+			</ul>
+		<h2>Lecture</h2>
+			<ul>
+				<li>Student Notes</li>
+					<ul>
+						<li><b>Salem:</b></li>
+						<li>rdt2.0: positive acknowledgements and negative acknowledgments.  reliable data transfer based on ARQ (Automatic Repeat reQuest).  Sender side with two states: witin for data to be pased down, and waiting for ACK or NAK from reciever.  </li>
+						<li>rdt2.1: adds a new field to data packet so that the receiver knows wheter the sender is rsending a prviously transmitted packet</li>
+						<li>rdt2.2: reciever must now include sequence number of pcket being acknowleged by an ACK message.</li>
+						<li>rdt3.0: Modifying sender.  Countdown timer, start when packet is sent, responds to timer reset, stops when recieve acknowledgement.  If no confirmation, assume message wasn't sent, resends packet.</li>
+						<li><b>Jeremy:</b></li>
+						<li>Round Trip Time: aka round trip estimations or ping time.  Tells system about how long each system send should take, lets sender determine how long before it assumes packet or acknowledgement was lost.  EstimatedRTT = (1-a)*EstimatedRTT+a*SampleRTT.  a is (1/8) or 0.125, using an eigth puts bigger emphasison more recent RTT values. a can better represent different things about network, closer to 1 is closer to sample time.</li>
+						<li>RTT standard deviation: amout tha current patter divates from norm.  Useful for determing if a packet is taking longer than expected.  DevRTT = (1- b) * DevRTT * |SampleRTT - EstimatedRTT|.  b recomended values is 0.25.  How long we expect a packet to take, plus a little extra wiggle room.</li>
+						<li>Timeout Interval: Combine two formulas to give us the time a packet should take to arrive before it is assumed totally lost and should resend the packet.</li>
+						<li><b>Cameron:</b></li>
+						<li>8-bit Checksum</li>
+						<li>Python Code:</li>
+							<ul>
+								<li><i>import sys</br></br>def make_packet(data):</br>	checksum = make_checksum(data)</br>	return bytearray([checksum]) + bytearray(data)</br></br>def make_checksum(data):</br>	bytes = bytearray(data)</br>	total = sum(bytes)</br>	print "total:", total</br>	without_overflow = total % 256</br>	print "without overflow:", wihtout_overflow</br>	return 255 - without_overflow</br>	print "resulting checksum:", resulting checksum</br>	return result</br></br>def maybe_corrupt(packet):</br>	if random.choice([True, False, False]):</br>		index = random.randrange(0, len(packet))</br>		packet[index] = random.randrange(0, 256)</br>		print "I am corrupt"</br></br>def is_corrupt(packet):</br>	return (sum(packet)% 256) != 255</br></br>def extract(packet):</br>	return str(packet[1:])</br></br>if __name__ == "__main__":</br>	for line in sys.stdin:</br>		packet = make_packet(line)</br>	maybe_corrupt(packet)</br>	if is_corrupt(packet):</br>		print "packet is corrupt!"</br>	else:</br>		data = extract(packet)</br>	print "packet is good:", data</br></i></li>
+							</ul>
+						<li><b>Nigel:</b></li>
+						<li>Talked about using a router, missed some of it, and the rest was too fast to write. but it was interesting.</li>
+						<li>MAC Filter: white list--put in MAC address of devices that are allowed.  Black list--put in MAC address of only banned devices.</li>
+					</ul>
+			</ul>
+		<h2>Lab<h2></h2>
+			<ul>
+			</ul>
+		<div style="text-align:left">
+			<a href="Oct11.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="Oct13.html">Next</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+            <ul>
+               <h1 class="section">CHAPTER 4.5.1 The Link-State (LS) Routing Algorithm</h1>
+               <li>The problem of routing a packet from source host to destination host clearly boils down to the problem of routing the packet from source router to destination router</li>
+               <li>The purpose of a routing algorithm is then simple: given a set of routers, with links connecting the routers, a routing algorithm finds a “good” path from source router to destination router.</li>
+               <li>
+                  A <span class="section">global routing</span> algorithm computes the least-cost path between a source and destination using complete, global knowledge about the network. That is, the algorithm takes the connectivity between all nodes and all link costs as inputs. This then requires that the algorithm somehow obtain this information before actually performing the calculation. The calculation itself can be run at one site
+                  <ul>
+                     <li>The key distinguishing feature here is that a global algorithm has complete information about connectivity and link costs.</li>
+                     <li>algorithms with global state information are often referred to as <span class="section">link-state (LS) algorithms</span>, since the algorithm must be aware of the cost of each link in the network.</li>
+                  </ul>
+               </li>
+               <li>
+                  In a <span="section">decentralized routing algorithm</span>, the calculation of the least-cost path is carried out in an iterative, distributed manner. No node has complete information about the costs of all network links.
+                  <ul>
+                     <li>A In static routing algorithms, routes change very slowly overdistance-vector (DV) algorithm</li>
+                  </ul>
+               </li>
+               <li>In static routing algorithms, routes change very slowly over time, often as a result of human intervention</li>
+               <li>Dynamic routing algorithms change the routing paths as the network traffic loads or topology change.</li>
+            </ul>
+            <h3 class="section">The LS Algorithm</h3>
+            <ul>
+               <li>Each node broadcast link-state packets to all other nodes in the network</li>
+               <li>Dijkstra’s algorithm</li>
+               <li>
+                  <ul>
+                     <li>D(v): cost of the least-cost path from the source node to destination v as of this iteration of the algorithm.</li>
+                     <li>p(v): previous node (neighbor of v) along the current least-cost path from the source to v.</li>
+                     <li>N' : subset of nodes; v is in N' if the least-cost path from the source to v is definitively known.</li>
+                     <figure>
+                     <img class="display" src="../img/pseudo-dijkstra-algorithm.PNG"/>
+                     <figcaption class="display">Fig1. Dijkstra Shortest Path Algorithm</figcaption>
+                     </figure>
+                  </ul>
+               </li>
+
+
+               <li>
+                  <h3>To understand this algorithm, let examine another example on a different routing graph.</h3>
+                  <br>
+                  <br>
+                  <img class="display" src="../img/routing.PNG"/>
+                  <br>
+                  <br>
+                  Let say A is the source node. We will compute the shortest path from A to every other node in this graph
+                  <table style="width:100%">
+                    <tr>
+                      <th>step</th>
+                      <th>n=N'</th>
+                     <th>D(B), p(B)</th>
+                     <th>D(C), p(C)</th>
+                     <th>D(D), p(D)</th>
+                     <th>D(E), p(E)</th>
+                     <th>D(F), p(F)</th>
+                    </tr>
+                    <tr>
+                      <td>0</td>
+                      <td>A</td>
+                      <td>3, A</td>
+                      <td>5, A</td>
+                      <td>9, A</td>
+                      <td>&infin;</td>
+                      <td>&infin;</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>AB</td>
+                      <td>3, A</td>
+                      <td>5, A</td>
+                      <td>7, B</td>
+                      <td>10, B</td>
+                      <td>&infin;</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>ABC</td>
+                      <td>3, A</td>
+                      <td>5, A</td>
+                      <td>7, B</td>
+                      <td>10, B</td>
+                      <td>13, C</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>ABCD</td>
+                      <td>3, A</td>
+                      <td>5, A</td>
+                      <td>7, B</td>
+                      <td>9, D</td>
+                      <td>0, D</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>ANBCE</td>
+                      <td>3, A</td>
+                      <td>5, A</td>
+                      <td>7, B</td>
+                      <td>9, D</td>
+                      <td>0, D</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>ABCDEF</td>
+                      <td>3, A</td>
+                      <td>5, A</td>
+                      <td>7, B</td>
+                      <td>9, D</td>
+                      <td>0, D</td>
+                    </tr>
+                  </table>
+               </li>
+               <br>
+               The routing table for A would be 
+               <br>
+                  <table style="width:100%">
+                    <tr>
+                      <th>Destination</th>
+                      <th>Link</th>
+                    </tr>
+                  <tr>
+                     <th>B</th>
+                     <th>(A,B)</th>
+                  </tr>
+                  <tr>
+                     <th>C</th>
+                     <th>(A,C)</th>
+                  </tr>
+                  <tr>
+                     <th>D</th>
+                     <th>(A,B)</th>
+                  </tr>
+                  <tr>
+                     <th>E</th>
+                     <th>(A,B)</th>
+                  </tr>
+                  <tr>
+                     <th>F</th>
+                     <th>(A,B)</th>
+                  </tr>
+               </table>
+
+               
+
+
+
+
+
+               <li>
+                  Oscillations with congestion-sensitive routing can happen where link costs are equal to the load carried on the link<br>
+                  <figure>
+                     <img class="display" src="../img/oscillation.PNG"/>
+                     <figcaption class="display">Fig2. Oscillation with congestion-sensitive routing/figcaption>
+                     </figure>
+               </li>
+               <li>One solution would be to mandate that link costs not depend on the amount of traffic carried</li>
+               <li>Another solution is to ensure that not all routers run the LS algorithm at the same time.</li>
+            </ul>
+         </div>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

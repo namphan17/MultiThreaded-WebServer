@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<body>
+</body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+/** This function will create randomly placed nodes with edges between them
+  *@param n  Number of Nodes
+  *@param e  Number of Edges
+  *@param x  Max X Coordinate
+  *@param y  Max Y Coordinate
+
+  *@return graph  an array that contains an array of nodes & an array of edges  --> graph{ nodes[], edges[] }
+**/
+function randomGraph(n, e, x, y) {
+    //This is an array that ultimately gets returned
+    var graph = { nodes: [], edges: [] };
+    //temp variables
+    tmpEdges = [];
+    var i, j, k;
+
+        for (i = 0; i < n; i++)
+        {
+            //Randomly generate n Nodes with random x and y coordinates
+            graph.nodes.push({ label: 'node '+i, x: Math.floor((Math.random() * x) + 1), y: Math.floor((Math.random() * y) + 1)});
+
+            //create a a handful of edges. we will select a subset of theses later.
+            for (j = i+1; j < n; j++)
+            {
+                tmpEdges.push({ source: i, target: j, len: 0 });
+            }
+        }
+
+        // pick m random edges from tmpEdges
+        k = tmpEdges.length - 1;
+            for (i = 0; i < e; i++)
+            {
+                graph.edges.push(tmpEdges.splice(Math.floor(Math.random()*k), 1)[0]);
+                k--;
+            }
+
+        //find the length of each edge
+        var x1, x2, y1, y2, distance;
+        for (i = 0; i < e; i++)
+        {
+            x1 = graph.nodes[graph.edges[i].source].x;
+            y1 = graph.nodes[graph.edges[i].source].y;
+            x2 = graph.nodes[graph.edges[i].target].x;
+            y2 = graph.nodes[graph.edges[i].target].y;
+
+            //distance formula
+            distance = Math.sqrt( Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2) ) ;
+            //adding distance to the edges
+            graph.edges[i].len = distance;
+        }
+    return graph;
+}
+
+function makeNodeCircles(graph)
+{
+    nodeCir = []
+    for( i = 0; i < graph.nodes.length; i++)
+    {
+        nodeCir.push({ "x_axis": graph.nodes[i].x, "y_axis": graph.nodes[i].y, "radius": 10, "color": "red"} );
+    }
+    return nodeCir;
+}
+
+graph = randomGraph(10, 15, 600, 600);
+nodeCircles = makeNodeCircles(graph);
+
+var svgContainer = d3.select("body").append("svg")
+                                    .attr("width", 625)
+                                    .attr("height", 625);
+
+for(i = 0; i < graph.edges.length; i++)
+{
+   //Draw the line
+   var line = svgContainer.append("line")
+                          .attr("x1", graph.nodes[graph.edges[i].source].x)
+                          .attr("y1", graph.nodes[graph.edges[i].source].y)
+                          .attr("x2", graph.nodes[graph.edges[i].target].x)
+                          .attr("y2", graph.nodes[graph.edges[i].target].y)
+                          .attr("stroke-width", 2)
+                          .attr("stroke", "black");
+}
+
+var circles = svgContainer.selectAll("circle")
+                          .data(nodeCircles)
+                          .enter()
+                          .append("circle");
+
+var circleAttributes = circles
+                      .attr("cx", function (d) { return d.x_axis; })
+                      .attr("cy", function (d) { return d.y_axis; })
+                      .attr("r", function (d) { return d.radius; })
+                      .style("fill", function(d) { return d.color; });
+
+
+</script>
+</html>

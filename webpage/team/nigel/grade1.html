@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Graded Assesment 1 - Ticknor</title>
+</head>
+<body>
+You may click on the questions to view the answers.<br>
+You may view my homework questions <a href='hw.html'>here</a>.<br>
+You may view my Wireshark lab <a href='wireshark.html'>here</a>.<br>
+
+<br>
+
+<div id='q1' onclick="toggleA('1')"><b>
+Q1. What Internet Protocol mechanism is utilized to allow traceroute to function?
+</b></div>
+<div id='a1' style='display:none;'><i>
+A1. The Time To Live mechanism.
+</i></div><br>
+<div id='q2' onclick="toggleA('2')"><b>
+Q2. List two methods of TCP Pipelining.
+</b></div>
+<div id='a2' style='display:none;'><i>
+A2. Go-Back-N and Selective Repeat.
+</i></div><br>
+<div id='q3' onclick="toggleA('3')"><b>
+Q3. What is the difference between a hub and a switch?
+</b></div>
+<div id='a3' style='display:none;'><i>
+A3. A switch sends data only to the data's specific destination, a hub sends data to everything.
+</i></div><br>
+<div id='q4' onclick="toggleA('4')"><b>
+Q4. Name 3 well-known ports and what services use them.
+</b></div>
+<div id='a4' style='display:none;'><i>
+A4. 80: HTTP; 443: HTTP+TLS; 22: SSH; 21: FTP; 23: Telnet; 25: SMTP; 53: DNS; 
+</i></div><br>
+<div id='q5' onclick="toggleA('5')"><b>
+Q5. What is NAT? Why is it used?
+</b></div>
+<div id='a5' style='display:none;'><i>
+A5. NAT, or Network Address Translation, is a system that allows an entire LAN to be represented by a single external IP address. There is a global shortage of IP addresses.
+</i></div><br>
+<div id='q6' onclick="toggleA('6')"><b>
+Q6. What is a Finite State Machine?
+</b></div>
+<div id='a6' style='display:none;'><i>
+A6. An abstract machine that can be in a finite number of states.
+</i></div><br>
+<div id='q7' onclick="toggleA('7')"><b>
+Q7. What type of congestion control does TCP Reno use?
+</b></div>
+<div id='a7' style='display:none;'><i>
+A7. Additive-Increase Multiplicative-Decrease (AIMD).
+</i></div><br>
+<div id='q8' onclick="toggleA('8')"><b>
+Q8. Explain the relationship between the Maximum Segment Size and the Maximum Transmission Unit.
+</b></div>
+<div id='a8' style='display:none;'><i>
+A8. The Maximum Segment Size is derived from the Maximum Transmission Unit.
+</i></div><br>
+<div id='q9' onclick="toggleA('9')"><b>
+Q9. What is the TCP 3-way handshake?
+</b></div>
+<div id='a9' style='display:none;'><i>
+A9. The client sends a Synchronize (SYN) request to the server, the server sends an Acknowledgement (ACK) and a SYN to the client, and the client replies with a final ACK.
+</i></div><br>
+<div id='q10' onclick="toggleA('10')"><b>
+Q10. What is the solution to the global IP shortage? How many bits will be in an IP address, and how many IP addresses will be available?
+</b></div>
+<div id='a10' style='display:none;'><i>
+A10. IPv6; 128 bits per address, which means 3.4x10^38 available IP addresses.
+</i></div><br>
+</body>
+<script language='javascript'>
+    function toggleA(n)
+    {
+        document.getElementById('a'+n).style.display = (document.getElementById('a'+n).style.display=='none')?'block':'none';
+    }
+</script>
+</html>

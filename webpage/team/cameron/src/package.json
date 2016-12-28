@@ -1,0 +1,10 @@
+{
+  "name": "network-notes",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "coffee-script": "^1.11.1",
+    "jstransformer-markdown-it": "^1.0.0",
+    "pug": "^2.0.0-beta6",
+  }
+}

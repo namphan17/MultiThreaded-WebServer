@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<title>
+OCt 14
+</title>
+
+
+<head>
+    <style>
+h1{
+    text-align:center;
+}
+h3{
+    text-align:center;
+}
+/* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 700px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+</style>
+<h1>
+ 4.4
+</h1>
+
+</head>
+
+<body>
+    <h3>IP Datagrams</h3>
+   
+    <button class="accordion">Network Layer</button>
+    <div class="panel">
+        
+        <img src="nl.png" alt="ra"style="width:415px;height:130/3px;">
+        <p>Three components</p>
+        <ul>
+            <li>IP protocol</li>
+             <li>Routing</li>
+              <li>Error Report/layer information</li>
+        </ul>
+    </div>
+     <button class="accordion">Datagram</button>
+    <div class="panel">
+        <p>A network-layer packet is called a datagram. </p>
+        <img src="dt.png" alt="ra"style="width:415px;height:130/3px;">
+        <p>Components of the IPv4 datagram</p>
+        <ul>
+            <li><i>Version number</i>: 4 bits specify protocol version</li>
+            <li><i>Header Length</i>: 4 bits determine where data exists in datagram</li>
+       <li><i>Type of Service(TOS)</i>: included in header, defines different types of datagrams to be distinquished</li>
+            <li><i>Datagram Length</i>: total length including header of datagram, datagrams are rarely larger than
+1,500 bytes</li>
+        <li><i>Time to live</i>: used to prevent infinite loops, has max number that decrements to 0, then dropped</li>
+        <li><i>Protocol</i>: used at final destination, defines specific transport layer protocol to pass the datagram</li>
+        <li><i>Header Checksum</i>: aids router to check for bit errors, treats 2 bytes in header as number and sum using 1's compliment</li>
+        <li><i>Otpions</i>: allows extension of header, </li>
+        <li><i>Data</i>: transport-layer segment (TCP or UDP)</li>
+
+        </ul>
+    </div>
+
+    
+    
+    
+ 
+
+
+</body>
+<script>
+    /* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/6/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 6th
+    </h1>
+    <h2>SMTP</h2>
+<ul>
+	<li>Defined in RFC 5321</li>
+	<li>Transfers messages between sender and recipient mail servers</li>
+	<li>Older than HTTP</li>
+	<li>Age lends itself to archaic restrictions which have yet to be phased out</li>
+	<ul>
+		<li>Body and headers of all messages restricted to 7-bit ASCII</li>
+		<li>Fun fact: part of my father's job used to be making sure email signatures were less than 3 lines long and therefore able to be handled by the server</li>
+	</ul>
+	<li>Order of operations</li>
+	<ol>
+		<li>User A invokes user agent for email, provides email address of user B, writes a message, and instructs user agent to send it</li>
+		<li>User A's user agent sends the message to the mail server, where it is placed in a message queue</li>
+		<li>Client side SMTP on User A's mail server sees the message in the queue and opens a TCP connection to an SMTP server on User B's mail server</li>
+		<li>SMTP client and server initialize a connection and the client sends the message</li>
+		<li>Server SMTP receives the message and places it in User B's mailbox</li>
+		<li>User B invokes user agent to read the message from User A</li>
+	</ol>
+	<li>SMTP does not use intermediate mail servers</li>
+	<li>If the destination server is down, the sending server holds onto the message until it can be sent</li>
+	<li>SMTP uses port 25</li>
+</ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    
+<style>
+    li {margin: 10px 0;}
+    h1 {text-align: center}
+    .answer{color:red;}
+    
+    /* Code for tabs obtained from W3schools.com */
+    ul.tab {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+
+    /* Float the list items side by side */
+    ul.tab li {float: left;}
+
+    /* Style the links inside the list items */
+    ul.tab li a {
+        display: inline-block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+    /* Change background color of links on hover */
+    ul.tab li a:hover {background-color: #ddd;}
+
+    /* Create an active/current tablink class */
+    ul.tab li a:focus, .active {
+	background-color: #ccc;
+	color:blue;
+	text-decoration:underline;
+	}
+
+    /* Style the tab content */
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+</style>
+    
+<head>
+<title>
+    Graded Exercise 0
+</title>
+    <h1>Graded Exercise 0</h1>
+</head>
+    
+<script language='javascript'>
+    
+    function openTab(evt, taskName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(taskName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<body>
+    <ul class="tab">
+        <li><a href="#" class="tablinks" onclick="openTab(event, 'Questions')">Questions</a></li>
+        <li><a href="#" class="tablinks" onclick="openTab(event, 'Person')">Donald Davies</a></li>
+        <li><a href="#" class="tablinks" onclick="openTab(event, 'Github')">How to use GitHub</a></li>
+    </ul>
+    
+    <div id="Questions" class="tabcontent">
+        <h3>Questions</h3>
+    <ol>
+        <li><b>What is the role of a protocol in a network?</b><br/>
+            
+            <p class="answer">A protocol defines the format and the order of messages exchanged between two or more communicating entities, as weel as the actions taken on the transmission and/or receipt of a message or other event. (Pg. 9) </p>
+        </li>
+        
+        <li><b>What is an Application Programming Interface in a network communications context?</b><br/>
+            
+            <p class = "answer">An API is a set of routines, protocols, and tools for building software applications. It specifies how a program running on one end system asks the Internet infrastrucutre to dilver data to a specific destination program running on another end system.(Pg. 6)</p>
+        </li>
+        
+        <li><b>What is Packet Sniffer?</b><br/>
+            <p class="answer">A packet sniffer is software that is used to capture, or intercept, the outgoing and incoming packets within a network for analyzation of the packet contents. (Pg. 58)</p>
+        </li>
+        
+        <li><b>Explain the difference between an client-server architecture and a P2P architeture</b><br/>
+            <p class="answer">A client-server architecture has an always on host (or a collection of them) which acts as a server. This server receives requests from various other hosts, which are called clients. The P2P architecture on the other hand involves direct communication between a pair of connected hosts called peers. Thus each host has the capacity to act as both a server or client, often both at the same time. (Pg. 86)</p>
+        </li>
+        
+        <li><b>What are cookies and how are they useful?</b><br/>
+            <p class="answer">A cookie is a small piece of data sent from a website and stored in the user's web browser while the user is browsing. They are primarily means of identifying users.
+            (<a href="https://en.wikipedia.org/wiki/HTTP_cookie">Wikipedia</a> and Pg 108)</p>
+        </li>
+        
+        <li><b>Name the variouos Layers in the Internet Protocol Stack along with their respective data packet names</b><br/>
+            <ul class = "answer">
+                <li>Application Layer: Message</li>
+                <li>Transport Layer: Segment</li>
+                <li>Network Layer: Datagram</li>
+                <li>Link Layer: Frame</li>
+                <li>Physical Layer: No packet</li>
+            </ul>
+            <p class = "answer">(Pg. 50)</p>
+        </li>
+        
+        <li><b>What does HTTP stand for and how is it used?</b></li>
+        <p class="answer">HTTP stands for Hyper Text Transfer Protocol. It is used for receiving webpage files from webservers, as well as for posting information, or deleting files to the webservers. (Pg. 98)</p>
+        
+        <li><b>What's a really cool name to give a Graph Visualization Software?</b></li>
+        <p class="answer">Mango GraphStudio</p>
+    </ol>
+    </div>
+
+<div id="Person" class="tabcontent">
+    <h3>Donald Davies</h3>
+    
+    <img src="../images/exercise/DonaldDavies.jpg" alt="Donald Davies" style="width:227px;height:244px;">
+    
+    <p>The internet is best defined as a network of interconnected devices over a network, ranging from smartphones, laptops and computers to cars, locks and home appliances. However, the common factor over all these different devices is that the internet is driven by the excahnge of infromation, referred to as data, among these devices. This is called <b>packet switching</b>. However the concept of packet switching pre-dates the inception of the internet.<br/>
+    
+    <br/>Packet switching was invented in the year 1965 by <b>Doanld Watts Davies</b>, a Welsh computer scientist. Born in 1924, he was employed at the UK National Physical Laboratory. Coincidentally, another computer scientist Paul Baran was developing a similar idea independently in the 1960s as well.<br/>    
+    
+    <br/>Davies was born in Rhondda Valley, Wales. He pursued his education at Imperial College London, and received a BSc degree in physics in 1943. After his studies he initially worked as an assistant to Klaus Fuchs, who ran the nuclear weapons project at Birmingham University. Soon though, Davies decided to return to Imperial College to gain a degree in mathematics. This lead to him being awarded the Lubbock Memorial Prize.<br/>  
+    
+    <br/>In 1966, while working at the National Physical Laboratory on the outskirts of London, Davies became interested in data communications. This was a result of a visit to MIT, where he noticed a significant problem. The computer systems were based on a new time-sharing architeture which involved keeping an open phone connection for each user. This was an extremely expensive proposition. His key observation was that computer network traffic was usually silent invovling long periods of silence, with certain "bursts" of data transfer. This eventually lead to the conception of packet switching which involved dividing computer messages into packets that are routed independently, and possibly via differing routes, across a network and are reassembled at the destination.<br/> 
+        
+    <br/><a href="https://en.wikipedia.org/wiki/Donald_Davies">Read more</a>
+    </p> 
+</div>
+
+<div id="Github" class="tabcontent">
+    <h3>What is Git?</h3>
+    <p>Git is basically a version control system (VCS). A Version control software is a system that records changes to a file or set of files over time so that you can recall specific versions later.</p>
+    <h3>What is GitHub?</h3>
+    <p>GitHub is a Git repository hosting service, but it adds many of its own features. While Git is a command line tool, GitHub provides a Web-based graphical interface. It also provides access control and several collaboration features, such as a wikis and basic task management tools for every project.</p>
+    <h3>Intoduction to GitHub</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/z8WHkKxxcF8" frameborder="0" allowfullscreen></iframe><br/>
+    <a href="https://www.udacity.com/course/how-to-use-git-and-github--ud775">Take the Udacity Course Here</a>
+    <h3>Basic Git Commands</h3>
+    
+    <p>Note, it is reccomended to learn a little bit about basic Linux terminal window commnds before trying to use git. <a href="https://www.udacity.com/course/linux-command-line-basics--ud595">This course is a good resource.</a><br/>
+
+        <br/>The following are the basic commandline inputs you can use to navigate through and use Git:</p>
+        <ul>
+            <li><b>git init :</b> creates a new git repository</li>
+            <li><b>git clone /path/to/repository :</b> creates a working copy of a local repository by running the command</li>
+            <li><b>git add (filename) or git add * :</b> can be used to propose changes</li>
+            <li><b>git commit -m "Commit message" :</b> actually confirms and commits the changes</li>
+            <li><b>git push origin master :</b> sends the changes to your remote repository. It is possible to select other branches by replacing the word master with the branch name.</li>
+            <li><b>git pull :</b> updates your local repository to the newest commit</li>
+        </ul>
+</div>
+    
+    
+</body>
+</html>
+ 
+

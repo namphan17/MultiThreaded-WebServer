@@ -1,0 +1,36 @@
+<html>
+<head> 
+<title>
+Notes on Sections 2.6-2.8
+</title>
+<h1>Notes on Sections 2.6-2.8</h1> 
+<style>
+body{
+	background-color: black;
+	color: green;
+}
+</style> 
+</head> 
+<body> 
+<h2>Distributed Hash Tables on P2P Networks</h2> 
+<ol> 
+	<li>Why use Distributed Hash Tables on P2P Networks?</li><br> 
+	<ul><li>If one peer has all the tables of all peers on the network who have specific data chunks, then the amount of traffic load on that one peer would be inefficient and heavily slowed down.</li><br>
+	<li>The delay to grab information about a host with specific data chunks would be very long</li> <br>
+	</ul><br>
+	<li>How does a Distributed Hash Table work?</li> <br>
+	<ul><li>It works by finding nearby hosts within a fixed number N (usually the integer of the hashed value), where [0, 2^N-1] is the range of hosts.</li><br> 
+	<li>When an a key integer is made, and associated to a computer with the corresponding data, the key is matched up with a computer in the nearby range (the one with a range number closest to the key).</li> <br>
+	Ex. (key 11, John Doe)  ---> Who is closest in range of computers (12, Jane Doe), (7, Z3r0 C00l), and (10, M3m3 K1nG)? --> (key 11, John Doe) is matched with (12, Jane Doe) [She is closest]
+	</ul><br> 
+	<li>Circular Distributed Hash Tables</li><br> 
+	<ul><li>Circular tables make it easier for peers to find a peer whose hash table has reference to the users specific request (ex. I need a file, mp4, mp3, etc.)</li><br>
+	<li>One peer will check it's table for the reference, and if not, will pass it on to the next peer successor (while keeping track of the original peer) through a type of Node list.</li><br> 
+	<li>When the peer with the reference has been found, it gets passed down the line to the original peer who'd asked for the data reference.</li><br>
+	<li>This process limits traffic delay due to each peer only having X amount of connections at any given time, as well as being able to find peers within a local area.</li><br>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Chord_network.png"/>
+	</ul> <br><br><br>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/>
+</ol> 
+</body>
+</html>

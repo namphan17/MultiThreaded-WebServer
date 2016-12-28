@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<title>
+Oct20
+</title>
+
+
+<head>
+     <style>
+        h1{
+            text-align:center;
+        }
+        /* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+/* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
+div.panel.show {
+    opacity: 1;
+    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+    </style>
+<h1>
+Ethernet Frame Structure
+</h1>
+</head>
+
+
+<body>
+<img src = "efs.png"height="110" width="440">
+    <button class="accordion">Data field</button>
+<div class="panel">
+    <ul>
+        <li>Size: 36 to 1500 Bytes</li>
+
+    </ul>
+  <p>This field holds the IP datagram. The Maximum Transmission Unit (MTU) is 1500 bytes. If the datagram
+      exceeds 1500 bytes the host fragments the datagram. If the datagram is less than 46 bytes the 
+      datagram must be stuffed. The network layer will remover the stuffing using the datagram header length field.
+  </p>
+</div>
+    
+      <button class="accordion">Destination address</button>
+<div class="panel">
+    <ul>
+        <li>Size: 6 Bytes</li>
+
+    </ul>
+  <p>This field contains the MAC address of the destination adapter. The adapter passes the contenets of the frame's data field to 
+      the network layer. 
+  </p>
+</div>
+
+  <button class="accordion">Source Address</button>
+<div class="panel">
+    <ul>
+        <li>Size: 6 Bytes</li>
+
+    </ul>
+  <p>Contains the MAC address of the adapter that
+transmits the frame onto the LAN</p>
+</div>
+
+<button class="accordion">Type Field</button>
+<div class="panel">
+    <ul>
+        <li>Size: 2 Bytes</li>
+        <li>Permits Ethernet to multiplex network-layer protocols</li>
+<li> Hosts can use other network-layer protocols besides IP, and multiple ones</li>
+<li>Adapter has to demultiplex the type field to know which network-layer protocol it should pass the contents of the data field</li>
+    <li>IP and other network-layer protocols each have their own type number</li>
+    <li> The type field is analogous to the protocol field in the networklayer
+datagram and the port-number fields in the transport-layer segment</li>
+    </ul>
+  <p> </p>
+</div>
+
+<button class="accordion">Cyclic redundancy check (CRC)</button>
+<div class="panel">
+     <ul>
+        <li>Size: 2 Bytes</li>
+        <li> CRC field allows the receiving adapter to detect bit errors in the frame.</li>
+     </ul>
+  <p> </p>
+</div>
+
+<button class="accordion">Preamble</button>
+<div class="panel">
+     <ul>
+        <li>Size: 8 Bytes</li>
+        <li>First 7 bytes of the preamble has a value of 10101010</li>
+        <li> last byte is 10101011</li>
+        <li> First 7 bytes of the preamble serve to awaken the receiving adapters and to sync their clocks to 
+            that of the sender’s clock</li>
+            <li> there will always be some drift from the target rate, a drift which is not known by the other adapters on
+the LAN</li>
+<li> The last 2 bits of the eighth byte
+of the preamble tell the adapter that the rest of the data is about to come</li>
+     </ul>
+  <p> </p>
+</div>
+
+<p>Ethernet technologies provide connectionless service to the network layer. The sending adapter puts the datagram
+     in an ethernet frame and sends in into the LAN with a handshake with the receiving adapter. This is an unreliable service to the network layer.
+</p>
+
+</body>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+
+</html>

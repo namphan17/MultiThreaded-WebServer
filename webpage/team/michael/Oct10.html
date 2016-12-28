@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+h1{
+    text-align:center;
+}
+h4{
+    text-align:center;
+}
+p{
+    padding-left:25px;
+    padding-right:25px;
+}
+</style>
+
+<title>
+Oct10
+</title>
+
+
+<head>
+<h1>
+Multiplexing and Demultiplexing
+</h1>
+</head>
+
+<body>
+<p>    A multiplexing/demultiplexing 
+    service is needed for all computer networks. Your computer
+    recieves data through the transport layer and is redirected
+    to different processes. For example if are downloading web 
+    pages on one FTP session and two Telnet sessions, there are 
+    4 process: one FTP, two Telnet, one HTTP. 
+</p>
+<ul>
+    <li>Sockets:<i> doors that pass data from the processes to
+        network, and from the network to processes.</i></li>
+</ul>
+<p>Because at any time there can be more than one socket in 
+    the recieving host, each socket has a unique identifier. 
+    Identifiers depend the types UDP or TCP socket. </p>
+    <ul>
+    <li>Demultiplexing: <i> the job of delivering data in a transport-layer
+        segment to the correct socket.</i></li>
+        <li>Multiplexing:<i> The job of collecting data chunks
+            at the source host from different sockets, encapsulating header info, creating
+             segments, and passing the segments to the network layer.</i></li>
+</ul>
+<p>It is important to note that multiplexing and demultiplexing 
+    are used when a single protocol in one layer is used by multiple 
+    protocols at the next layer above it. Special fields that indicate
+     the socket for segments to be delivered to are <i>source port number field</i>, and <i>destination port number field</i>.
+Each port number is a 16-bit integer ranging from 0 - 65535. The port 
+numbers ranging from 0 - 1023 are called <i>well-known port numbers</i> and are restricted. This means
+ that they are reserved for well known applicaiton protocols such as HTTP and FTP. Every new application
+  must be assigned the application port number. UDP basically does
+  multi and demultiplexing by assigning each socket in the host a port 
+  number, so when a segment is recieved at the host, the transport
+   layer examines the destination port number and sends that segment to the 
+   corresponding socket.
+</p>
+<h4>Connectionless Multiplexing and Demultiplexing</h4>
+<p>A UDP socket is identified by a pair that has
+a destination IP address and a destination port number. Therefore, if two
+UDP segments have different source IP addresses / source port numbers, but have
+the same destination IP address / destination port number, then the two segments
+will be directed to the same destination process via the same destination socket</p>
+<h4>Connection-Oriented Multiplexing and Demultiplexing</h4>
+<p>One difference between a TCP and UDP socket is that a TCP is defined
+    by a 4 tuple: source
+IP address, source port number, destination IP address, destination port number. 
+</p>
+<ul>
+    <li>TCP server applications have a socket that waits for established connection 
+        requests from the clients on port number 1200.
+    </li>
+    <li>A connection-establishment request is a TCP segment 
+        with port number 1200, with a special connection-establishment bit set
+         in the header, and the segment includes a source port number that is chosen by the client. 
+    </li>
+</ul>
+</body>
+
+
+</html>
+

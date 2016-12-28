@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+            <ul>
+               <h1 class="section">CHAPTER 4.5.1 The Distance-Vector (DV) Routing Algorithm</h1>
+               
+               <li>The problem of routing a packet from source host to destination host clearly boils down to the problem of routing the packet from source router to destination router</li>
+               <li>The purpose of a routing algorithm is then simple: given a set of routers, with links connecting the routers, a routing algorithm finds a “good” path from source router to destination router.</li>
+               <li>
+                  A <span class="display">global routing</span> algorithm computes the least-cost path between a source and destination using complete, global knowledge about the network. That is, the algorithm takes the connectivity between all nodes and all link costs as inputs. This then requires that the algorithm somehow obtain this information before actually performing the calculation. The calculation itself can be run at one site
+                  <ul>
+                     <li>The key distinguishing feature here is that a global algorithm has complete information about connectivity and link costs.</li>
+                     <li>algorithms with global state information are often referred to as <span class="display">link-state (LS) algorithms</span>, since the algorithm must be aware of the cost of each link in the network.</li>
+                  </ul>
+               </li>
+               <li>
+                  <span class="display">d<sub>x</sub>(y) = min<sub>v</sub>{c(x,v) + d<sub>v</sub>(y)}</span>
+               </li>
+               <li>after traveling from x to v, if we then take the least-cost path from v to y, the path cost will be c(x,v) + dv(y). Since we must begin by traveling to some neighbor v, the least cost from x to y is the minimum of c(x,v) + dv(y) taken over all neighbors v.</li>
+               <li>
+                  <img class="display" src="../img/DValgorithm.PNG"/>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

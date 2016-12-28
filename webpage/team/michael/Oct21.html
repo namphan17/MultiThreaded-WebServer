@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<title>
+Oct21
+</title>
+
+
+<head>
+    <style>
+    .center {
+    margin: auto;
+    width: 60%;
+    
+    padding: 10px;
+    text-align: center;
+}
+    a.href:link{color:#FFFFFF;background-color: #336BFF;padding: 14px 25px;text-decoration: none;display: inline-block;}
+    a.href:visited {color:#FFFFFF;}
+a.href:hover {color:#FFFFFF;background-color: red;}
+        h1{
+            text-align:center;
+        }
+        /* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+   
+  
+    border: none;
+    outline: none;
+    transition: 0.4s;
+     margin: auto;
+    width: 100%;
+    
+   
+    text-align: center;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+/* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
+div.panel.show {
+    opacity: 1;
+    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+    </style>
+<h1>
+Multiprotocol Label Switching (MPLS) 
+</h1>
+</head>
+
+<body>
+
+   
+<button class="accordion">Structure</button>
+<div class="panel">
+    <img src="mpls.png" width="540"; height="240">
+    <p>A link-layer frame transmitted between MPLS-capable devices has a small MPLS header added
+between the Ethernet header and the IP header. An MPLS-capable router is referred to as a
+<i>label-switched router</i>. It forwards an MPLS frame with the MPLS
+label in its forwarding table and immediately passes the datagram to the
+appropriate output interface.</p>
+</div>
+
+
+<button class="accordion">Traffic Engineering</button>
+<div class="panel">
+    
+    <p>A network operator can override normal IP routing and force traffic headed toward a given destination along
+one path, and differenttraffic headed toward the same destination along another path (for whatever reason).</p>
+</div>
+
+<button class="accordion">virtual private networks (VPNs)</button>
+<div class="panel">
+    <p>R1 through R4 are MPLS capable. R5 and R6 are standard IP routers</p>
+      <img src="mpls2.png" width="540"; height="240">
+    <p>An ISP uses its MPLS-enabled network to connect the customer's various networks together. 
+        MPLS can be used to isolate both
+         the resources and addressing used by the
+customer's VPN from that of other users crossing the ISP's network.</p>
+</div>
+
+
+
+</body>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+</html>

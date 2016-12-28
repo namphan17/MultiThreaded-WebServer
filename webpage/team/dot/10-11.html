@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/11/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 11th
+    </h1>
+<ul>
+	<li>rdt 1.0</li>
+	<ul>
+		<li>Assume that all data is transferred perfectly</li>
+		<li>Sending side</li>
+		<ol>
+			<li>Accept data from above</li>
+			<li>Put data into a packet</li>
+			<li>Send the packet</li>
+		</ol>
+		<li>Receiving side</li>
+		<ol>
+			<li>Receive packet</li>
+			<li>Extract data from packet</li>
+			<li>Send data above</li>
+		</ol>
+	</ul>
+	<li>rdt 2.*</li>
+	<ul>
+		<li>Assume that bit errors are possible within the packets</li>
+		<li>Steps to handle errors (all taken by sender)</li>
+		<ol>
+			<li>Error detection</li>
+			<li>Receiver Feedback</li>
+			<li><b>A</b>utomatic <b>R</b>epeat re<b>Q</b>uests</li>
+			<ul>
+				<li>Send a message back when a packet is received</li>
+				<li>ACK: positive, packet received properly</li>
+				<li>NAK: negative, packet had an error</li>
+			</ul>
+			<li>Retransmission</li>
+		</ol>
+		<li>(There are three versions of this one, rdt 2.0, 2.1, and 2.2)</li>
+		<li>(rdt 2.1 introduces sequence numbers and sends a false positive ACK packet if a packet is received out of order)</li>
+		<li>(rdt 2.2 eliminates NAK packets entirely with a false positive ACK packet no matter what the error is)</li>
+		<li>Due to how sequence numbers are either a 0 or a 1 in rdt 2.1 and 2.2, it is sometimes called the <span style="color:chartreuse">alternating bit protocol</span></li>
+		<li>Sending side</li>
+		<ol>
+			<li>Accept data from above</li>
+			<li>Put data into a packet with a checksum (and, in 2.1 or 2.2, a sequence number)</li>
+			<li>Send packet and wait for response</li>
+		</ol>
+		<li>Receiving side</li>
+		<ol>
+			<li>Receive a packet</li>
+			<li>If the packet is corrupt</li>
+			<ol>
+				<li>2.0/2.1: Send a negative acknowledgement</li>
+				<li>2.2: Send a positive acknowledgement of the last successful packet</li>
+			</ol>
+			<li>If the packet is not corrupt</li>
+			<ol>
+				<li>Extract data from packet</li>
+				<li>Send data above</li>
+				<li>Send a positive acknowledgement</li>
+			</ol>
+		</ol>
+		<li>Sending side</li>
+		<ol>
+			<li>Receive a response packet</li>
+			<li>If the response is negative (2.0) or positive for the wrong packet (2.1/2.2)</li>
+			<ol>
+				<li>Resend the packet</li>
+			</ol>
+			<li>If the response is positive, hooray! Move on to the next packet</li>
+		</ol>
+		<li>What do you do if an ACK or NAK packet is corrupted?</li>
+		<ul>
+			<li>Send a NAK in response to the ACK/NAK?</li>
+			<ul>
+				<li>If more than one of these messages is corrupted in a row, it devolves into a string of NAKs</li>
+			</ul>
+			<li>Add enough checksum bits to allow recovery from the corruption?</li>
+			<ul>
+				<li>Assumes no packets are lost, so it works fine for 2.*</li>
+			</ul>
+			<li>Resend the packet which prompted the ACK/NAK?</li>
+			<ul>
+				<li>Introduces possibility of duplicate packets</li>
+				<li>Duplicate packets are handled by 2.1/2.2, so this shouldn't be a problem</li>
+			</ul>
+		</ul>
+	</ul>
+	<li>rdt 3.0</li>
+	<ul>
+		<li>Assume that packet loss is possible</li>
+		<li>How do you recover from packet loss? The same way you recover from corrupt packets in 2.2!</li>
+		<li>How do you detect packet loss? Timeouts!</li>
+		<ul>
+			<li><span style="color:chartreuse">Timeout</span>: a timer which, after a set amount of time, decides that the packet did not arrive and needs to be resent</li><li>The timeout time cannot be less than the minimum delay for a packet's round-trip</li>
+			<li>The timeout time has no reason to be more than a packet's worst-case round-trip delay</li>
+			<li>Worst-case delay time itself doesn't work well, because you want to detect the loss as soon as possible</li>
+			<li>Worst-case delay is also hard to calculate given the number of factors</li>
+			<li>If the timeout time isn't the worst-case delay, there is a possibility of duplicate packets, but those are already handled so it's not a big deal</li>
+		</ul>
+		<li>Sending side</li>
+		<ol>
+			<li>Accept data from above</li>
+			<li>Put data into a packet with a checksum and sequence number</li>
+			<li>Send packet</li>
+			<li>Start timer and wait for response</li>
+		</ol>
+		<li>Receiving side</li>
+		<ol>
+			<li>Receive a packet</li>
+			<li>If the packet is corrupt</li>
+			<ol>
+				<li>Send a positive acknowledgement of the last successful packet</li>
+			</ol>
+			<li>If the packet is not corrupt</li>
+			<ol>
+				<li>Extract data from packet</li>
+				<li>Send data above</li>
+				<li>Send a positive acknowledgement</li>
+			</ol>
+		</ol>
+		<li>Sending side</li>
+		<ol>
+			<li>If the timer runs out before a response is received, resend the packet and restart the timer</li>
+			<li>If a corrupt or false positive response packet is received, resend the packet and restart the timer</li>
+			<li>If a positive response packet is received, stop the timer</li>
+		</ol>
+	</ul>
+</ul>
+	<p>The book provided pseudo-code for each step of the process along with the finite state diagrams,
+		but I felt that the function was more important than attempting to copy the pseudo-code.</p>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>
+Matching Quiz
+</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js">
+</script>
+<style>
+
+body{
+
+background:#ffff99;
+
+}
+.matched {
+    background: #80ff80;
+}
+
+.unmatched {
+    background: #8888FF;
+}
+
+</style>
+</head>
+<body>
+
+<h1 style = "text-align:center;margin-bottom:30px">Matching Quiz</h1>
+
+
+<table align="center">
+
+<tr>
+<th>delay</th>
+<th>Definition</th>
+
+<tbody data-bind="foreach: rows()">
+<tr data-bind="css: matchStatus">
+<td data-bind="click: leftResponder, text: leftList.delay">
+</td>
+<td data-bind="click: rightResponder, text: rightList().definition">
+</td>
+</tbody>
+
+
+<tr>
+
+</tr>
+
+</table>
+<div style = "text-align:center">
+	<img style="margin-top:30px;margin-bottom:30px;text-align:center" src="http://static1.squarespace.com/static/5687ae051c1210feadfd7fa4/5688af4c40667a3869192f29/579c92d8725e2570d04ec497/1469879045973/PrecisionFitness_YouCanDoIt_Success_Baby2.jpg?format=1000w" alt="Encouraging Image">
+</div>
+
+<script>
+var viewModel = function() {
+
+    var that = {};
+
+
+    /* shuffle (scramble) the elements of an array */
+    var shuffle = function( list ) {
+
+
+        /* exchange the values at 2 specified indices in an array */
+        var swap = function( list, i, j ) {
+            var temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        } // swap()
+
+        /* generate a uniformly distributed random integer in the interval [lo,hi] */
+        var randomInteger = function( lo, hi ) {
+            return lo + Math.floor( Math.random() * (hi - lo + 1) );
+        } // randomInteger()
+
+        /* generate a permutation without fixed points of the integers 0, 1, ..., n */
+        var derangement = function( n ) {
+            var result = [], i, j;
+
+            for( i = 0; i <= n; i++ ) {
+                result.push( i );
+            } // for
+
+            // permute the integers
+            var permute = function() {
+                for( i = 0; i < n - 1; i++ ) {
+
+                    j = randomInteger( i + 1, n );
+                    swap( result, i, j );
+
+                } // for
+            }; // permute()
+
+            var containsFixedPoints = function() {
+                var found = false;
+                for( i = 0; i <= n; i++ ) {
+                    if( result[i] === i ) {
+                        found = true;
+                    } // if
+                } // for
+                return found;
+            }; // containsFixedPoints()
+
+            while( containsFixedPoints() ) {
+                permute();
+            } // while
+
+            return result;
+        }; // derangement()
+
+        var result = list.slice(0); // copy( list );
+
+        var indices = derangement( result.length - 1 );
+
+        var i;
+        for( i = 0; i < result.length; i++ ) {
+            result[i] = list[indices[i]];
+        } // for
+
+        return result;
+    }; // shuffle()
+
+    var stitch = function( leftList, rightList ) {
+        var prevRow = -1;
+        var prevCol = -1;
+
+        var responder = function( row, column ) {
+            return function() {
+
+                if( prevRow >= 0 && prevCol >= 0 ) {
+                    if( that.rows()[prevRow]().leftList.delay === that.rows()[row]().rightList().delay ) {
+                        var temp = that.rows()[prevRow]().rightList();
+                        that.rows()[prevRow]().rightList( that.rows()[row]().rightList() );
+                        that.rows()[row]().rightList( temp );
+                    } // if
+                } // if
+
+                prevRow = row;
+                prevCol = column;
+            };
+        }; // responder()
+
+        var stitchHelper = function( index, partialResult ) {
+            var nextTuple = {};
+            if( (index < leftList.length) && (index < rightList.length) ) {
+                nextTuple.index = index;
+                nextTuple.leftList = leftList[index];
+                nextTuple.rightList = ko.observable(rightList[index]);
+
+                nextTuple.leftResponder = responder( index, 0 );
+                nextTuple.rightResponder = responder( index, 1 );
+
+                nextTuple.matchStatus = ko.pureComputed( function() {
+                    if( nextTuple.leftList.delay === nextTuple.rightList().delay ) {
+                        return "matched";
+                    } // if
+                    else {
+                        return "unmatched";
+                    } // else
+                }, that);
+
+                partialResult.push( ko.observable(nextTuple) );
+                return stitchHelper( index + 1, partialResult );
+            } // if
+            else {
+                return partialResult;
+            } // else
+        }; // stitchHelper()
+
+        return stitchHelper( 0, [] );
+    }; // stitch()
+
+
+    var questions = [];
+    questions.push( { "delay": "transmission", "definition": "amount of time required for the router to push out the packet." } );
+    questions.push( { "delay": "propagation", "definition": "the time it takes a bit to go from one router to the next." } );
+    questions.push( { "delay": "processing", "definition": "The time required to examine the packet’s header and determine where to direct the packet." } );
+    questions.push( { "delay": "queuing", "definition": "as it waits to be transmitted onto the link" } );
+
+    var scrambledQuestions = shuffle( questions );
+
+    that.tuples = stitch( questions, scrambledQuestions );
+
+    that.rows = ko.observableArray();
+
+    that.tuples.forEach( function( pair ) { that.rows.push( pair ); } );
+
+    return that;
+}; // viewModel()
+
+
+var vm = viewModel();
+ko.applyBindings( vm );
+
+</script>
+
+</body
+</html>
+

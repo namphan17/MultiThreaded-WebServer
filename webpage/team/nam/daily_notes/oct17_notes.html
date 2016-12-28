@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+               <h1 class="section">CHAPTER 4.4: The Internet Protocol (IP)</h1>
+         </div>
+         <ul>
+            <li>
+               <h3 class="section">Datagram Format</h3>
+               <ul>
+                  <li>A network-layer packet is referred to as a datagram</li>
+                  <li>
+                     Key fields in IPv4 datagram:
+                     <ul>
+                        <li>Version number</li>
+                        <li>Header length</li>
+                        <li>Type of service</li>
+                        <li>Datagram length</li>
+                        <li>Identifier, flags, fragmentation offset</li>
+                        <li>Time-to-live</li>
+                        <li>Protocol</li>
+                        <li>Header checksum</li>
+                        <li>Source and destination IP addresses</li>
+                        <li>Options</li>
+                        <li>Data (payload)</li>
+                     </ul>
+                  </li>
+                  <li>Some protocols can carry big datagrams, whereas other protocols can carry only little packets.</li>
+                  <li>The maximum amount of data that a link-layer frame can carry is called the <span>maximum transmission unit</span> (MTU)</li>
+                  <li>To deal with different MTU, we fragment the data in the IP datagram into two or more smaller IP datagrams, encapsulate each of these smaller IP datagrams in a separate link-layer frame; and send these frames over the outgoing link</li>
+               </ul>
+            </li>
+               <h3 class="section">IPv4 Addressing</h3>
+               <ul>
+                  <li>Because every host and router is capable of sending and receiving IP datagrams, IP requires each host and router interface to have its own IP address.</li>
+                  <li>Each IP address is 32 bits long (equivalently, 4 bytes), and there are thus a total of 232 possible IP addresses.</li>
+                  <li>These addresses are typically written in so-called dotted-decimal notation, in which each byte of the address is written in its decimal form and is separated by a period (dot) from other bytes in the address.</li>
+                  <li>THe network interconnecting some host interfaces and one router interface forms a subnet</li>
+                  <li>The x most significant bits of an address of the form a.b.c.d/x constitute the network portion of the IP address, and are often referred to as the prefix (or network prefix) of the address.</li>
+                  <li>Once an organization has obtained a block of addresses, it can assign individual IP addresses to the host and router interfaces in its organization using <span>Dynamic Host Configuration Protocol (DHCP)</span></li>
+               </ul>
+            <li>
+               <h3 class="section">IPv6</h3>
+               <ul>
+                  <li>
+                     Datagram Format
+                     <ul>
+                        <li>Expanded addressing capabilities</li>
+                        <li>A streamlined 40-byte header.</li>
+                        <li>Flow labeling and priority.</li>
+                     </ul>
+                  </li>
+                     Transition from IPv4 to IPv6
+                     <ul>
+                        <li>One option would be to declare a flag day—a given time and date when all Internet machines would be turned off and upgraded from IPv4 to IPv6.</li>
+                        <li>The most straightforward way to introduce IPv6-capable nodes is a dual-stack approach, where IPv6 nodes also have a complete IPv4 implementation.</li>
+                        <li>In the dual-stack approach, if either the sender or the receiver is only IPv4-capable, an IPv4 datagram must be used. As a result, it is possible that two IPv6- capable nodes can end up, in essence, sending IPv4 datagrams to each other.</li>
+                        <li>An alternative to the dual-stack approach, also discussed in RFC 4213, is known as tunneling.</li>
+                     </ul>
+                  <li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

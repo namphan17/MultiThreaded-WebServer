@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+	</head>
+	<body>
+		<script src="jquery-3.1.1.min.js"></script>
+		<div class="nav-bar"><a class="home" href="../hello.html"><h4 class="home">HOME</h4></a></div>
+      	<div class="col-1"></div>
+      	<div class="col-2">
+		<div class="title">
+		<h1 class="section">CHAPTER 2.2: The Web and HTTP</h1>
+		</div>
+		<ol>
+			<li>
+				<h3 class="section">Overview</h3>
+				<ul>
+					<li><p>HTTP, standing for HyperText Transfer Protocol, is a Web's application protocol.</p></li>
+					<li>HTTP is implemented in two programs: a client program and a server program, talking to each other by exchanging HTTP message.</li>
+					<li>A Web page, also called a document, consists of objects, which can simply be files - such as an HTML file, a JPEG file, a Java aplet, or a video clip - that is addressable by a single URL.</li>	
+					<li>When a user requests a Web page, the browser sends HTTP request message for the object in the page to the server. Then the server receives the requests and responds with HTTP response messages that contain the objects.</li>
+					<li>HTTP uses TCP as its underlying transport protocol.</li>
+					<li>HTTP is a stateless protocol, meaning an HTTP server maintains no information about the clients</li>
+				</ul>
+			</li>
+			<li>
+				<h3 class="section">Non-Persistent and Persistent Connections</h3>
+				<ol>
+					<li>
+						<h4>Non-Persistent Connections</h4>
+						<p>Each request/response pair is sent over separate TCP connections.</p>
+						<p>Each TCP connection is closed after the server sent the object - the connection does not persist for other objects. Thus, each TCP connection transports exactly one request message and one response message.</p>
+						<p>The total response time is two RTTs (round-trip time), which is the time it takes for a small packet to travel from client to server and then back to the client, plus the transmission time at the server of the HTML file.</p>
+						<p>Downside: for each of these connections, TCP buffers must be allocated and TCP variables must be kept in both client and server. This can place a significant burden on the Web server, which maybe serving requests from hundreds of clients simultaneously.</p>
+					</li>
+					<li>
+						<h4>Persistent Connections</h4>
+						<p>All the request and their corresponding responses are sent over the same TCP connection.</p>
+						<p>The server leaves the TCP connection open after sending a response. Subsequent requests and responses between the same client and server can be sent over the same connection.</p> 
+						<p>These requests for objects can be made back-to-back, without waiting for replies to pending requests.</p>
+						<p>Typically, the HTTP server closes a connection when it isn't used for a certain time (a configurable timeout interval).</p>
+						<p></p>
+					</li>
+				</ol>
+			</li>
+			<li>
+				<h3 class="section">HTTP Message Format</h3>
+				<ol>
+					<li>
+						<h4>HTTP Request Message</h4>
+						<p>Request line: method, URL, Version</p>
+						<p>Header lines: header field name, value</p>
+						<p>Entity body</p>
+						<p></p>
+					</li>
+					<li>
+						<h4>HTTP Response Message</h4>
+						<p>Status line: version, status code (e.g 200), phrase (e.g OK)</p>
+						<p>Header lines: header field name value</p>
+						<p>Entity body</p>
+					</li>
+				</ol>
+			</li>
+			<li>
+				<h3 class="section">User-Server Interaction: Cookies</h3>
+				<p>Cookies allow sites to keep track of users.</p>
+				<p>4 components: (1) a cookie header line in the HTTP response message; (2) a cookie header line in the HTTP request message; (3) a cookie file kept on the user’s end system and managed by the user’s browser; and (4) a back-end database at the Web site.</p>
+				<p>Cookies can be used to identify a user.</p>
+			</li>
+			<li>
+				<h3 class="section">Web Caching</h3>
+				<p>A <b>Web cache</b> - also called a <b>proxy server</b> - is a network entity that satisfies HTTP request on behalf of an origin Web Server.</p>
+				<p>A cache is both a server and a client at the same time.</p>
+				<p><b>Web cache processing</b></p>
+				<ol>
+					<li>The browser establishes a TCP connection to the Web cache and sends an HTTP request for the object to the Web cache.</li>
+					<li>The Web cache checks to see if it has a copy of the object stored locally. If it does, the Web cache returns the object within HTTP response message to the client browser.</li>
+					<li>If the Web cache does not have the object, the Web cache opena a TCP connection to the origin server. The Web Cache then sends the HTTP request for the object into cache-to-server TCP connection. After receiving this request, the origin server sends the object within an HTTP response to the Web cache.</li>
+					<li>When the Web cache receives the object, it stores a copy in its local storage and sends a copy, within an HTTP response message, to the client browser (over the existing connection between the client browser and the Web cache</li>
+				</ol>
+				<p>A Web cache can substantially reduce the response time for a client request.</p>
+				<p>A Web cache can also substantially reduce the Web traffic in the Internet as a whole, thereby improving the performance for all applications.</p>
+			</li>
+			<li>
+				<h3 class="section">The Conditional GET</h3>
+				<p>The <b>conditional GET</b> is a mechanism of HTTP that allows a cache to verify that its object is up-to-date</p>
+				<p>The request message (1) uses the GET method and (2) includes an If-Modified-Since: header line</p>
+			</li>
+		</ol>
+		</div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+	</body>
+</html>

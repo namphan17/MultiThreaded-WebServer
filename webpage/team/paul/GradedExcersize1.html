@@ -1,0 +1,92 @@
+<html> 
+<head>
+<title> 
+Graded Exercise #1
+</title> 
+<h1 style="color:red">Graded Exercise #1</h1> 
+<style>
+body{
+	background-color: black; 
+	color: green; 
+}
+ol ul li {
+	display: none;
+}
+
+</style>
+<script language='javascript'>
+    function toggleA(n)
+    {
+        document.getElementById('a'+n).style.display = (document.getElementById('a'+n).style.display=='none')?'block':'none';
+    }
+</script>
+</head>
+<body>
+<h4>Sample Questions and Answers</h4>
+	<ol> 
+		<li onclick="toggleA('1')">What is the Go-Back-N method of fast data transfer?</li><br>  
+		<ul><li style="color:red" id='a1'>The Go-Back-N method of fast (reliable) data transfer is done by the sender continuously sending data to the receiving host, where the receiving host will send an acknowledgement to the sender after X amount of packets, either sending an ACK or a NACK depending on the data received. If a NACK was received, the Go-Back-N requires the sender to retransmit all (even the ones that were received correctly) packets again until the data corruption, or missing packets, are remedied (a NACK gets sent even if the packets are out of order).</li></ul><br><hr><br> 
+		<li onclick="toggleA('2')">What is the Selective Repeat method of fast data transfer?</li><br>
+		<ul><li id='a2' style="color:red">The Selective Repeat method of data transfer sends an acknowledgement packet everytime data is received correctly from a host. So, the host continuously sends packets to the receiving host, meanwhile the receiving host continues to acknowledge them if the data is received correctly (ACK). However, if a packet fails to come in order, is dropped, or the data is corrupted then a NACK is sent along with the ACKs for the other packets. The packet that was NACK'ed is then retransmitted by the sending host (and only the one packet, as opposed to all the packets like in the Go-Back-N method) and put in order by the router by its sequence number.</li></ul><br><hr><br> 
+		<li onclick="toggleA('3')">How does a TCP connection get initiated? How does it close?</li><br>
+		<ul><li id='a3' style="color:red">TCP connections are initiated through a SYN-ACK, or three way handshake Sequence: The host requests the that a connection needs to be made (SYN), the webserver acknowledges the request for a connection (SYN-ACK), and then finally the host will acknowledge the connection and start sending information (ACK + data packets after). To tear down this connection, TCP uses a similar method like the beginning three way handshake, except it will use a FIN-ACK sequence, which is to handshake to make sure that a connection is finished between both hosts. For FIN-ACK the host requests the connection be closed (FIN), the webserver or end host acknowledges this request (FIN-ACK), and finally the first host acknowledges that the connection is closed after that (ACK).  </li></ul><br>
+		<li onclick="toggleA('4')">What is a Syn-flood attack, and how does it work?</li><br>
+		<ul><li id='a4' style="color:red">Syn-Flood attacks work by exploiting the beginning three way handshake (SYN-ACK) in a TCP connection in order to keep a connection alive for an extended period of time in order to waste a webserver's, or host's, resources. Attackers do this by sending a spoofed SYN packet, with a fake recipient address that is unreachable by the server (ex. 1.2.3.4), the server will then try to respond with a SYN-ACK and wait for an ACK from the recipient (which will never come do the recipient being down or unreachable). The attacker can use multiple or threads or computers to send the spoofed packets with this kind of attack, further expending the webserver/host's connection and effectively DoSing the end host by eating up their connection buffer.</li><br>
+	Source: https://en.wikipedia.org/wiki/SYN_flood
+	<br></ul><br><hr></br>
+		<li onclick="toggleA('5')"> 
+		What are two different ways that network congestion could be mitigated or remedied?
+		</li><br>
+		<ul><li id='a5' style="color:red">Network congestion can be mitigated through a protocol in one of two ways, end-to-end or by letting the network handle it. The protocol itself can get a "congestion bit" from the network independently (end-to-end, which tells the protocol that the network is congested and to start slowing the speed at which data is sent) or by letting the network inject "congestion bits" into packets passively as they flow from sender to receiver within the network (letting the network handle the congestion). Either way, the congestion bits would be either a 1 or a 0, where a 1 would show that congestion is present and 0 showing that it wouldn't. </li></ul><br><hr><br>
+		<li onclick="toggleA('6')">What makes up a reliable data transfer protocol? How does it handle losing packets, corrupted data, etc?</li><br>
+		<ul><li id='a6' style="color:red">A reliable data transfer protocol is made up of checks and precautions to ensure that packet loss and data corruption don't interfere with the data being send from two hosts. In order to protect from packet loss, the sending host in a protocol must have a timeout, based on network congestion delay, so that it can retransmit a packet after the timeout has passed (since it assumes the packet never reached it's destination). To set up a reliable connection, both hosts must acknowledge when data is received or a handshake is initiated to the other host so as to make sure that the other host knows that a packet was received correctly and hasn't been dropped (ACK). If a packet is corrupted, both hosts must be able to tell the other host that the data was received incorrectly (NACK) and that it needs to be retransmitted. These are the steps taken by a reliable data transfer protocol in order to handle packet loss, corrupted data, etc. </li></ul><br><hr><br> 
+		<li onclick="toggleA('7')">How does the TCP method of congestion avoidance work?</li><br>
+ 		<ul><li id='a7' style="color:red">TCP uses a Slow-Start algorithm, which doubles the size of the MSS (Max Segment Size) or decreases the MSS based on the estimated delay due to network congestion. More specifically, if TCP detects congestion increase, then the MSS gets reset to one, and is doubled every time congestion is decreased. If TCP detects that there's less and less congestion, then the current MSS is doubled. However, if TCP detects that duplicate ACKS are being received, the TCP will go into a congestion avoidance mode, in which the MSS will be reset and only increase by one each time a decrease in network congestion is detected (as opposed to doubled). This is a general overview of how TCP detects and controls network congestion.</li></ul><br><hr><br>
+		<li onclick="toggleA('8')">What is a whois database? How can it be used?</li><br> 
+		<ul><li id='a8' style="color:red">A whois database stores registered users of certain internet resources such as domain names, ip addresses associated, system information, and more. It can be used to look up information about a company based on a website, get phone numbers for the admins of the domain and website, get address information about the site holder, get the IP address
+range for the website, DNS addresses, and more.</li><br>
+		Source: https://en.wikipedia.org/wiki/WHOIS<br></ul><br><hr><br>
+		<li onclick="toggleA('9')">How does DNS find webservers? How does it work?</li><br>
+		<ul><li id='a9' style="color:red">DNS finds webservers by looking up the IP address for the website in a directory of domain names via a query. In general, when a user looks for a website, a DNS query as to the websites IP address is made and answered by the host's ISP so that the packet can store that address for routers to use to forward the packet to it's correct destination (the webserver itself) for getting or receiving data.</li><br>
+		Source: http://www.networksolutions.com/support/what-is-a-domain-name-server-dns-and-how-does-it-work/<br></ul><br><hr><br>
+		<li onclick="toggleA('10')">What is DNS hijacking?</li><br> 
+		<ul><li id='a10' style="color:red">DNS hijacking is the process of redirecting host DNS queries to a specific Domain Name Server (DNS). This allows the attacker to redirect a host to a website that may look the same to the requested website in the query, but it can contain malware, ad-clickers, and other malicious additions. This can also be used to harvest the credentials of a user by fooling them into entering a login into a login page similar to that of the actual page.</li><br>
+	Source: http://www.computerhope.com/jargon/d/dnshijac.htm<br></ul><br><hr><br>
+	</ol>
+<h4>Questions from the Book, and Answers</h4> 
+	<ol>
+		<li>Question P5 (page 289): Suppose that the UDP receiver computes the Internet checksum for the received
+
+UDP segment and finds that it matches the value carried in the checksum field.
+
+Can the receiver be absolutely certain that no bit errors have occurred? Explain.</li><br>
+		<ul><li style="display:block">The receiver cannot be absolutely certain that no errors had occurred, even if the checksum turned out to be completely correct. Simply put, an error could have occured in the checksum that could have changed one of the bits from a 0 to a 1 (or even in a header), yet still allowing the checksum to be completely valid based on the addition of the (possibly incorrect) headers. However, the user can be assured that the data is <strong>most likely</strong> correct.</li></ul><br><hr><br> 
+		<li>P23. Consider the GBN and SR protocols. Suppose the sequence number space is
+
+of size k. What is the largest allowable sender window that will avoid the
+
+occurrence of problems such as that in Figure 3.27 for each of these protocols?</li><br> 
+		<ul><li style="display:block">The largest allowable sender window would have to be less than or equal to half of the sequence number space size <i>k</i> in order to prevent such a scenario in which the sender's packets may get dropped, which then the receiver may interpret the sequence of received packets incorrectly. However, if the sender window is lowered to half of <i>k</i>, then the receiver window will then be able to interpret the packet loss better and maintain the order of the packets it receives (instead of interpreting retransmitted packets as new packets).</li></ul><br>
+	Reference for P23: pages 228-229<br><hr><br>
+	</ol>
+<h4>Wireshark Tutorials</h4>
+<br> 
+<p><strong>Wireshark UDP packet analysis</strong></p><br>
+	<ol>
+		<li>To start analyzing UDP, we'd need to start sniffing on a wireshark interface (either wlan0, wlp2s0, eno1, or eth0). When you begin sniffing on an interface, filter the page to find only UDP packets going to and from hosts by typing the work UDP (in lowercase letters) in the filter bar at the top of the page.</li><br>
+	<p>Example of filtering for UDP packets:</p><br>
+	<img src="https://samsclass.info/106/proj13/p2a.png"/><br><hr><br> 
+		<li>Next, when you see UDP packets start flowing in from hosts, click on one of the sniffed packets and pull up the bottom window in order to look at the different layers within a UDP packet (see above image). If no UDP packets appear, you can send some through the network via netcat and printf, like so:<br><br><strong>printf "your message in udp" | nc -u [host] [port]</strong></li><br><hr><br> 
+	<li>You can see from the analyzing the datagram of the UDP packet (by clicking on the <strong>User Datagram Protocol</strong> section of the field) that it has the following header fields, a destination address and port, a source address and port, the length of the header information + payload data in the packet (in bytes, in this case it's 127 bytes, the headers are a maximum of 8 bytes with each header being 2 bytes long), and the checksum value. The actual data comes after the headers (which consists of 119 bytes in the following picture). The maximum number of bytes that a UDP packet can carry in it's data portion of the packet is 2^(16)-1, minus the 8 bytes of header, leaving 65527 of bytes available. It should be noted also that the largest possible port number that can be in a UDP packet is also 2^(16)-1, which would be up to 65535.</li> 
+	<br> 
+	<img src="https://gharp1.files.wordpress.com/2012/11/pic12.png"/><br><br>
+	<li>If you look in the IP (internet protocol) section of the UDP layer, the packet will show that the UDP hexadecimal identification number is 0x11, or 17 in decimal.</li><br><hr><br> 
+	<li>The checksum portion of a UDP packet is the one's complement of the complement of the sum of all the headers in a UDP packet (which may be padded with extra zeros two form two bytes). If the checksum is computed to be 0, then it must be set to 0xFFFF in hexadecimal. See the following image for the checksum information (this image shows the checksum showing corrupted data).</li><br>
+	<img src="http://i.stack.imgur.com/Fahyw.jpg"/><br><hr><br>
+	<li>If you compare the two packets and their ports for the destination and source address in a UDP packet, you can see the source destination port for one packet is the destination port for the reply UDP packet (between similar hosts).</li><br><hr><br> 
+	<li>In essence, this is the main analysis for the UDP packets that we can observe through wireshark in real time, as they all include the same headers and general information. With this knowledge, we can now dissect or even craft our own UDP packets (via netcat, or even in a programming language).</li>
+	</ol>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/> 
+</body> 
+</html> 
+

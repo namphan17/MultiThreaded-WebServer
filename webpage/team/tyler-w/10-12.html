@@ -1,0 +1,96 @@
+<!-- 
+10-12.html
+Notes from October 12th
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>10.12 Notes</title>
+	<style>
+		body { margin: auto; width: 80%; font-family: Verdana, sans-serif; background-color: #457263; }
+		li { list-style-position: inside; }
+		#cour { font-family: Courier, sans-serif; }
+		#desc { text-align: center; }
+		a { color: #FFFFFF; }
+	  
+	</style>
+</head>
+<body>
+
+	<h1 id="desc"> Tyler Wians </h1>
+    <h5 id="desc"> CSC 317: Computer Networks</h5>
+    <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./10-12.html">10.12</a></p>
+
+	<h3>TCP Congestion Control</h3>
+	<p>TCP must use end-to-end congestion control rather than network-assisted congestion control, because the
+	IP layer provides no explicit feedback to the end systems regarding network connection.</p>
+	
+	<h4>The TCP Approach</h4>
+	<p>It has each sender limit the rate at which it sends traffic into its connections as a function of
+	perceived network congestion. If a TCP sender perceives that there is little congestion on the path between
+	itself and the destination, then the TCP sender increases its send rate. This brings about a few questions:</p>
+	<ul><li>How does a TCP sender limit the rate at which it sends traffic into its connection?</li><br>
+	    <li>How does a TCP sender perceive that there is congestion on the path between itself and the destination?</li><br>
+		<li>What algorithm should the sender use to change its send rate as a function of perceived end-to-end congestion?</li><br>
+	</ul>
+	
+	<h4>How a TCP sender limits the traffic rate</h4>
+	<p>The TCP congestion-control mechanism operating at the sender keeps track of an additional variable, the
+	<b>congestion window</b>, which imposes a constraint on the rate at which a TCP sender can send traffic into the 
+	network.</p>
+	
+	<p>The amount of unacknowledged data at a sender may not exceed the minimum of <b id="cour">cwnd</b> and 
+	<b id="cour">rwnd</b>.
+	
+	<p><b id="cour">LastByteSent - LastByteAcked &le; min{cwnd, rwnd}</b> <br><br> (By adjusting the values, the sender can
+	adjust the rate at which it sends data into its connection.)</p>
+	
+	<h4>How a TCP sender perceives that there is congestion</h4>
+
+	<p>When there is excessive congestion, then one or more routers buffers along the path
+	overflows, causing a datagram containing a TCP segment to be dropped. This results in a 
+	loss event at the sender, either a timeout or the receipt of three duplicate ACKS, which
+	is taken by the sender to be an indication of congestion on the sender-to-receiver path.</p>
+
+	<p>When a loss event does not occur, TCP takes the arrival of the acknowledgements as an indication that the
+	packets were successfully delivered and will use acknowledgements to increase its congestion window size. If
+	acknowledgements arrive at a slow rate, the congestion window will be increased at a slower rate. If acknowledgements
+	arrive at a fast rate, the congestion window will be increased at a faster rate.</p>
+	
+	<p>TCP is said to be <b>self-clocking</b> because it uses acknowledgements to trigger, or clock, its increase in
+	congestion window size.</p>
+	
+	<h4>How should a TCP sender determine the rate at which it should send?</h4>
+	<p>If TCP senders collectively send too fast, they can congest the network. If they send too slowly, then they
+	are under-utilizing the bandwidth in the network.</p>
+	
+	<ul><li><b>Lost Segments</b>: lost segments imply congestion, so the TCP sender's rate should be decreased when
+	a segment is lost.</li><br>
+		<li><b>Acknowledged Segments</b>: An acknowledged segment indicates that the network is delivering the
+	sender's segments to the receiver, so the sender's rate can be increased when an ACK arrives for a previously
+	unacknowledged segment.</li><br>
+		<li><b>Bandwidth Probing</b>: The TCP sender uses both successful and unsuccessful deliveries as a strategy to probe 
+		for the threshold between the two. The TCP sender will probe until a loss event occurs, at which point it will decrease
+		the transmission rate. It then begins to probe again, to see if that threshold has changed.</li><br>
+	</ul> <p> There is no explicit signaling of congestion state by the network; ACKs and loss events serve as implicit signals.
+	Each TCP sender acts on local information asynchronously from other TCP senders.</p>
+	
+	<h4>What algorithm should the sender use to change the transmission rate?</h4>
+	<h5>TCP Congestion-Control Algorithm</h5>
+	<p>The algorithm has three major components:</p>
+	<ul><li><b>Slow Start</b>: the value of <b id="cour">cwnd</b> is initialized to a small value, and is exponentially increased every
+	time a transmitted segment is acknowledged.</li><br>
+		<li><b>Congestion Avoidance</b>: Upon entry to this state, the value of <b id="cour">cwnd</b> is about half its 
+	value when congestion was last encountered. Rather than exponentially increasing, it simply increases the value of
+	<b id="cour">cwnd</b> by 1.</li><br>
+		<li><b>Fast Recovery</b>: The value of <b id="cour">cwnd</b> is increased by 1 for every duplicate ACK received
+	for the missing segment that caused TCP to enter this state in the first place. When an ACK arrives, TCP enters the
+	congestion-avoidance state after deflating <b id="cour">cwnd</b>. If a timeout event occurs, fast recovery transitions
+	to the slow-start state after setting <b id="cour">cwnd</b> to 1 and the threshold is set to half of the value <b id="cour">cwnd</b>
+	was before. This state is recommended, but not required.</li><br><br>
+	</ul>
+	
+</body>
+</html>

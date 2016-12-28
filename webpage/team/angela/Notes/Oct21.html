@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+   Oct 21
+</title>
+</head>
+<body><body bgcolor="#ccff33">
+	<h1>
+         <b>(Oct 21)Link Layer</b>
+    	</h1>
+	<h2>5.6 Data Center Networking (490-5)</h2>
+<ul>	
+
+<li>Each data center has its own data center network that interconnects its hosts with each other and interconnects the data center with the Internet.brief introduction to data center networking for cloud applications.</li>
+<li>The cost of a large data center is huge, exceeding $12 million per month for a 100,000 host data center:about 45 percent can be attributed to the hosts themselves (which need to be replaced every 3-4 years), 25 percent to infrastructure, including transformers, uninterruptable power supplies (UPS) systems, generators for long-term outages, and cooling systems, 15 percent for electric utility costs for the power draw; and 15 percent for networking, including network gear (switches, routers and load balancers), external links, and transit traffic costs. </li>
+<li>The worker bees in a data center are the host, they serve content, store emails and documents, and collectively perform massively distributed computations. The hosts in data centers, called blades and resembling pizza boxes, are generally commodity hosts that include CPU, memory, and disk storage</li>
+<li>he hosts are stacked in racks, with each rack typically having 20 to 40 blades. At the top of each rack there is a switch, aptly named the <b>Top of Rack (TOR) switch</b>, that interconnects the hosts in the rack with each other and with other switches in the data center</li>
+
+<li>The data center network supports two types of traffic: traffic flowing between
+external clients and internal hosts and traffic flowing between internal hosts. To handle flows between external clients and internal hosts, the data center network includes one or more border routers, connecting the data center network to the public Internet</li>
+
+<li>Data center network design, the art of designing the interconnection network and protocols that connect the racks with each other and with the border routers,</li>
+<li>Inside the data center, the external requests are first directed to a 
+load balancer whose job it is to distribute requests to the hosts, balancing the load across the hosts as a function of their current load. A large data center will often have several load balancers, each one devoted to a set of specific cloud applications</li>
+<li>For a small data center housing only a few thousand hosts, a simple network consisting of a border router, a load balancer, and a few tens of racks all interconnected by a single Ethernet switch could possibly suffice. But to scale to tens to hundreds of  thousands  of  hosts,  a  data  center  often  employs  a  <b>hierarchy  of  routers and switches</b></li>
+
+<li>One such trend is to deploy new interconnection architectures and network proto-
+cols that overcome the drawbacks of the traditional hierarchical designs. One such
+approach is to replace the hierarchy of switches and routers with a 
+fully connected
+topology</li>
+</ul>
+
+</body>
+</html>

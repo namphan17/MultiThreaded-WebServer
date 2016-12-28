@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+            <h1 class="section">CHAPTER 3.4.2: Pipelined Reliable Data Transfer Protocol</h1>
+            <ul>
+               <li><span class="section">Utilization</span> of the sender (or the channel) is the fraction of time the sender is actually busy sending bits into the channel:<br>
+                  <p class='display'>U<sub>sender</sub> = (L/R)/(RTT + L/R)</p>
+               </li>
+               <li>The stop-and-wait protocol has a rather dismal sender utilization.</li>
+               <li>The solution to this particular performance problem is simple: Rather than operate in a stop-and-wait manner, the sender is allowed to send multiple packets without waiting for acknowledgments</li>
+               <li>This technique is called <span class="section">Pipelining</span></li>
+               <li>
+                  <h3 class="section">Consequences for rdt:</h2>
+                     <ul>
+                        <li>The range of sequence numbers must be increased (not only 1 and 0).</li>
+                        <li>The sender and receiver sides of the protocols may have to buffer more than one packet. Minimally, the sender will have to buffer packets that have been transmitted but not yet acknowledged.</li>
+                        <li>The range of sequence numbers needed and the buffering requirements will depend on the manner in which a data transfer protocol responds to lost, corrupted, and overly delayed packets. Two basic approaches toward pipelined error recovery can be identified: <span>Go-Back-N</span> and <span>selective repeat</span>.</li>
+                     </ul>
+               </li>
+            </ul>
+            <div style="padding:5px 15px">
+               <h2 class="section">1. Go-Back-N</h2>
+               <ul>
+                  <li>The range of permissible sequence numbers for transmitted but not yet acknowledged packets can be viewed as a <b>window of size N</b> over the range of sequence numbers.</li>
+                  <li>In our GBN protocol, an acknowledgment for a packet with sequence number n will be taken to be a cumulative acknowledgment, indicating that all packets with a sequence number up to and including n have been correctly received at the receiver.</li>
+                  <li>Suppose now that packet n is expected, but packet n + 1 arrives. Because data must be delivered in order, the receiver could buffer (save) packet n + 1 and then deliver this packet to the upper layer after it had later received and delivered packet n. However, if packet n is lost, both it and packet n + 1 will eventually be retransmitted as a result of the GBN retransmission rule at the sender.</li>
+                  <li>Problem: unnecessary retransmissions.</li>
+               </ul>
+            </div>
+            <div style="padding:5px 15px">
+               <h2 class="section">2. SR</h2>
+               <ul>
+                  <li>Selective-repeat protocols avoid unnecessary retransmissions by having the sender retransmit only those packets that it suspects were received in error (that is, were lost or corrupted) at the receiver.</li>
+                  <li>
+                     <h4>SR sender events and actions</h4>
+                     <ul>
+                        <li>Data received from above: When data is received from above, the SR sender checks the next available sequence number for the packet. If the sequence number is within the sender’s window, the data is packetized and sent; otherwise it is either buffered or returned to the upper layer for later transmission, as in GBN.</li>
+                        <li>Timeout: Timers are again used to protect against lost packets. However, each packet must now have its own logical timer, since only a single packet will be transmitted on timeout.</li>
+                        <li>ACK received: If an ACK is received, the SR sender marks that packet as having been received, provided it is in the window. If the packet’s sequence number is equal to send_base, the window base is moved forward to the unacknowledged packet with the smallest sequence number. If the window moves and there are untransmitted packets with sequence numbers that now fall within the window, these packets are transmitted.</li>
+                     </ul>
+                  </li>
+                  <li>
+                     <h4>SR receiver events and actions</h4>
+                     <ul>
+                        <li>If the packet was not previously received, it is buffered. If this packet has a sequence number equal to the base of the receive window, then this packet, and any previously buffered and consecutively numbered (beginning with rcv_base) packets are delivered to the upper layer.</li>
+                        <li>Packet with sequence number in [rcv_base-N, rcv_base-1] is correctly received. In this case, an ACK must be generated, even though this is a packet that the receiver has previously acknowledged.</li>
+                        <li>Otherwise: Ignore the packet.</li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

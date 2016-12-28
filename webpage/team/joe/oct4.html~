@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    October 4th
+</title>
+</head>
+<body>
+    <h3>Protocol layers
+        <ul>
+	  <li>Application layer -> Message</li>
+	  <li>Transport layer -> Segment</li>
+	  <li>Network layer -> Datagrams </li>
+	  <li>Link layer -> Frames</li>
+	  <li>Physical layer</li>
+	</ul>
+      <p> it's is up to the application designer to determine the presentation and services </p>
+    </h3>
+    <br><br>
+    <h3>Delays
+      <ul>
+	<li>Queuing delay -> waiting in queue </li>
+	<li>transmission delay -> node to medium</li>
+	<li>propagation delay -> medium to node</li>
+	<li>processing delay</li>
+    </h3>
+    <br><br>
+
+    <h2>Network Attacks</h2>
+      <p> Internet has become a target of many attacks. Network security deals with defending and protecting networks against attacks.<p>
+      <ul>
+	<li>Inserting Malware into your host via the Internet
+	  <h4> What is Malware? </h4>
+	  <ul>
+	    <li>Software that is intended to damage or disable computers and computer systems.
+	      <ul>
+		<li>Delete files</li>
+		<li>Install Spyware</li>
+		<li>Intentional harm</li>
+	      </ul>
+	    </li>
+	    <li> Malware is mostly self-replicating </li>
+	    <li> Viruses
+	      <ul>
+		<li>Malware that requires some form of user interaction to infect the user's device.</li>
+		<li>Example: Email attachment.</li>
+	      </ul>
+	    </li>
+	    <li> Worms
+	      <ul>
+		<li>Malware that can enter a device without any user interaction</li>
+		<li>Example: Vulnerable network application</li>
+	      </ul>
+	    </li>  
+	    <li>Botnet -> A network of similarly compromised devices. Used for a DoS attack.</li> 
+	  </ul>
+	</li>
+	<li>Attacking servers and Network infrastructure
+	  <h4>Denial-of-service (DoS) attack</h4>
+	  <ul>
+	    <li>Vulnerability Attack
+	      <ul>
+		<li> This involves sending well-crafted messages to a vulnerable application or operating system running on a targeted host</li>
+	      </ul>
+	    </li>
+	    <li>Bandwidth Flooding
+	      <ul>
+		<li>The attacker sends a deludge of packets to the targeted host--so many packets that the target's access link becomes clogged, preventing legitimate packets from reaching the server.</li>
+	      </ul>
+	    </li>
+	    <li>Connection Flooding
+	      <ul>
+		<li>The attacker establishes a large number of half-open or fully opne TCP connections at the target host. The host can become so bogged down with bogus connections that it stops accepting legitimate connections.</li>
+	      </ul>
+	    </li>
+	    <li>Distributed DoS</li>
+	  </ul>
+	</li>
+	<li>Sniffing Packets
+	  <h4>Packet Sniffer</h4>
+	  <ul>
+	    <li>A passive receiver that records a copy of every packet that passes</li>
+	    <li>Sniffed packets can then be analyzed offline for sensitive information.</li>
+	    <li>Packet sniffers are passive, so they are very difficult to detect.</li>
+	  </ul>
+	</li>
+	<li>Faking IPs and Identities
+	  <h4>IP Spoofing</h4>
+	  <ul>
+	    <li>The ability to inject packets into the Internet with a false source address</li>
+	    <li> End-point Authentication</li>
+	  </ul>
+	</li>  	
+      </ul>
+</body>
+</html>

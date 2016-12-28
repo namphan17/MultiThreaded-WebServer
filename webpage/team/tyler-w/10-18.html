@@ -1,0 +1,84 @@
+<!-- 
+10-18.html
+Notes from October 18th
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>10.18 Notes</title>
+	<style>
+	  body { background-color: #457263;
+	         margin: auto; width: 80%;
+           font-family: Verdana, sans-serif; }
+    #desc { text-align: center; }
+            a { color: #FFFFFF; }
+	</style>
+</head>
+<body>
+
+        <h1 id="desc"> Tyler Wians </h1>
+        <h5 id="desc"> CSC 317: Computer Networks</h5>
+        <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./10-18.html">10.18</a></p>
+		
+		<h3>Broadcast Routing</h3>
+		
+		<p>In <b>broadcast routing</b>, the network layer provides a service of delivering a packet sent from a source node
+		to all other nodes in the network.</p>
+		
+		<p>One approach to accomplish broadcast communication is the <b>N-way-unicast</b> approach. In this approach, given
+		<i>N</i> destination nodes, the source node makes <i>N</i> copies of the packet, addresses each copy to a different
+		destination, and then transmits the <i>N</i> copies to the <i>N</i> destinations using unicast routing.</p>
+		
+		<p>No new network-layer routing protocol, packet-duplication, or forwarding functionality is needed. However, there
+		are problems with this approach (<i>Diagram a.</i>):</p>
+		
+		<img src="broadcast001.jpeg" alt="broadcast001.jpeg" style="width:430px;height:190px;" border="3">
+		
+		<ul><li><b>Not efficient</b>: It would be more efficient for the network nodes themselves to create only a single copy
+		of the packet that traverses a link, rather than creating many copies to send over many links.</li><br>
+			<li><b>Additional protocols required to get receivers</b>: More protocol mechanisms, such as broadcast membership
+			or destination-registration protocol, would be required. This would add more overhead and additional complexity to
+			a simple protocol.</li><br>
+			<li>In situations where broadcast is used to create and update unicast routes, it would not be smart to rely on the
+			unicast routing infrastructure to achieve broadcast.</li><br>
+		</ul>
+		
+		<h4>Uncontrolled and Controlled Flooding</h4>
+		
+		<p><b>Flooding</b> is an approach in which the source node sends a copy of the packet to all of its neighbors. Eventually,
+		every node in the graph will receive a copy of the broadcast packet. Unfortunately, there is a flaw: If the graph has
+		cycles, then one or more copies of each broadcast packet will cycle indefinitely. It will also create and forward multiple
+		copies of the broadcast packet, each of which will create multiple copies of itself. This is called a <b>broadcast storm</b>,
+		and would render the network useless.</p>
+		
+		<p>The key to avoiding a broadcast storm is for a node to choose when to or not to flood a packet, checking if it already
+		received and flooded an earlier copy of the packet. In <b>sequence-number-controlled-flooding</b>, a source node puts its
+		address/unique identifier and <b>broadcast sequence number</b> into a broacast packet, and then sends it to all of its
+		neighbors.</p>
+		
+		<p>Another approach to controlled flooding is <b>reverse path forwarding (RPF)</b>. When a router receives a broadcast packet
+		with a given source address, it transmits the packet on all of its outgoing links, except the one it received from, only if the
+		packet arrived on the link that is on its own shortest unicast path back to the source. The picture below illustrates RPF:</p>
+	
+		<img src="broadcast002.jpeg" alt="broadcast002.jpeg" style="width:430px;height:260px;" border="3">
+		
+		<h4>Spanning Tree Broadcast</h4>
+		
+		<p>Sequence-number-controlled flooding and RPF avoid broadcast storms, but they do not completely avoid the transmission
+		of redundant packets. A <b>spanning-tree</b> is a tree that contains each and every node in a graph. If each link has
+		an associated cost and the cost of a tree is the sum of the link costs, then a spanning tree whose cost is the minimum of
+		all the graph's spanning trees is called a <b>minimum spanning tree</b>.</p>
+		
+		<img src="broadcast003.jpeg" alt="broadcast003.jpeg" style="width:590px;height:240px;" border="3">
+		
+		<p>In the <b>center-based approach</b> to building a spanning tree, a center node is defined. Nodes then unicast
+		tree-join messages addressed to the center node. A tree-join message is forwarded using unicast routing toward the
+		center until it either arrives at a node that already belongs to a spanning tree or arrives at the center.</p>
+		
+		<img src="broadcast003.jpeg" alt="broadcast003.jpeg" style="width:590px;height:240px;" border="3">
+		<br><br>
+		
+</body>
+</html>

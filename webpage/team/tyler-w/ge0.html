@@ -1,0 +1,133 @@
+<!--
+ge0.html
+Graded Exercise #0
+Tyler Wians
+CSC 317: Computer Networks
+ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Graded Exercise #0</title>
+    <style>
+      body { background-color: #457263;
+             margin: auto; width: 80%;
+             font-family: Verdana, sans-serif;
+      }
+      b { font-family: Courier;
+          color: #FFFFFF; }
+      #desc { text-align: center; }
+      a { color: #FFFFFF; }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#q1").click(function(){
+          $("#a1").toggle(250);
+      });
+      $("#q2").click(function(){
+          $("#a2").toggle(250);
+      });
+      $("#q3").click(function(){
+          $("#a3").toggle(250);
+      });
+      $("#q4").click(function(){
+          $("#a4").toggle(250);
+      });
+      $("#q5").click(function(){
+          $("#a5").toggle(250);
+      });
+      $("#q6").click(function(){
+          $("#a6").toggle(250);
+      });
+      $("#q7").click(function(){
+          $("#a7").toggle(250);
+      });
+      $("#q8").click(function(){
+          $("#a8").toggle(250);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1 id="desc"> Tyler Wians </h1>
+    <h5 id="desc"> CSC 317: Computer Networks</h5>
+    <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./ge0.html">Graded Exercise #0</a></p>
+    
+    <div id="person">
+      <h3>Robert Metcalfe</h3>
+      <p>Robert Metcalfe is an electrical engineer and doctor of computer science who has made huge contributions to the world of data communications. He graduated with a bachelor's degree from MIT in 1969, then went on to get his master's degree and Ph.D. from Harvard University in Applied Mathematics and Computer Science respectively. He is currently a professor at the University of Texas at Austin, in the Cockrell School of Engineering, and was appointed to lead innovation initiatives at the university.</p>
+      <p>While working at Xerox in the early 1970's, he, along with David Boggs, invented Ethernet - the most widely installed local area network (LAN) technology. Ethernet is a link-layer protocol in the TCP/IP protocol stack, describing how networked devices can format data for transmission to other devices on the same network, and how to put that data out on the network connection. Unlike dial-up networking, Ethernet transmits data at a much higher rate. After the creation of the Ethernet cable, Robert Metcalfe co-founded 3COM, a digital electronics manufacturer best known for its computer network infrastructure products. </p>
+      <p>In 1980, he received the ACM Grace Hopper Award for his contributions to the development of local networks and the creation of Ethernet. Metcalfe was also awarded the IEEE Medal of Honor in 1996 for "exemplary and sustained leadership in the development, standardization, and commercialization of Ethernet," as well as the 2003 Marconi Award for "inventing the Ethernet and promulgating his law of network utility based on the square of the nodes." In May 2007, he was inducted into the National Inventors Hall of Fame in Akron, Ohio.
+</p>
+	<h4>References</h4>
+	<ul>
+	  <li>http://www.engr.utexas.edu/news/releases/bobmetcalfe</li>
+	  <li>https://en.wikipedia.org/wiki/Robert_Metcalfe</li>
+	</ul>
+    </div>
+
+    <hr>
+
+    <div id="tutorial">
+      <h3>Tutorial: The Linux File-System</h3>
+      <p>This tutorial will teach you how to use basic commands to organize your files.</p>
+      <ol>
+	<li>Open up a terminal window. Your current directory should be your personal user folder.</li><br>
+	<li>Type <b>ls</b> into the terminal and hit enter. The <b>ls</b> command shows you every file and folder in the current directory.</li><br>
+	<li>You should see the folder name <b>Documents</b> in the list. To change to that directory, you would type: <b>cd [directory name]</b>, or in this case <b>cd Documents</b>.</li><br>
+	<li>You are now in the directory <b>Documents</b>. Open up the file explorer on your operating system and go to the Documents folder. Create a new document by right-clicking the area inside the folder. Rename this document 'testDoc.txt'. Keep this window open.</li><br>
+	<li>Return to the terminal and enter <b>ls</b> command again. You should see the testDoc.txt file in the list that appears. Now you will learn how to create a directory.</li><br>
+	<li>To make a new directory, type in the command <b>mkdir testFolder</b>.</li><br>
+	<li>Type the <b>ls</b> command again, and you should see your created folder in the current directory. If you go back to your OS file explorer window, you will see that the newly created file is in the Documents folder.</li><br>
+        <li>Now, back to the terminal window. Now you will learn how to make a copy of a file. To do this, simply type <b>cp testDoc.txt testFolder</b>.</li><br>
+	<li>Change your current directory to <b>testFolder</b> by typing <b>cd testFolder</b>, and then type the <b>ls</b> command. You will see that your file was copied to the <b>testFolder</b> folder.</li><br>
+	<li>Now you will learn how to delete files. To change your directory back to <b>Documents</b>, use the <b>cd</b> command by typing <b>cd ..</b>. The <b>..</b> refers to the parent folder of the current directory.</li><br>
+	<li>You are now back in the <b>Documents</b> directory. Use the <b>ls</b> command and notice that your first copy of <b>testDoc.txt</b> is still there. You can delete this duplicate using the <b>rm</b> command, by typing <b>rm testDoc.txt</b>. Use the <b>ls</b> command again and notice that it is no longer there.</li><br>
+	<li>You can use the <b>mv</b> command to move or rename files or folders. Rename the directory <b>testFolder</b> by typing <b>mv testFolder testFolder2</b>. Type <b>ls</b> and see that your directory name has changed. Change your current directory to <b>testFolder2</b> by typing <b>cd testFolder2</b>. Notice that your <b>testDoc.txt</b> file is still in the directory. You can use the same instructions for files.</li><br>
+	<li>You just learned how to rename files and folders, now you will learn how to move them. The only difference here is that the second parameter you enter will be a filepath instead of a directory or file name. In your current directory, type <b>mv textDoc.txt ..</b>. This will move your <b>textDoc.txt</b> file out of the <b>testFolder2</b> directory, and up one level into the <b>Documents</b> directory.</li><br>
+	<li>Move up one directory by typing <b>cd ..</b>, and see that your file was moved.</li><br>
+	<li>This completes the tutorial for basic Linux file system commands.</li><br>
+      </ol>
+
+    </div>
+
+    <hr>
+
+    <div id="questions">
+    <h3>Questions</h3>
+            <h5>What is an Application Programming Interface?</h5>
+    <p id="a1" style="display:none;">
+    An Application Programming Interface, or API, is a set of routines, protocols, and tools for building software applications.</p>
+		<button id="q1">Show/Hide Answer</button>
+	    <h5>What does an API do?</h5>
+    <p id="a2" style="display:none;">
+    An API specifies how software components should interact, and they are used when programming GUI components.</p>
+		<button id="q2">Show/Hide Answer</button>
+	    <h5>What is instantaneous throughput?</h5>
+    <p id="a3" style="display:none;">
+    Instantaneous throughput is the rate (in bits/sec) at which the receiving host is receiving the file at any instant of time.</p>
+		<button id="q3">Show/Hide Answer</button>
+	    <h5>How many layers are in the Protocol Stack, and what is each layer?</h5>
+    <p id="a4" style="display:none;">
+    There are five layers: Application, Transport, Network, Link, and Physical.</p>
+		<button id="q4">Show/Hide Answer</button>
+	    <h5>What is the difference between a virus and a worm?</h5>
+    <p id="a5" style="display:none;">
+    A virus requires some form of user interaction to infect the user's device; a worm does not.</p>
+		<button id="q5">Show/Hide Answer</button>
+	    <h5>What is IP spoofing, and why is it used?</h5>
+    <p id="a6" style="display:none;">
+    IP spoofing is when malicious users inject packets into the Internet with a false source address, for the purpose of hiding the identity of the sender or impersonating another computing system.</p>
+		<button id="q6">Show/Hide Answer</button>
+	    <h5>What is an elastic application?</h5>
+    <p id="a7" style="display:none;">
+    An elastic application is one that makes use of as much, or as little, throughput as happens to be available. (i.e. E-mail, file transfer, web transfers)</p>
+		<button id="q7">Show/Hide Answer</button>
+	    <h5>What is the difference between a persistent connection, and a non-persistent connection?</h5>
+    <p id="a8" style="display:none;">
+      A persistent connection is when all the pairs of requests and responses are sent over the <i>same</i> connection. A non-persistent connection is when they are sent over <i>seperate</i> connections.</p>
+    <button id="q8">Show/Hide Answer</button>
+    </div>
+    
+  </body>
+</html>

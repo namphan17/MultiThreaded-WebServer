@@ -1,0 +1,60 @@
+<!-- 
+10-10.html
+Notes from October 10th
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>10.10 Notes</title>
+	<style>
+	  body { margin: auto; width: 80%;
+	         font-family: Verdana, sans-serif;
+	         background-color: #457263; }
+	  li { list-style-position: inside; }
+	  #desc { text-align: center; }
+	  a { color: #FFFFFF; }
+	</style>
+</head>
+<body>
+
+           <h1 id="desc"> Tyler Wians </h1>
+        <h5 id="desc"> CSC 317: Computer Networks</h5>
+           <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./10-10.html">10.10</a></p>
+	   
+	<h3>Multiplexing and Demultiplexing</h3>
+	<p>A process can have one or more <b>sockets</b>, which are doors through which data passes from the
+	process to the network. Each transport-layer segment has a set of fields to direct an
+	incoming segment to the appropriate socket. The transport-layer then examines these fields to identify
+	the receiving socket and directs the segment to the socket.</p>
+	
+	<h4>Demultiplexing</h4>
+	<ul><li>Delivers data in a transport-layer segment to the correct socket</li></ul>
+	
+	<h4>Multiplexing</h4>
+	<ul><li>Gathers data chunks at the source host (from different sockets)</li>
+		<li>Encapsulates each data chunk with header information (used for demultiplexing)</li>
+		<li>Creates segments to pass to the network layer</li></ul>
+		
+	<h4>How does it work?</h4>
+	<ul><li><i>Source port number field</i>: the unique identifier field in a segment</li>
+		<li><i>Destination port number field</i>: field that indicates what socket to deliver to</li>
+	</ul>
+	
+	<p>Each port number is a 16-bit number, ranging from 0 to 65535. Well known port numbers, ranging from 0-1023, are
+	   restricted and reserved for well-known application protocols like HTTP (port no. 80), and FTP (port no. 21). An
+	   application must be assigned a port number in order to transfer data.</p>
+	   
+	   <h4>Connectionless (UDP)</h4>
+	   <ul><li>Gets assigned a non-well-known port number</li>
+		   <li>Chooses an available port number not being used by another application</li>
+		   <li>If a port is chosen that is already being used, the return address field sends it back</li>
+		</ul>
+	   
+	   <h4>Connection-Oriented (TCP)</h4>
+	   <p>Identified by a four-tuple which uses the four values,<ul><li>Source IP Address</li><li>Source Port Number</li><li>Destination IP Address</li>
+		<li>Destination Port Number</li><br>to direct the segment to the appropriate socket.</p>
+	
+</body>
+</html>

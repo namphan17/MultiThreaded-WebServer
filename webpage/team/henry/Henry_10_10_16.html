@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="./HenryStyleSheet.css" />
+    <meta charset="utf-8" />
+    <title>Henrys Notes October 10th 2016</title>
+</head>
+<body>
+    <h2 id="pageHeader">Henry's Notes October 10<sup>th</sup></h2>
+    <h4>Multiplexing and Demultiplexing</h4>
+    <ol>
+        <li>
+            A multiplexing/demultiplexing service is needed for all computer networks.
+        </li>
+        <li>
+            The transport layer has the job of delivering the data from the network layer to all the appropriate 
+            application processes.
+            </li>
+        <li>
+            In order to send data to the appropriate application out of those running on a single machine, a number 
+            of steps must occur.
+        </li>
+        <li>
+            The transport layer has a number of attributes.
+            <ul>
+                <li>Each applicaton has one or more dedicated sockets, therefore the transport layer must 
+                merely know the appropriate socket for delivery.</li>
+                <li>Each socket is either a UDP or TCP socket.</li>
+                <li>Each transport layer segment has a number of fields which designate the appropriate socket.</li>
+                <li>The job of determining the appropriate socket and parsing off the correct segments falls to 
+                is called demultiplexing.</li>
+                <li>The process of examining transport layer segments and concatenating them to pass to the network 
+                layer is called multiplexing.</li>
+            </ul>
+        </li>
+        <li>
+            Each port number on a computer is a 16-bit number ranging from 0 to 65535.
+        </li>
+        <li>
+            Source and destination port number fields are sockets on a machine which are designated for either 
+            transmission or reception, respectively.
+        </li>
+        <li>
+            The port numbers ranging from 0 to 1023 are called well-known port numbers.
+        </li>
+        <li>
+            To summarize:
+            <ul>
+                <li>Each socket is designated a port number.</li>
+                <li>When a segment arrives, the transport layer examines the destination port number and 
+                and send the segment to the correct socket.</li>
+                <li>The data in the segment passes through the port and to the application.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h4>Connectionless Multiplexing and Demultiplexing</h4>
+    <p>There are a few important distinctions to make in this section as compared to the previous one.</p>
+    <ol>
+        <li>When a UDP socket is created, it is automatically unassigned a non-well-known port number.</li>
+        <li>A UDP designated segment includes a "return to sender" identifier of the source's port number.</li>
+    </ol>
+</body>
+</html>

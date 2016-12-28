@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/7/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 7th
+    </h1>
+<ul>
+	<li>Key-value pairs: Input a key, get the associated value</li>
+	<li>Distributed Hash Table</li>
+	<ul>
+		<li>Each peer has only a subset of the list of pairs</li>
+		<li>Any peer can query the database with a key</li>
+		<li>Given a key, the database locates the peer(s) which have the corresponding key-value pair(s)</li>
+		<li>Any peer may insert a new key-value pair into the database</li>
+		<li>Ex: content name(key) and IP address of someone who has the content(value)</li>
+	</ul>
+	<li>How to create a Peer to Peer Distributed Hash Table</li>
+	<ol>
+		<li>Assign an identifier to each peer</li>
+		<li>Require each key to be an integer</li>
+		<li>Use a hash function to map String keys to integers</li>
+		<li>Assign each key to the peer whose identifier is closest to it</li>
+		<li>Use an overlay network to keep track of other peers</li>
+		<ul>
+			<li>Peers arranged in a circular arrangement</li>
+			<li>Each peer knows who its immediate successor and predecessor are</li>
+			<li>When the message "who knows this key" reaches the correct peer, a response is sent directly to the original peer</li>
+			<li>Average N/2 messages to find the correct peer, maximum N</li>
+			<li>Possible improvement: add 'shortcuts' to other points in the circle</li>
+		</ul>
+		<li>Peer Churn</li>
+		<ul>
+			<li>Peers leaving and arriving at random</li>
+			<li>Each peer keeps track of its two closes neighbors</li>
+			<li>If a peer leaves</li>
+			<ol>
+				<li>Neighbor peers each move the secondary neighbor up to the first slot</li>
+				<li>Ask the new primary neighbor for their primary neighbor to become the secondary neighbor</li>
+			</ol>
+			<li>If a peer joins</li>
+			<ol>
+				<li>New peer asks peer 1 who their neighbors will be</li>
+				<li>Question is passed through the network until it reaches the predecessor</li>
+				<li>Predecessor updates its neighbor information and informs the new peer of its position</li>
+				<li>New peer sets its information and informs its successor of the change</li>
+			</ol>
+		</ul>
+	</ol>
+</ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

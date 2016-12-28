@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Questions
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+<ol>
+	<li class="question">Explain the TCP three-way handshake which starts a connection.</li>
+	<ol>
+		<li class="answer">When TCP is opening a connection, the client sends out a packet asking to open a new connection with the
+			server.</li>
+		<li class="answer">The server responds with an acknowledgement of that request and its own request to do the same.
+			At this point the server is now open to receive any requests from the client.</li>
+		<li class="answer">The client responds to the server's request with an acknowledgement of its own.
+			At this point the client is open to receive further response packets from the server.</li>
+	</ol>
+	<li class="question">What function do cookies serve? Why is this function necessary?</li>
+	<ul>
+		<li class="answer"><strike><b>They are delicious and I want them</b></strike><span style="color:blue"><sup>[citation needed]</sup></span>.</li>
+		<li class="answer">HTTP is a stateless protocol, which means no information about a user's previous actions are stored.
+			Cookies allow the storage of some information for use on multiple pages, such as login information or the contents
+			of a user's cart on a shopping site.</li>
+	</ul>
+	<li class="question">Give at least two reasons why it would be a bad idea to have a single, centralized DNS server.</li>
+	<ul>
+		<li class="answer">If that server crashes, so does the entire internet (single point of failure)</li>
+		<li class="answer">The sheer number of requests passing through would cause significant delay</li>
+		<li class="answer">That server cannot be equally close to everything, unless it is at the earth's core, but no matter
+			where it is a large number of people will experience significant propagation delays</li>
+		<li class="answer">The database would have to be constantly updated with any changes, which would be difficult as the
+			database of all internet addresses would be very large.</li>
+	</ul>
+	<li class="question">What makes Selective Repeat different from Go Back N? Which is used in modern protocols?</li>
+	<ul><li class="answer">When a packet is lost, Go Back N will resend all packets within a certain margin of the lost packet. 
+		When a packet is lost, Selective Repeat will begin resending packets at the lost packet, potentially skipping back to fresh
+		packets when it receives an acknowledgement for all packets sent so far. Selective Repeat is currently more frequently used
+		because it has less of a chance of sending duplicate packets and clogging the network.</li></ul>
+	<li class="question">What does a triple duplicate ACK response signify in TCP? What is done in response to the ACKs?</li>
+	<ul><li class="answer">A triple duplicate ACK response means that the other host has failed to receive at least one packet,
+		so the host will begin resending packets starting at the segment number indicated by the triple duplicate ACK.</li></ul>
+	<li class="question">Why would you not want to use the maximum possible packet delay for the timeout to declare a packet lost?</li>
+	<ul><li class="answer">While the maximum possible delay would ensure that packets are actually lost before resending them, 
+		there are few enough occasions where the packet is discovered to have arrived safely close with almost maximum delay
+		that the amount of wasted bandwidth from resending packets which were simply incredibly delayed is not considered more
+		significant than the time saved by waiting less.</li></ul>
+	<li class="question">Briefly explain how a datagram network handles routing.</li>
+	<ul><li class="answer">When an end system wishes to send a packet, the IP address of the destination is placed in the packet's
+		header. The packet is then passed to a router, which consults its forwarding table to see which prefix best matches the
+		destination address. The packet is sent along the route closest to its destination, and continues being passed from router
+		to router in this fashion until it arrives at its destination.</li></ul>
+	<li class="question">Briefly explain transport-layer multiplexing and demultiplexing.</li>
+	<ul><li class="answer">Multiplexing is when the transport layer gathers all data chunks going to the same IP into one large
+		segment and sends it to the network layer. Demultiplexing is when the receiving system takes that large segment and divides
+		it up, sending each data chunk to its final destination socket.</li></ul>
+	<li class="question">What could make UDP preferable to TCP?</li>
+	<ul>
+		<li class="answer">Less packet overhead</li>
+		<li class="answer">No delay to establish a connection</li>
+		<li class="answer">No connection state, so more connections may be open at once</li>
+	</ul>
+	<li class="question">Explain Head-of-Line blocking.</li>
+	<ul><li class="answer">Suppose there are two input and output ports within a router, each labeled A and B. Input port A has a
+		single large packet going to output port A. Input port B has a large packet going to output port A and a smaller packet
+		behind it going to output port B. The router starts moving the packet from input port A to output port A, so the first
+		packet in input port B must wait until the packet from input port A has finished before it can start moving. Even though
+		output port B is free and ready to accept packets, the second packet cannot start being moved, because <b>the packet at the
+		head of the line is blocking it</b>.</li></ul>
+</ol>
+<ol>
+	<li class="question">Suppose you can access the caches in the local DNS servers of your department. Can you propose a way to 
+		roughly determine the Web servers (outside your	department) that are most popular among the users in your department? Explain.</li>
+	<ul><li class="answer">As a DNS cache utilizes TTL for its records, it must also store the last time they were accessed.
+		With this in mind, you could regularly check the cache to see which records have been recently modified.
+		Whichever records were modified the most frequently would be the ones which users visited the most.</li></ul>
+	<li class="question">Consider an HTTP client that wants to retrieve a Web document at a given URL. The IP address of the
+		HTTP server is initially unknown. What transport and application-layer protocols besides HTTP are needed in this scenario?</li>
+	<ul><li class="answer">DNS is needed to find the IP address of the server containing the information, TCP is needed to transmit
+		the data received, and an application will be needed to display the data to the user.</li></ul>
+</ol>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

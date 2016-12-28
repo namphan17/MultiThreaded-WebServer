@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Hello
+</title>
+</head>
+<body><body bgcolor="#99ff99">
+    <h1>
+        Angela Aley
+    </h1>
+    <p>
+        I am learning how to use this. I like rocks.
+    </p>
+	
+
+</body>
+<body>
+	<h1>
+        (Oct 4)Networks Under Attack
+    	</h1>
+	<ul> 
+   		<li>Malware: stuff that can infect our devices</li>
+		<li>Botnet: a compromised network</li>
+		<li>Self-Replicating: once in one host it trys to infect others then from there it tries to infrect more hosts ect.</li>
+		<li>Viruses: malware that require some form of user interaction to infect the users devices</li>
+		<li>Worms: a self-replicating malware that can enter a device without anyt explict user interaction</li>
+		<li>denial-of-service (DoS) attacks: renders a network, host or other infrastruture unuseable to legitimate users/</li> 
+			<ul>
+			<li>Vulnerability attack: involves sending a few well crafted messages to a vunerable application or operating system running on target host. If the right sequence of packets is sent to said appolication or operating system then the servies can stop or worse crash.</li>
+			<li>Vulnerability attack:a  deluge  of  packets is sent to  the targeted host (so many packets) that the target’s access link becomes clogged, preventing legitimate packets from reaching the server</li>
+			<li>Connection flooding: establishes a large number of half-open or fully open TCP connections at target host. So the target becomes so over worked that it stops accepting real work. </li>
+			</ul>
+		<li>Distributed DoS (DDoS): many sources each blast with the faulty messages. it is used as a way to get around the servers decteing all the faulty messages going throught just one server.</li>
+		<li>Packet sniffer: records a copy of evey packet that files </li>
+		<li>IP spoofing: false source addressing to pretend to be a nice source </li>
+	</ul>
+</body>
+<body>
+	<h1>
+         <b>(Oct 5)Network Application--Transport Services Available to Applications</b>
+    	</h1>
+	<ul> 
+   	<li>Reliable Data Transfer: a protocal provides a guaranteed data delivery service meaning it is delivered correctly and completely to the other end of the application.</li>
+	<li>Loss-Tolerant Application: self-explanitory really but they are mostly multimedia applications audio/video because losses may result in small glichs but not crucialy impaire</li>
+	<li>Bandwith-Sensitive Applications: Applications that have throughput
+requirements  </li>
+	<li>Elastic Applications: can make use of as much, or as little, throughput 
+as happens to be available</li>
+	<li>Timing: transport protocol can provide timing guarantees. This has great variance. It appeals to real time applications. </li>
+	<li>Security: transport protocol can provide application with one or more security services. Including data integrity and endpoint authentication. </li>
+	</ul>
+</body>
+<body>
+	<h1>
+         <b>(Oct 6)Network Application--DNS or Dommane Name Systems</b>
+    	</h1>
+	<ul> 
+   	<li>Directory of the Internet</li>
+	<li>send requests of either a URL or a IP Address and it will give you the opposite.</li>
+	<li>sent with UDP</li>
+	<li>Root DNS: severs the interent has 13 across the globe but many little ones all over the place</li>
+	<li> Top level domain servers only handle the important domains such as .com, .org and other main .____ domains.</li>
+<li>Authoritative DNS servers:  Every organization with publicly accessible hosts on the Internet must provide publicly accessible DNS records that map the names of those hosts to IP addresses
+</li>
+	<li> main issues</li>
+<ul>
+<li>Traffic volume: is prone to DoSS attacks</li>
+<li>opportunity for single point failure (if system only has one): if this goes down no one can connect to anything </li>
+<li>distance centralized database: another reason to have lots around the place because then it is closer to each client.</li>
+</ul>
+	<li> Can be made both <b> recursive queries and iterative queries </b> </li>
+<li> DNS caching: vitally important in terms of speed, keeps a record of the main queries so that it is faster to get to them</li>
+	</ul>
+</body>
+<body>
+	<h1>
+         <b>(Oct 7)Network Application--Peer to Peer Applications</b>
+    	</h1>
+	<h2>Bit Torrent</h2>
+	<ul> 
+   	<li>popular way for file distrubution </li>
+	<li> torrent: the collection of all peers participationg in the distribution of a particlar file</li>
+	<li>Peers download equal sized <i>chunks</i> of the file from one another(typically 256 KBytes)</li>
+	<li>chunks accumulate over time and while peers download chunks they also upload other chunks to other users </li>
+	<li>once a user has got all there parts they can selfishly leave the torrent or they can altruistically stay and continue to upload chunks to other users</li>
+<li>the center of each torrent is a <i>tracker</i> each peer has to register with the tracker and keep telling it they are still appart. the tracker gives each user a subset of peers that they will be trading with</li>
+	<li>any number of people can be apart of any torrent from 10 to thousands</li>
+<li>each peer uses the TCP connection to ask each other for both for a list of what they have and then specific ones to send to them.</li>
+<li><b>rarest first</b>:is how the peers usually ask for chunks from the lists they get back from the each neighbor. </li>
+<li>there is a great visual on page 150</li>
+	<li>BitTorrent chooses to give priority to the neighbors that are currently supplying data at the highest rate</li>
+<li> an <b>unchoked</b>: is four neighbors that are quicky sending the most information and it is going both ways with the information.</li>
+<li> an <b>optimistically unchoked</b> person: is chosen every 30 seconds and for a peer in hopes that you will become one of the top 4 for them and they start sending you information.</li>
+<li> an <b>unchoked</b>: is four neighbors that are quicky sending the most information and it is going both ways with the information.</li>
+</ul>
+</body>
+<body>
+	<h1>
+         <b>(Oct 10) Transport Layer pages 186-189</b>
+    	</h1>
+	<h2>3.1 Introduction and Transport-Layer Services</h2>
+	<ul> 
+<li>Transport-Layer is about providing <b>logical communication</b> between two hosts. The application's perspective the host should seem to be directly connected to them. basically this layer sends mesages with out the two worrying about physical infastucture involoved.</li>
+<li><b>Implemented on the end servers but not in the network routers.</b> the sending side transport layer converts the application-layer messages into <b>segments</b>. that can be done by breaking up the applications messages in to smaller chunks then adding the transport layer header to each of the chunks. the receving end network layer extracts the data and sends it up to the transport layer then it is processed and made available to the receiving  application. more than one protcol can be avaibable to any given application</li>
+<h3>3.1.1 Relationship Between transport and Network Layers</h3>
+<li>as opposed to transport layer which is a logical communication between <i>processes</i> running on different hosts the <i>Network</i>-layer protocal provides logical communication between <i>hosts</i>. subtle but important</li>
+<li>the difference is like the postal service is the network layer and yet the people who pick up their mail at the end of the line and seporate it based on who lives there whould be transport layer with the mail being the application messages and end people being the processes </li>
+<li>note that Tansport layer does it all on the ends where as the network layer move the messages throughout the networks</li>
+<li>the level of service that the transport layer is directly dependent on the network layer. servies of the transport layer then cannot really give a max time. </li>
+<li>transport prrotocal can give reliable data transfer serives and can encrypt to make sure not read by intruders. </li>
+</ul> 
+
+</body>
+<body>
+	<h1>
+         <b>(Oct 11) Transport Layer pages 215-219</b>
+    	</h1>
+	<h2>3.4.2 Pipelined Reliable Data Transfer Protocols</h2>
+	<ul> 
+<li>The main problem with the rdt3.0 its stop-and-wait protcol. which makes the two senders wait inbetween each packet delivery to send back a postive fact that the packet was ok. This takes too much time. In turn the <b>utilization</b>(the fraction of time the sender is actually busy) of the sender is too low and therefore ineffecent </li>
+<li>The fix would be this tecnique known as <b>pipelining</b> which allows sender to send multipul packets without waiting for acknowledgments. are you actually reading these or are you just looking at lenght of each section.</li>
+<li>the concequences of pipelining is the reange or sequence numbers must increase each time, both sending and reciveing have to buffer more than one packet, requirements  will depend on the manner in which a data transfer protocol responds to lost, corrupted, and overly delayed packets</li>
+<li> Two basic approaches toward pipelined error recovery can be identified: Go-Back-N and selective repeat. Go-Back-N: the sender is allowed to transmit multiple packets
+(when available) without waiting for an acknowledgment, but is constrained to have no
+more than some maximum allowable number,N,of unacknowledged packets in the pipeline.</li>
+
+</ul> 
+
+</body>
+<h1>
+ <b>(Oct 12) Transport Layer pages 269-272</b>
+    	</h1>
+	<h2>3.7 TCP Congestion Control</h2>
+	<ul> 
+<li>Another key component of TCP is its congestion-control mechanism.TCP must use end-to-end congestion control rather than network-assisted congestion control becauaw the IP layer provides no sxplict feedback to the end system regarding network conjestion. </li>
+<li>The approach taken by TCP is to have each sender limit the rate at which it
+sends traffic into its connection as a function of perceived network congestion. This basically means that TCP sender perceives the level of use and sends the approprate amount.</li>
+<li>how a TCP sender limits the rate at which it sends traffic
+into its connection? well TCP congestion-control mechanism operating at the sender keeps
+track  of  an  additional  variable,  the congestion  window. (whats a congestion window you ask? well it is a denoted cwnd) what does this congestion window do you ask? whell it imposes a constrant on the rate at which a TCP sender can send traffic into the network. <b>let us hence-forth assume that the TCP receive buffer is so large that the receive-window constraint can be ignored; thus, the amount of unacknowledged data at the sender is solely limited by cwnd.</b></li>
+<li>onstraint above limits the amount of unacknowledged data at the sender
+and therefore indirectly limits the sender&lsquo;s send rate. Thus the sender’s send rate is roughly cwnd/RTT bytes/sec. By adjusting the value of cwnd, the sender can therefore adjust the rate at which it sends data into its connection.</li>
+<li>how a TCP sender perceives that there is congestion on the path between itself and the destination? The dropped datagram, in turn, results in a  loss  event  at  the  sender—either  a  timeout  or  the  receipt  of  three  duplicate ACKs—which is taken by the sender to be an indication of congestion on the sender-to-receiver path.. On the other hand, if acknowledgments arrive at a high rate, then the congestion   window   will   be   increased   more   quickly.   Because   TCP   uses acknowledgments to trigger (or clock) its increase in congestion window size, TCP is said to be self-clocking</li>
+<ul>
+<li>A lost segment implies congestion, and hence, the TCP sender’s rate should be
+decreased when a segment is lost.</li>
+<li>An acknowledged segment indicates that the network is delivering the sender’s
+segments to the receiver, and hence, the sender&lsquo;s rate can be increased when an
+ACK arrives for a previously unacknowledged segment </li>
+<li>Bandwidth probing </li>
+</ul>
+<li>Given this overview of TCP congestion control, we&lsquo;re now in a position to consider the details of the celebrated TCP congestion-control algorithm: The algorithm has three major components: (1) slow start, (2) congestion avoidance, and (3) fast recovery.</li>
+<h3>Fun facts I learned online about congestion control in use </h3>
+
+
+
+</ul> 
+
+</body>
+<body>
+	<h1>
+         <b>(Oct 11) Network Layer pages 308-310</b>
+    	</h1>
+	<h2>4.1.1 Forwarding and Routing</h2>
+	<ul> 
+<li> <i>The terms forwarding and routing are often used interchangeably by authors discussing the network layer but the book uses speific meanings:</i></li>
+<ul>
+<li>Forwarding: refers to the router-local action of transferring a packet from an input link -- interface to the appropriate output link interface When a packet arrives at a router&lsquo;s input link, the router must move the packet to the appropriate output link</li>
+<li>Routing:refers to the network-wide process that determines the end-to-end paths that packets take from source to destination.--The network layer must determine the route or path taken by packets as they flow from a sender to a receiver. The algorithms that calculate these paths are referred to as routing algorithms</li>
+</ul>
+<li> Every router has a <b>forwarding table</b> meaning that the router forwards by examining the value of a field in the arriving packet&lsquo;s header, and then using this header value to index into the router&lsquo;s forwarding table. The value stored in the forwarding table entry for that header indicates the router&lsquo;s outgoing link interface to which that packet is to be forwarded</li>
+<li>Two other terms that are often used interchangeably but wont be here are:packet switch(to  mean  a  general  packet-switching  device  that  transfers  a packet from input link interface to output link interface, according to the value in a field in the header of the packet) and routers( base their forwarding decision on the value in the network-layer field)</li>
+<li>third important network-layer function <b>connection setup</b> three-way handshake this allows the sender and receiver to set up the needed state information</li>
+
+
+ <!--<img src="http://weknowyourdreams.com/images/smile/smile-02.jpg" alt="Smiley face" height="325" width="325"> -->
+</ul> 
+
+</body>
+<body>
+	<h1>
+         <b>(Oct 16)Network Layer</b>
+    	</h1>
+	<h2>4.4.1 Datagram Formate(331-335)</h2>
+	<ul> 
+ 	<li>network-layer packet is referred to as a datagram. and the key feild are as follows:</li>
+<ul>
+<li>Version number: 4 bits that specify the IP protocol version of the data gram and by looking at it the router can determine how to interpret the remainder of the IP datagram</li>
+<li>Header length: 4 bits that specify where in the IP datagram the data actually begins </li>
+<li>Type of service: 8 bit that specify different types of IP datagrams. for instance real time vs. non real time traffic
+</li>
+<li>Datagram length: 16 bit that specify the length and intersting fact:the theoretical maximum size
+of the IP datagram is 65,535 bytes. However, datagrams are rarely larger than
+1,500 bytes!</li>
+<li>Identifier, flags, fragmentation offset: three feilds that are all to do with IP fragmentation but the book was questionable about it because in the future there will be contradtions like that now a days there is no IP framentaion allowed.   </li>
+<li>Time to live: 8 bit and we have delt with this so.. </li>
+<li>Protocal: 8 bit that is only used when it reaches its final destination. That specify transport layer protocol to which data portion to look at. this is super interesting.  </li>
+<li>Header checksum:16 bit which we have also talked about so...</li>
+<li>Source and destination IP addresses:32 bit holds the source IP address into source and ultimate destination into the destination IP address fields</li>
+<li>Options:The options fields allow an IP header to be extended, Header options
+were meant to be used rarely</li>
+<li>Data (payload): the actual data wanting to be sent</li>
+</ul>
+</ul>
+<p>A diagram:</p>
+<img src="http://docstore.mik.ua/orelly/networking/tcpip/figs/tcp2_0105.gif" alt="Smiley face" height="273" width="503">
+</body>
+<body>
+	<h1>
+         <b>(Oct 17)Network Layer</b>
+    	</h1>
+	<h2>4.5.2 Distance-Vector(DV) Routing Algorithm (372-373)</h2>
+	<ul> 
+<li>As opposed to LS's algorithm use of global information the <b>distance vector</b> algorithm is iterative, asynchronous, and distribute. Meaning:</li>
+<ul>
+<li>asynchronous: does not require all nodes to work in lockstep with each other</li>
+<li>iterative: the process continues until there is no more information is exchanged between neighbors.</li>
+<li> distribute: each node receives some information from one or more of its directly attached neighbors, performs a calculation, and then distributes the results of its calculation back to its neighbors. </li>
+</ul>
+<li>Bellman-Ford equation <i>d<sub>x</sub>(y)</i> = min<i><sub>v</sub>{c(x,y) + d<sub>v </sub>(y)}</i>  Meaning:</li>
+<ul>
+<li> <i>d<sub>x</sub>(y)</i>: cost of the least cost path from node x to node y</li>
+<li>min<i><sub>v</sub></i>: this is take from all of x's neighbors </li>
+<li>it works proof on page 272 </li>
+</ul>
+<li>the solution to the Bellman-Ford equation provides the entries in node x's forwarding table.</il>
+<li>with the DV algorithm each node x maintains the following routing information: </li>
+<ul>
+<li>For each neighbor v, the cost c(x,v) from x to directly attached neighbor, v</li>
+<li>Node x's distance vector, that is, <b> D</b><sub>x</sub> = [D<sub>x</sub>(y):y in N], containing x's estimate of its cost to all destinations, y, in N</il>
+<il>The distance vectors of each of its neighbors, that is <b> D</b><sub>x</sub> = [D<sub>x</sub>(y):y in N] for each neighbor v of x </li><br><br>
+</ul>
+<<<<<<< HEAD
+<img src="code.png">
+</body>
+=======
+</ul>
+<img src="code.png">
+</body>
+<body>
+	<h1>
+         <b>(Oct 18)Network Layer</b>
+    	</h1>
+	<h2>4.7.2 Multicast(405-412)</h2>
+<ul>	
+
+<li><b>Multicast</b>: Multicast packets are delieverd only to a subset of network nodes.</li>
+<li><b>Address indirection</b>: Multicast packets can't hold the addresses of all the destinationsit would be <b>too much</b>. Instead use a single identifier for a group of receivers, packets with the identifier are copies and delivered to all the multicast receivers associated with that group.</li>
+<li><b>Multicast group</b>: Group of receivers associated with a class D address (multicast identifier)</li>
+<li>Internet Group Management Protocol (IGMP)</li>
+<ul>
+<li>The IGMP protocol version 3 perates between a host and its directly attached router </li>
+
+<li>IGMP provides the means for a host to inform its attached router that an application
+running on the host wants to join a specific multicast group. Given that the scope of
+IGMP interaction is limited to a host and its attached router, another protocol is clearly required to coordinate the multicast routers throughout the Internet, so that multicast datagrams are routed to their final destinations. This latter
+functionality is accomplished by network-layer multicast routing algorithms, such as
+those we will consider shortly. Network-layer multicast in the Internet thus consists of
+two complementary components: IGMP and multicast routing protocols </li>
+<li>IGMP has only three message types. That are carried within an IP datagram, with an IP protocol number of 2. The membership_query message is sent by a router to all hosts on an attached interface to determine the set of all multicast groups that have been joined by the hosts on that interface.Hosts respond to a membership_query
+message with an IGMP membership_report message.</li>
+<li>the router infers that a host is no longer in the multicast group if it no longer
+responds to a membership_query message with the given group address. This is
+an example of what is sometimes called <b>soft state </b> in an Internet protocol.</li>
+</ul>
+<li><b>Multicast routing problem</b>  Hosts joined to the mul-
+ticast group are shaded in color; their immediately attached router is also shaded in
+color. As shown below, only a subset of routers actually needs to receive the multicast traffic. In  only routers A, B, E, and F need to receive the multicast traffic. Since none of the hosts attached to router D are joined to the multicast group and since router C has no attached hosts, neither C nor D needs to receive the multicast group traffic. <b>The goal of multicast routing, then, is to find a tree of links that connects all of the routers that have attached hosts belonging to the multicast group.</b> </li>
+<p>the diagram:</p>
+<img src="http://www.networkinginfoblog.com/contentsimages/Multicast%20hosts%20their%20attached%20routers%20and%20other%20routers.JPG" height="493" width="546">
+<li>Two approaches have been adopted for determining the multicast
+routing tree</li><ul>
+<li><b>Multicast routing using a group-shared tree</b>:a center-based approach is used to construct the multicast routing tree, with  edge  routers  with  attached  hosts belonging  to  the  multicast  group sending oin messages addressed to the center node</li>
+<li><b>Multicast routing using a source-based tree </b>:The second approach constructs a multicast routing tree for each source in the multicast group. In practice, an RPF algorithm (with source node x) is used to construct  a  multicast  forwarding  tree  for  multicast  datagrams  originating  at source x. The solution to the problem of receiving unwanted multicast  packets  under  RPF  is  known  as  <b>pruning</b>. A  multicast  router that receives multicast packets and has no attached hosts joined to that group will send a prune message to its upstream router</li></ul>
+
+
+</ul>
+<h1>
+         <b>(Oct 19)Lecture and dinner</b>
+    	</h1>
+	<h2>Radio Waves and Red Lobster</h2>
+</body>
+<body>
+	<h1>
+         <b>(Oct 20)Link Layer</b>
+    	</h1>
+	<h2>5.4.1  Link-Layer Addressing and ARP (462-4)</h2>
+<ul>	
+
+<li>Hosts and routers have link-layer addresses. which may be surprising.</li>
+<li>MAC Addresses</li><ul>
+<li>it is not hosts and routers that have link-layer addresses but rather their
+adapters that have link-layer addresses. </li>
+<li>A link-layer address is variously called a <b> LAN address</b>, a <b>physical address</b>, or a <b>MAC address.</b> Because MAC address seems to be the most popular term, we'll henceforth refer to link-layer addresses as MAC addresses</li>
+
+<li>One interesting property of MAC addresses is that no two adapters have the
+same address. HOW? The answer is that the IEEE manages the MAC address space.</li>
+
+<li>An adapter's MAC address has a flat structure and doesn't change no matter where the adapter goes. An  adapter's  MAC  address  is  analogous  to  a  person's social  security  number,  which  also  has  a  flat  addressing  structure  and  which doesn't change no matter where the person goes where as An IP address is analogous to a person's postal address, which is hierarchical and which must be changed whenever a person moves.it is useful for a host and router interfaces to have both a network-layer address and a MAC address </li>
+<li>When an adapter wants to send a frame to some destination adapter, the sending adapter inserts the destination adapter's MAC address into the frame and then
+sends the frame into the LAN. When  an  adapter  receives  a  frame,  it  will  check  to  see whether the destination MAC address in the frame matches its own MAC address.an adapter may receive a frame that isn't addressed  to  it. If there isn't a match, the adapter discards the frame, without passing the network-layer datagram up. The destination only will be interrupted when the frame is received </li>
+<li>sometimes a sending adapter does want all the other adapters on the LAN to receive and process the frame it is about to send. In this case, the sending
+adapter inserts a special MAC <b>broadcast address</b> into the destination address field of the frame.</li>
+</ul>
+<li>Keeping the layers independent</li>
+<ul>
+<li> There are several reasons why hosts and router interfaces have MAC addresses in addition to network-layer addresses</li>
+<li>1) LANs are designed for arbitrary network-layer protocols,
+not just for IP and the Internet. If adapters were assigned IP addresses rather than “neutral”
+MAC addresses, then adapters would not easily be able to support other network-layer
+protocols </li>
+<li>f adapters were to use network-layer addresses instead of MAC addresses, the network-layer address would have to be stored in the adapter RAM and reconfigured every time the adapter was moved </li>
+<li>Another option is to not use any addresses in the adapters and have each adapter pass the data (typically, an IP datagram) of each frame it receives up the protocol stack.The network layer could then check for a matching network-layer address. One problem with this option is that the host would be interrupted by every frame sent on the LAN, including by frames that were destined for other hosts on the same broadcast LAN. In summary, in order for the layers to be largely independent building blocks in a network architecture, different layers need to have their own addressing scheme</li>
+
+</ul>
+
+</ul>
+
+</body>
+>>>>>>> upstream/master
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

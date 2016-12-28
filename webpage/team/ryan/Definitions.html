@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			Definitions
+		</title>
+	</head>
+	<body>
+        <h1><u>Definitions</u></h1>
+            <ul>
+                <li><b>Communication link</b>: connection that allows transfer of information between hosts and end systems.</li>
+                <li><b>Packet switches</b>: groups all transmitted data into suitably sized blocks, called packets, which are then transmitted.</li>
+                <li><b>Transmission rate</b>:  speed in bits/second that data is passed over a link.</li>
+                <li><b>Packet</b>: package of information sent over a link.  May be the whole set, or a part of the total data.</li>
+                <li><b>Link-layer switch</b>:</li>
+                <li><b>Router switch</b>:</li>
+                <li><b>Route/Path</b>: sequence of communication links and packet switches that a packet goes from end system to end system.</li>
+                <li><b>Internet Service Provider (ISP)</b>: a network of packet switches and communication links.  Provide connection to end systems and content providers.</li>
+				<li><b>TCP/IP</b>: Specifies the format of the packets that are sent and recieved among routers and end systems.</li>
+				<li><b>Distributed applications</b>: Have multiple end systems that exhchange data with eachother.</li>
+				<li><b>Application Programming Interface (API)</b>: specifies how a program running on one end system ask the Internet infrastructure to deliver data to a specific destination program running on another end system.</li>
+				<li><b>Protocol</b>: Defines the format and the order of messages echanged between two or more communicating entities.  Also the actions taken on the transmission or receipt of a message/event.</li>
+				<li><b>Client</b>: Host/end system that is usually a desktop, mobile PC or other smaller computer system.</li>
+				<li><b>Server</b>: Host/end system that is usually a more powerful machine that stores and distributes webpages, streams videos, emails, ect.</li>
+				<li><b>Physical medium</b>: Allows a bit to be sent by propagating electro magnetic waves or optical pulses.  Examples include twisted-pair copper wire, coaxial cable, multimode fiber-optic cable, terrestrial radio spectrom, and satellite radio spectrum.</li>
+				<li><b>Guided media</b>: Type of physical medium, waves are guided along a solid medium.</li>
+				<li><b>Unguided media</b>: Type of physical medium, waves propagate in the air or outer space.</li>
+				<li><b>Geostationary satellites</b>: Permanently remain above the same spot on Earth.  High orbit, which means longer delay.</li>
+				<li><b>Low-earth orbiting satellites</b>: Much closer to Earth and are not stationary.  Less delay, but requires more of them.  Can communicate between eachother.</li>
+				<li><b>Store-and-foreward transmission</b>: Type of packet switch, must recieve the whole package, before it can start to sent the first bits of hte packet onto the outbound link.</li>
+				<li><b>Output buffer/output queue</b>: Stores packets that the router is about to send to a link.  In a store-and-foreward system.</li>
+				<li><b>Packet loss</b>: If the output buffer is full an incoming packet may be dropped.</li>
+				<li><b>Forwarding table</b>: Maps destinations addresses to the outbound links of the router</li>
+				<li><b>Circuit switching</b>:  Resources needed along a path for communication between end systems are reserved for the duration of hte communication.  Wasteful due to silent periods when dedicated circuts are silent.</li>
+				<li><b>Packet Switching</b>: Resources are not reserved, and a session's messages use the resources on demand.  As such messages/packets may have to wait for access to a link or other resources.</li>
+				<li><b>Frequency-division multiplexing</b>: (FDM) Frequency spectrum of a link is divided up among the connections established across the link.</li>
+				<li><b>Time-division multiplexing</b>: (TDM) Time is divided into frames of fixed duration and each frame is divided into a fixed number of time slots.  Network dedicates one time slot in every frame to the connection.  Dedicated to the sole use of that connection.</li>
+				<li><b>Customer</b>:  Access ISP.</li>
+				<li><b>Provider</b>: Global transit ISP.  Network of routers and communication links that spans the globe, and has at least one router near the access ISP.</li>
+				<li><b>Regional ISP</b>: An ISP in a region that all access ISPs in that region connect.</li>
+				<li><b>Teir-1 ISP</b>: large ISP network, similar to global ISP concept, but not as large.  Regional ISPs and come access ISPs connect to teir-1 ISPs.</li>
+				<li><b>Points of Presence (PoPs)</b>: Group of one or more routers, in the same location, that allow customer ISPs in a provider's network to connect to ther provider ISPs.</li>
+				<li><b>Multi-home</b>: When an ISP connects to two or more provider ISPs.</li>
+				<li><b>Peer (connection)</b>: ISPs at the same level of heirarchy connect their networks together directly, so that the traffic between them passes via direct communicaion rather than over upstream intermediaries</li>
+				<li><b>Internet Exchange Point (ISP)</b>: Meeting point where multiple ISPs can peer together.</li>
+				<li><b>Nodal processing delay</b>: Time required to examine the packet's header to determine where to direct the packet.  Also time to check for bit-level errors.</li>
+				<li><b>Queuing delay</b>: The delay that a packet experience when it waits to be transmitted onto the link/node.  Depends on the number of earlier arrived packets.<li>
+				<li><b>Transimission delay</b>: Packets can only be transmitted after all the packets that arrived before it have been transmitted.  Transimission delay is the length of the packet in bits (L) and the transmission rate from router to router in bits/second (R), this it is expressed as L/R. Or the amout of time required to transmit all of the packet's bits into the link.</li>
+				<li><b>Propagation delay</b>: Time required to propagate from the beginning of the link to the end router.</li>
+				<li><b>Traffic intensity</b>: With a = averate rate of packet arrival in queue, R = transmission rate, L = length of bits of packets (all), then traffic intensity is equal to (La)/R.  If traffic intensity > 1 averate rate of bit arrival exceeds rate of transmission.  If traffic intensity <= 1 there is no queing delay as all packets are transmitted before arrival of the next.</li>
+				
+				<!--<li><b></b>:</li>-->
+            </ul>
+		<div style="text-align:left">
+			<a href="hierarchyOfAbstractions.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="hello.html">Next</a>
+		</div>
+	</body>
+</html>

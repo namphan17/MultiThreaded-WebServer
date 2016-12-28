@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E51616;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			October 17th
+		</title>
+	</head>
+	<body>
+		<h1>October 17th</h1>
+		<h2>Reading (4.4)</h2>
+			<ul>
+				<li>Datagram format IPv4</li>
+					<ul>
+						<li><b>Version number</b>: 4 bits. specifies the IP protocol version, tells the router how to interpret the rest of the datagram.</li>
+						<li><b>Header length</b>: 4 bits.  Determine where in the IP datagram the data begins.  Typical header length is 20-bytes.</li>
+						<li><b>Type of service</b>: Allow different types of IP datagrams.  Mainly to destinguish between <i>real-time datagrams</i> and <i>non-real-time datagrams</i>.<li>
+						<li><b>Datagram length</b>: Total length of the IP datagram (header and the data) in bytes.  16 bis long, maximum size is 65,535 bytes.</li>
+						<li><b>Identifier, flags, fagmentation offset</b>: IP fragmentation.  IPv6 does not allow for fragmentation.</li>
+						<li><b>Time-to-live</b>: Keeps datagrams from circulating forever.  Decremented each time it passes though a router, if it reaches 0 the datagram is dropped.</li>
+						<li><b>Protocol</b>: Indicates the specific transport-layer protocol that the datagram should be passed to.  Helps bring together the network and transport layers.</li>
+						<li><b>Header checksum</b>: Helps detect errors in the datagram.  Treats each 2 bytes in the header as a number and sums the numbers with 1s complements.  If there is a detected error the datagram is discarded.  The checksum is recomputerd and stored again at each router.</li>
+						<li><b>Source and destination IP address</b>: The IP address of the source of the datagram and its intended destination.</li>
+						<li><b>Options</b>: Allow an IP heade to be extended.  Dropped in IPv6.</li>
+						<li><b>Data</b>: The main contents of the datagram, the data that is being sent.</li>
+					</ul>
+				<li><b>Maximum Transmission Unit (MTU)</b>: Maximum amount of data a link-layer fram can carry.</li>
+				<li><b>Fragment</b>: To avoid having datagrams exceed the MTU they are ofen broken up into smaller datagrams called 'fragments'.  Fragments have incrmented id numbers to show the order.  Last fragment has flag set to 0, while rest set to 1.</li>
+				<li><b>Interface</b>: Boundry between a host and the physical link to the network.  Each has their own IP address.</li>
+				<li><b>Dotted-decimal notation</b>: How IP addresss are written.  Each IP address is 32 bits (4 bytes).  Each byte of the address is written in decimal form seperated by a dot (.).</li>
+				<li><b>Subnet</b>: Router connected multipul devices to the interent under IP address</li>
+				<li><b>Subnet mask</b>: IP address assigned to a subnet</li>
+				<li><b>Classless interdomain routing (CIDR)</b>: Internet addressing strategy.  Generalizes subnet addressing. IP address in form of a.b.c.d/x, with x being numbe of bits in first part of address.</li>
+				<li><b>Prefix</b>: x most significant bits of an address.</li>
+				<li><b>Classful addressing</b>: Before CIDR IP addresses were 8, 16, or 24 bits.  According to their class.</li>
+				<li><b>Dynamic Host Configuation Protocol (DHCP)</b>: Allows a host to obtain an IP addres automatically.  can be configured to regularly give same IP address, or a temporary one that changes each time.</li>
+				<li><b>DHCP server discover</b>: Sends a discover message to port 67 in a UDP packet.  It is a datagram with destination IP of 255.255.255.255 and a souce IP of 0.0.0.0.</li>
+				<li><b>DHCP server offers</b>: A DHCP server that receives a discover message (ACK) replies with a offer message.  It broadcasts with IP address 255.255.255.255.  Contains the transaction ID of the received discover message.  Also contains the IP address lease time.</li>
+				<li><b>IP address Lease time</b>: How long an IP address is valid.</li>
+				<li><b>Network address translation (NAT)</b>: An interface that acts as a filter between a home network LAN, and the outer WAN.  To the WAN it has a single IP address, while it actually connects multipule hosts on the LAN side.  Uses a NAT tanslation table to determine where to address outside WAN requests.</li>
+				<li><b>NAT translation table</b>: Allows the NAT router to direct incoming WAN requests/messages.  Includes port numbers as well as IP addresses.</li>
+				<li>Complaints about NAT:</li>
+					<ul>
+						<li>Port numbers are meant to be used for addressing processes, not for addressing hosts.</li>
+						<li>Routers are supposed to process packets only up to layer 3.</li>
+						<li>NAT protocol violates the end-to-end argument.</li>
+						<li>We should use IPv6 to solve the shortage of IP addresses</li>
+					</ul>
+			</ul>
+		<h2>Lecture</h2>
+		<h3>Leon:</h3>
+			<ul>
+				<li>Network layer</li>
+					<ul>
+						<li>How to find routes:</li>
+							<ol>
+								<li>Centralized algorithm: global knowledge</li>
+								<li>Distributed algorithm: local knowledge</li>
+							</ol>
+					</ul>
+				<li>Link Layers:</li>
+					<ul>
+						<li>Ethenet</li>
+						<li>local area networks</li>
+					</ul>
+				<li>Design Questions:</li>
+					<ul>
+						<li>Hw big should packets be?</li>
+						<li>How to divide message over several packets?</li>
+						<li>What info does each packet need to carry?</li>
+						<li>How fast to send packets? How to know?</li>
+						<li>How to guarentee arrival of packets without error? in order?</li>
+						<li>How to get/encode addresses?</li>
+						<li>How to get packets from A to B? (route)</li>
+						<li>How to design a system whose complexity is not overwhelming?</li>
+					</ul>
+			</ul>
+		<h3>Students</h3>
+			<ul>
+				<li><u><b>Angela:</b></u></li>
+				<li>Datagram</li>
+					<ul>
+						<li>Similar to TCP, checksum is same, time to live, etc.</li>
+						<li>options: keep top fields clear, so this is additional infomration.</li>
+						<li>Datagram length: theoretical max of 65,535 bytes, rarely longer than 1,500 bytes.  16 bit number that specifies length.</li>
+						<li>IPv4 includes fragmentation, IPv6 deals with fragmentation differently, doesn't need header information.</li>
+						<li>6 words, 32 bits each.  Header is often 20 bytes, 5 words * 4 bytes (options often optional [not included]).  Header length indicates if there are options or not.</li>
+					</ul>
+				<li><u><b>Paul:</b></u></li>
+				<li>IP datagram fragmentations</li>
+					<ul>
+						<li>When a packet exceeds router's MTU then datagram is broken up into fragments</li>
+						<li>Tiner packets don't exceed MTU</li>
+						<li>Flag: set either 1 or 0.  All packets besides last have flag of 1, last is 0 to indicate end.</li>
+						<li>identifiers: signal that packets belong together.  Where each one ends and begins among the larger data too.</li>
+					</ul>
+				<li>Fragmentation attacks (teardrop)</li>
+					<ul>
+						<li>Attacker sends fragmented IP packets that have no end.  Consumes end hosts' processing power.  Causes DoS.  Don't work anymore unless they are teardrop.</li>
+						<li>similar.  Take advantage of how an OS reassembles packers in general.  Don't work as universall as general fragmentation attacks.</li>
+					</ul>
+				<li>IPv6</li>
+					<ul>
+						<li>Fragmenation has ben dropped, no longer allowed.</li>
+						<li>Most headers are used in "Next Header" portion of packet.  Minimizes size of the IP datagram.  </li>
+						<li>Hop limit (similar to TTL), packet gan only go though a certian number of routers before being dropped.</li>
+						<li>Flow label to indicate some ToS.</li>
+						<li>Version, Traffic class, Flow label, Payload length, Next header, Hop limit, Source address, Destination address</li>
+					</ul>
+				<li><u><b>Neigl:</b></u></li>
+				<li>Hub vs Switch</li>
+					<ul>
+						<li>Hub takes one signal and sends it everywhere</li>
+						<li>Switch sends data toonly data's dstination address</li>
+					</ul>
+				<li>Ports</li>
+					<ul>
+						<li>80:HTTP, 443:HTTP+TLS, 22:SSH, 21:FTP, 23:Telnet, 25:SMTP, 53:DNS</li>
+					</ul>
+				<li>NAT</li>
+					<ul>
+						<li>Allows an entire LAN to be represented by a single external IP address</li>
+					</ul>
+				<li>Finite State Machine</li>
+					<ul>
+						<li>Abstract machine that can be in a finite number of states</li>
+					</ul>
+				<li>TCP Reno uses Additive-increase multiplicitive-decrease congestion control</li>
+				<li>Relationship between Maxiumum segment size and Maximum transmission unit</li>
+					<ul>
+						<li>MTU is total that a router or hardware can handle (authoritative).  MSS is derived from MTU, but is more an arbitrary number that is lower than MTU. </li>
+					</ul>
+				<li>TCP 3-way handshake</li>
+					<ul>
+						<li>Client sends message to server.  Synchronize (SYN)</li>
+						<li>Server acknoledges. Acknowledgement (ACK) and SYN.</li>
+						<li>Client then connects to server.  Acknowledgement (ACK)</li>
+					</ul>
+				<li>Solution to global IP shortage.  How many bits in an IP address, how many IP addresses?</li>
+					<ul>
+						<li>IPv6 is solution</li>
+						<li>128 bits in IPv6 address</li>
+						<li>2<sup>128</sup> IP addresses, so 4billion<sup>4</sup>. So 3.4*10<sup>38</sup> IP addreses.  There are about 10<sup>80</sup> atoms in the universe.</li>
+					</ul>
+				<li><u><b>Simon:</u></b></li>
+				<li>5 layers in the IP stack: application, transport, ...</li>
+				<li>HTTP error codes</li>
+					<ul>
+						<li>200 OK</li>
+						<li>404 not fount</li>
+						<li>301 redirect</li>
+						<li>400 bad request</li>
+					</ul>
+				<li>DNS catching: DNS request is made the domain-name/IP infomration is stored locally at client, so request does not need to be made every time</li>
+				<li>UDP checksum: random 16 bit numbers summed, sum's 1s compliment is taken and inverted.  Stored in UDP header.  Checked to see if inverse of checksum adds properly.</li>
+				<li>Some advantages of UDP over TCP</li> 
+					<ol>
+					<li>Faster</li>
+					<li>Support more simultaneous connections</li>
+					<li>No handshake required</li>
+					</ol>
+				<li>Two ways TCP recognizes a dropped packet</li>
+					<ol>
+						<li>Timeout</li>
+						<li>Identical acknowledgements</li>
+					</ol>
+				<li><b><u>Joe:</u></b></li>
+				<li>Flow control: Added to applications, doesn't allow sender to overwhelm the receiver.  Tries to match a rate</li>
+				<li>Congestion control: Controls traffic entry into the network to avoid congestion collapse</li>
+				<li>SCTP: Stream Control Transport Protocol.  Allows several different application level streams to be multiplexed though a single SCTP connection.</li>
+				<li>Socket: One-end point of a two-way communication</li>
+			</ul>
+		<h2>Lab</h2>
+			<p>N/A</p>
+		<div style="text-align:left">
+			<a href="Oct14.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="Oct18.html">Next</a>
+		</div>
+	</body>
+</html>

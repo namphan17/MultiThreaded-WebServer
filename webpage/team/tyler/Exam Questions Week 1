@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Exam Questions Week 1
+</title>
+</head>
+<body>
+    <h1>
+        Write 10 questions and answers on the readings.
+    </h1>
+    <p>
+    
+    Q1. Match the terms to which layer they belong. (Answers can be found throughout the text, but a nice little example is on page 189)
+     
+         a. Packet                                             1. Transport Layer
+         b. Datagram                                           2. Both Layers
+         c. Segment                                            3. Network Layer
+         
+         A. a -> 2
+            b -> 3
+            c -> 1
+            
+            
+            
+    Q2. DNS is hierachical by design, but theoretically could work on just a single server. What are three of the four primary reasons
+        a single server design isn't used? (Answers on pages 133 -134)
+        
+        A. Maintenance (one server would have to be updated every single time theres a new host), Single Point of Failure (if the server
+           goes down, the whole internet goes down with it), Traffic Volume (this one single server would have to handle millions of users),
+           and a Distant Centralized Database (Distance from the server means more users traveling through slow, congested links).
+            
+            
+            
+            
+    Q3. When a peer in a torrent is trying to determine which chunks of data to request from its neighbors, how does it determine which
+        chunks to request first?
+         
+        A. First, it will only request chunks that it doesn't already possess. Then, the peer chooses (what it determines to be) the
+            rarist chunk first, where the rarist chunk is the chunk that the least number of its neighbors possess. That way, chunks
+            are more likely to continue to spread to everyone.
+            
+            
+            
+    Q4. Each port is a 16-bit number between 0 and 65535. However, some of these ports are restricted for only certain use. What are these
+     ports called, and what are their port numbers? (Answer on page 192, or our class discussions)
+     
+         A. Ports 0 to 1023 are restricted, and considered 'Well-Known Ports'.
+         
+         
+         
+         
+     Q5. There are two main approaches to dealing with congestion control. End to End Congestion Control, and Network-Assisted Congestion
+         Control. Briefly explain the difference between them, and which one TCP uses. (Answer on page 266)
+         
+         A. In End to End Congestion Control, the network layer does nothing to help with congestion control for the transport layer.
+            Instead, the end systems themselves have to determine when a network is congested, based on wether packets are being lost,
+            or delayed. In Network Assisted Congestion Control, routers continually provide information to the sender about the state of
+            congestion in the network. TCP uses End to End Congestion Control.
+         
+    
+    
+    Q6. Almost every major internet application uses TCP over UDP, for a huge multitude of reasons. Many firewalls even block the majority
+        of UDP traffic. However, Skype (and some other online application services) still prefers to use UDP over TCP, and will only use TCP
+        if UDP communication fails. Given all of TCP's benefits, why would they ever choose to use UDP at all? (Answer on page 96)
+        
+        A. TCP suffers from header overheads. In addition, TCP has congestion control. While congestion control is great, Skype requires a
+           minimal rate, and if congestion control forces it to be slower, that could seriously impact the applications useability. Since
+           Skype calls can tolerate some loss, they would prefer using UDP instead of TCP in most cases.
+           
+           
+           
+    Q7. Which of these DNS message fields uses exactly 12 bytes? (Answer can be found on page 140 and 141)
+               a. Answer Section
+               b. Additional Section
+               c. Question Section
+               d. Header Section
+               e. Authority Section
+         
+         A. d, the Header Section. All of the other sections vary in size, but the header always stays the same.       
+   
+         
+         
+    Q8. The World Wide Web was created between 1989 and 1991 by Tim Berners-Lee. In particular, Berners-Lee and his group developed
+        early versions of four 'key components' of the web. What are those components? (Answer on page 64).
+        
+        A. HTML, HTTP, a Web Server, and a Browser.
+        
+        
+        
+        
+    Q9. (Now for my painfully easy question of the week...) True or False? A TCP connection provides a full duplex service, allowing
+        data to flow from host A to host B at the same time data flows from host B to host A, allows for multi-casting, allowing the
+        transfer from one sender to many receivers with one send operation, and is connection oriented. (Answers page 232)
+         
+        A. False. TCP does infact provide a full-duplex service, but it is point-to-point, meaning that multi-casting isn't possible.
+            That being said, it is connection oriented, requiring a 'handshake' before data can be transferred.   
+         
+         
+
+    Q10. In a TCP connection, what happens when an application receives data that it cannot immediately read, due to being occupied
+         with other tasks? (Answer on page 250)
+     
+         A. The data is kept in that applications 'receive buffer', where it will be read when the application gets the chance to do so.
+            If, however, the receive buffer is full, continuously sending data could result in overflow. Thankfully, TCP has flow control,
+            which will tell the sender to stop sending data if the receive buffer would overflow.
+            
+     
+    </p>
+</body>
+</html>

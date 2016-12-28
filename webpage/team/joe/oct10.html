@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd; 
+}
+
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
+div.panel.show {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+  <h2>October 10th</h2>
+
+<button class="accordion">Wireshark</button>
+<div class="panel">
+  <p>Today in lab, I worked through the Wireshark lab for TCP. I uploaded a text file of <i>Alice in Wonderland</i> to the books website. Using Wireshark, I was able to see the packets being sent as I did this.I was able to track my IP and the IP address of Gia.cs.umass.edu. I was able to track a series of TCP segments that have been sent between my computer and gia.cs.umass.edu.</p>
+  <img src="./wslan.png"/>
+</div>
+
+<button class="accordion">Reading</button>
+<div class="panel">
+  <p>Reading sections 3.1, 3.2, 3.3.</p>
+  <p>I focused on the connection-oriented and connectionless transport. Also, I tried to fully understand checksums as they will be important when it comes to RDT.</p>
+</div>
+
+<button class="accordion">Accordions</button>
+<div class="panel">
+  <p>I am attempting to focus on a newer "gadget" that can be used in a modern web page. Today's focus was on Accordions. These are essentially buttons that expand an element under themselfs if clicked. These inlcude HTML, CSS, and JS. </p>
+</div>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+}
+</script>
+
+</body>
+</html>

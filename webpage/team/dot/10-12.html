@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/12/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 12th
+    </h1>
+    <h3>Costs and causes of congestion</h3>
+<ul>
+    <li>Congestion scenario 1: Hosts A and B sending through the same router with infinite buffer</li>
+    <ul>
+        <li>Assume hosts A and B have identical sending rates which increase equally</li>
+        <li>A and B each assume reliable data transfer, so each packet is sent exactly once</li>
+        <li>As each sending rate increases between 0 and R/2 (half of the router's capacity), throughput is equal to the sending rate</li>
+        <li>Packets still have transmission delay, so there is a buffer which grows faster as sending rate increases</li>
+        <li>Once sending rate passes R/2, throughput cannot increase further, as the router is already at capacity, and the buffer begins to fill without bound</li>
+        <li>In fact, once sending rate passes R/2, the buffer delay quickly approaches infinity</li>
+        <li style="color:chartreuse">Cost 1: increased delays</li>
+    </ul>
+    <li>Congestion scenario 2: Hosts A and B sending through the same router with finite buffer</li>
+    <ul>
+        <li>Packets which arrive at a filled buffer will be dropped, meaning the hosts will need to retransmit</li>
+        <li style="color:chartreuse">Cost 2: retransmissions required</li>
+        <li>If the hosts could tell whether or not the buffer was full, no packets would be dropped at all!</li>
+        <li>But that is not currently possible</li>
+        <li>Assume the hosts only retransmit when a packet is known <i>for certain</i> to be lost</li>
+        <li>This means the timeout would be rather unrealistically large</li>
+        <li>In the book's example case, the offered load is R/2 (from each host)</li>
+        <li>Of that, R/3 is new data, and R/6 is retransmitted packets</li>
+        <li>In another example case, the host timed out prematurely, and a packet which had actually arrived was retransmitted</li>
+        <li style="color:chartreuse">Cost 3: large delays can cause unnecessary retransmissions</li>
+    </ul>
+    <li>Congestion scenario 3: Hosts A B C and D sending through overlapping two-hop paths with finite buffer</li>
+    <ul>
+        <li>Picture provided because it's a little difficult to explain</li>
+    </ul>
+</ul>
+<img src="images/figure_3-47.png" alt="Congestion scenario 3" style="width:780;height:429;">
+<ul>
+    <li>When traffic is low, this scenario doesn't really have anything to worry about</li>
+    <li>When traffic starts increasing, it gets complicated</li>
+    <li>Traffic from A to C arrives at router 2 from router 1 at some throughput between 0 and R</li>
+    <li>However, traffic from B to D also arrives at router 2</li>
+    <li>And traffic from B to D gets there first</li>
+    <li>If traffic from B to D is high, A to C packets from router 1 may be dropped</li>
+    <li>If a packet is dropped by the second router in the route, the work done by the first router was wasted</li>
+    <li style="color:chartreuse">Cost 4: when a packet is dropped along a path, transmission capacity was wasted at each of the upstream links which forwarded that packet</li>
+</ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

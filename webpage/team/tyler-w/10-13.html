@@ -1,0 +1,98 @@
+<!-- 
+10-13.html
+Notes from October 13th
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>10.13 Notes</title>
+	<style>
+	  body { background-color: #457263;
+	         margin: auto; width: 80%;
+                   font-family: Verdana, sans-serif; }
+            #desc { text-align: center; }
+            a { color: #FFFFFF; }
+			img { text-align: center; }
+	</style>
+</head>
+<body>
+        <h1 id="desc"> Tyler Wians </h1>
+        <h5 id="desc"> CSC 317: Computer Networks</h5>
+        <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./10-13.html">10.13</a></p>
+	
+		<h3>Virtual Circuit and Datagram Networks</h3>
+		
+		<p>The network layer can provide connection and connectionless services in many ways 
+		parallel to the transport layer. For example, a network-layer connection service begins with
+		handshaking between the source and destination host, while a network-layer connectionless
+		service does not have any handshaking preliminaries. However there are some differences:</p>
+		
+		<ul><li>Network-layer services are host-to-host provided by the network-layer for the transport
+		layer, rather than process-to-process which is provided by the transport-layer for the application
+		layer.</li><br>
+			<li>In all major computer network architectures to date, the network layer provides either a
+		host-to-host connection service <b>or</b> a host-to-host connectionless service. Computer
+		networks that provide only a connection service at the network layer are called <b>virtual-circuit
+		(VC) networks</b>, while the ones that provide only a connectionless service are called <b>datagram
+		networks</b>.</li><br>
+			<li>The network-layer connection service and the transport-layer connection-oriented service are
+		fundamentally different, in that the latter is implemented in the end systems where as the former is
+		implemented in the routers in the network core as well as in the end systems.</li><br>
+		</ul>
+		
+		<h4>Virtual Circuit Networks</h4>
+		<p>A virtual circuit consists of:</p>
+		<ul><li>A path between source and destination hosts (a series of links and routers)</li><br>
+			<li>VC numbers, where there is one number for each link along the path</li><br>
+			<li>Entries in the forwarding table in each router along the path</li><br>
+		</ul>
+		
+		<p>A packet belonging to a virtual circuit will carry a VC number in its header. Because a virtual
+		circuit may have a different VC number on each link, each intervening router must replace the VC number 
+		of each traversing packet with a new VC number. The new VC number is obtained from the forwarding table.</p>
+		
+		<img src="virtualcircuit.jpeg" alt="Virtual Circuit" style="width:470px;height:240px;" border="3">
+		<p><i>Host A requests that the network establish a VC between itself and Host B.</i></p>
+		<ul><li>Network chooses path A-R1-R2-B, and assigns VC numbers 12, 22, and 32 to the three links.</li><br>
+			<li>When a packet leaves Host A, VC# = 12.</li><br>
+			<li>When a packet leaves R1, VC# = 22.</li><br>
+			<li>When a packet leaves R2, VC# = 32.</li><br>
+		</ul>
+		
+		<h4>How does a the router determine the next VC number?</h4>
+		<p>Each router has a forwarding table, where the VC numbers are stored.</p>
+		<img src="forwardingtable.jpeg" alt="Forwarding Table" style="width:600px;height:200px;" border="3">
+		
+		<p>Replacing the VC number every time it passes through the router reduces the length of the VC field in 
+		the packet header. It also eliminates the need for additional communication between the routers because
+		it would need to decide on a common VC number.</p>
+		
+		<p>In a VC network, the network's routers must maintain <b>connection state information</b> for the ongoing
+		connections. Each time a new connection is established across a router, a new entry must be added to the 
+		router's forwarding table.</p>
+		
+		<p>There are three identifiable phases in a virtual circuit:</p>
+		<ul><li><b>VC Setup</b>:
+				<ul><li>Transport-layer contacts network-layer, specifies receiver's address, waits for the network to set up the VC.</li>
+				<br><li>Network-layer determines path between sender and receiver, as well as the VC numbers for each link.</li>
+				<br><li>Network-layer adds entry in the forwarding table in each router.</li>
+				<br><li>Network-layer may also reserve resources along the path of the VC.</li></ul>
+			</li><br>
+			<li><b>Data Transfer</b>: Packets are being sent to the destination.</li><br>
+			<li><b>VC Teardown</b></li><br>
+				<ul><li>Initiated when the sender or receiver informs the network-layer of its desire to terminate the VC.</li>
+				<br><li>Network-layer informs the other end system of the call termination.</li>
+				<br><li>Network-layer updates forwarding tables in each of the routers to indicate the VC no longer exists.</li></ul>
+		</ul>
+		
+		<img src="vcsetup.jpeg" alt="Forwarding Table" style="width:550px;height:225px;" border="3">
+		
+		<p>The messages that end systems send into the network to initiate or terminate a VC, as well as the messages passed between
+		the routers to set up the VC, are known as <b>signaling messages</b>. The protocols used to exchange these messages are often
+		referred to as <b>signaling protocols</b>.</p>
+		<br>
+	
+</body>
+</html>

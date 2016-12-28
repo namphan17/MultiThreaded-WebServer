@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			October 25th
+		</title>
+	</head>
+	<body>
+		<h1>October 25th</h1>
+		<h2>Lecture</h2>
+			<h3>Akash: link-state</h3>
+				<ul>
+					<li>Global routing algorithm</li>
+					<li>Requires a link-state boradcast to gather all infomration about a network</li>
+					<li>advantage is that it is striaght forward, and easy to implement</li>
+					<li>Dijsktra's algorithm: Used to find shortest path between nodes in a graph.  Big O of N<sup>2</sup></li>
+					<li>Start at a node, check distance to neighbors.</li>
+					<li>Choose node with shorest distance and check distance to it's neighbors</li>
+					<li>Continue until all nodes (that are connected) are checked</li>
+					<li>Any unconnected nodes (or nodes not yet checked who have not been reach by edges so far) are set to infinity</li>
+					<li>Typically repeat for each node so they have a table of how to reach each node</li>
+					<li>Map quest uses Dijsktra's algorithm to calculate route</li>
+				</ul>
+			<h3>Guest Speaker: HIPAA privacy</h3>
+				<ul>
+					<li>From Bangladesh, works at Iowa, Ph.D. at University of Texas at San Antonio, post doc at Carnegie Melllon and Purdue.</li>
+					<li>Cybersecurity and privacy with theoretical foundations</li>
+					<li>Accountability though complicance checking--have a standard, system to check if standard is mainainted</li>
+					<li>Privacy policy compliance--Focus of talk</li>
+					<li>Often breaking a system is simply changing the point of view (ie. phone light behind quiz card)</li>
+					<li>Personal information spread all over (ie. hospitals, school, etc.). How to control who they give it to? (ie. selling to black market)</li>
+					<li>Medical records are more valuable than social security numbers or credit card numbers.  Approx $15</li>
+					<li>HIPAA is the compliace system for health records.  If information is leaked then they file $4.3 million or more, and list you in a group of blacklisted people<li>
+					<li>Use audits to determin if someone is in violation of comliance</li>
+						<ul>
+							<li>Cumbersome, timecomsuming, not scalable</li>
+							<li>Solution: Computer records, computer/AI checker/auditor</li>
+						</ul>
+					<li>Difficulties in this</li>
+						<ul>
+							<li>HIPAA has complex structure: internal refrences, written in natural language, very long</li>
+							<li>Grey information: subjective belief, purpose, attribute (ie. wording like "Reasonably believes"</li>
+							<li>Scalability</li>
+						</ul>
+					<li>Prior work:</li>
+						<ul>
+							<li>Automated compliance checking: efficiency vs policy expresivness.  Must balance to find a balance</li>
+						</ul>
+					<li>Precis: software that does compiance checking</li>
+					<li>Policy language: usually phrased as "something happened" or "didn't happen".  Explicit time constraints: must be done in a certian time.  etc.</li>
+					<li>challenges</li>
+						<ul>
+							<li>Quantification over possibly infinite domain</li>
+							<li>Instantiate quantified variables with all domain elements</li>
+							<li>Efficiency in checking past requirements</li>
+						</ul>
+					<li>Runtime verification:</li>
+						<ul>
+							<li>Quantification ver possibly infinte domain</li>
+							<li>Efficiency in checking past requirements--build a cache</li>
+						</ul>
+					<li>Use summary structures--keep information small, easier to check</li>
+					<li>Percis works well at solving a lot of these issues:</li>
+						<ul>
+							<li>Pre-procesing -- use temporal mode check to mark summarizable policy fragments</li>
+							<li>compliance chekcing -- update summary structures, recurse over</li>
+							<li>Currently fastest solution</li>
+						</ul>
+					<li>Outsourcing motivation</li>
+						<ul>
+							<li>Cheaper</li>
+							<li>Discolsure logs are large</li>
+							<li>Compliance computation is highly parallel</li>
+							<li>Outsouce to the cloud, the audit log, the compliance checker</li>
+							<li>Problem: logs can contain confidential information</li>
+								<ul>
+									<li>can encrypt data -- difficult to use</li>
+									<li>Use homomorphic encryption -- prohibitive cost</li>
+									<li>Client-side processing -- not desired</li>
+									<li>SQL-aware encryption -- No clear end-to-end security.  Invented by google</li>
+								</ul>
+							<li>Must know what information (if any) is leaked</li>
+						</ul>
+					<li>Homomorphic encryption: ...(should look it up, but basically allows you to preform stuff on the encypted data whie encrpted)</li>
+					<li>Eunomia (greek goddess of good order and lawful conduct) -- System to code for equations on data</li>
+					<li>Cryptdb: use certian encryption then you can run SQL on encrypted data, security proof is incomplete.  System can be broken</li>
+					<li>Smart contracts (online lotteries?)</li>
+					<li>Certificate verification: way to say that you are a certian site, and be confirmed by clients.  Found bugs in system, not perfect</li>
+					<li>Smart bulbs, babymonitors, etc.  Easy to hack into, use relativly unsecure communication (ie. radio)</li>
+					<li>Passwords are vulnerable to sniffing mailware and key loggers</li>
+					<li>"The Quest to Replace Passwords: A Framework for Comparative Evaluation of Web Authentication Schemes"</li>
+						<ul>
+							<li>Ways to replace passwords</li>
+							<li>Passwindow</li>
+								<ul>
+									<li>You have a pass-top secret, combine it with the challenge that the bank sends you, get answer and send it to the bank</li>
+								</ul>
+							<li>Not as secure as though, adversary can impersonate a user only after observing transcripts of 1000 sessions, but they broke it in 3</li>
+								<ul>
+									<li>Turns out you don't need to have the whole key, just part of it</li>
+									<li>For each segment note whether it is on, off, of idk (misses correlation, lot of information to use.  Not used)</li>
+									<li>For each position keep bit position that tells what patterns can happen (low over head, misses correlation.  Chose to break system)</li>
+									<li>Look at the challenge and the response.  No digits besides answer can be encoded.  Maximum one digit encoded per frame, digits are encoded in consecutive frames, remove all the keys that do not encode response digits or encode other digits</li>
+								</ul>
+						</ul>
+					<li>Graduate Studies in CS at University of Iowa</li>
+						<ul>
+							<li>"Like a home enviroment", "Can walk up to anyone's office", "Very open", "If you get into Carnege Mellon, don't go to Iowa...otherwise though"</li>
+							<li>MCS: Master of Computer Science--2 years (Application based)</li>
+								<ul>
+									<li>Course based program</li>
+									<li>10 CS graduate courses, 3-4 semesters</li>
+									<li>Careers phD program</li>
+									<li>Tase of cutting-edge research</li>
+									<li>More attractice to large companies, huge salary jump</li>
+									<li>Not a huge time commitment</li>
+									<li>Decide if you want to do PhD</li>
+								</ul>
+							<li>PhD: Doctor of Philosophy--5 years (Research based)</li>
+								<ul>
+									<li>Research-based program, students do original research</li>
+									<li>Minimal course work with flexibility meant to support early immersion into research</li>
+									<li>Careers in academics, research,etc.</li>
+									<li>Passionate about specific area withing comp sci and want to make new/original contribution</li>
+									<li>Become a professor and communicate ideas in CS to students and continue original CS research</li>
+									<li>If you want to do CS research for large companies, labs, etc.</li>
+						</ul>
+					<li>Often recieve Teaching Assistantships and full tuition</li>
+					<li>Fellowships, renewable wtih 3.25 GPA</li>
+					<li>Regional scholarship fellowship</li>
+					<li>Research in CS @ Iowa</li>
+						<ul>
+							<li>Algorithms</li>
+							<li>Computational logic</li>
+							<li>Human computer interaction, virtual enviroments</li>
+							<li>Informatics</li>
+							<li>Networks and distributed systems</li>
+							<li>Numerical methods, parallel computing, optimization</li>
+						</ul>
+					<li>Fun fact: bots that forge likes on products to influence people's purchasing</li>
+					<li>November 4th open house for prospective graduate sutdent visit day <a href="https://www.cs.uiowa.edu">site</a>.  Suggest talking to him, he has money laying around and needs students.  Need to do RA/TA unless impressive.</li>
+					<li>omar-chowdhury@uiowa.edu</li>
+				</ul>
+		<div style="text-align:left">
+			<a href="">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="">Next</a>
+		</div>
+	</body>
+</html>

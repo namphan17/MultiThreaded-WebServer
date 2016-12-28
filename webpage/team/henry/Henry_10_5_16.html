@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="HenryStyleSheet.css">
+    <meta charset="utf-8" />
+    <title>Henry's Notes October 5th</title>
+</head>
+
+<body>
+
+    <h4 id="Page Header">Network Application Architecture</h4>
+
+    <p>There are two main structures used to allow applications running on different
+    hosts to communicate over a network.  The two architectures are client-server and
+    peer to peer, or P2P.</p>
+
+    <h5>Client-Server Model</h5>
+
+    <p>In the client server model, there is a central machine called the server which
+    "serves" things to other machines in the network.  These items are typically
+    documents; web pages.</p>
+
+    <p>This model allows users to send and recieve data across the network simply by 
+    downloading and uploading items to the central sever(s).</p>
+
+    <table>
+        <thead>Pros and Cons of Client-Server</thead>
+        <tr>
+            <th>Pros</th>
+            <th>Cons</th>
+        </tr>
+        <tr>
+            <td>Anonymity</td>
+            <td>Server must always be up</td>
+        </tr>
+        <tr>
+            <td>Only need the address of the server</td>
+        </tr>
+        <tr>
+            <td>More Secure</td>
+        </tr>
+    </table>
+
+    <p>A client-server network is usually more secure because </p>
+
+    <h5>Peer to Peer Model</h5>
+
+    <p>In the peer to peer model, each user in the network must establish an individual 
+    connection to each other user.  This type of connection is useful when real-time 
+    data streaming is important, such as in a multiplayer game.</p>
+
+    <table>
+        <thead>Pros and Cons of Peer to Peer</thead>
+        <tr>
+            <th>Pros</th>
+            <th>Cons</th>
+        </tr>
+        <tr>
+            <td>No critical central connection</td>
+            <td>Loss of anonymity</td>
+        </tr>
+        <tr>
+            <td>Direct connection to other end users</td>
+            <td>Requires address of every user in the network</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Harder to secure more individual connections</td>
+        </tr>
+    </table>
+
+    <p>In my own experience, P2P connections are mostly used now for playing online games.  
+    This type of connection allows for less delay because there are no intermediary links
+    for the data to traverse.</p>
+
+</body>
+</html>

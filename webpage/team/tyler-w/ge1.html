@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Graded Exercise #1</title>
+    <style>
+      body { background-color: #457263;
+             margin: auto; width: 80%;
+             font-family: Verdana, sans-serif; }
+      #desc { text-align: center; }
+      a { color: #FFFFFF; }
+	  #cour { font-family: Courier, sans-serif; color: #FFFFFF;  }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#q1").click(function(){
+          $("#a1").toggle(250);
+      });
+      $("#q2").click(function(){
+          $("#a2").toggle(250);
+      });
+      $("#q3").click(function(){
+          $("#a3").toggle(250);
+      });
+      $("#q4").click(function(){
+          $("#a4").toggle(250);
+      });
+      $("#q5").click(function(){
+          $("#a5").toggle(250);
+      });
+      $("#q6").click(function(){
+          $("#a6").toggle(250);
+      });
+      $("#q7").click(function(){
+          $("#a7").toggle(250);
+      });
+      $("#q8").click(function(){
+          $("#a8").toggle(250);
+      });
+      $("#q9").click(function(){
+          $("#a9").toggle(250);
+      });
+      $("#q10").click(function(){
+          $("#a10").toggle(250);
+      });
+      $("#q11").click(function(){
+          $("#a11").toggle(250);
+      });
+      $("#q12").click(function(){
+          $("#a12").toggle(250);
+      });
+      });
+    </script>
+  </head>
+  <body>
+    <h1 id="desc"> Tyler Wians </h1>
+    <h5 id="desc"> CSC 317: Computer Networks</h5>
+    <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./ge1.html">Graded Exercise #1</a></p>
+
+	<div id="wslab">
+    <h3>DNS Wireshark Lab Report</h3>
+	
+	<p><b>1. Run nslookup to obtain the IP address of a Web server in Asia. What is the IP address of that server?</b></p>
+	<p id="cour">> nslookup www.useoul.edu<br><br>Name:   www.useoul.edu<br>Address:   147.46.10.138</p>
+	
+	<p><b>2. Run nslookup to determine the authoritative DNS servers for a university in Europe.</b></p>
+	<p id="cour">> nslookup -type=NS www.ox.ac.uk<br></p>
+	<dl id="cour">
+	<dt>ox.ac.uk</dt>
+	<dd>primary name server = nighthawk.dns.ox.ac.uk</dd>
+	<dd>responsible mail addr = hostmaster.ox.ac.uk</dd>
+	<dd>serial = 2016101472</dd>
+	<dd>refresh = 3600 (1 hour)</dd>
+	<dd>rety = 1800 (30 mins)</dd>
+	<dd>expire = 1209600 (14 days)</dd>
+	<dd>default TTL = 900 (15 mins)</dd>
+	</dl>
+	
+	<p><b>3. Run nslookup so that one of the DNS servers obtained in Question 2 is queried for the mail servers for
+	Yahoo! mail. What its IP address?</b></p>
+	<p id="cour">> nslookup mail.yahoo.com hostmaster.ox.ac.uk<br>Name:   fo-ds-ats.member.g02.yahoodns.net<br></p>
+	<dl id="cour">
+	<dt>Addresses:</dt>
+	<dd>2001:4998:58:2201::50</dd>
+	<dd>2201:4498:44:a10::50</dd>
+	<dd>98.138.21.169</dd>
+	<dd>98.138.79.21</dd>
+	<dt>Aliases:</dt>
+	<dd>mail.yahoo.com</dd>
+	<dd>login.yahoo.com</dd>
+	</dl>
+	
+	<p><b>4. Locate the DNS query and response messages. Are they sent over UDP or TCP?</b></p>
+	<p>They are sent over UDP.</p>
+	<!-- picture? -->
+	
+	<p><b>5. What is the destination port for the DNS query message? What is the source port of DNS response message?</b></p>
+	<p>The destination port for the DNS query and the source port for the DNS reponse is port number 53.</p>
+	
+	<img src="dnslab001.jpeg" alt="dnslab001.jpeg" style="width:675px;height:225px;" border="3">
+	
+	<p><b>6. To what IP address is the DNS query message sent? Use ipconfig to determine the IP address of your local
+	DNS server. Are these two IP addresses the same?</b></p>
+	<p>The DNS query message is being sent to <short id="cour">10.1.2.107</short> and <short id="cour">10.1.2.112</short>. The IP addresses of the local DNS server 
+	are <short id="cour">10.1.2.107</short> and <short id="cour">10.1.2.112</short>.</p>
+	
+	<img src="dnslab002.jpeg" alt="dnslab002.jpeg" style="width:385px;height:32px;" border="3">
+	
+	<p><b>7. Examine the DNS query message. What "Type" of DNS query is it? Does the message query contain any "answers"?</b></p>
+	<p>It is a Type A DNS Query. The message query does not contain any answers.</p>
+		
+	<p><b>8. Examine the DNS response message. How many "answers" are provided? What do each of these answers contain?</b></p>
+	<p>In the DNS response message, there is one answer provided. They contain information about the name of the host, the
+	type of address, class, time-to-live, data-length, and IP address.</p>
+	
+	<img src="dnslab003.jpeg" alt="dnslab003.jpeg" style="width:336px;height:127px;" border="3">
+	
+	<p><b>9. Consider the subsequent TCP SYN packet sent by your host. Does the destination IP address of the SYN
+	packet correspond to any of the IP addresses provided in the DNS response message?</b></p>
+	<p>I did not find any correlation between IP addresses.</p>
+	
+	<p><b>10. This web page contains images. Before retrieving each image, does your host issue new DNS queries?</b></p>
+	<p>It does not issue new DNS queries.</p>
+
+    <hr>
+
+    <div id="bookQuestions">
+      <h3>Book Questions</h3>
+	
+      <h5>CH2-R13: Describe how Web caching can reduce the delay in receiving a requested object. Will Web caching reduce
+	  the delay for all objects requested by a user or for only some of the objects? Why?</h5>      
+      <p id="a11" style="display:none;">
+      Web caching reduces delay by temporarily storing information to be retrieved before sending a request to the web host.
+	  It reduces the delay for all objects because it minimizes travel time for the data that is not cached.</p>
+      <button id="q11">Show/Hide Answer</button>
+      
+      <h5>CH3-R4: Describe why an application developer might choose to run an application
+over UDP rather than TCP.</h5>      
+      <p id="a12" style="display:none;">
+      An application developer may choose UDP over TCP because of the congestion-control that can throttle the application's
+	  sending rate at times of congestion. Another reason they may choose UDP over TCP is the lack of necessity for a reliable
+	  data transfer protocol.</p>
+      <button id="q12">Show/Hide Answer</button>
+    </div>
+
+    <br>
+    <hr>
+    
+    <div id="tenQuestions">
+      <h3>Questions</h3>
+      
+      <h5>What are the three classes of DNS servers, and how do they interact?</h5>
+      <p id="a1" style="display:none;">
+      At the highest level, there are Root servers, then Top-Level Domain servers, then Authoritative servers. A client would first
+	  contact the root servers, which returns the IP addresses for the TLD servers. Then the client contacts one of the TLD servers,
+	  which returns the IP address of an authoritative server. The client can then retrieve IP address for the hostname from the 
+	  authoritative server.</p>
+      <button id="q1">Show/Hide Answer</button>
+      
+	  <h5>What is the difference between a positive and negative acknowledgement?</h5>
+      <p id="a2" style="display:none;">
+      Acknowledgements allow the receiver to let the sender know what has been received correctly or in error. Acknowledgements
+	  that have been recieved correctly are known as positive acknowledgements. Acknowledgements that have been received in
+	  error are known as negative acknowledgments.</p>
+      <button id="q2">Show/Hide Answer</button>
+      
+	  <h5>What are multiplexing and demultiplexing?</h5>
+      <p id="a3" style="display:none;">
+      Multiplexing is the job of gathering data chunks at the source host from different sockets, encapsulating each data
+	  chunk with header information to create segments, and passing the segments to the network layer. Demultiplexing is
+	  the job of delivering the data in a transport-layer segment to the correct socket.</p>
+      <button id="q3">Show/Hide Answer</button>
+      
+	  <h5>What are the three phases in a virtual circuit, and how do they work?</h5>
+      <p id="a4" style="display:none;">
+      Setup, Data Transfer, Teardown. <br><br> In the setup, the transport-layer contacts the network-layer, specifies the receiver's
+	  address, and waits for the network to set up the virtual circuit. The network-layer determines the path between sender
+	  and receiver, the virtual circuit numbers, adds the entry into the forwarding table, and possibly reserve network 
+	  resources. <br><br>Next, the data is transferred.<br><br> Teardown is initiated when the sender or receiver informs the network-layer
+	  of its desire to terminate the virtual circuit. It then informs the other end system of the call for termination, and 
+	  updates the forwarding tables to indicate the virtual circuit no longer exists.</p>
+      <button id="q4">Show/Hide Answer</button>
+      
+	  <h5>What is the purpose of a sequence number?</h5>      
+      <p id="a5" style="display:none;">
+      Sequence numbers allow the receiver to detect problems with data transfer. Packets that skip a sequence number mean that there is a lost
+	  packet. Packets with duplicate sequence numbers mean that there was a retransmission or duplicate packet.</p>
+      <button id="q5">Show/Hide Answer</button>
+      
+	  <h5>What is the purpose of a timer?</h5>      
+      <p id="a6" style="display:none;">
+      A timer is used to timeout or retransmit a packet because the packet was lost or delayed within the channel.</p>
+      <button id="q6">Show/Hide Answer</button>
+      
+	  <h5>What is a three-way handshake?</h5>      
+      <p id="a7" style="display:none;">
+      A three-way handshake is used in TCP/IP to create a connection between client and server where the client and server exchange
+	  SYN and ACK packets before actual data communication begins.</p>
+      <button id="q7">Show/Hide Answer</button>
+      
+	  <h5>TCP uses acknowledgements to trigger its increase in congestion window size. What is the term used to describe this?</h5>      
+      <p id="a8" style="display:none;">
+      Self-clocking.</p>
+      <button id="q8">Show/Hide Answer</button>
+     
+	  <h5>What does a payload field hold?</h5>      
+      <p id="a9" style="display:none;">
+      A payload field holds a packet from the protocol layer above it.</p>
+      <button id="q9">Show/Hide Answer</button>
+      
+	  <h5>In Wireshark, what do you type in the display filter if you only wanted to see the HTTP packets coming from
+	  the IP address 192.168.0.129?</h5>	       
+      <p id="a10" style="display:none;">
+      http && ip.addr == 192.168.0.129</p>
+      <button id="q10">Show/Hide Answer</button>
+    </div>
+
+    <br><br><br>
+    
+  </body>
+</html>

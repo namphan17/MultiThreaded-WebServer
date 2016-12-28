@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/13/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 13th
+    </h1>
+<ul>
+    <li>Some people use Routing and Forwarding interchangeably, but this text makes a distinction between the two</li>
+    <li><span style="color:chartreuse">Routing</span>: planning the entire route a packet will take.</li>
+	<li>Real-life analogy: planning your route on Google Maps before leaving the house</li>
+	<li><span style="color:chartreuse">Forwarding</span>: deciding where the packet will go next from the current router</li>
+	<li>Real-life analogy: deciding which exit to take on an interchange to reach your destination</li>
+	<li><span style="color:chartreuse">Packet switch</span>: general packet-switching device which transfers a packet from input to output link based on the value in a header field</li>
+	<li><span style="color:chartreuse">Link-layer switches</span>: base forwarding decision on values in fields of the link-layer frame</li>
+	<li><span style="color:chartreuse">Router</span>: base forwarding decision on value in network-layer field</li>
+	<li><span style="color:chartreuse">Connection setup</span>: third important function of the network layer</li>
+	<li>In TCP, the connection setup is the 3-way handshake</li>
+	<li><span style="color:chartreuse">Jitter</span>: variability of end-to-end delay</li>
+	<li><span style="color:chartreuse">Network service model</span>: defines characteristics of end-to-end packet transport between sender and receiver</li>
+	<li>Specific services may include:</li>
+	<ul>
+		<li><span style="color:chartreuse">Guaranteed delivery</span>: guarantees packet will eventually arrive</li>
+		<li><span style="color:chartreuse">Guaranteed delivery <i>with bounded delay</i></span>: guarantees packet delivery within a specified timeframe</li>
+	</ul>
+	<li>Possible services offered to a flow of packets:</li>
+	<ul>
+		<li><span style="color:chartreuse">In-order packet delivery</span>: guarantees packets will arrive in the order they were sent</li>
+		<li><span style="color:chartreuse">Guaranteed minimal bandwidth</span>: as long as the sender transmits at a rate (bits/sec) below the specified rate, no packet is lost and each packet arrives within a specified delay</li>
+		<li><span style="color:chartreuse">Guaranteed maximum jitter</span>: guarantees that the amount of time between transmission of packets is equal to amount of time between their arrival at the destination (within a specified margin of error)</li>
+		<li><span style="color:chartreuse">Security services</span>: uses a session key known only by receiver and sender, sender can encrypt the packets so only the receiver may read them</li>
+		<li>Security may also include data integrity and source authentication</li>
+	</ul>
+	<li><span style="color:chartreuse">Best-effort service</span>: timing not guaranteed, order not guaranteed, eventual delivery not guaranteed, but it does its best</li>
+	<li>Two types of ATM network services</li>
+	<ol>
+		<li><span style="color:chartreuse">Constant Bit Rate</span></li>
+		<ul>
+			<li>First ATM model to be standardized</li>
+			<li>Provides a flow of packets with a virtual pipe whose properties allow the assumption that a dedicated fixed-bandwidth transmission link exists between sender and receiver</li>
+			<li>End-to-end delay, jitter, and fraction of packets lost or delivered late are all guaranteed to be less than specific values established when the connection opens</li>
+		</ul>
+		<li><span style="color:chartreuse">Available Bit Rate</span></li>
+		<ul>
+			<li>"Slightly-better-than-best-effort" service</li>
+			<li>Packets may be lost, but they cannot be reordered and minimum packet transmission is guaranteed</li>
+			<li>If the network has the resources, senders may transmit above minimum transmission rate</li>
+			<li>Can provide feedback to control how sender adjusts rate between minimum and allowable peak packet transmission rate</li>
+		</ul>
+	</ol>
+	<li><span style="color:chartreuse">Virtual-Circuit networks</span>: computer networks which provide only a connection service at the network layer</li>
+	<ul>
+		<li>Three parts:</li>
+		<ol>
+			<li>a path between source and destination hosts</li>
+			<li>a VC number for each link along the path</li>
+			<li>entries in the forwarding table in each router along the path</li>
+		</ol>
+		<li>Replaces part of the packet header with the next VC number at each router as part of the forwarding process</li>
+		<li>Maintains connection state information</span>
+		<li><span style="color:chartreuse">Connection state information</span>: each time a new connection is added or released across a router, the forwarding table must be updated</li>
+		<li>Three phases in a connection:</li>
+		<ol>
+			<li><span style="color:chartreuse">VC setup</span>: transport contacts network layer, specifies receiver's address, network layer determines path packet will travel and makes entries in forwarding tables</li>
+			<li><span style="color:chartreuse">Data transfer</span>: packets begin to flow</li>
+			<li><span style="color:chartreuse">VC teardown</span>: one side tells the other it wishes to stop, network layer passes it on up, remove information from forwarding tables</li>
+		</ol>
+	</ul>
+	<li><span style="color:chartreuse">Datagram networks</span>: computer networks which provide only a connectionless service at the network layer</li>
+	<ul>
+		<li>Packet is stamped with final destination and thrown into the network/wind</li>
+		<li>Each router compares the destination to its forwarding table to decide where it should go next</li>
+		<li>Forwarding table generally matches prefixes, putting priority on longer prefixes because they're more specific</li>
+	</ul>
+	<li><span style="color:chartreuse">Forwarding function</span>: actual transfer of packets from incoming to outgoing link; sometimes referred to as the <span style="color:chartreuse">router forwarding plane</span></li>
+	<li>Components of a router:</li>
+	<ul>
+		<li><span style="color:chartreuse">Input port</span>: connects to the link/physical layer, where the forwarding table is consulted to see where a packet is headed; control packets go straight to the routing processor</li>
+		<li><span style="color:chartreuse">Switching fabric</span>: internal network connecting input and output ports within the router</li>
+		<li><span style="color:chartreuse">Output port</li>: stores packets from switching fabric and sends them to the link/physical layers</li>
+		<li><span style="color:chartreuse">Routing processor</span>: executes routing protocols, maintains routing tables and link state information, computes forwarding table</li>
+	</ul>
+	<li><span style="color:chartreuse">Packet scheduler</span>: chooses a packet from the output queue to be transmitted (FIFO, weighted fair queuing)</li></li>
+	<li><span style="color:chartreuse">Drop-tail</span>: policy of dropping arriving packets when the buffer is full</li>
+
+</ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

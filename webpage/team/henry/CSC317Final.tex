@@ -1,0 +1,653 @@
+
+%% Change the name of the author of this
+%% document from CSC317 Computer Networks to
+%% your name.
+
+%% Make a PDF file from this document by
+%% typing: pdflatex qa317-24oct2016.tex
+
+\documentclass[twoside]{article}
+\title{Graded Exercise 3}
+\author{Henry Weeks}
+\date{26 October 2016}
+
+\usepackage{amsmath}
+\usepackage[colorlinks=true]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\newenvironment{answer}
+  {\vspace*{0.2cm} \rule{12cm}{0.04cm} \vspace*{0.2cm}}
+  {\vspace*{0.2cm}}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+  \item Match the people with their achievements.
+
+  \begin{tabular}{l|l}
+    \textbf{Person} & \textbf{Achievement} \\ \hline
+    Marc Andreesen & Ethernet \\
+    Tim Berners-Lee & packet switching, Internet's first node \\
+    Vint Cerf \& Bob Kahn & routing algorithm \\    
+    Len Kleinrock & TCP/IP \\
+    Bob Metcalfe & Web browser \\
+    Radia Perlman & World Wide Web
+    \end{tabular}
+
+  \begin{answer}
+
+  \begin{tabular}{l|l}
+    \textbf{Person} & \textbf{Achievement} \\ \hline
+    Marc Andreesen & Web Browser \\
+    Tim Berners-Lee &  World Wide Web \\
+    Vint Cerf \& Bob Kahn & TCP/IP \\    
+    Len Kleinrock & Packet Switching, Internet's first node \\
+    Bob Metcalfe & Ethernet \\
+    Radia Perlman & Routing Algorithm
+    \end{tabular}
+
+    \end{answer}
+
+  \item A shared communications channel has a bandwidth of 3 Mbps.
+    Each subscriber requires a bandwidth of 150 kbps when
+    using the channel.
+    Each subscriber uses the channel only 10\% of the time.
+
+    This means that the capacity of the channel is sufficient to
+    allow simultaneous communications by $20$ subscribers.
+
+    This means that the probability $p$ that any given subscriber is active at any given moment
+    is $0.1$.
+
+    The probability that exactly $n$ of $N$ subscribers are simultaneously communicating
+    when the probability that any individual subscriber is communicating is $p$ is:
+
+    \begin{align*}
+      P_{p} (n \mid N ) & = \frac{N!}{n! (N - n)!} (p)^n (1.0 - p)^{N - n}
+      \end{align*}
+
+    The probability that exactly n of 120 subscribers are simultaneously communicating
+    is\ldots
+
+    \begin{align*}
+      P_{0.1} (n \mid 120 ) & = \frac{120!}{n! (120 - n)!} (0.1)^n (1.0 - 0.1)^{120 - n}
+      \end{align*}
+
+    With the help of a \href{http://stattrek.com/online-calculator/binomial.aspx}{calculator}
+    we can find the probability that $21$ or more
+    subscribers are active at once.
+  
+    The online calculator displays input fields for ``Probability of success on a single trial,''
+    ``Number of trials,'' and ``Number of successes (x).''
+    Enter values of $0.1$, $120$, and $21$ in these fields
+    Click on the calculate button.
+    Look for the probability that $21$ or more subscribers are simultaneously active
+    in the output field that is labeled ``Cumulative probability: $P(X \ge 21)$.''
+
+    \begin{enumerate}
+      \item What is the probability that at any given moment
+        $21$ or more subscribers will be communicating?
+      \item What happens in a packet switched network when subscribers
+        request more bandwidth than the channel can provide.
+      \item What can you infer from this result about an advantage
+        of packet switched communications?
+      \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item There is a 0.0079411 probability that 21 or more subscribers will be communicating at any given time.
+    \item This results in queueing delays.
+    \item Packet switch networks are more economical because of their ability to allow users to share resources by scaling the the allocation of resources based on the current workload.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item
+  \begin{enumerate}
+    \item How many bits are in an IPv4 address?
+
+    \item If all bits in an IPv4 address were available for specifying
+      addresses of different machines on the Internet, how many hosts
+      could the Internet connect?
+
+    \item The dotted decimal notation is a way of writing IPv4 addresses.
+      
+      Find the IPv4 address of \verb+www.eonsahead.com+ by typing:
+
+      \verb+nslookup www.eonsahead.com+
+
+      Express the IPv4 address of \verb+www.eonsahead.com+ in
+      dotted decimal notation.?
+
+    \item The dotted decimal notation presents an address as
+      four decimal numbers, each in the range of $0$ to $255$,
+      and separated from one another by periods.
+
+      A number $x$ in the range of $0$ to $255$ can be expressed
+      in hexadecimal notation with two hexadecimal digits.
+
+    \begin{itemize}
+      \item The first (most significant) digit is $x / 16$.
+        The division is integer division.
+
+      \item The second (least significant) digit is $x \bmod 16$.
+
+      \item Here is an example: $77_{10} \equiv 4D$ because\ldots
+      \begin{itemize}
+        \item  $77 / 16 = 4$
+        \item $77 \bmod 16 = 13$
+        \item the hexadecimal digit that represents $13$ is $D$
+        \end{itemize}
+
+    \begin{tabular}{ll|ll}
+      \textbf{decimal} & \textbf{hexadecimal} & \textbf{decimial} & \textbf{hexadecmal} \\ \hline
+      0 & 0 & 8 & 8 \\
+      1 & 1 & 9 & 9 \\
+      2 & 2 & 10 & A \\
+      3 & 3 & 11 & B \\
+      4 & 4 & 12 & C \\
+      5 & 5 & 13 & D \\
+      6 & 6 & 14 & E \\
+      7 & 7 & 15 & F
+      \end{tabular}
+
+      \end{itemize}
+
+      Express the address of \verb+www.eonsahead.com+ in hexadecimal
+      notation.
+
+    \item To translate a number from hexadecimal format to binary,
+      replace each hexadecimal digit with the corresponding
+      four bits bound in this table:
+
+      \begin{tabular}{l|l}
+        \textbf{Hexadecimal digit} & \textbf{Binary equivalent} \\ \hline
+        0 & 0000 \\
+        1 & 0001 \\
+        2 & 0010 \\
+        3 & 0011 \\
+        4 & 0100 \\
+        5 & 0101 \\
+        6 & 0110 \\
+        7 & 0111 \\
+        8 & 1000 \\
+        9 & 1001 \\
+        A & 1010 \\
+        B & 1011 \\
+        C & 1100 \\
+        D & 1101 \\
+        E & 1110 \\
+        F & 1111 \\
+        \end{tabular}
+
+      Express the IPv4 address of \verb+www.eonsahead.com+ in binary
+      notation.
+ 
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item 32 bits in an IPv4 address.
+    \item 2^32 bits in an address gives 4,294,967,296 distinct addresses.
+    \item eonsahead.com written in decimal is 45.40.136.115.
+    \item eonsahead.com written in decimal is 2D.28.88.73.
+    \item Converted from hexadecimal the binary address is 00101101.00101000.10001000.01110011.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item An IPv6 address contains 128 bits. With 128 bits, it
+    is possible to represent $2^{128}$ addresses.
+  \begin{enumerate}
+    \item Look up the current population of the earth. What integer
+      power of two most closely approximates this number?
+    \item What is the integer power of ten that most closely
+      approximates $2^{128}$?
+
+      Here are some relationships that you might find helpful.
+
+      \begin{align*}
+        2^{10} & \approx 1000 = 10^3 \\
+        2^{20} & = 2^{10} \cdot 2^{10} \approx 10^3 \cdot 10^3 = 10^6 \\
+        2^{30} & = 2^{10} \cdot 2^{10} \cdot 2^{10} \approx 10^3 \cdot 10^3 \cdot 10^3 = 10^9 \\
+        2^{40} & = 2^{10} \cdot 2^{10} \cdot 2^{10} \cdot 2^{10} \approx
+            10^3 \cdot 10^3 \cdot 10^3 \cdot 10^3 = 10^{12}
+        \end{align*}
+
+      In general, if $2^x = 10^y$, then $y$ is approximately equal to $x/y$: $2^{40} \approx 10^{40/3}$.
+      
+    \item How many IPv6 addresses would each person on earth have if the addresses
+      were evenly distributed?
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item With a little over 7 billion people estimated on this planet, we would need 2^33 to give each their own unique number.
+    \item 2^128 is most close to 3.4 x 10^38.
+    \item 3.4 x 10^38 / 7 billion = 4.85 x 10^28 addresses per person.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item Hundreds of millions of IPv4 addresses are reserved.
+  \begin{enumerate}
+    \item For what purposes are the CIDR address blocks 10.0.0.0/8 and 192.168.0.0/16 reserved?
+    \item How many addresses are in the 10.0.0.0/8 block?
+    \item How many addresses are in the 192.168.0.0/16?
+    \item Use the \verb+ifconfig+ command to determine the IP address of
+      one of the Linux machines in our laboratory. What is the address of the computer?
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item These CIDR blocks of addresses are reserved for private networks.  This allows partitions and communication between devices on the private network.
+    \item 16,777,216 addresses.
+    \item 65,536 addresses.
+    \item 10.101.6.5 is the address of this particular machine.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item Port numbers are $16$ bit addresses. A $16$ bit address is large
+    enough to specify any one of $65536$ different ports. What is a programmer
+    addressing when a programmer specifies a port number?
+
+  \begin{answer}
+    When declaring a port number, we are giving instructions as to which port the application that is receiving the data is listening on.  Applications have software features called sockets which 
+   are capable of assigning the application to a port at the operating system level, giving them access to the network hardware on the machine.
+    \end{answer}
+
+  \item Here is an address: d4:9a:20:0a:49:00
+  \begin{enumerate}
+    \item The format of this address matches the format of what kind of address?
+    \item What does the address identify?
+    \item The address contains 12 hexadecimal digits. How many bits are needed
+      to specify this kind of address?
+    \end{enumerate}
+  
+  \begin{answer}
+
+  \begin{enumerate}
+    \item This is a MAC address.
+    \item MAC addresses give a kind of serial number to the network hardware on the machine.  This includes a manufacturer identification, followed by a unique identifier for the unit.
+    \item MAC address are 6 bytes, 48 bits, long.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item What kinds of addresses to the headers in each of these kinds
+      of packets contain? (Your choices are IP addresses, MAC addresses,
+      and port numbers.)
+  \begin{enumerate}
+    \item Transport layer segments
+    \item Network layer datagrams
+    \item Link layer Ethernet frames
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item Port numbers.
+    \item IP addresses.
+    \item MAC addresses.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item DHCP is a client-server protocol.
+  \begin{enumerate}
+    \item What does this service provide to clients? (It may provide more than one item.) 
+    \item Under what circumstances is a DHCP service especially useful?
+    \item Which transport level protocol and which port number is used by
+      a host to discover a DHCP server?
+    \item DHCP uses an IP address that is reserved for broadcast. 
+      A host that joins a network is a client.
+      The exchange between a DHCP client and a DHCP server begins when
+      the client broadcasts a \emph{discover message}.
+      The client broadcasts this message because it does not yet know
+      any addresses (including most particularly the address of the DHCP
+      server) in the network.
+      The server responds by broadcasting an \emph{offer message}.
+
+      Why does the server also broadcast the \emph{offer message}?
+
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item DHCP stands for Dynamic Host Configuration Protocol and it is a meta network tool which provides a host with its network ID information such as its IP address and connection configuration.
+    \item Without DHCP the process of assigning IP addresses to new machines or addresses a newly accessed subnet would require manual configuration.  It would be very tedious.
+    \item DHCP uses UDP and the server uses port 67 while the client-side uses port 68.
+    \item The server can not target the new machine specifically because it does not have its communication specifications yet.  It can only listen to the broadcast channel.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item What are several possible objections to the use of NAT?
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item NAT does not provide the level of information infrastructure that many of our applications now require with regard to IP addresses.
+    \item NAT adds a great deal of complexity to our current networking models.
+    \item NAT is a quick fix patch to the issue of IPv4 exhaustion, it is not a new paradigm.
+    \item NAT does not provide the true end to end connection that real time or streaming applications require.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item DNS and ARP both translate between two kinds of addresses.
+  \begin{enumerate}
+    \item Between which two kinds of addresses does DNS translate?
+    \item Between which two kinds of addresses does ARP translate?
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item DNS translates between IP addresses that computers can read and hostnames that people can read.
+    \item ARP translates between MAC addresses and IP addresses.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item 
+  \begin{enumerate}
+    \item The MTU (Maximum Transmission Unit) defines a limit at which
+      layer of the Internet protocol stack?
+    \item The MSS (Maximum Segment Size) defines a limit at which
+      layer of the Internet protocol stack?
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item MTU operates at the link layer.
+    \item MSS operates at the transport layer.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item The link-state algorithm associates a number and a label with
+    each node in a network. The algorithm assigns an initial value
+    of $\infty$ to the number and $NULL$ (unknown) to the label.
+    It updates these values in the course of its execution.
+  \begin{enumerate}
+    \item What does the number denote?
+    \item What does the label denote?
+    \end{enumerate}
+  
+  \begin{answer}
+
+  \begin{enumerate}
+    \item It denotes the shortest distance or path from the source node.
+    \item This stores the previous node in the shortest path.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item The Bellman-Ford equation describes a relationship that
+    is the basis of the distance-vector routing algorithm.
+
+    Combine the following mathematical expressions
+    (found in the first column of the table) to produce the Bellman-Ford equation.
+
+  \begin{tabular}{ll}
+    \textbf{expression} & \textbf{meaning} \\ \hline
+    $d_x(y)$ & distance from $x$ to $y$ along shortest path between the two nodes\\
+    $c(x,v)$ & length of edge that connects node $x$ to node $v$ \\
+    $d_v(y)$ & distance from $v$ to $y$ along shortest path between the two nodes \\
+    $\{ \cdots \}$ & a set \\
+    ${\min}_v$ & \parbox[t]{10cm}{minimum value in collection of values that
+      depend upon $v$, for all values of $v$}
+    \end{tabular}
+
+  \begin{answer}
+
+  \begin{align*}
+    \parbox{4cm}{$d_x(y)$} & = \parbox{4cm}{${\min}_v$($c(x,v)$ + $d_v(y)$)}
+    \end{align*}
+
+    \end{answer}
+
+  \item The distance-vector routing algorithm is\ldots
+  \begin{enumerate}
+    \item iterative or recursive?
+    \item asynchronous or synchronous?
+    \item centralized or distributed?
+    \item self-terminating or terminated by a special signal?
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item Iterative
+    \item Asynchronous
+    \item Distributed
+    \item Self-Terminating
+    \end{enumerate}
+
+    \end{answer}
+
+  \item The Border Gateway Protocol (BGP) facilitates inter-AS routing.
+  \begin{enumerate}
+    \item What is inter-AS routing?
+    \item Is scalability a more important concern in intra-AS routing
+      or in inter-AS routing?
+    \item Is performance (for example, the selection of the shortest
+      route) a more important concern in intra-AS routing or
+      in inter-AS routing?
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item This specificies an Inter-Domain routing protocol between two networks.  These protocols are usually Autonomous Systems (AS).
+    \item Inter-AS.
+    \item Intra-AS.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item In the following table, the first four elements of the
+    first four rows are data. The fifth element in each of the 
+    first four rows is a parity bit computed for that row.
+    The elements of the fifth row are parity bits computed
+    for the columns.
+
+    The parity bits have been chosen to make the number of
+    ones in a row (or column) even.
+    For example, only one of the data bits in the first row
+    is a one. Making the parity bit a one makes the total
+    number of ones in the row even.
+
+  \begin{tabular}{llll|l}
+    0 & 0 & 0 & 1 & 1 \\
+    1 & 0 & 0 & 1 & 0 \\
+    0 & 1 & 1 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 1 \\ \hline
+    1 & 0 & 1 & 0 & 0
+    \end{tabular}
+
+    Now suppose that noise in the communication line
+    alters a bit during the transmission of this table.
+    The receiver sees this table:
+
+  \begin{tabular}{llll|l}
+    0 & 0 & 0 & 1 & 1 \\
+    1 & 0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 1 \\ \hline
+    1 & 0 & 1 & 0 & 0
+    \end{tabular}
+
+    \begin{enumerate}
+      \item What can the receiver know?
+      \item What can the receiver do?
+      \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item The receiver knows that there is the possibility of an error based on the arithmetic not adding up.
+    \item The receiver would request a retransmission of the suspected corrupted packet.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item This problem is about a CSMA/CD network.
+  \begin{itemize}
+    \item Let $d_{prog}$ be the upper bound on the time required
+      for front edge of a signal to travel (propagate) between two network adapters (interfaces).
+    \item Let $d_{tran}$ be the time required to transmit the largest frame.
+    \item Let $E$ be the efficiency of the network. ``Efficiency'' means the
+      fraction of time (computed over a long run) in which frames are passing
+      between adapters without collision. Assume that there are many adapters
+      with many frames to send.
+    \end{itemize}
+
+  \begin{align*}
+    E & \approx \frac{1}{1 + 5 \cdot \frac{d_{prog}}{d_{tran}}}
+    \end{align*}
+
+    Here is an analogy: Imagine a large school. There are many rooms.
+    A single hallway connects the rooms. At unpredictable times, groups of students in
+    one room pass through the hall to another room. A group of art
+    students might move from the studio to the library. Another group of
+    students might later move from the chemistry laboratory to the gymnasium.
+    After that, a third group of students might walk from their English class to
+    the nurse's office.
+
+    A rule forbids more than one group of students to be in the hall at once.
+    If the chemistry students open the door and see the art students in the hall,
+    they must duck back into their laboratory, check the hallway for traffic
+    again at a later time, and proceed only when the see at that the hallway
+    is empty.
+
+    In this case, $d_{prog}$ is a measure of how fast the students walk,
+    and $d_{tran}$ is a measure of how much time it takes to get a group
+    of students through a classroom door into the hall.
+    The amount of time that a group spends in the hall is a function
+    both of how fast the students walk and how many students are in the
+    group.
+
+    Efficiency is the fraction of time during which there are students
+    in the hallway moving between rooms.
+    
+    \begin{enumerate}
+      \item Does $E$ increase when $d_{prog}$ is increased or when it is decreased?
+      \item Does $E$ increase when $d_{tran}$ is increased or when it is decreased?
+      \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item $E$ increases when $d_{prog}$ is decreased.
+    \item $E$ increases when $d_{tran}$ is increased.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item Both routers and switchs store and forward packets.
+    Routers execute layer 3 protocols. In layer 3, IP addresses determine
+    where packets go.
+    Switches execute layer 2 protocols. In layer 2, MAC addresses determine
+    where packets go.
+    Even so, network administrators can often choose to connect two networks
+    using a router instead of a switch (or vice versa). 
+    Network adminstrators need to know the advantages and disadvantages of
+    each kind of device.
+
+  \begin{enumerate}
+    \item Hierarchical addressing and an easier avoidance of cycles (an attractive characteristic)
+      is a property of which kind of device: router or switch?
+    \item ``Plug-and-play'' (an attractive characteristic) is a property of which
+      kind of device: router or switch?
+    \item Faster processing of packets (an attractive characteristic) is a property
+      of which kind of device: router or switch?
+    \item The option of choosing from a greater variety of topologies (an attractive characteristic)
+      follows from the selection of which kind of device: routers or switches?
+      A greater variety of topologies means freedom from the constraint of avoiding multiple links
+      between elements in a network. The network need not be a spanning tree, but can be a more
+      general kind of graph.
+    \item Susceptibilty to broadcast storms (an unattractive characteristic) is a property
+      of which kind of device: router or switch?
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item A router.
+    \item A switch.
+    \item Switches are faster because they have a simpler architecture, but this gives them less functionality.
+    \item A router.
+    \item A switch.
+    \end{enumerate}
+
+    \end{answer}
+
+  \item Here is a computation for a cyclic redundancy check.
+
+  \begin{align*}
+    D & = 1010101010 \\
+    G & = 10011
+    \end{align*}
+
+  \begin{tabular}{lllll|llllllllllllll}
+      &   &   &   &   &   &   &   &   & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 0    \\ \hline
+    1 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0  \\ 
+      &   &   &   &   & 1 & 0 & 0 & 1 & 1 &   &   &   &   &   &   &   &   &    \\ \hline
+      &   &   &   &   &   & 0 & 1 & 1 & 0 & 0 &   &   &   &   &   &   &   &    \\ 
+      &   &   &   &   &   & 0 & 0 & 0 & 0 & 0 &   &   &   &   &   &   &   &    \\ \hline
+      &   &   &   &   &   &   & 1 & 1 & 0 & 0 & 1 &   &   &   &   &   &   &    \\ 
+      &   &   &   &   &   &   & 1 & 0 & 0 & 1 & 1 &   &   &   &   &   &   &    \\ \hline
+      &   &   &   &   &   &   &   & 1 & 0 & 1 & 0 & 0 &   &   &   &   &   &    \\ 
+      &   &   &   &   &   &   &   & 1 & 0 & 0 & 1 & 1 &   &   &   &   &   &    \\ \hline
+      &   &   &   &   &   &   &   &   & 0 & 1 & 1 & 1 & 1 &   &   &   &   &    \\
+      &   &   &   &   &   &   &   &   & 0 & 0 & 0 & 0 & 0 &   &   &   &   &    \\ \hline
+      &   &   &   &   &   &   &   &   &   & 1 & 1 & 1 & 1 & 0 &   &   &   &    \\
+      &   &   &   &   &   &   &   &   &   & 1 & 0 & 0 & 1 & 1 &   &   &   &    \\ \hline
+      &   &   &   &   &   &   &   &   &   &   & 1 & 1 & 0 & 1 & 0 &   &   &    \\
+      &   &   &   &   &   &   &   &   &   &   & 1 & 0 & 0 & 1 & 1 &   &   &    \\ \hline
+      &   &   &   &   &   &   &   &   &   &   &   & 1 & 0 & 0 & 1 & 0 &   &    \\
+      &   &   &   &   &   &   &   &   &   &   &   & 1 & 0 & 0 & 1 & 1 &   &    \\ \hline   
+      &   &   &   &   &   &   &   &   &   &   &   & 0 & 0 & 0 & 0 & 1 &   &    \\ 
+      &   &   &   &   &   &   &   &   &   &   &   &   & 0 & 0 & 0 & 0 & 0 &    \\ \hline
+      &   &   &   &   &   &   &   &   &   &   &   &   &   & 0 & 0 & 1 & 0 & 0  \\
+      &   &   &   &   &   &   &   &   &   &   &   &   &   & 0 & 0 & 0 & 0 & 0  \\ \hline  
+      &   &   &   &   &   &   &   &   &   &   &   &   &   &   & 0 & 1 & 0 & 0  
+    \end{tabular}
+
+  \begin{align*}
+    R & = 0100
+    \end{align*}
+
+  \begin{enumerate}
+    \item The computation is a long division. As in any long division, the computation
+      requires subtractions of multiples of the divisor. How does the method of subtraction
+      differs from ordinary subtraction? 
+    \item What is the bit string that the sender will transmit?
+    \item What kinds of errors can the receiver detect?
+    \end{enumerate}
+
+  \begin{answer}
+
+  \begin{enumerate}
+    \item We do not borrow from the next digit.  Because the quotient is disregarded, we borrow from "infinity".
+    \item CRC-enabled devices calculate a check sequence, a short binary sequence which is appended to each block of data.
+    \item CRCs are a quick and cheap way to provide a reasonable level of assurance that data has not been corrupted by a network error.  They do not protect against the intentional manipulation of data.
+    \end{enumerate}
+
+    \end{answer}
+
+  \end{enumerate}
+
+\end{document}

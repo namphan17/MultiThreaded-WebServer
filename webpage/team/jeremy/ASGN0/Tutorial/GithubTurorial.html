@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Github &amp Linux
+</title>
+<!-- This section makes the purple bar and text white for the diffrent sections-->
+<style>
+    .section {
+        margin-left: 24px;
+        margin-right: 24px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        background: #6600CC;
+        color: #FFFFFF;
+    }
+</style>
+</head>
+<body>
+    <h1>
+        How to fork, clone, edit, commit and push with Github & Linux <br>
+	&emsp; for Cornell College&#39;s Computer Science Department.
+    </h1>
+    <h2 class="section">
+        Github: Fork and Clone
+    </h2>
+	&emsp; &emsp;
+	Hover over and <span title="Just like that!"> <u>underlined</u></span> text, to see a definition of the word <br><br>
+	
+	&emsp; &emsp;
+	<b>Finding the correct <span title="List of files in the project you want to access"> <u>repository</u></span> </b><br>
+    <ol>
+	<li>Go to Github.com </li>
+	<li>Create an account or log on to an existing account </li>
+	<li>In the search bar type in the name of the repository </li>
+		<ul>
+		<li>The name of the repository will be given to you by your professor</li>
+		</ul>
+    </ol>
+    <br>
+	&emsp; &emsp;
+	<span title="Creating a personal copy of a repository that you can edit and then use to update the original"> <b><u>Forking</u></b></span> <br>
+	<ol>
+		<li>On the repository page click on the fork button</li>
+		<ul>
+		<li>This adds a copy of the repository to your git hub account</li>
+		</ul>
+	</ol>
+	&emsp; <img src="Important-Data/Fork_button.png" alt="Fork button" style="width:1019px;height:150px;">
+
+	<br> <br>
+	&emsp; &emsp;
+	To create a second copy on your computer you will need to use a terminal window, but first you need to select your on-line repository.<br>
+		<ol>
+	<li>On your account&#39;s <span title="copy"> <u>fork</u></span> of the repository click on the large green Clone or Download button</li>
+		<ul>
+		<li>You will know it&#39;s your copy because your user-name will appear in the upper left corner of the screen followed by the name of the repository you are going to copy</li>
+		</ul>
+	<li>Copy the link provided in the text box, this can be done easily by clicking on the clipboard icon </li>
+		<ul>
+		<li>Make sure that you are cloning with <span title="Hypertext Transfer protocal with SSH- is a method of transfering files safely over the inernet"> <u>HTTPS</u></span></li>
+		</ul>
+    </ol>
+	&emsp; <img src="Important-Data/Clone_download_button.png" alt="Clone/download button" style="width:696px;height:219px;">
+ 
+	<br><br>
+	&emsp; &emsp;
+	Your repository is now ready to be downloaded to your computer
+	<ol>
+		<li>Open a terminal window</li>
+		<li>In the terminal window enter the command <i>git clone</i> then paste 					(using right click) the link from Github, your terminal window 					should have a similar command in it to the one in the image bellow</li>
+		<li>Press enter to submit the command</li>
+		<ul><li>You will see the status of the download appear after hitting enter</li></ul>
+		<li>You now have a local copy of the repository</li>
+	</ol>
+	&emsp; <img src="Important-Data/git_clone.png" alt="git clone command" style="width:514px;height:77px;">
+
+<br> <br>
+	<h2 class="section">
+        Creating and Editing a file
+    </h2>
+	&emsp; &emsp; To edit the contents of the repository you can use the terminal window. <br><br>
+
+&emsp; &emsp; <b>Creating a file</b>
+
+	<ol>
+		<li>Change the <span title="folder"> <u>directory</u></span> you are in using the cd command in a terminal window. Simply type the name of the directory after the cd command.</li>
+			<ul><li>For this turtorial enter the command <i>cd Tutorial</i></li></ul>
+		<li>Press enter to submit the command</li>
+		<li>Type the command <span title="list"> <u><i>ls</i></u></span> to list all the files in the in the repository</li>
+			<ul><li>Here you can see that the folders within the repository are in blue and the documents are in white</li></ul>
+	</ol>
+	&emsp; <img src="Important-Data/cd_Tutorial.png" alt="cd Command" style="width:237px;height:75px;"> <br> <br>
+
+&emsp; &emsp; <b>Creating a new file</b><br>
+&emsp; &emsp; We are going to create a new file in the repository<br>
+	<ol>
+		<li>To do this type in the name of a text editor and then the name of the file you want to make, the file name can&#39;t already exist in the folder</li>
+			<ul><li>There are two main text editors on the machines emacs and gedit </li>
+			<li>Which one you use in up to you, but gedit is simpler to use</li></ul>
+		<li>In the Terminal window enter the command <i>gedit Hello.txt</i></li>
+			<ul><li>This creates a file with the name Hello.txt and opens the gedit text editor to edit the file</li>
+			<li>If you want to use emacs enter the command emacs Hello.txt</li></ul>
+		<li>In the text editor type Hello and introduce yourself, then save and close the editor</li>
+			<ul><li>You can&#39;t enter commands in the Terminal window while the text editor is open</li></ul>
+	</ol>
+
+
+
+
+&emsp; &emsp; <b>Editing an existing file</b> <br>
+&emsp; &emsp; We are now going to edit a file in the repository
+	<ol>
+		<li>To edit a file you need you type in the name of a text followed by the name of the file you want to open</li>
+		<li>Type in the name of a text editor followed by the name of the file, in this case <i>index.html</i></li>
+				<ul><li>For gedit the command is <i>gedit index.html</i></li>
+				<li>For emacs the command is <i>emacs index.html</i></li></ul>
+
+	&emsp; &emsp;<img src="Important-Data/Edit_index.png" alt="Edit Commands" 		style="width:163px;height:56px;"> <br> <br>
+
+		<li>In the text editor change the names of the professors so that the name of the professor matches the photo of them </li>
+				<ul><li>Read the comments in the document for a hint or two</li>
+				<li>html comment start with !-- in the tag</li></ul>
+		<li>Remember to save and close the text editor </li>
+		<li>To test your edits enter the command <i>firefox Index.html</i></li>
+		<ul><li>This command opens the <span title="webpage"> <u>html</u></span> in the Firefox web browser</li>
+		<li>You can then click on the links to view the photos you rearranged</li></ul>
+	</ol>
+
+	<h2 class="section">
+        Commit and Push
+    </h2>
+
+&emsp; &emsp; You have successfully added a file and updated a file in the repository. The change however was only made to your local copy and not on your Github copy or on the Github master. We are going to fix that now. <br>
+
+	<ol>
+		<li>Back in a Terminal window, set the directory to your local copy of the repository</li>
+			<ul><li>Open and a new window and type the <span title="change directory"> <u><i>command cd Tutorial</i></u></span></li></ul>
+		<li>We should get the status of the repository before we continue, enter the command <i>git status</i>. You will see all the files that you created or edited in red</li>
+		<li>We need to add the files you created or edited to the list of files we will <span title="update the repository"> <u>commit</u></span>, enter the command <i>git add Hello.txt</i> and <i>git add Index.html</i></li>
+		<li>Enter the command <i>git status</i> to see the files that you added in green</li>
+			<ul><li>You can pick and chose which files you edited to <span title="update the repository"> <u>commit</u></span></li></ul>
+		<li>Enter the command git rm Index.html to remove the index file from the <span title="update the repository"> <u>commit</u></span></li>
+		<li>Enter the command git status to see that Index.html is red and will not be committed</li>
+	</ol>
+
+<br>
+&emsp; &emsp; Now we are going to commit your changes
+
+	<ul><li>Enter the command <i>git commit -m &quot;Created a new Hello file&quot;</i>  and hit enter
+		<ul><li><i>git commit</i>  is the command that updates the repository, but the commit needs a message to go with the commit</li>
+			<ul><li>If you forget the <i>-m &quot;message here&quot;</i> part of the command you will be promoted to enter a message on the next screen</li></ul>
+
+		<li><i>-m &quot;Created a new Hello file&quot;</i> is the message that will tell the owner of the master repository what you did, always make this message short and informative</li></ul>
+	</ul>
+
+&emsp; &emsp; Now you have committed the files locally, there is one last step before your Github copy of the repository matches the data that you added. That step is a push, where you push the data from your local machine to Github. 
+
+	<ol>
+		<li>Enter the command <i>git push</i></li>
+		<li>Enter the email address that you used to create you github account</li>
+		<li>Enter the password you used to create your github account</li>
+			<ul><li>Your password will not appear in the terminal window</li></ul>
+		<li>After you hit enter the status of the push will appear in the terminal</li>
+		<li>You can now check your github account to make sure that the information was push to your account.</li>
+	</ol>
+
+&emsp; &emsp; You can now download and edit any of the repositories that you need to and then update those changes on Github. 
+
+
+
+
+
+</body>
+</html>
+

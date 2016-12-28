@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Hello
+</title>
+</head>
+<body>
+    <h3>Flow Control</h3>
+    <ul>
+        <li>A receive buffer is set aside for the bytes that are in correct order and sequence</li>
+        <li>The application will read from this buffer, but won’t necessarily read it immediately. It will read it once it is available to do so, so if there is a lot of data being sent to the receive buffer, it can overflow easily.</li>
+        <li>TCP has a flow-control service that changes the speed of the sending to match the speed of the reading application.</li>
+        <li>TCP also has a congestion control that throttles the TCP to prevent the IP network from clogging up(3.6-3.7)</li>
+        <li>Flow-Control controls the sender speed by a dynamic (constantly changing) variable called the Receive Window</li>
+        <ul>
+            <li>This Receive Window shows the sender how much free space is in the receive buffer.</li>
+            <li>It does this by doing the calculation of rwnd =  RcvBuffer - [LastByteRCVD - LastByteRead] where the LastByteRCVD and LastByteRead are numbers associated with the byte that is read or received.</li>
+            <li>Rwnd is initiated as rwnd = RcvBuffer because the buffer will be empty.</li>
+            <li>The receiver will send the rwnd to the sender.</li>
+            <li>The sender will need to keep track of variables of its own: LastByteSent and LastByteAcked (acked = acknowledged)</li>
+            <li>The amount of unacknowledged data is LastByteSent - LastByteAcked</li>
+            <li>The sender will control itself by keeping the unacknowledged data less than the rwnd</li>
+            <li>There is one problem with this. Once rwnd becomes 0, the receiver will tell the sender that rwnd =0, and then the sender will stop sending. Since the sender will stop sending, it will not ask for the rwnd again, because it will not send anything, even though the rwnd will become 0.</li>
+            <li>To solve this, the sender will send one data byte to the receiver so the rwnd will continuously be resubmitted to the sender</li>
+       
+        </ul>
+        <li>UDP will not do flow control, so the buffer will overflow.</li>
+        <li><a href="http://www.awl.com/kurose-ross">Illustrates the TCP receive window</a></li>
+        
+
+    </ul>
+</body>
+</html>

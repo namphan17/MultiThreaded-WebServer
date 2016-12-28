@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Chapter 3- Part 2 notes
+</title>
+<style>
+	p {
+    	padding-left: 50px;
+    	padding-right: 150px;
+	}
+	h4 {
+		padding-left: 100px;
+    	padding-right: 150px;
+	}
+</style>
+</head>
+<body>
+    <h3>
+	Chapter 3 Sections 3.4 - 3.4
+    </h3>
+    <h4>
+        By: Jeremy Novak
+    </h4>
+	<p>
+		<b>TCP Round Trip Time (RTT) estimations</b> <br>
+		Round trip estimations, or ping time is important because it tells the system sending packets that a packet was lost before it reached the other system. 
+		Without a calculation of the Round Trip a system could wait (until the end of time) for a acknowledgement that will never come. 
+		The SampleRTT (the round trip time) is measured once the first time a packet is received and and estimate is updated as communication continues.
+		This can be described with the following formula: 
+	</p>
+	<h4>
+	EstimatedRTT = (1 - &#x03B1 <!-- alpha --> ) x EstimatedRTT + &#x03B1 x SampleRTT
+	</h4>
+
+	<p>
+		The recommended value (from our text) for &#x03B1 is &#x215B <!-- 1/8th --> or 0.125. Using &#x215B puts a bigger emphasis on the more recent RTT values than on the original ones this represents a better view of the current status of the connection. As Wikipedia's article on <a href="https://en.wikipedia.org/wiki/Round-trip_delay_time">RTT</a> says that changing values of &#x03B1 allow the equation to better represent current conditions, with values closer to 0, or to represent conditions without much short term variance, with values closer to 1. If &#x03B1 is set 1 then the EstimatedRTT will always be equal to the SampleRTT and completely resistant to change.<br><br>
+		
+		<b>RTT standard deviation</b><br>
+		The standard deviation is the amount that the current pattern deviates from the norm, in short how close to expected the result is. finding the standard deviation is useful when determining of a packet is taking longer than expected to return, and can be calculated with this formula: 
+	</p>
+	
+	<h4>
+	DevRTT = (1 - &#x03B2 <!-- beta --> ) x DevRTT x | SampleRTT - EstimatedRTT |
+	</h4>
+	
+	<p>
+		The recommend &#x03B2 value is 0.25. <br><br>
+		<b>Timeout Interval</b><br>
+		Both these formulas tell us useful information, but neither gives us the amount of time before we can safely assume a packet is lost. But we can combine the two formulas, one that gives us the time a packet should take to arrive and one that tells us how far from our expectation the packet could be. This gives us a timeout formula:
+	</p>
+	
+	<h4>
+	TimeoutInterval = EstimatedRTT + (4 x DevRTT)
+	</h4>
+	
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Problems
+</title>
+<style>
+	h4{
+	padding-left: 25px 
+	}
+	p{ 
+	padding-left: 35px
+	}
+	ol{ 
+	padding-left: 65px
+	}
+	.Answer{
+	padding-left:65px
+	}
+body {background-color: brown;}
+h2, h4, p, li {font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;}
+h2, h4, p, li {color: goldenrod;}
+h2, h4 {text-decoration: underline;}
+
+</style>
+</head>
+<body>
+    <h2>
+        Problems from Chapter 3
+    </h2>
+	<h4>
+		Jeremy Novak
+	</h4>
+	<p>&emsp;Here are two select of problems from chapter 3 in the textbook. Before starting make sure that you have read the chapter and have taken notes on each big idea from the sections. Try to answer these questions without referring to the answers (found below each question) or referring to the textbook. The section number, problem number, and page number that each question can be found in is listed before each question.
+	</p>
+
+    <p>
+		&emsp;<b>3.3.2 P5</b> from page 289 <br>
+		&emsp;&emsp; Suppose that the UDP receiver computes the Internet checksum for the received UDP segment and finds that it matches the value carried in the checksum field. Can the receiver be absolutely certain that no errors have occurred? Explain. <br>
+	</p><p class="Answer">
+		&#8226; The receiver can not be absolutely certain that there were on errors in the UDP packet. If two errors occurred that canceled each other out such as two bits flipping in the opposite way, then the checksum might still be valid even though the message is not error free.
+    </p><br>
+    <p>
+		&emsp;<b>3.4.3 & 3.4.4 P24</b> from page 293 <br>
+		&emsp;&emsp; Answer true or false to the following questions and briefly justify your answer:<br>
+	</p>
+		<ol type="a">
+			<li>With the SR protocol, it is possible for the sender to receive an ACK for a packet outside of its current window.</li>
+			<li>With the GBN protocol, it is possible for the sender to receive an ACK for a packet outside of its current window.</li>
+			<li>The alternating-bit protocol is the same as the SR protocol with a sender and receiver window size of 1.</li>
+			<li>The alternating-bit protocol is the same as the GBN protocol with a sender and receiver window size of 1.</li>
+		</ol>
+
+		<p>
+			Answers:
+		</p>
+		<ol type="a" class="Answer">
+			<li>False, with SR protocol the window only advances when an ACK is received.</li>
+			<li>False, with GBN protocol the window only advances when an ACK is received.</li>
+			<li>False, alternating bit protocol constantly sends the 1 bit packet until an ACK is received.</li>
+			<li>False, alternating bit protocol constantly sends the 1 bit packet until an ACK is received.</li>
+		</ol> 
+		
+
+</body>
+</html>

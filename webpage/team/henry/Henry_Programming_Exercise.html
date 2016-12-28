@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="HenryStyleSheet.css">
+    <meta charset="utf-8" />
+    <title>Henry Weeks Graded Assignment 0</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="HenrysJSFunctions.js"></script>
+</head>
+<body>
+    <h1 id="pageHeader">Henry Weeks: Exercise 2</h1>
+
+    <h3 class="headers">Distance Vector Routing Algorithms</h3>
+    <p>
+        Distance Vector algorithms do exactly what they say on the box.  They work in weighted graphs 
+        of nodes and edges to find the most efficient path between all nodes on the network.  They are 
+        exhaustive, and have three key features:
+    </p>
+    <p>DV algorithms are:</p>
+    <ol>
+        <li>
+            Iterative: The algorithm runs until all neighbors have exchanged all pertinent information
+        </li>
+        <li>
+            Asynchronous: Not all nodes will perform operations in lockstep with one another.
+        </li>
+        <li>
+            Distributed: Each node gets information from its neighbor or neighbors.
+        </li>
+    </ol>
+    <p>
+        In a DV algorithm, each node maintain a set of information to update and send to its neighbors.  
+        The information is:
+    </p>
+    <ol>
+        <li>
+            For each neighbor vertex (v), the cost (c(x, v)) to get from itself (x) to the each directly attached neighbor v.
+        </li>
+        <li>
+            Dx: the estimated cost to get to all destinations (y), in N.  This is the node's distance vector.
+        </li>
+        <li>
+            The distance vectors of all its direct neighbors.
+        </li>
+    </ol>
+    <p>
+        The Bellman Ford Least Cost Path runs as follows:
+    </p>
+    <p>
+        d<sub>x</sub> (y) = min<sub>v</sub>{c(x, v) + dv (y)}
+    </p>
+    <ul>
+        <li>
+            d<sub>x</sub> (y) is the value of the least cost path from the current node to the target node (x to y).
+        </li>
+        <li>
+            min<sub>v</sub> represents a minimum distance between the current node and one of its direct neighbors.
+        </li>
+        <li>
+            Based on these components, the least cost path to get from the current node x to the destination node y 
+            will be represented by c(x, v) + dv (y).
+        </li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Person Project
+</title>
+</head>
+<body>
+    <h1>
+        Vincton Gray Cerf
+    </h1>
+    <p>
+            Vinton Gray Cerf, or perhaps better known as one of the Fathers of the Internet, is one of the most important inventors
+        in computer science. Born in New Have, Connecticut in 1943, a young Cerf quickly learned that he suffered from severe
+        hearing impairment. Though almost certainly not his only reason, Cerf has said that this hearing impairment was partially
+        why he took an interest in computer science, in the hopes that it could prove to be another avenue for the hearing impaired
+        to communicate.
+            Whatever the reason, Cerf graduated from Stanford with a B.S. in Mathematics in 1965. He turned to work at IBM as a
+        systems engineer, where he contributed to a project, Quicktran, that piqued his interest in further Computer Science
+        work. he left IBM after two short years, and began attending the University of California. There, Cerf earned his M.S.
+        in 1970, and a PHD in Computer Science two years later in 1972.
+            During his time at UCLA, Cerf would meet the man who would share his title as Father of the Internet. Cerf was
+        working on a project to write the communication protocol for the ARPANET, the first computer network to use packet
+        switching. During this time Cerf met Robert E Kahn, an electrical engineer from Brooklyn who was five years his
+        senior. Kahn was also working on the ARPANET project, and the two formed a professional relationship, working to
+        predict and diagnose issues with the network.
+            After graduation, Cerf would find himself back at Stanford, only this time as part of the faculty. While working
+        there, Cerf was approached by Kahn, who came to ask for his assistance in designing a new network he had thought up.
+        This network was a huge network of packet-switching networks, a network of networks. In other words, an inter-net.
+        Together, the two of them (and many contributing colleagues) produced TCP/IP, the basis for the current internet.
+            After his work producing TCP/IP, Cerf continues to be an activist in promoting and expanding the internet. In 1982,
+        Cerf became the vice president of MCI Communications Corporation, where he was the driving force of developing and
+        deploying the first commercial email service connected to the internet. Since then, Cerf became the founding member
+        of the Internet Society, a non-profit organization, in 1992. Perhaps their mission statement best explains what they
+        do, ""to promote the open development, evolution, and use of the internet for the benefit of all people throughout
+        the world." Today, they have over 80,000 members. In 2004, along with Robert E. Kahn, Cerf would win on of the
+        highest honors in Computer Science, the Turing award.
+        
+        <u>Sources</u>
+        http://www.internetsociety.org/who-we-are
+        https://www.britannica.com/biography/Vinton-Cerf
+        http://amturing.acm.org/award_winners/cerf_1083211.cfm
+    </p>
+</body>
+</html>

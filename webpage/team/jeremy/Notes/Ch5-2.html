@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+	Chapter 5 notes parts 2
+</title>
+<style>
+	p{ padding-left: 50px
+	}
+	img{ padding-left: 75px
+	}
+	ul{ padding-left: 75px
+	}
+</style>
+</head>
+<body>
+	<h3>
+		Chapter 5 notes: 5.4 - 5.4
+	<h3>
+	<h4>
+        &emsp;By: Jeremy Novak
+    </h4>
+	<p><b>A network as a Link Layer</b></p>
+	<P>
+	Multiprotocol Label Switching (MPLS): are fixed length headers that allowed for improved forwarding speeds from ISP in the mid-to-late 90's.
+	</P>
+	<img src="http://image.slidesharecdn.com/mplsslideshare-141015123750-conversion-gate02/95/mpls-8-638.jpg?cb=1413376825" alt="MPLS Frame Format" style="width:638px;height:479px;">
+	<P> The MPLS Header inserted into a packet (above) is added when two devices capable of using the header communicate. The headers parts and uses are listed as follows:</p>
+	<UL>
+		<LI>A 20-bit label number. A label with the value of 1 represents the router alert label</LI>
+		<LI>A 3-bit Traffic Class field for quality of service priority and  Congestion Notification, used to be called EXP bits</LI>
+		<LI>A 1-bit bottom of stack flag. If this is set, it signifies that the current label is the last in the stack</LI>
+		<LI>An 8-bit TTL field</LI>
+	</UL>
+	<P>
+	This header sits between the Ethernet header and the IP header, or the layer 2 and layer 3 headers respectively. 
+	A router capable of MPLS is often called a label-switched router. <BR>
+	As far as this textbook is concerned the main and technical importance of MPLS's starts and ends with 
+	</P>
+	<UL>
+		<LI>The knowledge that MPLS's can be used to forward packets along routes that would otherwise be impossible to us</LI>
+		<LI>The ability to use MPLS's to avoid network congestion</LI>
+		<LI>The use of MPLS's in virtual private networks(VPNs)</LI>
+	</UL>
+
+	
+</body>
+</html>

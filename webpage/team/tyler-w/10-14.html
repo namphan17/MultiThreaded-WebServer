@@ -1,0 +1,67 @@
+<!-- 
+10-14.html
+Notes from October 14th
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>10.14 Notes</title>
+	<style>
+	  body { background-color: #457263;
+	         margin: auto; width: 80%;
+           font-family: Verdana, sans-serif; }
+    #desc { text-align: center; }
+            a { color: #FFFFFF; }
+	</style>
+</head>
+<body>
+
+        <h1 id="desc"> Tyler Wians </h1>
+        <h5 id="desc"> CSC 317: Computer Networks</h5>
+        <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./10-14.html">10.14</a></p>
+		
+		<h3>Network Address Translation (NAT)</h3>
+		
+		<p>A <b>Network Address Translation</b>, or NAT, is a method of remapping one IP address space into another by modifying
+		network address information in IP datagram packet headers while they are in transit.</p>
+		
+		<p>There are many home networks that use the same address space; however packets forwarded beyond the home
+		network into larger global internet cannot use these addresses in any way, because there are hundreds
+		of thousands of networks using this block of addresses. The home network addresses can only have meaning within
+		the home network.</p>
+		
+		<p>The NAT-enabled router does not look like a router to the outside world. It behaves as a single device with
+		a single IP address. All of the traffic entering and exiting the home network must have the same source
+		address and destination address.</p>
+		
+		<p>The home network computers get their addresses and the router gets its single IP address from DHCP. DHCP, or
+		<b>Dynamic Host Configuration Protocol</b>, is a standardized network protocol used on IP networks. It is controlled 
+		by a DHCP server that dynamically distributes network configuration parameters, such as IP addresses. The router gets
+		the IP address from the ISP's DHCP server, and the router runs a DHCP server to provide addresses to computers
+		within the NAT-DHCP-router-controlled home network's address space.</p>
+		
+		<p>Because all of the incoming datagrams have the same destination IP address, there has to be a way for the router
+		to distinguish between internal hosts. The router does this by using a <b>NAT Translation Table</b> at the NAT router,
+		which includes port numbers and IP addresses in the table.</p>
+		
+		<h4>How NAT Works</h4>
+		
+		<ul>
+		<li>Local host (10.0.0.1) requests a web page on a web server (port 80) with IP address 128.119.40.186</li><br>
+		<li>The local host assigns the (arbitrary) source port number 3345, sends datagram into the LAN</li><br>
+		<li>The NAT router receives the datagram, generates a new source port number 5001</li><br>
+		<ul><li>When generating a new source port number, the NAT router can select any source port number that is not currently 
+		        in the NAT Translation Table)</li></ul><br>
+		<li>The NAT router replaces the IP address and the source port number with its WAN-side IP address 138.76.29.7,
+		and source port number 5001, and adds the entry into the NAT Translation Table<li><br>
+		<li>The Web server responds with a datagram whose destination address is the IP address of the NAT router at port 5001</li><br>
+		<li>When the datagram arrives at the NAT router, the router indexes the NAT Translation Table using the destination
+		IP address and destination port number to obtain the appropriate address and port number for the local host.</li><br>
+		<li>The router rewrites the datagram's destination address and port number, and forwards the datagram into the
+		home network.</li><br>
+		</ul>
+	
+</body>
+</html>

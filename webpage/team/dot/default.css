@@ -1,0 +1,58 @@
+body {
+	background-color: black;
+	background-image: url("images/stars.gif");
+	background-attachment: fixed;
+	cursor: url("images/matrix.png"), auto;
+}
+a {
+	cursor: url("images/screen.png"), pointer;
+}
+a:link {
+	color: deepskyblue;
+}
+a:visited {
+	color: lavender;
+}
+p {
+	color: lightblue;
+}
+h1 {
+    color: turquoise;
+}
+h2 {
+    color: yellow;
+}
+h3 {
+	color: fuchsia;
+}
+li {
+	color: #DF73FF;
+}
+th {
+    color: aqua;
+}
+.help {
+	color: white;
+	font-size: 5px;
+	cursor: url(images/help.png), auto;
+}
+/* used in linux.html */
+.code {
+    color: chartreuse;
+}
+/* used in matching-game.html */
+.matched {
+    background: lightblue;
+    color: green;
+}
+.unmatched {
+    background: pink;
+    color: red;
+}
+/* used in questions.html */
+.question {
+	color: pink;
+}
+.answer {
+	color: azure;
+}

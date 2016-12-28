@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Hello
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
+    <!-- <link rel="stylesheet" type="text/css" href="daily_notes/main.css"/> -->
+    <style>
+        body {
+        background-image:url(img/back-ground.jpg);
+        background-size:cover;  
+        background-repeat:no-repeat;
+        background-color: #140e07; 
+        color:#fff;
+        }
+        a {
+            text-decoration: none;
+            text-align: left;
+        }
+        a h3 {
+            padding: 5px 15px;
+        }
+        /* Welcoming header */
+        .header {
+            color: #ff8533;
+            text-align: center;
+        }
+        .container {
+            padding: 0;
+            max-width: 800px;
+        }
+        .header .container {
+            padding: 40px 0;
+        }
+        /* Main content */
+        .main {
+            text-align: center;
+            min-height: 930px;
+            padding: 30px 0;
+        }
+
+        /* Code for tabs obtained from W3schools.com */
+        ul.tab {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #ff8533;
+        }
+
+        /* Float the list items side by side */
+        ul.tab li {
+            float: left;
+            margin: 10px 0;
+        }
+
+        /* Style the links inside the list items */
+        ul.tab li a {
+            display: inline-block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+        /* Change background color of links on hover */
+        ul.tab li a:hover {background-color: #ff6600;}
+
+        /* Create an active/current tablink class */
+        ul.tab li a:focus, .active {background-color: #ff6600;}
+
+        /* Style the tab content */
+        .tabcontent {
+            margin: 0;
+            display: none;
+            padding: 6px 12px;
+        }
+    </style>
+    <script src="scripts/main.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>
+                Welcome to my page!!!
+            </h1>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <ul class="tab">
+                <li><a href="#" class="tablinks" onclick="openTab(event,'notes')">Daily notes</a></li>
+                <li><a href="#" class="tablinks" onclick="openTab(event,'exercises')">Graded Exercises</a></li>
+            </ul>
+            <div id='notes' class="tabcontent">
+                <div class="col-md-3">
+                    <a href="daily_notes/oct4_notes.html">
+                        <h3>Oct 4</h3>
+                    </a>
+                    <a href="daily_notes/oct5_notes.html">
+                        <h3>Oct 5</h3>
+                    </a>
+                    <a href="daily_notes/oct6_notes.html">
+                        <h3>Oct 6</h3>
+                    </a>
+                    <a href="daily_notes/oct7_notes.html">
+                        <h3>Oct 7</h3>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="daily_notes/oct10_notes.html">
+                        <h3>Oct 10</h3>
+                    </a>
+                    <a href="daily_notes/oct11_notes.html">
+                        <h3>Oct 11</h3>
+                    </a>
+                    <a href="daily_notes/oct12_notes.html">
+                        <h3>Oct 12</h3>
+                    </a>
+                    <a href="daily_notes/oct13_notes.html">
+                        <h3>Oct 13</h3>
+                    </a>
+                    <a href="daily_notes/oct14_notes.html">
+                        <h3>Oct 14</h3>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="daily_notes/oct17_notes.html">
+                        <h3>Oct 17</h3>
+                    </a>
+                    <a href="daily_notes/oct18_notes.html">
+                        <h3>Oct 18</h3>
+                    </a>
+                    <a href="daily_notes/oct19_notes.html">
+                        <h3>Oct 19</h3>
+                    </a>
+                    <a href="daily_notes/oct20_notes.html">
+                        <h3>Oct 20</h3>
+                    </a>
+                    <a href="daily_notes/oct21_notes.html">
+                        <h3>Oct 21</h3>
+                    </a>
+                </div>
+                <div class="col-md-3"div>
+                    <a href="daily_notes/oct21_notes.html">
+                        <h3>Oct 24</h3>
+                    </a>
+                    <a href="daily_notes/oct21_notes.html">
+                        <h3>Oct 25</h3>
+                    </a>
+                </div>
+            </div>
+
+            <div id="exercises" class="tabcontent">
+                <a href="graded_exercises/graded_assignment.html">
+                    <h2>Graded Assignment</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

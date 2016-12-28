@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <style>
+h1, h2 {
+    text-align:center;
+    color:OrangeRed;
+    }
+  </style>
+  
+  <head>
+    <title>
+      OCTOBER 13th
+      </title>
+  </head>
+  <body>
+    <h1>October 13 Notes</h1>
+    <br>
+    <h1>The Network Layer</h1>
+    <p>The role of the network layer is to move packets from a sending host to a receiving host. 
+    <h2>Forwarding VS Routing</h2>
+    <p><b>Forwarding</b> involves the transfer of a packet from an incoming link to an outgoing link within a <i>SINGLE</i> router. <b>Router-local action</b> </p>
+    <p><b>Routing</b> involves all of a network's routers, whose collective interactions via routing protocols determine the paths thath packets take on their trips from source to destination node. <b>Network-wide processes</b></p>  
+    <br>
+    <h4>All networks have both a forwarding and a routing function.</h4>
+    <br><br><br>
+    <h2>What's inside a Router?</h2>
+    <p><b>Input Ports</b> The input port performs several functions.  It performs the physical layer functionality  of  terminating an incoming physical link to a router.  It performs the data link layer functionality needed to interoperate with the data link layer functionality on the other side of the incoming link. It also performs a lookup and forwarding function  so that a datagram forwarded into the switching fabric of the router emerges at the appropriate output port.  Control packets (e.g., packets carrying routing protocol information such as RIP, OSPF or IGMP) are forwarded from the input port to the routing processor. In practice, multiple ports are often gathered together on a single line card within a router.</p>
+      <p><b>Switching fabric.</b> The switching fabric connects the router's input ports to its output ports. This switching fabric is completely contained with the router - a network inside of a network router!</p>
+      <p><b>Output ports.</b> An output port stores the datagrams that have
+been forwarded to it through the switching fabric, and then transmits the
+datagrams on the outgoing link. The output port thus performs the
+reverse data link and physical layer functionality as the input port.</p>
+<p>
+  <b>Routing processor.</b> The routing processor executes the routing protocols, maintains the routing tables, and performs network management functions within the router.</p>
+<br><br>
+<h2>Switching Fabrics</h2>
+    <p>The switching fabric is at the very heart of a router. It is through this switching that the datagrams are actually moved from an input port to an output port. Switching can be accomplished in a number of ways.</p>
+    <p><b>Switching via memory.</b> The simplest, earliest routers were often traditional computers, with switching between input and output port being done under direct control of the CPU (routing processor). Input and output ports functioned as traditional  I/O devices in a traditional operating system.  An input port with an arriving datagram first signaled the routing processor via an interrupt.  The packet was then copied from the input port into processor memory.  The routing processor then extracted the destination address from the header, looked up the appropriate output port in the routing table, and copied the packet to the output port's buffers.</p>
+    <p><b>Switching via a bus.</b> In this approach, the input ports transfer a datagram directly to the output port over a shared bus, without intervention by the routing processor. Although the routing processor is not involved in the bus transfer, since the bus is shared, only one packet at a time can be transferred over the bus at a time. A datagram arriving at an input port and finding the bus busy with the transfer of another datagram is blocked from passing through the switching fabric and queued at the input port. Because every packet must cross the single bus, the switching bandwidth of the router is limited to the bus speed.</p>
+    <p><b>Switching via an interconnection network.</b> One way to overcome the bandwidth limitation of a single, shared bus is to use a more sophisticated interconnection network, such as those that have been used in the past to interconnect processors in a multiprocessor computer architectures. A crossbar switch is an interconnection network consisting of 2N busses that connect N input ports to N output ports. A packet arriving at an input port travels along the horizontal bus attached to the input port until it intersects with the vertical bus leading to the desired output port. If the vertical bus leading to the output port is free, the packet is transferred to the output port. If the vertical bus is being used to transfer a packet from another input port to this same output port, the arriving packet is blocked and must be queued at the input port.</p>
+  </body>
+</html>

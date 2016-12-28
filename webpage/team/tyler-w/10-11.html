@@ -1,0 +1,66 @@
+<!-- 
+10-11.html
+Notes from October 11th
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10.11 Notes</title>
+	<style>
+	  body { margin: auto; width: 80%;
+	         font-family: Verdana, sans-serif;
+	         background-color: #457263; }
+	  li { list-style-position: inside; }
+	  #desc { text-align: center; }
+	  a { color: #FFFFFF; }
+	</style>
+</head>
+<body>
+
+    <h1 id="desc"> Tyler Wians </h1>
+    <h5 id="desc"> CSC 317: Computer Networks</h5>
+    <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./10-11.html">10.11</a></p>
+
+	<h3>Reliable Data Transfer</h3>
+
+	<p>A reliable data transfer is used with a reliable channel, where no transferred data bits are
+	corrupted and all are delivered in the order in which they were sent.</p>
+	
+	<p>TCP is a reliable data transfer protocol, however it is implemented on top of an unreliable
+	end-to-end network layer (IP).</p>
+
+	<h3>Building a Reliable Data Transfer Protocol</h3>
+	
+	<h4>Reliable Data Transfer over a Perfectly Reliable Channel</h4>
+
+	<p><b>Finite-State Machine</b>: an abstract machine that can be in one of a finite number of states.</p>
+	
+	<p> There are <b>seperate</b> FSM's for the sender and the receiver, and they each have one state.</p>
+	
+	<p>The sending side of the data transfer accepts data from the upper layer via the
+	<b>rdt_send(data)</b> event, creates a packet containing the data via the <b>make_pkt(data)</b>
+	event, and sends the packet into the channel.</p>
+	
+	<p>On the receiving side, the data transfer receives a packet from the underlying channel via the
+	<b>rdt_rcv(packet)</b> event, and removes the data from the packet via the action <b>extract (packet, data)</b>.
+
+	<h4>Reliable Data Transfer over a Channel with Bit Errors</h4>
+
+	<p>The message dictation protocol uses <b>positive and negative acknowledgements</b>, which let the
+	sender know what has been received successfully, and what has been received in an error. Reliable data transfer
+	protocols based on this retransmission are known as <b>Automatic Repeat reQuest (ARQ) protocols.</b></p>
+	
+	<p>Three additional protocol capabilities are required in ARQ protocols to handle the presence of bit errors:<p>
+	
+	<ul><li><b>Error detection: </b>Requires extra bits be sent along with the data for detection and correction
+		(i.e. UDP uses Internet checksum field)</li>
+		<li><b>Receiver feedback: </b>Because the sender and receiver are typically very distant from each other,
+		it requires explicit feedback from the receiver. (i.e. positive (ACK) and negative (NAK) acknowledgement replies)</li>
+		<li><b>Retransmission: </b>A packet that is received in error at the receiver will be retransmitted by the
+		sender.</li>
+	</ul>
+	
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    h3 {
+    color:red;
+    text-align: center;
+}
+    h4 {
+    color:blue;
+    text-align:center;
+}
+  </style>
+  <body>
+    <h2>DNS</h2>
+    <h3>Domain Name Server</h3>
+    <p>Domain Name Servers (DNS) are the Internet's equivalent of a phone book. They maintain a directory of domain names and translate them to Internet Protocol (IP) addresses.
+
+This is necessary because, although domain names are easy for people to remember, computers or machines, access websites based on IP addresses.
+
+Information from all the domain name servers across the Internet are gathered together and housed at the Central Registry. Host companies and Internet Service Providers interact with the Central Registry on a regular schedule to get updated DNS information.
+
+      When you type in a web address, e.g., www.MikeSmells.com, your Internet Service Provider views the DNS associated with the domain name, translates it into a machine friendly IP address (for example 216.168.224.70 is the IP for MikeSmells.com) and directs your Internet connection to the correct website.</p>
+    <br>
+    <h4>How does DNS work?</h4>
+    <ol>
+      <li><b>Request Information</b> - > You ask your computer to resolve a hostname. Your computer looks into its local DNS cache. If it can not find the hostname, it performs a DNS query</li>
+      <li><b>Ask the recursive DNS servers</b> -> Your computer contacts your ISP's recursive DNS server, in a search for the hostname.</li>
+      <li><b>Ask the root nameservers</b> -> if the recursive servers do not have the answer, they query the root nameservers. These are the 13 root servers in the world. They work like a telephone switchboard for DNS.</li>
+      <li><b>Ask the TLD nameservers</b> -> The <i> Top-Level Domain (TLD) nameservers</i> serach for the .com/.org/.edu/.us/ect. These TLD servers do not have the information, but they can refer your computer to the servers that do have the hostname.</li>
+      <li><b>Ask the authoritative DNS servers</b> -> The authoritative nameservers are responsible for knowing all the information about a specific domain, which are stored in DNS records.</li>
+      <li><b>Retrieve the record</b> ->The recursive server retrieves the A record for dyn.com from the authoritative nameservers and stores the record in its local cache. If anyone else requests the host record for MikeSmells.com, the recursive servers will already have the answer and will not need to go through the lookup process again. All records have a time-to-live value, which is like an expiration date. After a while, the recursive server will need to ask for a new copy of the record to make sure the information doesn’t become out-of-date.</li>
+      <li><b>Receive the answer</b> -> Armed with the answer, recursive server returns the A record back to your computer. Your computer stores the record in its cache, reads the IP address from the record, then passes this information to your browser. The browser then opens a connection to the webserver and receives the website.</li>
+    </ol>
+    <br>
+    <p> This enitre process, from start to finish, takes only milliseconds to complete.</p>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <title>Graded Assignment 1</title>
+    </head>
+    <body><body bgcolor="#cc99ff">
+        <h1>Graded Assignment 1</h1>
+        <h3>Questions on Reading</h3>
+        <ol>
+            <li><b>Which of P2P and client-server architectures have better Scalability? Explain why.</b></li>
+                <ul>
+                    <li>P2P servers have better Scalability. P2P servers connect directly to other peers, so it can expand indefinitely by adding more peers. However, the speed is limited to the upload and download speeds of the peers.</li>
+                </ul><br>
+            <li><b>What is the purpose of a receive buffer in Flow Control?</b></li>
+                <ul>
+                    <li>A receive buffer will prevent a sender from sending too much information, which can lead to packet loss. A receive buffer is used to show the sender how much can be sent to the receiver without overflowing it with data. It does this by maintaining a variable called receive window which shows how much space is available. </li>
+                </ul><br>
+            <li><b>Once a UDP checksum finds an error, will it fix the error? If not, what will it do?</b></li>
+                <ul>
+                    <li>It will not fix the error. Instead, it will either delete the segment, or simply forward it with a warning</li>
+                    
+                </ul><br>
+            <li><b>What are two reasons why "purists" are against NAT(Network Address Translation)?</b></li>
+                <ul>
+                    <li>port numbers were meant for addressing processes and not for addressing hosts (servers processes wait for incoming requests at well-known port numbers)</li>
+                    <li>NAT protocol violates the end-to-end argument (hosts should talk to each other.)</li>
+                    <li>Routers are supposed to process packets only up to layer 3.</li>
+                    <li>We should use IPv6 to fix the shortage of IP addresses. They think using NAT to fix it is a reckless patch.</li>
+                    <li>NAT interferes with P2P applications</li>
+                </ul><br>
+            <li><b>When would you use Switching via a bus over Switching via an interconnection network?</b></li>
+                <ul>
+                    <li>Switching via a bus is good for most applications. However, it can have bandwidth limitations because there is a single shared bus. When those limitations need to be surpassed, a Switching via an interconnection network should be used.</li>
+                </ul><br>
+            <li><b>How are routing and forwarding different?</b></li>
+                <ul>
+                    <li>Routing is the actual rout the data will take, while forwarding is physically sending the data</li>
+                </ul><br>
+            <li><b>How much bigger is IPv6 compared to IPv4?</b></li>
+                <ul>
+                    <li>IPv4 has a 32bit address while an IPv6 has a 128bit address. This means that IPv4 has less than 5 billion different addresses, while IPv6 has 2^128 addresses, which is much much bigger to the point where humans probably will never run out of those IP addresses.</li>
+                    
+                </ul><br>
+            <li><b>In reliable data transfer, why aren't timers used for every individual transmission? What do they do instead?</b></li>
+                <ul>
+                    <li>They don't do it because it will require a lot of overhead. Instead, they will use only one retransmission timer.</li>
+                    
+                </ul><br>
+            <li><b>Explain the parts of a three part SynAck handshake.</b></li>
+                <ul>
+                    <li>Host A will send a SYN message to the other. Host B will respond with both a SYN and an ACK message. Then host A will respond to the SYN message host B sent. Then these two hosts will be able to connect to each other. </li>
+                    
+                </ul><br>
+            <li><b>In flow control, how does a sender continue to send data when the rwnd = 0?</b></li>
+                <ul>
+                    <li>since rwnd = 0, the sender will stop sending. To keep updating rwnd so that it will be >0 at some point when the space in the buffer frees up, the sender will send a small amount of data to the receiver which will in turn send an updated value of rwnd, which will have the sender start sending again (if rwnd >0)</li>
+                </ul>
+
+        </ol>
+        
+        
+        <h3>Answering Questions from the Book</h3>
+        <ol>
+          <li><b>Chapter 3 question 8:</b> Suppose that a Web server runs in Host C on port 80. Suppose this Web server uses persistent connections, and is currently receiving requests from two different Hosts, A and B. Are all of the requests being sent through the same socket at Host C? If they are being passed through different sockets, do both of the sockets have port 80? Discuss and explain.</li>
+          <p>The requests are not being sent through the same socket at Host C because the a different socket is created when there is a connection. However, they do use the same port</p>
+          <li><b>Chapter 4 question 7:</b>Suppose two packets arrive to two different input ports of a router at exactly the same time. Also suppose there are no other packets anywhere in the router.</li>
+            <ul>
+                <li>a. Suppose the two packets are to be forwarded to two different output ports. Is it possible to forward the two packets through the switch fabric at the same time when the fabric uses a shared bus?</li>
+ <ul>
+                <li><i>a. It would not be possible because it can only forward one at a time when using one shared bus.</i></li>
+</ul>
+                <li>b. Suppose the two packets are to be forwarded to two different out ports. Is it possible to forward the two packets through the switch fabric at the same time when the fabric uses a crossbar?</li>
+<ul>
+<li><i>b. Yes it can as long as it doesn't share a bus like they wanted to in the part above.</i></li>
+</ul>
+                <li>c. Suppose the two packets are to be forwarded to the same output port. Is it possible to forward the two packets through the switch fabric at the same time when the fabric uses a crossbar?</li>
+            
+            <ul>
+                <li><i>c. It would not be possible because it would need to use a shared bus to do that, and like we said above, It would not be possible...</i></li>
+            </ul></ul>
+        </ol>
+        
+        
+        <h3>NAT Wireshark Lab</h3>
+        <p>NAT or Network Address translation is a way of dealing with the limited IPv4 addresses. A device with NAT will allow multiple devices to connect to it and that device itself will connect to the WAN by taking the requests of the other devices and using it's own IP address to relay the request to the desired destination. Wireshark will help us understand how this is happening a little better. </p> 
+        <p>This lab requires capturing packets from two locations (a NAT device and a computer), so they just gave us a sample capture to work with. The example uses a home network connecting to Google. The home network router provides a NAT service.</p>
+        <a href="http://gaia.cs.umass.edu/wireshark-labs/wireshark-traces.zip">Link to download example</a>
+        <p>To learn more about how NAT works, click <a href="NAT.html">here</a></p>
+        <p>Questions 1-5 use the file NAT_home_side while 6-10 use NAT_ISP_side</p>
+        <ol><br>
+          <li><b>What is the IP address of the client?</b></li>
+            <ul><li><i>192.168.1.100</i></li></ul><br>
+          <li>This one is only directions. It tells us to type in "http&&ip.addr==64.233.169.104" without the quotation marks in the filter to only the communication with the main Google server.</li><br>
+          <li>Consider now the HTTP GET sent from the client to the Google server (whose IP address is IP address 64.233.169.104) at time 7.109267. <b>What are the source and destination IP addresses and TCP source and destination ports on the IP datagram carrying this HTTP GET?</b></li>
+            <ul>
+                <li><i>Source/destination IP: 192.168.1.100 / 64.233.169.104</li>
+                <li>TCP source/destination ports: 4335 / 80</i></li>
+            </ul><br>
+          <li><b>At what time is the corresponding 200 OK HTTP message received from the GOogle server? What are the source and destination IP addresses and TCP source and destination ports on the IP datagram carrying this HTTP 200 OK message?</b></li>
+            <ul>
+                <li><i>Time: 7.158797</li>
+                <li>Source/destination IP: 64.233.169.104 / 192.168.1.100</li>
+                <li>TCP source/destination ports: 80 / 4335</i></li>
+            </ul><br>
+          <li>Find the SYN/ACK handshake that corresponds with the previous request. Type in tcp in to the filter. There are three tcp before the GET HTTP.<b> What is the time, source/destination IP/Ports?</b></li>
+            <ul>
+                <li><i>It is at time 7.075657</li>
+                <li>Source/destination IP: 192.168.1.100 / 64.233.169.104</li>
+                <li>TCP source/destination ports: 4335 / 80</li>
+                <li>Time for the responding ack is 7.108986 with the opposite IP and ports</i></li><br>
+            </ul>
+          <li>In the NAT_ISP_sidetrace file, find the HTTP GET message was sent from the client to the Google server at time 7.109267 (where t=7.109267 is time at which this was sent as recorded in the NAT_home_side trace file).<b> At what time does this message appear in the NAT_ISP_sidetrace file?  What are the source and destination IP addresses and TCP source and destination ports on the IP datagram carrying this HTTP GET (as recording in the NAT_ISP_side trace file)?  Which of these fields are the same, and which are different, than in your answer to question 3 above?</b></li>
+            <ul>
+                <li><i>Time: 6.069168</li>
+                <li>Source IP:71.192.34.104 Port: 4335</li>
+                <li>Destination IP: 64.233.169.104 Port 80</li>
+                <li>The IP address for the source is different</i></li>
+            </ul><br>
+          <li>	The IP address for the source is different. 
+<b>Are any fields in the HTTP GET message changed? Which of the following fields in the IP datagram carrying the HTTP GET are changed: Version, Header Length, Flags, Checksum.  If any of these fields have changed, give a reason (in one sentence) stating why this field needed to change.</b></li>
+            <ul><li><i>The checksum changed, because the checksum has part of it based off the IP address, and since that changed, the checksum changed too.</i></li></ul><br>
+          <li><b>In the NAT_ISP_sidetrace file, at what time is the first 200 OK HTTP message received from the Google server?  What are the source and destination IP addresses and TCP source and destination ports on the IP datagram carrying this HTTP 200 OK message? Which of these fields are the same, and which are different than your answer to question 4 above?</b></li>
+            <ul>
+                <i><li>Time: 6.308118</li>
+                <li>Source IP: 64.233.169.104 Port: 80</li>
+                <li>Destination IP: IP:71.192.34.104 Port: 4335</li>
+                <li>The destination IP is different than in question 4</i></li><br>
+            </ul>
+          <li><b>In the NAT_ISP_sidetracefile, at what time were the client-to-server TCP SYN segment and the server-to-client TCP ACK segment corresponding to the segments in question 5 above captured?What are the source and destination IP addresses and source and destination ports for these two segments?Which of these fields are the same, and which are different than your answer to question 5 above?</b></li>
+            <ul><i>
+                <li>Time: SYN: 6.035475 ACK: 6.06775</li>
+                <li>Source: SYN IP: 71.192.34.104 Port: 4335 ACK IP: 64.233.169.104 Port: 80Destination: SYN IP: 64.233.169.104 Port: 80 ACK IP: 71.192.34.104 Port: 4335 </li>
+                <li>Destination: SYN IP: 64.233.169.104 Port: 80 ACK IP: 71.192.34.104 Port: 4335 </li>
+                <li>The port numbers are the same, but the SYN source IP and the ACK destination IP are different.</i></li>
+            </ul>
+        </ol>
+        
+    </body>
+</html>

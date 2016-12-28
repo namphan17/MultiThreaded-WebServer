@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notes 8.4.4</title>
+</head>
+<body>
+<h1> Notes 8.4.4</h1>
+<hr>
+<br>
+<b>Media Access Control (MAC) Address</b> - A hardware address given to any network adapter hardware.<br>
+<b>Address Resolution Protocol</b> - Translate between MAC and IP addresses.<br>
+<b>ARP Table</b> - A mapping of IP addresses to MAC addresses.<br>
+<b>ARP Packet</b> - A packet containing the sending and receiving IP and MAC addresses.<br>
+<b>Hub</b> - Retransmits a received bit to all connected hosts.<br>
+<b>Switch</b> - A collision-less solution to hubs that only retransmits a bit to its intended destination.<br>
+Fields of the ethernet frame:
+<ul>
+<li><u>Data Field</u> - This field carries the IP datagram. The maximum
+transmission unit (MTU) of Ethernet is 1,500 bytes. This means that if the IP
+datagram exceeds 1,500 bytes, then the host has to fragment the datagram, as discussed
+in Section 4.4.1. The minimum size of the data field is 46 bytes. This
+means that if the IP datagram is less than 46 bytes, the data field has to be
+"stuffed" to fill it out to 46 bytes. When stuffing is used, the data passed to the
+network layer contains the stuffing as well as an IP datagram. The network layer
+uses the length field in the IP datagram header to remove the stuffing.</li>
+<li><u>Destination Address</u> - This field contains the MAC address of the destination
+adapter, BB-BB-BB-BB-BB-BB. When adapter B receives an Ethernet
+frame whose destination address is either BB-BB-BB-BB-BB-BB or the
+MAC broadcast address, it passes the contents of the frame's data field to the
+network layer; if it receives a frame with any other MAC address, it discards
+the frame.</li>
+<li><u>Source Address</u> - This field contains the MAC address of the adapter that
+transmits the frame onto the LAN, in this example, AA-AA-AA-AA-AA-AA.</li>
+<li><u>Type Field</u> - The type field permits Ethernet to multiplex network-layer
+protocols. To understand this, we need to keep in mind that hosts can use other
+network-layer protocols besides IP. In fact, a given host may support multiple network-layer protocols using different protocols for different applications. For
+this reason, when the Ethernet frame arrives at adapter B, adapter B needs to
+know to which network-layer protocol it should pass (that is, demultiplex) the
+contents of the data field. IP and other network-layer protocols (for example,
+Novell IPX or AppleTalk) each have their own, standardized type number. Furthermore,
+the ARP protocol (discussed in the previous section) has its own type
+number, and if the arriving frame contains an ARP packet (i.e., has a type field
+of 0806 hexadecimal), the ARP packet will be demultiplexed up to the ARP protocol.
+Note that the type field is analogous to the protocol field in the networklayer
+datagram and the port-number fields in the transport-layer segment; all of
+these fields serve to glue a protocol at one layer to a protocol at the layer above.</li>
+<li><u>Cyclic Redundancy Check</u> - As discussed in Section 5.2.3, the purpose
+of the CRC field is to allow the receiving adapter, adapter B, to detect bit
+errors in the frame.</li>
+<li><u>Preamble</u> - The Ethernet frame begins with an 8-byte preamble field.
+Each of the first 7 bytes of the preamble has a value of 10101010; the last byte is
+10101011. The first 7 bytes of the preamble serve to "wake up" the receiving
+adapters and to synchronize their clocks to that of the sender's clock. Why
+should the clocks be out of synchronization? Keep in mind that adapter A aims
+to transmit the frame at 10 Mbps, 100 Mbps, or 1 Gbps, depending on the type
+of Ethernet LAN. However, because nothing is absolutely perfect, adapter A will
+not transmit the frame at exactly the target rate; there will always be some drift
+from the target rate, a drift which is not known a priori by the other adapters on
+the LAN. A receiving adapter can lock onto adapter A's clock simply by locking
+onto the bits in the first 7 bytes of the preamble. The last 2 bits of the eighth byte
+of the preamble (the first two consecutive 1s) alert adapter B that the "important
+stuff" is about to come.</li>
+</ul>
+Ethernet Standardizations:
+<ul>
+<li>10BASE-T</li>
+<li>10BASE-2</li>
+<li>100BASE-T</li>
+<li>1000BASE-LX</li>
+<li>10GBASE-T</li>
+</ul>
+<b>Repeater</b> - A physical-layer device that receives a signal and regenerates it as output.<br>
+<b>Switch Transparency</b> - A switch is not known to hosts and routers on the subnet.<br>
+<b>Filtering</b> - The switch function that determines whether a frame should be forwarded to some interface or just dropped.<br>
+<b>Switch Table</b> - Contains entries for some, but not necessarily all, hosts/routers on a LAN. The table holds the Address, Interface, and a Time when it was placed in the table.<br>
+Properties:
+<ul>
+<li><u>Elimination of Collisions</u> - In a LAN built from switches (and without hubs), there
+is no wasted bandwidth due to collisions! The switches buffer frames and never
+transmit more than one frame on a segment at any one time. As with a router, the
+maximum aggregate throughput of a switch is the sum of all the switch interface
+rates. Thus, switches provide a significant performance improvement over LANs
+with broadcast links.</li>
+<li><u>Heterogeneous Links</u> - Because a switch isolates one link from another, the different
+links in the LAN can operate at different speeds and can run over different
+media. For example, the uppermost switch in Figure 5.22 might have three
+1 Gbps 1000BASE-T copper links, two 100 Mbps 100BASE-FX fiber links, and
+one 100BASE-T copper link. Thus, a switch is ideal for mixing legacy equipment
+with new equipment.</li>
+<li><u>Management</u> - In addition to providing enhanced security (see sidebar on Focus
+on Security), a switch also eases network management. For example, if an
+adapter malfunctions and continually sends Ethernet frames (called a jabbering
+adapter), a switch can detect the problem and internally disconnect the malfunctioning
+adapter. With this feature, the network administrator need not get
+out of bed and drive back to work in order to correct the problem. Similarly, a
+cable cut disconnects only that host that was using the cut cable to connect to
+the switch. In the days of coaxial cable, many a network manager spent hours
+"walking the line" (or more accurately, "crawling the floor") to find the cable
+break that brought down the entire network. As discussed in Chapter 9 (Network
+Management), switches also gather statistics on bandwidth usage, collision
+rates, and traffic types, and make this information available to the network
+manager. This information can be used to debug and correct problems, and to
+plan how the LAN should evolve in the future. Researchers are exploring adding
+yet more management functionality into Ethernet LANs in prototype deployments.</li>
+</ul>
+<b>Virtual Local Area Networks</b> - A single physical switch defining multiple virtual LANs.<br>
+<b>VLAN Trunking</b> - A method of interconnecting VLAN switches.<br>
+<b>VLAN Tag</b> - A 4-byte packet that defines a VLAN.<br>
+<b>Multiprotocol Label Switching</b> - A collection of industry players each implemented their own method, which were then all combined.<br>
+<b>Label-Switched Router</b> - A router that is capable of MPLS.<br>
+<b>Traffic Engineering</b> - A network operator may override normal IP routing.<br>
+</body>
+</html>

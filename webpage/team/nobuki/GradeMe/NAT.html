@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    4.4 NAT
+</title>
+</head>
+<body>
+    <h3>NAT</h3>
+    <ul>
+        <li>Every IP-capable device needs an IP address.</li>
+        <li>A small office, home office(SOHO) may need to connect to multiple devices. A simple approach to allocation of addresses is network address translation (NAT)</li>
+        <li>Realm/realm with private addresses: the address spaces reserved for private addresses.</li>
+        <li>Many devices may be using the same private address space, and those devices may communicate to each other within the home network, but the packets cannot be forwarded beyond the home network into the global Internet while still using these addresses. </li>
+        <li>A NAT-enabled router acts as a single device with a single IP address to the outside world, which means it hides the details of the home network from the outside world. The router gets its address from the ISP’s DHCP server. The router then runs its own DHCP server for the computers connected to the router. To do this, the router uses a NAT translation table. </li>
+        <li>This is what happens when someone requests a web page.</li>
+        <ul>
+            <li>Host machine starts with a private address, which requests to a web page with a web server port. </li>
+            <li>The host assigns a source port number arbitrarily then sends the datagram into the LAN</li>
+            <li>The NAT router receives the datagram and generates a new source port number, and replaces the source IP address with the WAN-side IP address (IP address of the router).</li>
+            <li>When creating a source port number, it can assign to any value that’s not in the NAT translation table. Then that port is put in the table</li>
+            <li>The port number is 16 bits, so it can support over 60,000 ports.</li>
+            <li>When the information is sent back from the website, the router must look up which computer or machine used what port number, rewrites the datagram’s destination port and address and send it to the correct device. </li>
+        </ul>
+        
+        <li>Some people from the IETF are against NAT for these reasons</li>
+        <ul>
+            <li>port numbers were meant for addressing processes and not for addressing hosts (servers processes wait for incoming requests at well-known port numbers)</li>
+            <li>NAT protocol violates the end-to-end argument (hosts should talk to each other.)</li>
+            <li>Routers are supposed to process packets only up to layer 3.</li>
+            <li>We should use IPv6 to fix the shortage of IP addresses. They think using NAT to fix it is a wreckless patch.</li>
+            <li>NAT interferes with P2P applications</li>
+        </ul>
+        <li>Connection reversal</li>
+        <li>NAT traversal</li>
+        
+    </ul>
+</body>
+</html>
+<li></li>

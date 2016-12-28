@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>
+Section 3 Notes Continued
+</title>
+<style> 
+body{
+	background-color: black; 
+	color: green;
+}
+</style> 
+<h1>Section 3 Notes Continued</h1> 
+</head>
+<body>
+<ol>	<li>How does reliable data transfer work?</li><br> 
+	<ul><li>A protocol, using reliable data transfer, must account for packet loss, as well as corrupted data.</li><br>
+	<li>There are multiple ways data can be corrupted, either because of delay or because of network errors. Packet loss could occur multiple ways as well, with either router queues being full, or the router connection being down.</li><br>
+	<li>So, this protocol, in order to ensure that data was received in full, would have to check a checksum, and send an acknowledgement to the sender to let that host know that a retransmission isn't needed.</li><br>
+	<li>If the message is garbled due to packet corruption, then the receiving host would send a NACK, or a non-acknowledgement, to the sender. This would indicate that the sender would need to retransmit the same packet again.</li><br> 
+	<li>If the sender doesn't receive an acknowledgement after a set amount of time, the estimated delay, then they sender will retransmit the packet regardless of information received by the receiver.</li><br>
+	 </ul> 
+	<li>How does TCP differ from another reliable data transfer system?</li> 
+	<ul><li>TCP uses a SYN-ACK 3 way handshake to send data, that is the sender requests a connection, the receiver acknowledges the connection, and the sender responds with another acknowledgement with data following.</li><br>
+	<li>Similarly, TCP uses a FIN-ACK handshake at the end of the data transfer to terminate the connection that was originally initiated.</li><br>
+	</ul> 
+	<h4>Increasing the speed of data transfer</h4><br> 
+	<li>Go-Back-N Method</li><ul><br> 
+	<li>Increases data transfer by allowing the data to constantly flow through <i>N</i> amount of packets, sending an acknowledgement, or NACK if necessary, when <i>N</i> amount of packets are done being transferred.</li></ul><br>
+	<li>Selective-Repeat</li><br>
+	<ul><li>Send acknowledgement per packet, and get retransmission from host when a packet wasn't received. Allowing for faster data flow due to the fact that the sender may only need to send one packet, whereas Go-Back-N would have the sender retransmit all packets after the failed one.</li><br> 
+	</ul> 
+</ol>
+<br><br><br><br><br><br>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/> 
+</body>
+</html>

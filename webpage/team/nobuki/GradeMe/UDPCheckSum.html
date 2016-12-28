@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    3.1-3.3
+</title>
+</head>
+<body>
+    <h1>
+        UDP Checksum
+    </h1>
+
+    <ul>
+        <li>The purpose of the UDP checksum is for error detection. It makes sure that there is not an altered value within the UDP segment. </li>
+        <li>It does this by sending the 1's compliment of the sum of all the 16-bit words in the segment</li>
+            <ul>
+                <li>If there is an overflow, it is wrapped around.</li>
+            </ul>
+        <li>The UDP provides a checksum because there is no garuntee that there will be error checking in between the source and destination.</li>
+        <li>Also bit errors can be introduced anywhere including when a segment is stored in a router.</li>
+        <li>The checksum is an error detection that works on an end-end principle.</li>
+        <li>End-end principle is what it sounds like. It is a check that works on both ends.</li>
+        <li>It is redundant to check in between the end-end basis.</li>
+        <li>UDP checksum only checks for errors</li>
+            <ul>
+                <li>It does not recover errors.</li>
+                <li>Since it works with the sum, there is no way to garuntee what was sent. Also, the checksum itself could have an error.</li>
+                <li>When an error is detected, the dammaged segments could be discarded or it forwards the segment with a warning.</li>
+
+            </ul>
+
+
+    </ul>
+
+</body>
+</html>

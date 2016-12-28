@@ -1,0 +1,106 @@
+<!-- 
+10-19.html
+Notes from October 19th
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>10.19 Notes</title>
+	<style>
+	  body { background-color: #457263;
+	         margin: auto; width: 80%;
+           font-family: Verdana, sans-serif; }
+    #desc { text-align: center; }
+            a { color: #FFFFFF; }
+	</style>
+</head>
+<body>
+
+        <h1 id="desc"> Tyler Wians </h1>
+        <h5 id="desc"> CSC 317: Computer Networks</h5>
+        <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./10-19.html">10.19</a></p>
+		
+		<h3>Error-Detection and -Correction Techniques</h3>
+		
+		<p><b>Bit-level error detection and correction</b>: detecting and correcting the corruption of bits in a link-layer
+		frame sent from one node to another physically connected neighboring node.</p>
+		
+		<img src="EDC001.jpeg" alt="EDC001.jpeg" style="width:470px;height:330px;" border="3">
+		
+		<ul><li><b><i>D</i></b>: the data to be sent, including the datagram passed from the
+			network layer, link-layer addressing information, sequence numbers, and other header information.</li><br>
+			<li><b><i>EDC</i></b>: error-detection and -correction bits</li>
+		</ul>
+		
+		<p><b><i>D'</i></b> and <b><i>EDC'</i></b> are received, and may differ from the original <b><i>D</i></b> and
+		<b><i>EDC</i></b> as a result of in-transit bit flips. The receiver must determine if they are the same as
+		the original packets.</p>
+		
+		<p>These techniques allow the receiver to sometimes, but not always, detect bit errors. There may still be
+		<b>undetected bit errors</b>, where the receiver is unaware that the received information is affected. Because
+		of this, the receiver might deliver a corrupted datagram to the network layer or be unaware that the contents 
+		of a field in the frame's header has been corrupted.</p>
+		
+		<h3>Three Error-Detection Techniques</h3>
+		<ul><li>Parity Checks</li>
+			<li>Checksumming Methods</li>
+			<li>Cyclic Redundancy Checks</li>
+		</ul>
+		
+		<h4>Parity Checks</h4>
+		<p>The information to be sent will include an additional bit, called a <b>parity bit</b>.</p>
+		
+		<p>In an even parity scheme, its value is equal to the total number of 1's in the <i>d</i> + 1 bits so that
+		the sum is even. In an odd parity scheme, such a value is chosen so the sum is odd.</p>
+		
+		<img src="EDC002.jpeg" alt="EDC002.jpeg" style="width:250px;height:120px;" border="3">
+		<p><b><i>d</i> + 1 = 10</b></p>
+		
+		<p>The receiver only counts the number of 1's in the recieved <i>d</i> + 1 bits. If an odd number of bits are
+		1's in an even parity scheme, the receiver knows at least one bit error occurred. If an even number of bits
+		are 1's in an even parity scheme, there could be an undetected error.</p>
+		
+		<p>In a <b>two-dimensional parity scheme</b>, the <i>d</i> bits in <i>D</i> are divided into <i>i</i> rows and
+		<i>j</i> columns. A parity value is computed for each row and each column, where <i>i</i> + <i>j</i> + 1
+		comprise the error-detection bits.</p>
+		
+		<img src="EDC003.jpeg" alt="EDC003.jpeg" style="width:320px;height:360px;" border="3">
+		
+		<p>This technique can not only detect the bit error, but correct the error using the row and column indices. The
+		ability for the receiver to both detect and correct errors is known as <b>Forward Error Correction (FEC).</b></p>
+		
+		<h4>Checksumming Methods</h4>
+		
+		<p>In these methods, the <i>d</i> bits of data are treated as a sequence of <i>k</i>-bit integers, and use the
+		resulting sum as the error-detection bits.</p>
+		
+		<p>Bytes of data are treated as 16-bit integers and summed. The 1's complement of this sum then forms the
+		<b>Internet checksum</b> that is carried in the segment header. It then checks whether the result is all 1
+		bits. If any bits are 0, an error is indicated.</p>
+		
+		<p>Checksumming methods require relatively little packet overhead.</p>
+		
+		
+		<h4>Cyclic Redundancy Checks (CRC)</h4>
+		
+		<p>This technique is widely used in computer networks.</p>
+		
+		<p>Given the <i>d</i>-bit piece of data, <i>D</i>, that is
+		to be sent, the sender and receiver must agree on an <i>r</i> + 1 bit pattern, called a <b>generator</b>,
+		<i>G</i>.
+		
+		<p>For a given piece of data, <i>D</i>, the sender will choose <i>r</i> additional bits, <i>R</i>, and append
+		them to <i>D</i> such that the resulting <i>d</i> + <i>r</i> bit pattern is exactly divisible by <i>G</i> using
+		modulo-2 arithmetic.</p>
+		
+		<img src="EDC004.jpeg" alt="EDC004.jpeg" style="width:450px;height:160px;" border="3">
+		
+		<p>International standards have been defined for 8-, 12-, 16-, and 32-bit generators. The CRC-32 32-bit standard,
+		which has been adopted in a number of link-level protocols, uses a generator of G[CRC-32] =
+		100000100110000010001110110110111.</p>
+		
+		
+</body>
+</html>

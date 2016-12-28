@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notes 8.3.1</title>
+</head>
+<body>
+<h1> Notes 8.3.1</h1>
+<hr>
+<br>
+<b>Logical Communication</b> - From an application's perspective, hosts are directly connected.<br>
+Application message -> <b>segment</b><br>
+<b>TCP (Transmission Control Protocol)</b> - reliable, connection-oriented service<br>
+<b>UDP (User Datagram Protocol)</b> - unreliable, connectionless service<br>
+<b>IP (Internet Protocol)</b> is a <b>best-effort delivery service</b>  - It makes its "best effort" to deliver segments, but <i>offers no guarantee</i>.<br>
+IP is said to be an <u>unreliable service</u>.<br>
+<b>transport-layer multiplexing</b> and <b>demultiplexing</b> - Extending host-to-host delivery to process-to-process delivery.<br>
+<b>TCP</b> offers <b>reliable data transfer</b> and congestion control.<br>
+<b>Congestion Control</b> - prevents any one connection from swamping the links and routers between hosts.<br>
+A process may have more than one socket.<br>
+<b>socket</b> - where data passes from process to network<br>
+<b>well-known port numbers</b> - ports 0-1023.<br>
+<br><hr>
+<h3>UDP</h3>
+<ul>
+<li>Does <i>as little as possible</i>.</li>
+<li><b>No Handshaking</b> - <i>connectionless</i></li>
+<li>Useful for applications that are okay with data loss</li>
+<li>Small packet overhead</li>
+<li>There is a checksum</li>
+</ul>
+<b>end-end principle</b> - error detection on <i>end-to-end basis</i>.
+</body>
+</html>

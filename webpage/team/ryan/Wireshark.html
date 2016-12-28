@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('bestcursor.cur'), auto;}
+		</style>
+		<title>
+			Wireshark Lab
+		</title>
+	</head>
+	<body>
+		<h1>Wireshark Lab</h1>
+		<img src="Wiresharklogo.png" alt="wireshark logo">
+			<p>Wireshark is a packet sniffer, this means that it is a application that sits and captures packets as they come into the computer.</br>For all labs followed the PDF protocol.  For some used own generated captures (1,2,4) along with provided captures, for others used only provided captures.</p>
+		<h2>Accessing Wireshark</h2>
+			<ul>
+				<li><i>su compsci</i></li>
+				<ul>
+					<li>[PASSWORD]</li>
+				</ul>
+				<li><i>sudo su</i></li>
+				<ul>
+					<li>[PASSWORD]</li>
+				</ul>
+				<li><i>wireshark</i></li>
+				<li>Double click on desired interface when started</li>
+			</ul>
+		<h2>Lab 1: Intro</h2>
+			<p>General overview of how to open and use wireshark.  Wireshark is a packet sniffer application, it captures packets that the host computer either transmits or receives.  It displays them in an easy to view format with a list of packets at the top in the <b>packet-listing window</b>, along with their name, type, source, and destination.  Then there is the <b>packet-header details window</b> that contains information on header fields and data.  Including size and contents.  Finally there is the <b>packet-contents window</b> that displays the raw data of the packet in both hexadecimal and ASCII code.  Wireshark can also be filtered using the bar at the top.  Entries into the filter bar should be lowercase.</p>
+			<h3>Structure of Wireshark</h3>
+			<img src="wireshark diagram.png" alt="Wireshark diagram">
+		<h2>Lab 2: HTTP</h2>
+			<p>Used both provided wireshark files, as well as generated my own.  Mainly examined the header properties of HTTP packets that were captured.  </br>Notes: </br>Your host computer sends a GET message to the destination address to request the information.  The destination host should reply with the requested information.</br>HTTP messages are often carried inside multiple TCP messages.</br>Browsers often cache requested objects, so the catche must often be cleared to resend/receive packets.</br>Long/large documents are submitted over several packets that are received and reassembled</br>Usernames and passwords are encoded in Base64 when transmitted so that they are more secure, they are not encrypted.</p>
+			<ol>
+				<li>Is your browser running HTTP version 1.0 or 1.1? What version of HTTP is the server running?</li>
+					<ul>
+						<li>Both are running on 1.1</li>
+					</ul>
+				<li>What languages (if any) does your browser indicate that it can accept to the server?</li>
+					<ul>
+						<li>Accepts languages english-US, english</li>
+					</ul>
+				<li>What is the IP address of your computer? Of the gaia.cs.umass.edu server?</li>
+					<ul>
+						<li>Source IP: 10.101.6.38 (my computer). Destination IP: 128.119.245.12 (gaia.cs.umass.edu)</li>
+					</ul>
+				<li>What is the status code returned from the server to your browser?</li>
+					<ul>
+						<li>Status code: 200</li>
+					</ul>
+				<li>When was the HTML file that you are retrieving last modified at the server?</li>
+					<ul>
+						<li><i>Last modified: Mon. Oct. 10th 2016</i></li>
+					</ul>
+				<li>How many bytes of content are being returned to your browser?</li>
+					<ul>
+						<li>128 bytes</li>
+					</ul>
+				<li>By inspecting the raw data in the packet content window, do you see any headers within the data that are not displayed in the packet-listing window? If so, name one.</li>
+					<ul>
+						<li><i>Congradulations you've downloaded the file</i></li>
+					</ul>
+				<li>Inspect the contents of the first HTTP GET request from your browser to the server. Do you see an "IF-MODIFIED-SINCE" line in the HTTP GET?</li>
+					<ul>
+						<li>No</li>
+					</ul>
+				<li>Inspect the contents of the server response. Did the server explicitly return the contents of the file? How can you tell?</li>
+					<ul>
+						<li>Yes, under the ASCII text</li>
+					</ul>
+				<li>Now inspect the contents of the second HTTP GET request from your browser to the server. Do you see an "IF-MODIFIED-SINCE:" line in the HTTP GET? If so, what information follows the "IF-MODIFIED-SINCE:" header?</li>
+					<ul>
+						<li>Yes, <i>if-modified since: Mon, 10 Oct 2016 5:59:01 GMT</i></li>
+					</ul>
+				<li>What is the HTTP status code and phrase returned from the server in response to this second HTTP GET? Did the server explicitly return the contents of the file? Explain.</li>
+					<ul>
+						<li>Status code: 304, it did not.</li>
+					</ul>
+				<li>. How many HTTP GET request messages did your browser send? Which packet number in the trace contains the GET message for the Bill of Rights?</li>
+					<ul>
+						<li>There were two GET messages.  The first one requests the bill of rights.  </li>
+					</ul>
+				<li>Which packet number in the trace contains the status code and phrase associated with the response to the HTTP GET request?</li>
+					<ul>
+						<li>Packet 30 (self taken) has the status code.  It returns a 200 OK message.  Packet 33 returns a 404 Page not found error.</li>
+					</ul>
+				<li>What is the status code and phrase in the response?</li>
+					<ul>
+						<li>The status code is 200 OK.  </li>
+					</ul>
+				<li>How many data-containing TCP segments were needed to carry the single HTTP response and the text of the Bill of Rights?</li>
+					<ul>
+						<li>There are 2 reassembled TCP Segments. Listed in the packet-header window.</li>
+					</ul>
+				<li>How many HTTP GET request messages did your browser send? To which Internet addresses were these GET requests sent?</li>
+					<ul>
+						<li>It sent 4 GET request messages.  It sent them to 128.119.245.12, 128.119.245.12, 128.119.245.90, and 129.119.240.90 respectivly.  The third GET request gave a 302 Found error, because the image had been moved.  That is why there are four requests instead of three.</li>
+					</ul>
+				<li>Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain.</li>
+					<ul>
+						<li>The images had been downloaded serially.  This can be observed just by looking at the time the GET messages were sent.  They were sent one after the other, rather than at the same time.</li>
+					</ul>
+				<li>What is the server's response (status code and phrase) in response to the initial HTTP GET message from your browser?</li>
+					<ul>
+						<li>The server's initial response is a 401 Unauthorized message.  </li>
+					</ul>
+				<li>When your browser's sends the HTTP GET message for the second time, what new field is included in the HTTP GET message?</li>
+					<ul>
+						<li>Authorization: Basic field.  The contents of which are the Credentials which holds the username and password separated by a colon.  </li>
+					</ul>
+			</ol>
+		<h2>Lab 3: DNS (Incomplete)</h2>
+			<p>This lab was incomplete due to a couple reasons.  One whenever I tried to run a DNS lookup through another webserver then I would get a timeout error.  Second I could not find a DNS cache clear command that worked on the unix machines in the lab, the few commands that I did find didn't run.</br>
+			Thus I instead read though the lab to get the general idea, but did not finish any questions beyond number 3.</p>
+			<ol>
+				<li>Run nslookup to obtain the IP address of a Web server in Asia. What is the IP address of that server?</li>
+					<ul>
+						<li><i>nslookup www.asdu.ait.ac.th</i></br> www.asdu.ait.ac.th    canonical name = www.misu.ait.ac.th</br> name: www.misu.ait.ac.th</br> address: 203.159.12.3</li>
+					</ul>
+				<li>Run nslookup to determine the authoritative DNS servers for a university in Europe.</li>
+					<ul>
+						<li><i>nslookup -type=NS www.ucs.cam.ac.uk</i></br> www.ucs.cam.ac.uk    canonical name = cs.falcon.csx.cam.ac.uk</br> address: 131.111.15.163</li>
+					</ul>
+				<li>Run nslookup so that one of the DNS servers obtained in Question 2 is queried for the mail servers for Yahoo! mail. What is its IP address?</li>
+					<ul>
+						<li><i>nslookup www.usc.cam.ac.uk pop.mail.yahoo.com</i></br> CONNECTION TIMED OUT</li>
+					</ul>
+			</ol>
+		<h2>Lab 4: TCP (Incomplete)</h2>
+			<p>No such thing as HTTP continuation, it indicates multiple TCP segments that hold a single HTTP message.</br>
+			Had difficulty with question 7, the question was confusing and asked for several sequence numbers that were listed as redundant by wireshark in the provided file.</p>
+			<ol>
+				<li>What is the IP address and TCP port number used by the client computer (source) that is transferring the file to gaia.cs.umass.edu? </li>
+					<ul>
+						<li>192.168.1.102, port 1161.  Client</li>
+					</ul>
+				<li>What is the IP address of gaia.cs.umass.edu? On what port number is it sending and receiving TCP segments for this connection?</li>
+					<ul>
+						<li>128.119.245.12, port 80. Gaia.cs.umass</li>
+					</ul>
+				<li>What is the IP address and TCP port number used by your client computer (source) to transfer the file to gaia.cs.umass.edu?</li>
+					<ul>
+						<li>10.101.6.38, port 33524. Me</li>
+					</ul>
+				<li>What is the sequence number of the TCP SYN segment that is used to initiate the TCP connection between the client computer and gaia.cs.umass.edu? What is it in the segment that identifies the segment as a SYN segment?</li>
+					<ul>
+						<li>Flag (SYN), SYN bit is set to 1. 000000000010.</li>
+					</ul>
+				<li>What is the sequence number of the SYNACK segment sent by gaia.cs.umass.edu to the client computer in reply to the SYN? What is the value of the Acknowledgement field in the SYNACK segment? How did gaia.cs.umass.edu determine that value? What is it in the segment that identifies the segment as a SYNACK segment?</li>
+					<ul>
+						<li>Sequence number is 0. Value of the acknowledgement field is 1. Flag identifies as SYN, ACK.  000000010010.</li>
+					</ul>
+				<li>What is the sequence number of the TCP segment containing the HTTP POST command? Note that in order to find the POST command, you’ll need to dig into the packet content field at the bottom of the Wireshark window, looking for a segment with a "POST" within its DATA field.</li>
+					<ul>
+						<li>Sequence number: 164041. (No. 199)</li>
+					</ul>
+				<li>Consider the TCP segment containing the HTTP POST as the first segment in the TCP connection. What are the sequence numbers of the first six segments in the TCP connection (including the segment containing the HTTP POST)? At what time was each segment sent? When was the ACK for each segment received? Given the difference between when each TCP segment was sent, and when its acknowledgement was received, what is the RTT value for each of the six segments? What is the EstimatedRTT value after the receipt of each ACK?</li>
+					<ul>
+						<li>Sequence number: 164041, 1, 1, 1, 1, 164091.  </li>
+					</ul>
+			</ol>
+			<p>At this point got confused about some of the questions and what they wanted. Decided that rather than waste time here, to do other labs and learn more about other subject in Wireshark.  Then if I had time I could come back to finish this lab.</li>
+		<h2>Lab 5: UDP</h2>
+			<p>One of the easier labs, did require to look up in the text for a couple of the problems.  Searched for UDP files, usually inside SNMP messages/packets.  Used the provided capture, but also tried to generate one of my own.  </p>
+			<ol>
+				<li>Select one UDP packet from your trace. From this packet, determine how many fields there are in the UDP header. (You shouldn't look in the textbook! Answer these questions directly from what you observe in the packet trace.) Name these fields.</li>
+					<ul>
+						<li>5 fields.  source port, destination port, length, checksum.</li>
+					</ul>
+				<li>By consulting the displayed information in Wireshark's packet content field for this packet, determine the length (in bytes) of each of the UDP header fields.</li>
+					<ul>
+						<li>8 total, 2 each.</li>
+					</ul>
+				<li>The value in the Length field is the length of what? (You can consult the text for this answer). Verify your claim with your captured UDP packet. </li>
+					<ul>
+						<li>length of the UDP header and data in bytes.  The data is 50, and the header is 8.</li>
+					</ul>
+				<li>What is the maximum number of bytes that can be included in a UDP payload? (Hint: the answer to this question can be determined by your answer to 2. above)</li>
+					<ul>
+						<li>65,527 bytes of data, plus the 8 byte header. 2^16-1 plus the header.</li>
+					</ul>
+				<li>What is the largest possible source port number? (Hint: see the hint in 4.)</li>
+					<ul>
+						<li>The largest possible port is 65,535 or 2^16-1.</li>
+					</ul>
+				<li>What is the protocol number for UDP? Give your answer in both hexadecimal and decimal notation. To answer this question, you’ll need to look into the Protocol field of the IP datagram containing this UDP segment (see Figure 4.13 in the text, and the discussion of IP header fields). </li>
+					<ul>
+						<li>The protocol number is 17. Which is 0x11 in hex.</li>
+					</ul>
+				<li>Examine a pair of UDP packets in which your host sends the first UDP packet and the second UDP packet is a reply to this first UDP packet. (Hint: for a second packet to be sent in response to a first packet, the sender of the first packet should be the destination of the second packet). Describe the relationship between the port numbers in the two packets. </li>
+					<ul>
+						<li>The source port and destination port are the reverse of each other.  (ie. the port for A is the destination for B, and the port for B is the destination for A)</li>
+					</ul>
+			</ol>
+		<div style="text-align:left">
+			<a href="gradedexercize1.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="hello.html">Next</a>
+		</div>
+	</body>
+</html>

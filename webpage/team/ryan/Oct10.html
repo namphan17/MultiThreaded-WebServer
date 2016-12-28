@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			October 10th
+		</title>
+	</head>
+	<body>
+		<h1>October 10th</h1>
+		<h2>Lecture</h2>
+			<ul>
+				<li>Multipul ways to itentify something.  In certian situations one way might be more better than another to use to identify.</li>
+				<li><b>hostname</b>:Mnemonic way to identify an address.  Useful for people, but not computers. Tells little about computer/server's location.  Made of variable alphanumeric characters.</li>
+				<li><b>IP addres</b>:IP numbers are the social security numbers to websites.  Decimal formatted, 4 numbers, 0-255 seperate by a period. (ie. 0.255.16.255). Heirarchical, read left to right.</li>
+				<li><b>DNS</b>:(Domain Name System)A data base that links hostnames to IP addresses.  Distributed database and an API.  Berkeley Internet Name Domain (BIND) uses the DNS.  Runs on UDP transport protocol on port number 53 (love bug: 53).  Adds delay, usually short, sometimes a little longer.  Usually delay is shortened by nearby lower level DNS servers cacheing commonly used urls for fast lookup.  Used indirectly.</li>
+				<li><b>cache</b>: Local memory that stores what you looked up last.  Used everywhere to speed up preformance.</li>
+				<li><b>Host aliasing</b>: A DNS service.  When there are multipul host names that point to an IP address it makes sure that they both direct to the correct location or the <i>canonical hostname</i>.</li>
+				<li><b>Mail server aliasing</b>: A DNS service.  Allows the lookup of the <i>canonical hostname</i> of the email address.</li>
+				<li><b>Load distribution</b>:A DNS service.  For large websites with multipul IP addresses it roates which address is used to avoid overloading one server.  This balances the amount of users requesting each server.<li>
+				<li><b>DNS Problems, for simple centralized design:</b></li>
+					<ul>
+						<li>Single point failure: If the DNS server crashes so does the internet (assuming one server).</li>
+						<li>Traffic volume: One server would have to handle all traffic, would become incredibly slow.</li>
+						<li>Distant centralized database: Delays created by DNS server being physically far away.</li>
+						<li>Maitenance: Would have to contain addresses and hostnames for the whole internet, would be huge and require frequent updates.</li>
+					</ul>
+				<li><b>Alternate</b></li>
+					<ul>
+						<li>Root DNS servers: Main root servers that contain whole or most of DNS.  Multipul with lower level servers below them.  There are 13 root servers atm.</li>
+						<li>Top-level domain (TLD) servers: Responsible for top-level domains, which as .com, .org., .net, .edu, and .gov and country level domains.  </li>
+						<li>Authoritative DNS servers: Organizations on the internet had an authoritative DNS server that houses the records of their host names and IP addresses.  Such as universities and large companies.</li>
+					</ul>
+				<li><b>DNS message</b></li>
+					<ul>
+						<li>Identification (2 bytes)</li>
+						<li>Flags (2 bytes)</li>
+						<li># of Questions (2 bytes)</li>
+						<li># of answer RRs (2 bytes)</li>
+						<li># of authority RRs (2 bytes)</li>
+						<li># of additional RRs (2bytes)</li>
+						<li>Questions</li>
+						<li>Answers</li>
+						<li>Authority</li>
+						<li>additional info</li>
+					</ul>
+				<li><b>DNS vulnerabilities</b></li>
+					<ul>
+						<li>DDoS attacks: either sending packets to the root servers in large amounts to slow them down and stop replies.  Or send many DNS queires to top-level-domain servers to slow them down.<li>
+						<li>Man in the middle: Intercepts queries from hosts and returns bogus replies.  This redirects people to false websites.</li>
+						<li>DNS poisioning: Sends a bogus reply to the DNS server so it caches the false records.</li>
+						<li>Use DNS to create a DDoS against a server, by sending queires to many authoritative DNS servers, each having the spoofed source address of the target host.  If packets are larger in bytes than  query then they can potentially overwhelm a target.</li>
+					</ul>
+				<li><b>Wireshark</b></li>
+					<ul>
+						<li>Packet sniffing softwear</li>
+						<li>Displays info such as source address, destination address, frames, contents, protocol, etc.</li>
+						<li>Allows you to see traffic between computer and other hosts on the internet</li>
+						<li>Allows you to filter packets by protocol, ip addresses, etc.  In real time.</li>
+					</ul>
+			</ul>
+
+		<h2>Lab</h2>
+			<p>Nothing (wireshark labs)</p>
+		<div style="text-align:left">
+			<a href="Oct7.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="Oct11.html">Next</a>
+		</div>
+	</body>
+</html>

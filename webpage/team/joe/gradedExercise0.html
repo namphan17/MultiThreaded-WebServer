@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    h1 {
+    color:red;
+    text-align: center;
+}
+    h2 {
+    color:blue;
+    text-align:center;
+}
+
+    h3 {
+    color:red;
+    text-align: center;
+}
+    h4 {
+    color:blue;
+    text-align:center;
+}
+     /* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Float the list items side by side */
+    ul.tab li {float: left;
+    margin: auto;
+    }
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #ddd;}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #ccc;}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+  </style>
+  <script>
+    function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+  </script>
+  
+  
+  <head>
+    <title>Graded Exercise 0</title>
+  </head>
+
+  <body>
+    <h1>Graded Exercise 0</h1>
+    <h2>Joe Sterchele</h2>
+    <br>
+ <ul class="tab">
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Questions')">Questions</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Github')">GitHub Student Pack</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'person')">Tim Berners-Lee</a></li>
+ </ul>
+
+<div id="Questions" class="tabcontent">
+    <h3> 8 Questions </h3>
+    <ol>
+      <li>Describe the differences between Clients and Servers in a client-server architecture.</li>
+      <li>What is the main difference between Worms and Viruses?</li>
+      <li>What are the 5 layers of the internet protocol stack?</li>
+      <li>What are the 2 layers that are missing from the seven layer ISO OSI reference model?</li>
+      <li>Why are the 2 layers from above removed from the 5 layer protocol stack?</li>
+      <li>What are the 2 fundamental approaches to moving data through a network of links and switches?</li>
+      <li>Is a web server an end system?</li>
+      <li>Describe how a botnet can be created, and how it can be used for a DDoS attack?</li>
+    </ol>
+</div>
+
+<div id="Github" class="tabcontent">
+    <h3>GitHub Student Pack </h3>
+    <h4><a href="https://education.github.com/pack">Student Pack</a></h4>
+    <ul>
+      <li>Atom - Text Editor</li>
+      <li>Namecheap - Registration, hosting, and domain management</li>
+      <li>Stripe - Software for running an internet business</li>
+      <li>Thinkful - Learn fundamentals of Web Developement with a mentor</li>
+      <li>HackHands - Live Programming help 24/7</li>
+      <li>DNSimple - Personally hosted DNS plans</li>
+      <li>Udacity - Free one month of a Nanodegree program</li>
+      <li>Unreal Engine - A complete suite of game development tools for student</li>
+    </ul>
+</div>
+
+<div id="person" class="tabcontent">
+  <h3>Tim Berners-Lee</h3>
+  <p>In 1980, Tim Berners-Lee proposed this amazing idea for a project that used hypertext to enabel sharing and updating information among researchers. Tim created ENQUIRE, a very early hypertext database system that worked much like a Wiki. This, however, was only the first protoype. In 1989, Tim, who was now working as a scientist at the European Organization for Nuclear Research, created another prototype for another hypertext project. This project was developed as CERN needed to be able to share information quickly and simply among physicists and other academic institutions. He called his project "WorldWideWeb". Berners-Lee is now the director of the World Wide Web Consortium (W3C).</p>
+  <h4>Some other information about Tim Berners-Lee</h4>
+  <ul>
+    <li>Elected to the World Wide Web Hall of Fame in 1994</li>
+    <li>He was knighted by Queen Elizabath II in 2004</li>
+    <li>He was elected a foreign associate of the United States National Academy of Sciences</li>
+    <li>Inducted into the Internet Hall of Fame by the Internet Society in 2012</li>
+  </ul>
+</div>
+
+  </body>
+</html>

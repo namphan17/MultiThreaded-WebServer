@@ -1,0 +1,189 @@
+<!-- 
+ge2.html
+Graded Exercise #2
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Graded Exercise #2</title>
+	<style>
+	  body { background-color: #457263;
+	         margin: auto; width: 80%;
+           font-family: Verdana, sans-serif; }
+    #desc { text-align: center; }
+            a { color: #FFFFFF; }
+	#peekcha { margin: 10px;}
+	h4 { text-align: center; }
+	</style>
+</head>
+<body>
+
+        <h1 id="desc"> Tyler Wians </h1>
+        <h5 id="desc"> CSC 317: Computer Networks</h5>
+        <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./ge2.html">Graded Exercise #2</a></p>
+		
+		<p><b><a href="https://www.linkedin.com/in/tyler-wians-22134712a">LinkedIn Account</a></b></p>
+		
+		<p><b><a href="https://github.com/tydalvvave/email-sender">GitHub Repository</a></b></p>
+		
+		<h3>The Link-State (LS) Routing Algorithm</h3>
+		
+		<p>The link-state routing algorithm is also known as Dijkstra's algorithm. It computes the least-cost path from one
+		node, the source, to all other nodes in the network. It does this by having each node broadcast link-state packets
+		to all other nodes in the network, where each link-state packet contians the identities and costs of its attached
+		links. The algorithm is iterative and has the property that after the <i>k</i>th iteration of the algorithm, the 
+		least-cost paths are known to <i>k</i> destination nodes. Of all the least-cost paths to all destination nodes, \
+		these <i>k</i> paths will have the <i>k</i> smallest costs.</p>
+		
+		<ul><li><i>D(v)</i>: cost of the least-cost path from the source node to destination <i>v</i> as of this iteration
+		of the algorithm</li><br>
+		<li><i>p(v)</i>: previous node (neighbor of <i>v</i>) along the current least-cost path from the source to <i>v</i></li><br>
+		<li><i>N'</i>: subset of nodes; <i>v</i> is in <i>N'</i> if the least-cost path from the source to <i>v</i> is
+		definitively known</li><br>
+		</ul>
+		<img src="lsalgorithm.jpeg" alt="Link State Algorithm" style="width:500px;height:300px;" border="3">
+		<br><br><hr>
+		
+		<h3>Iterations of the Link-State Algorithm</h3>
+		
+		<p>We are going to compute the least-cost paths from <i>u</i> to all possible destinations using the network
+		pictured below.</p>
+		
+		<h4>Step 0 (Initialization)</h4>
+		
+		<img src="LS001.jpeg" alt="LS001.jpeg" style="width:309px;height:209px;" border="3">
+		
+		<p>Starting with <i>u</i>, we see that the nodes connected to <i>u</i> are:
+		<ul><li><i>v</i>, with a cost value of 2</li>
+			<li><i>x</i>, with a cost value of 1</li>
+			<li><i>w</i>, with a cost value of 5</li>
+		</ul>
+		
+		<img src="LS002.jpeg" alt="LS002.jpeg" style="width:309px;height:209px;" border="3">
+		<br><br>
+		
+		If you look in the data table below, you will see in the initialization (step 0) that for each
+		<i>v</i>, <i>x</i>, and <i>w</i>, their cost values in relation to <i>u</i> are shown in their
+		own column, along with the previous node of each, which is <i>u</i>. Because <i>y</i> and <i>z</i>
+		are not directly connected to <i>u</i>, their values are set to infinity.
+		
+		</p>
+		
+		<img src="DT001.jpeg" alt="DT001.jpeg" style="width:480px;height:160px;" border="3">
+		<br>
+		
+		<h4>Step 1</h4>
+		<p>We have now completed our first step, the initialization. Now let us move to the first iteration.
+		We must look for the nodes that have not been added to the <i>N'</i> column of step 0. If you look
+		at the table, you will see only a <i>u</i>. Our choices are any other node in the network;
+		but because <i>x</i> has the least-cost path, it will the node added to set <i>N'</i>.
+		</p>
+		
+		<img src="LS003.jpeg" alt="LS003.jpeg" style="width:309px;height:209px;" border="3">
+		 
+		<p>Now starting with <i>ux</i>, we see that the nodes connected to <i>x</i> are:
+		<ul><li><i>v</i>, with a cost value of 3</li>
+			<li><i>w</i>, with a cost value of 4</li>
+			<li><i>y</i>, with a cost value of 2</li>
+		</ul>
+		Note that we will not be connecting <i>u</i> because it is the previous node of <i>x</i>. 
+		<br><br>
+		
+		The values for <i>v</i> remain unchanged in this step because <i>u</i> already has a least-cost value for 
+		<i>v</i> of 2 from the previous step. This value remains the same in the table.
+		<br><br> 
+		
+		The least-cost value for <i>w</i> now has a value of 4, rather than a value of 5 from the previous 
+		step. This new value for <i>w</i> is selected and entered into the table.
+		<br><br>
+		
+		The least-cost value for <i>y</i> is now 2, which is less than infinity. This new value for <i>y</i> is
+		selected and entered into the table.
+		</p>
+		
+		<img src="DT002.jpeg" alt="DT002.jpeg" style="width:480px;height:160px;" border="3">
+		
+		<h4>Step 2</h4>
+		<p>We have completed the first iteration. Now let us move to the second iteration. We must look for the 
+		nodes that have not been added to the <i>N'</i> column of step 1. If you look at the table, you will see 
+		a <i>ux</i>. Our choices are therefore <i>v</i>, <i>w</i>, <i>y</i>, and <i>z</i>;
+		but because <i>v</i> and <i>y</i> have the same least-cost path value, we will arbitrarily choose <i>y</i>
+		and it will be added to set <i>N'</i>.
+		</p>
+		
+		<img src="LS004.jpeg" alt="LS004.jpeg" style="width:309px;height:209px;" border="3">
+		
+		<p>Now starting with <i>uxy</i>, we see that the nodes connected to <i>y</i> are:
+		<ul><li><i>w</i>, with a cost value of 3</li>
+			<li><i>z</i>, with a cost value of 4</li>
+		</ul>
+		Note that we will not be connecting <i>x</i> because it is the previous node of <i>y</i>. 
+		<br><br>
+		
+		The least-cost value for <i>w</i> now has a value of 3, rather than a value of 4 from the previous 
+		step. This new value for <i>w</i> is selected and entered into the table.
+		<br><br>
+		
+		The least-cost value for <i>z</i> is now 4, which is less than infinity. This new value for <i>y</i> is
+		selected and entered into the table.
+		</p>
+		
+		<img src="DT003.jpeg" alt="DT003.jpeg" style="width:480px;height:160px;" border="3">
+		
+		<h4>Step 3</h4>
+		<p>We have completed the second iteration. Now let us move to the third iteration. We must look for the 
+		nodes that have not been added to the <i>N'</i> column of step 2. If you look at the table, you will see 
+		a <i>uxy</i>. Our choices are therefore <i>v</i>, <i>w</i>, and <i>z</i>; but because we chose
+		<i>y</i> first and <i>v</i> has the least-cost value, we will now choose <i>v</i> and it will be added to 
+		set <i>N'</i>.
+		</p>
+		
+		<img src="LS005.jpeg" alt="LS005.jpeg" style="width:309px;height:209px;" border="3">
+		
+		<p>Now starting with <i>uxyv</i>, we see that the node connected to <i>v</i> is:
+		<ul><li><i>w</i>, with a least-cost value of 5</li>
+		</ul>
+		Note that we will not be connecting <i>u</i> or <i>x</i> because they are the previous nodes of <i>v</i>. 
+		<br><br>
+		
+		The least-cost value for <i>w</i> from <i>u</i> is 5, rather than a value of 3 from the previous 
+		step. This new value for <i>w</i> is <b>not</b> selected because it is not lower than 3.
+		</p>
+		
+		<img src="DT004.jpeg" alt="DT004.jpeg" style="width:480px;height:160px;" border="3">
+		
+		<h4>Step 4</h4>
+		<p>We have completed the third iteration. Now let us move to the fourth iteration. We must look for the 
+		nodes that have not been added to the <i>N'</i> column of step 3. If you look at the table, you will see 
+		a <i>uxyv</i>. Our choices are therefore <i>w</i> and <i>z</i>;
+		but because <i>w</i> has the least-cost path value, we will choose <i>w</i> and it will be added to set 
+		<i>N'</i>.
+		</p>
+		
+		<img src="LS006.jpeg" alt="LS006.jpeg" style="width:309px;height:209px;" border="3">
+		
+		<p>Now starting with <i>uxyvw</i>, we see that the node connected to <i>w</i> is:
+		<ul><li><i>z</i>, with a least-cost value of 8</li>
+		</ul>
+		Note that we will not be connecting <i>u</i>, <i>x</i>, or <i>y</i> because they are the previous nodes of <i>z</i>. 
+		<br><br>
+		
+		The least-cost value for <i>z</i> from <i>u</i> is 8, rather than a value of 4 from the previous 
+		steps. This new value for <i>z</i> is <b>not</b> selected because it is not lower than 4.
+		</p>
+		
+		<img src="DT005.jpeg" alt="DT005.jpeg" style="width:480px;height:160px;" border="3">		
+		
+		<p>We have now found the least-cost path from the source node <i>u</i> to the destination node <i>z</i> with a
+		least-cost value of 4. We do not need to perform any additional iterations.</p>
+		
+		<img src="LS007.jpeg" alt="LS007.jpeg" style="width:309px;height:209px;" border="3">	
+		<br><br>
+		<img src="DT006.jpeg" alt="DT006.jpeg" style="width:480px;height:160px;" border="3">		
+		
+		<br><br><br><br>
+		
+</body>
+</html>

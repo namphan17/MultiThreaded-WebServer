@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Graded Exercize 0</title>
+	<style>
+		h3 {text-align:center;}
+		h4 {text-align:center;}
+		body {background-color:#E52826;}
+	</style>
+    </head>
+    <body>
+        <center><h1 style="color:#ffffff">Graded Exercize 0</h1></center>
+        <center><h2 style="color:#ffffff">Ryan Conrardy</h2></center>
+	<section style="color:#0066ff">
+        <left><h3>Questions on Reading</h3><left>
+        <ol>
+            <li>What is the Hierarchy of Abstractions?</li>
+                <ul>
+                    <li>Application: Message</li>
+                    <li>Transport: Segment</li>
+                    <li>Network: Datagrams</li>
+                    <li>Link: Frames</li>
+                    <li>Physical</li>
+                </ul>
+            <li>Define packet.</li>
+                <ul>
+                    <li>A package of information sent over a link.  May be the whole set or part of the infomation.</li>
+                </ul>
+            <li>What are the two types of physical medium, give a short description?</li>
+                <ul>
+                    <li>Guided media: Waves are guided along a solid medium (ie. fiver-optic cable, coaxial cable, or twiseted-pair copper wire)</li>
+		    <li>Unguided media: Waves propagate in the atmosphere and in outerspace (ie. wireless LAN or satellite channels)</li>
+                </ul>
+            <li>What are the two kinds of system architecture?  Give a short description</li>
+                <ul>
+                    <li>Client-Server: Needs a server (machine/process that responds to requests) always on/available to interact with the client requests.</li>
+                    <li>Peer to Peer: No central server, end machines connect to eachother directly.  Need to find a peer.</li>
+                </ul>
+            <li>What was the name of the graph software that was developed by alumni Jennifer Chang? What was the best student suggested name for their rebranding?</li>
+                <ul>
+                    <li>Mango</li>
+					<li>GUI Mango</li>
+                </ul>
+            <li>What port(s) does DNS use?</li>
+                <ul>
+                    <li>Port 53, and port 80.</li>
+                </ul>
+            <li>How does code detect errors, and correct them?</li>
+                <ul>
+                    <li>It adds redundancy, and checks for any misplaced bits in the redundant sections. (ie. if three of four packets sent read the same, but the fourth doesn't then the fourth most likely has an error)</li>
+                </ul>
+            <li>What is a transmission delay?</li>
+                <ul>
+                    <li>Packets can only be transmitted after all the packets that arrived before it have been transmitted.  Transimission delay is the length of the packet in bits (L) and the transmission rate from router to router in bits/second (R), this it is expressed as L/R. Or the amout of time required to transmit all of the packet's bits into the link.</li>
+                </ul>
+        </ol>
+	</section>
+	<section style="color:#ff0000">
+        <h3>Biography on Famous Computer Scientist</h3>
+        <h4>Robert "Bob" Elliot Kahn</h4>
+        <p>Born December 23rd 1938 in Brooklyn (yes that one).  He went to City College of New York and earned a Bachlors of Electrical Engineering in 1960, followed by his M.A. in 1962 and his Ph.D. in 1964.</br>
+Shortly after earning his Ph.D. he worked at AT&T Bell Labs and then joined MIT's engineering department as an assistant professor in 1966.</br>
+In 1968 the US Department of Defense began a project called ARPANET to create long-distance communication using telephone lines and packet switches.  Kahn's proposal for system design won him the contract and he joined the ARPANET team.</br>
+Later in 1972 Kahn joined the Information Processing Techniques Office to work on network security, digital speech transmission, and packet radio.  He then began a ground-based packet-radio projected called PRNET based off Alohanet.  This along with using a satellite to link Arpanet sites created the SATNET project.</br>
+In an attempt to connect the networks that he had created Kahn went to Vint Cerf with an idea of a network to connect the networks.  They then wrote a paper called <i>A Protocol For Packet Network Intercommunication</i> which would lay the foundation for what would become the internet.</br>
+The internet that they created was made off two key ideas:</br>
+</br>
+First a host protocol called the Transmission Control Protocol(TCP), this provided ordered, reliable, flow-controlled transmission of packets over linked networks.</br>
+</br>
+Second was gates and routers that would direct  the traffic of packets, handeling the routing.</br>
+</br>
+In 1977 they finalized the implementation of TCP, and the first incarnation of the internet.  And in 1983 they guided the changeover of ARPANET from NCP protocols to TCP.</br>
+Now Kahn is the chairman, CEO, and president of Corporation for National Research Initiatives (CNRI), which he founded in 1986.  Vint Cerf joined Kahn as Vice President, and they later also founded the Internet Society (ISOC), which helps set international technical standards for the Internet.
+</p>
+	</section>
+	<section style="color:#00cc00">
+        <h3>Tutorial</h3>
+        <h4>Github File Transfer</h4>
+        <p><b>Using Git to upload to Github (And SSH generation):</b></br>
+</br>
+First you would want to make an ssh key so you can upload easier and faster to your github.  To do this you will need to open up the terminal window.  In the terminal type:</br>
+</br>
+<i>ssh-keygen -t rsa -b 4096 -C "[your github account email]"</i></br>
+#generates specified SSH key</br>
+</br>
+This will generate a new ssh key.  It will offer you an option of where to save it, hitting enter will just save it to the default file path.  It will also prompt for a password, hitting enter will leave this blank.</br>
+To copy the public key type into the terminal:</br>
+</br>
+<i>cat .ssh/id_rsa.pub</i></br>
+#shows the contents of the rsa public key</br>
+</br>
+Copy the text and then under your github account settings create a new ssh key, name it whatever you want, and paste the text into the body.  This will link your ssh key to your github allowing easier transfers when you <b>CLONE</b> a file to the computer, and <b>PUSH</b> it back up.</br>
+</br>
+If you wish to add a file to your github account you must follow a few steps.  First you must initialize the git protocol on your files.  Then you have to add the files to the git, and commit them.  Finally you should <b>PUSH</b> them up to github.  This is done in the following manner: </br>
+</br>
+<i>git init</i></br>
+#initializes the git protocol</br>
+<i>git add [filenames/pathway]</i></br>
+#adds the files to git</br>
+<i>git commit -m "[notes/comments]"</i></br>
+#commits the files, and adds a note/comment on what changes were made</br>
+<i>git push</i></br>
+#<b>PUSH</b>es the files from git to github</br>
+</br>
+This will <b>PUSH</b> the files up to your github account, having a linked ssh will make this faster and easier.</br>
+</br>
+If you wish to <b>FORK</b> over a file in github from another account to your own, you simply need to go to www.github.com search either the other user's account or their project, select the desired project, and hit the provided <b>FORK</b> button.  This will copy the project onto your account.</br>
+From your own account you can <b>CLONE</b> the project from your github account to your local computer.  To do this hit the green <b>CLONE</b> button.  Select "clone with SSH" and copy the link provided.  In the terminal window type:</br>
+</br>
+<i>git clone [copied link]</i></br>
+#<b>CLONE</b>s the github files from the specified link</br>
+</br>
+If you set up a password you will be prompted to enter it.  Otherwise the file will <b>CLONE</b> itself to your machine.  Once on your local computer you can edit the files either directly though the file explorer, or through the terminal window with the gedit command.</br>
+When you are done editing the files you can <b>PUSH</b> them back to your github using the add and commit commands:</br>
+</br>
+<i>git add [filename]</i></br>
+#adds files (with changes) to git</br>
+<i>git commit -m "[notes/comments]"</i></br>
+#commits the added files and adds a note/comment</br>
+<i>git push</i></br>
+#<b>PUSH</b>es files back up to github</br>
+</br>
+When it is <b>PUSH</b>ed up to your github you can then send a <b>PULL</b> request to the original author by clicking the <b>PULL</b> request button.  Be sure to add a comment so they know what changes your made.</br>
+</br>
+This concludes the short overview tutorial on how to transfer files to github, <b>FORK</b> them, <b>CLONE</b> them, edit them, <b>PUSH</b> them back up to github and then send a <b>PULL</b> request.
+</p>
+<!--https://www.shubhsblog.com/programming/multithreaded-webserver-java.html-->
+	</section>
+		<div style="text-align:left">
+			<a href="hello.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="gradedexercize1.html">Next</a>
+		</div>
+    </body>
+</html>

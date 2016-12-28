@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+	<style>
+		h1{text-align:center;}
+		h2{text-align:center;}
+	</style>
+        <title>Graded Exercise 1</title>
+    </head>
+    <body bgcolor="#eae5db">
+        <h1>Graded Exercize 1</h1>
+        <h2>Angela Aley</h2>
+        <h2>Questions</h2>
+        <ol>
+            <li><b>Explain why it would be wrong to say that the network layer and the transport do the same job. </b></li>
+                <ul>
+                    <li>As opposed to transport layer which is a logical communication between processes running on different hosts the Network-layer protocol provides logical communication between hosts. subtle but important. Note that Transport layer does it all on the ends where as the network layer move the messages throughout the networks (188-9)</li>
+                </ul><br>
+            <li><b>Why is pipelining an important concept and what does it allow?</b></li>
+                <ul>
+                    <li>Pipelining allows sender to send multiple packets without waiting for acknowledgments and that is important because it allows for fast communication between systems are far away and this how we have the internet as we know it now.(215-19) </li>
+                </ul><br>
+            <li><b>What is the difference between Go-Back-N and selective repeat. </b></li>
+                <ul>
+                    <li>Go-Back-N (GBN) protocol, the sender is allowed to transmit multiple packets (when available) without waiting for an acknowledgment, but is constrained to have no more than some maximum allowable number,N,of unacknowledged packets in the pipeline. A single packet error can thus cause GBN to retransmit a large number of packets, many unnecessarily. Where as selective-repeat protocols avoid unnecessary retransmissions  by  having  the  sender  retransmit  only  those  packets that  it  suspects  were received in error (222-224)</li>
+                </ul><br>
+            <li> <b>Explain in detail explain the difference between the TCP Congestion Control and flow control</b></li>
+                <ul>
+                    <li>Flow-control service to its applications to eliminate the possibility of the sender overflowing the receiver's buffer. Flow control is thus a speed-matching service</li>
+                </ul><br>
+            <li><b>Describe why using Forwarding and Routing interchangeably is not a good choice in this class</b></li>
+                <ul>
+                    <li>In lots of scenarios the two are interchangeably but in the context of this class they are not they have different meaning for Forwarding: refers to the router-local action of transferring a packet from an input link and Routing:refers to the network-wide process that determines the end-to-end paths that packets take from source to destination </li>
+                </ul><br>
+            <li> <b>What algorithm has three major components: (1) slow start, (2) congestion avoidance, and (3) fast recovery.</b></li>
+                <ul>
+                    <li>TCP congestion control</li>
+                </ul><br>
+            <li><b>What is the relationship between utilization and pipelining? </b></li>
+                <ul>
+                    <li>The utilization determines how much gets through the pipeline</li>
+                </ul><br>
+            <li><b>Which layer is all about logical communication and what does that mean?</b></li>
+                <ul>
+                    <li>Transport layer Implemented on the end servers but not in the network routers basically this layer sends messages with out the two worrying about physical infrastructure involved.</li>
+                </ul><br>
+	    <li><b>What and why is explicit forward congestion indication (EFCI) bit important</b></li>
+                <ul>
+                    <li>(268)Each data cell holds it. A congested network switch can set the EFCI bit in a data cell to 1 to signal congestion to the destination host.</li>
+                </ul><br>
+	    <li><b>What is TCP congestion control often referred to and why?</b></li>
+                <ul>
+                    <li>TCP congestion control is often referred to as an additive-increase, multiplicative-decrease (AIMD)form of congestion controlTCP's congestion control consists of linear (additive) increase in cwnd of 1 MSS per RTT and then a halving (multiplicative decrease) of cwnd on a triple duplicate-ACK event. (277)</li>
+                </ul><br>
+        </ol>
+       <h2>Wireshark HTTP lab</h2>
+<p>Wireshark labs are a way to involve students into the way that different network protocols  and the way that each of them interact with the the computer and the network. <br>
+I worked on the wiresharks:</p>
+<ul>
+<li>Getting stated </li>
+<li>HTTP </li>
+<li>DNS</li>
+<li>TCP</li>
+<li>IP</li>
+</ul>
+<p>I am going to be doing my in depth report on the HTTP lab because I feel most comfortable with it. The HTTP lab is all about inspecting several aspects of the HTTP protocol for instance the basic GET/response interaction, HTTP message formate, retrieving large HTML files, retrieving  HTML files with embedded objects, and HTTP authentication and security. This lab is linked with section 2.2 form the book. </p>
+
+<h4>1. The Basic HTTP GET/response interaction</h4>
+
+<p>The steps of this are to basically set up wireshark and filter for HTTP then go to <a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html</a> then end the capture. </p>
+<br>
+<p>After doing this the lab walks you through seeing how the GET and response get sent back. It explains that the GET message holds a lot of data as well with the response. The bes sentence from the description was "Recall that since the HTTP message was carried inside a TCP segment, which was carried inside an IP datagram, which was carried within an Ethernet frame, Wireshark displays the Frame, Ethernet, IP, and TCP packet information as well." which basically just is explaining all the information we can get out of the simple transmission. First set of questions and answers: were mostly to make sure that you could make your way around the program. For instance what is the ip addresses for both your computer and their computer and those are nicely displaced in the top. The HTML file is constantly modified so that it should always be within the last few minutes of your GET command. So over all this was just a make sure you can actually choose the one they want you to and mess around with it.  </p>
+<br>
+<h4>2. The HTTP CONDITIONAL GET/response interaction</h4>
+<p>For this step it is very close to the last one but with this <a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html</a> web address and instead of only going to the website once you refresh the page to get the computer to send the command again. Then stop the capture. </p>
+<br>
+
+<p>This next set of questions are about how the computer handles repeat requests. Mostly just proving how and that catch works For instance question 8 and 10 leads the user to figure out that only the first time does the packet have the "IF-MODIFIED-SINCE" line but the second time it just has a Not Modified line which mean for question 9 and 11 the first time the server explicitly returned the contents but not the second time. </p>
+<br><br>
+
+<h4>3. Retrieving Long Documents</h4>
+
+<p>Same directions as the first part but with this web address: <a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file3.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file3.html</a></p> <br>
+
+<p>The file that is to be downloaded is to big for one TCP so it is broken up into several TCP segments and the question set is to see how many and what happens with this aspect of it.  For instance the the first two questions are about how many and where the information is held in the messages received. 
+ How many HTTP GET request messages did your browser send?  Only one. </p>
+<br>
+<p>Which packet number in the trace contains the GET message for the Bill or Rights? I was noted in class that the amount varies per computer but I got 1 but the sample catch file they give us was 8 I am going to use the sample code from here on out just for simplicity.</p>
+<br>
+ <p>Which packet number in the trace contains the status code and phrase associated with the response to the HTTP GET request? 10. </p>
+<br>
+<p>What is the status code and phrase in the response? 200 (OK)</p>
+
+
+<p>How many data-containing TCP segments were needed to carry the single HTTP response and the text of the Bill of Rights? 3 which were 10 11 and 12 in the trace. </p>
+<br><br>
+<h4>4. HTML Documents with Embedded Objects</h4>
+
+<p>Same as the others yet with the link <a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html</a>  then stop the capture. <p><br>
+
+<p>Only two questions this time again I am going to use the trace they gave us for simplicity in my responses to the questions. <br><br>
+1. How many HTTP GET request messages did your browser send?  To which Internet addresses were these GET requests sent? 3 sent to all different  IP address, 10 was sent to 128.119.245.12, 17 to 165.193.123.218 and 20 to 134.241.6.82.<br><br>
+
+2. Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain. They were in parallel. I know because the request for second image was made before the first one was downloaded. </p>
+
+
+<h4>5 HTTP Authentication </h4>
+<p>So set up same <a href="http://gaia.cs.umass.edu/wireshark-labs/protected_pages/HTTP-wireshark-file5.html">http://gaia.cs.umass.edu/wireshark-labs/protected_pages/HTTP-wireshark-file5.html</a>  BUT then you have to have the username of : wireshark-students and password of: network and after you put them in you stop the capture.</p>
+
+<p>Only two questions this time again I am going to use the trace they gave us for simplicity in my responses to the questions. <br>
+
+What is the server's response (status code and phrase) in response to the initial HTTP 
+GET message from your browser?  6 contains the first GET and 9 contains the response. The server's in 9 is: 401 Authorization Required
+
+When your browser's sends the HTTP GET message for the second time, what new field 
+is included in the HTTP GET message? The HTTP GET includes the Authorization: Basic: field</p>
+
+
+ <h2>Questions from the textbook</h2>
+<p>Choosing to solve chapter 4: P2 and P3</p>
+<p>P2: Consider a virtual-circuit network. Suppose the VC number is an 8-bit field.</p>
+<ul>
+<li>a. What is the maximum number of virtual circuits that can be carried over a
+link?</li>
+<ul>
+<li>2^8=256 </li>
+</ul>
+<li>b. Suppose a central node determines paths and VC numbers at connection
+setup. Suppose the same VC number is used on each link along the VC's
+path. Describe how the central node might determine the VC number at connection setup. Is it possible that there are fewer VCs in progress than the
+maximum as determined in part (a) yet there is no common free VC number?</li>
+<ul>
+<li>The centrilaed node could pick up any VC number that is free from the set so if fewer than the max (258 here) are in progress then there are common VC number</li>
+</ul>
+<li>c. Suppose that different VC numbers are permitted in each link along a 
+VC's path. During connection setup, after an end-to-end path is determined,
+describe how the links can choose their VC numbers and configure their for-
+warding tables in a decentralized manner, without reliance on a central node</li>
+<ul>
+<li>Each link can independently use VC numbers from the sets so each VC will have a different number each router in the VC path must replace the VC number of each arriving packet</li>
+</ul>
+</ul>
+<p>P3:A bare-bones forwarding table in a VC network has four columns. What is
+the meaning of the values in each of these columns? A bare-bones forwarding
+table in a datagram network has two columns. What is the meaning of the
+values in each of these columns?</p>
+<p>VC forwarding table, columns  are Incoming Interface, Incoming VC Number, Outgoing Interface, Outgoing VC number. </p>
+</body>
+</html>

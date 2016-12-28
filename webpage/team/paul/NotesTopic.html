@@ -1,0 +1,43 @@
+<html> 
+<head> 
+<title> 
+Security Notes (Section 1.5)
+</title>
+<style>
+body{ 
+	background-image: url("https://media.giphy.com/media/RAGr8VeijqcrC/giphy.gif");
+	background-size: cover;
+	color: white; 
+}
+</style> 
+<h1 style="color:white"> Shared Notes: How bad guys compromise networks and internet applications (From Section 1.5)</h1>
+</head> 
+<body> 
+<p style="background-color:black">What types of attacks can malicious attacker use to compromise a network? Here are some of the most common ways:</p> 
+<ol style="background-color:black"> 
+	<li style="color:red">DDoS/DoS (Distributed Denial of Service/Denial of Service)</li> 
+		<ol><li>Bandwidth Flooding: Sending many packets to a target host in order to prevent any other users from using the host system.</li>
+		<ul><li> Example (very old): Pinging a server with the maximum amount of bytes from X amount of computers (or a single computer) to flood the host server with data.</li></ul> 		
+		<li>Connection Flooding: Creating a large amount of connections (usually via TCP)to a target host in an attempt to eat up all available connections so that the host system cannot allow any more connections from users.</li> 
+		<ul><li>Example: Using a botnet of slave computers to request (and possibly connect) to a website X amount of times each, eating up all of the available connections.</li></ul>
+		<li>Vulnerability Attack: Targeting a known vulnerability on a host system by sending a specialized set of packets, or information within the packets, that crashes the host's system.</li>
+		<ul><li>Example: A host application can only take X amount of characters as input, anything more will cause the program to crash</li></ul>
+		</ol>
+	<li style="color:red">Malware (Worms, Virii (Viruses), and Trojans oh my!)</li> 
+		<ol> 
+			<li>Worms: Malware that targets host systems that are exploitable in certain ways without any user interaction, and replicates by targeting similar systems once inside of a host system.</li> 
+			<li>Virii (Viruses): Malware that gets onto a system with some user interaction, usually via an email, phishing (social engineering), or by visiting a malicious site. Once inside a host system, it continues to replicate by phishing from the host (usually via email) or by making the host a slave.
+			<li>Trojan Horse Programs (not covered): Malware that is used to give backdoors into host systems so that the attacker, or even multiple attackers, can use the computer for credential theft, phishing, spam, and more. The way this type of malware works is similar to the original story of the Wooden Trojan Horse, as trojans disguise themselves as legitimate programs, or are implanted in seemingly harmless programs.</li></ol> 
+	<li style="color:red">Packet Sniffing</li> 
+		<ul> 
+			<li>Usually Done via a MITM (Man in the Middle Attack via arpspoofing, DNS hijacking, etc.), this involves the attacker running a packet sniffer (looking at you, wireshark!) in order to gain sensitive information about the victim(s). This could include passwords, file downloads, VoIP (Voice of IP calls), and more. Password stealing requires the attacker to be running an SSL stripper, which takes away the secure certificate of the site and enforces http over https (passwords can be seen in cleartext this way).</li> 
+		</ul> 
+	<li style="color:red">IP Spoofing</li> 
+		<ul> 
+			<li>This is done by manipulating the packets sent so that the source IP address (where the information from the packets is coming from, and where it's going to be sent to be received) is modified so that a different IP is used in place of the attackers IP. This could be done for a multitude of reasons, however the biggest ones can be to perform incomplete Syn-Ack DoS/DDoS attacks and to mask the attackers IP address.</li> 
+		</ul>
+	</ol>
+<h4 style="color:yellow; background-color: black">There are other ways attackers can compromise hosts (via various forms of exploitation, phishing, ransom-ware, spam, etc), but these will be covered later!</h4> 
+<br><br><br><br><br><br><br><br><br>
+<center><input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/></center>
+</html>

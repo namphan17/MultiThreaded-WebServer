@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <style>
+h1, h2 {
+    text-align:center;
+    color:OrangeRed;
+}
+h3, h4 {
+text-align:center;
+}
+  </style>
+  
+  <head>
+    <title>
+      OCTOBER 17th
+      </title>
+  </head>
+  <body>
+    <h1>Oct 17th Notes</h1>
+    <br>
+    <h2>Homecoming Week</h2>
+    <h1>Sections 4.5 - 4.6 </h1>
+    <br>
+    <h3>Global Routing Alogrithm</h3>
+    <ul>
+      <li>Computes the least-cost path between a source and destination.</li>
+      <li>Uses global, complete knowledge about the entire network</li>
+      <li>The algorithm takes the connectivity between all nodes and all link cost as inputs</li>
+      <li>The algorithm reuires all this information before performing the calculation</li>
+      <li><b>Link-State (LS) Algorithm</b></li>
+    </ul>
+    <h3>Decentralized Routing Algorithm</h3>
+    <ul>
+      <li>Least-cost path is carried out in an iterative, distributed manner</li>
+      <li>Nodes only have knowledge of their own directly attached links</li>
+      <li>No node has complete information about the cost of all network links</li>
+      <li>Using an iterative process of calculation and exchange of information with its neighboring nodes</li>
+      <li>A node gradually calculates the least-cost path to a destination or set of destinations</li>
+      <li><b>Distance-Vector (DV) Algorithm</b></li>
+    </ul>
+    <br>
+    <br>
+    <h3>Link-State Algorithm</h3>
+    <ul>
+      <li>In practive, this is accomplished by having each node broadcast link-state packets to <i>all</i> other nodes in the network</li>
+      <li>Dijkstra's Algorithm</li>
+      <li>Upon termination, the algorithm will have calculated the shortest paths from the source node to every other node in the network</li>
+    </ul>
+    <h3>Distance-Vector Algorithm</h3>
+    <ul>
+      <li>Iterative, asynchronous, and distributed. Each node recieves some infomraiton from one or more of its directly attached neighbor</li>
+      <li>Bellman-Ford Algorithm</li>
+      <li>The algorithm initializes the distance to the source to 0 and all other nodes to infinity. Then for all edges, if the distance to the destination can be shortened by taking the edge, the distance is updated to the new lower value.</li>
+    </ul>
+    <br>
+    <h2> A Comparison of LS and DV Routing Algorithms</h2>
+    <ul>
+      <li>Message Complexity</li>
+      <li>Speed of Convergence</li>
+      <li>Robustness</li>
+    </ul>
+    <h3><b>Neither algorithm is an obvious winnder over the other. Both algorithms are used in the internet.</b></h3>
+      
+      
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <style>
+h1, h2 {
+    text-align:center;
+    color:OrangeRed;
+}
+h3, h4 {
+text-align:center;
+}
+  </style>
+  
+  <head>
+    <title>
+      OCTOBER 19th
+      </title>
+  </head>
+  <body>
+    <h1>Oct 19th Notes</h1>
+    <br>
+    <h2>Homecoming Week</h2>
+    <br>
+    <h1>The Link Layer</h1>
+    <h3>Links, Access Networks, and LANs</h3>
+    <br>
+    <h4>There are two fundamentally different types of link-layer channels</h4>
+    <ol>
+    <li>Broadcast Channels</li>
+    <li>Point-to-point communication link</li>
+    </ol>
+    <br>
+    <h4>Terminology</h4>
+    <ul>
+     <li>Node - > Any device that wruns a link-layer protocol</li>
+     <li>Link - > Comunication channels that connect adjacent nodes along the communication path</li>
+     <li>Link-layer Frame -> A transmitting node encapsulates the datagram in a link-layer frame and transmits the frame into the link</li>
+     </ul>
+     <br>
+     <h3>Services provided by the link layer</h3>
+     <ul>
+     <li>Framing - > Encapsulating each network-layer datagram within a link-layer frame before transmission over the link</li>
+     <li>Link Access -> A medium access control (MAC) protocol specifies the rules by which a frame is transmitted onto the link</li>
+     <li>Reliable Delivery -> It guarantees to move each network-layer datagram accross the link without error</li>
+     <li>Error Detection and Correction -> Because there is no need to forward a datagram that has an error, many link-layer protocols provide a mechanism to detect bit errors. This is done by having the receiving node perfrom an error check.</li>
+     </ul>
+     <br>
+     <p>Types of Links</p>
+     <ul>
+     <li>A <b>Point-to-Point</b> link consist of a single sender at one end of the link and a single receiver at the other end of the link. Many link-layer protocols have been designed for point-to-point links; the point-to-point protocol (PPP) and high-level data link control (HDLC)</li>
+     <li>A <b>Broadcast</b> link can have multiple sending and receiving nodes all connected to the same, single, shared broadcast channel. The term <i>broadcast</i> is used here because when any one node transmits a frame, the channel broadcast the frame and each of the other nodes receives a copy</li>
+     </ul>
+  </body>
+</html>

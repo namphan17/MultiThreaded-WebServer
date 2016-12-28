@@ -1,0 +1,36 @@
+<html> 
+<head>
+<title> 
+Section 5 Notes
+</title>
+<style> 
+body{
+	background-color: black; 
+	color: green; 
+}
+</style> 
+</head>
+<body> 
+<h1>Section 5 Notes</h1> 
+<ol> 
+	<li>Link Layer Implementation</li><br> 
+	<ul><li>The link layer implementation includes certain characteristics as the other layers. For instance, it provides reliable data transfer just like the transport and IP layers.</li><br>
+	<li>The link layer also incorporates framing, in which the network layer is incorporated in a link layer frame before transmission.</li><br>
+	<li>The link layer provides certain link access, that is, it's able to transmit from point-to-point (that is, host to node or node to node) via a MAC address (Medium Access Control) which is defined in host's or node's hardware.</li><br> 
+	<li>Lastly, the link layer not only provides error detection (part of the reliable data transfer), but it also performs data correction in many different ways which will be discussed in the next section.</li><br> 
+	<li>Link layer is made in the software of the computer and transmitted via a physical layer (Ethernet, coax cable, fiber, wifi or wireless).</li>
+	</ul><br><hr><br> 
+	<li>Correcting and Detecting Bit Errors at the Link Layer</li><br>
+	<ul><li>Parity Bit</li><br> 
+	<li>This error correctin involves adding an actually an extra "parity bit" that will directly relate to either the amount of bits of the same type being even or odd.</li><br>
+	Here's an exampe of the error detection with parity bits:<br>
+	<img src="http://2.bp.blogspot.com/-uX6BYtUsNMU/UbmA5NFkWBI/AAAAAAAAAAg/FrOUugc7PWs/w1200-h630-p-nu/Asynchronous+Data+Error+Dtection(+Parity+Bit).jpg"/><br><br>
+	<li>Other forms of bit detection and correction are using checksums (which we've seen used in other layers), as well as Cycle Redundancy Checking codes, which includes polynomial arithmetic to calculate/correct errors.</li><br> 
+</ul><br><hr><br> 
+	
+	
+</ol>
+<br><br>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/><br>
+</body>
+</html> 

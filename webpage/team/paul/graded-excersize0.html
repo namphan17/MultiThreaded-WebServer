@@ -1,0 +1,66 @@
+<html> 
+<head>
+<title> 
+Graded Excersize
+</title> 
+<h1>Graded Excersize</h1> 
+<style>
+body{
+	background-color: black; 
+	color: green; 
+}
+</style>
+</head>
+<body>
+<h4>Sample Questions and Answers</h4>
+	<ol> 
+		<li>What is Malware?</li> 
+		<ul><li style="color:red">Malware is software that is used or installed for malicious purposes in order to attempt credential theft, spam, and more.</li></ul><br><hr><br> 
+		<li>What is a packet sniffer?</li> 
+		<ul><li style="color:red">A packet sniffer is software that is used to capture, or intercept, the outgoing and incoming packets within a network for analyzation of the packet contents. Can be used for security or malicious purposes depending on the user.</li></ul><br><hr><br> 
+		<li>What is TCP used for as opposed to the UDP?</li> 
+		<ul><li style="color:red">TCP offers reliable data transfer and has congestion control. Because of this it's often used for email, messenging, or any other way of transferring possibly sensitive data. UDP lacks everything tcp uses, as it has no congestion control, doesn't have reliable data transfer, etc. UDP is often used in cases like VOiP, internet video conferencing, and more because it transfers data at a faster rate. For such services that use UDP, they have ways of handling loss of data so that it doesn't affect the performance of the services in an unusable way (videos may "lag" or have glitches every once in a while though because of it).</li></ul><br><hr><br> 
+		<li>What is the HTTP used for?</li> 
+		<ul><li style="color:red">The Hyper Text Transfer Protocol is used for receiving webpage files (documents that include a .html, .shtml, etc.) from webservers, as well as for posting information, or deleting files to the webservers (via the GET, POST, PUT, and DELETE parameters given before the header).</li></ul><br><hr></br>
+		<p><strong>Use this example HTTP response for the following questions 5-7:</p><br>
+		HTTP/1.1 200 OK<br>
+		Date: Mon, 27 Jul 2009 12:28:53 GMT<br> 
+		Server: Apache/2.2.14 (Win32)<br>
+		Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT<br>
+		Content-Length: 88<br> 
+		Content-Type: text/html<br>
+		Connection: Closed<br></strong> 
+		<br><br><hr><br><li> 
+		Was the webserver able to return the page requested?
+		</li> 
+		<ul><li style="color:red">Yes, the webserver returned the status code 200 which means that the content was retrieved successfully.</li></ul><br><hr><br>
+		<li>How many bytes did the webserver return in content?</li> 
+		<ul><li style="color:red">The webserver returned 88 bytes in length, as indicated by the "Content-Length" header.</li></ul><br><hr><br> 
+		<li>Was the connection made to the webserver persistent or non-persistent?</li>
+ 		<ul><li style="color:red">The connection was non-persistent due to the connection being closed as soon as the data was returned. This is indicated by the "Connection: Close" header field.</li></ul><br><hr><br>
+		<li>What are some of the type of the physical layers to transfer packets?</li> 
+		<ul><li style="color:red">Some physical layers for packet transmission are via ethernet (fiber optic cable, coax cable, etc.), wifi, and satellite (radio transmission).</li></ul><br><hr><br>
+	</ol> 
+		
+<center><h4>Important Pioneer in our Field:</h4><br><strong><h2>Radia Perlman</h2></strong><br><img src="http://blogs.intel.com/freepress/files/2012/12/Radia-Perlman-244x300.png"/><br></center><br>
+	 				
+<p> 
+&emsp;&emsp;&emsp; Radia Perlman was born in 1951, Portsmouth, VA to a mother who was a mathematician and a father who worked on radar for the US government. She grew up with an inclination towards science, particularly mathematics, and eventually went on to enroll in MIT to complete her mathematics PhD. In her sophomore year at MIT she had been introduced to computer programming for the first time, and, from there, she'd progressed and gotten her first computer programming job in 1971 at the MIT AI lab writing debugging software. After getting her PhD in mathematics, Perlman went on to work for BBN Technologies (Bolt Beranek and Newman) and, following her technology career, she went on to work at the Digital Equipment Corporation where she designed the routing (the spanning tree protocol) for the company DECnet. The Spanning Tree protocol that she'd created for routing became one of the most essential networking algorithms and was used as the basis of networking for the internet; it was this protocol that Perlman was widely praised and acclaimed for. The Spanning Tree Protocol was created before packet switched routers, since most computers in a network were interconnected instead of directly connected to a single router. Thus STP was used to prevent bridge loops between computers and remedied network bridges if problems occurred. Because of her contribution, she was deemed to be the "Mother of the Internet" to which she avidly denies and dislikes the title in general. Perlman claims that not one person created or founded the internet, and, even though her work was important to the underlying protocols of the internet, she was one of many who built the internet from the ground up. Today Perlman works at Intel furthering network and software engineering concepts, and she was awarded the SIGCOMM award by ACM in 2010 as well as accepted into the National Inventors Hall of Fame this year of 2016.</p>
+<center><h4>Sources</h4><p>http://internethalloffame.org/radia-perlman-inducted-national-inventors-hall-fame<br><br>http://www.emc.com/corporate/innovation/radia-perlman-interview.htm<br><br>http://www.theatlantic.com/technology/archive/2014/03/radia-perlman-dont-call-me-the-mother-of-the-internet/284146/<br><br>http://www.dummies.com/programming/networking/cisco/spanning-tree-protocol-stp-introduction/<br><br></center><br><br><hr><br> 
+<h4>How To Use WireShark</h4><br> 
+<ol><li>
+	Open Wireshark by clicking on the icon in the Desktop for windows, or by typing in a terminal if you have linux distro.</li><br><li>  
+	Next, you will prompted by a list of interfaces including eth0 or eno1 (Ethernet), wlan0 or wlp2s0 (Wifi Card), lo (loopback interface), or bluetooth modules which are often called bl0. For now, you will mostly use wifi (wlan0 or wlp2s0 on newer Ubuntu machines) and Ethernet (usually displayed by eth0 or eno1). <br><br>
+	Here's an Example of the list of interfaces:<br><br> 
+	<img src="http://www.jijokjose.com/wp-content/uploads/2012/11/wireshark-no-interface-32.jpg"></img></li><br><hr><br> 
+	<li>Select either Ethernet (eth0 or eno1) or wifi (wlan0), and you will be taken to a screen with two windows: one on the lower screen and one on the top with a filter bar. Here's a picture of the window:<br><br>
+	<img src="http://static.thegeekstuff.com/wp-content/uploads/2012/07/3-wireshark-capture.jpg"></img></li><br> 
+	<li>As you start to see traffic flow in, the top page shows you the Source Address (the address sending the packet), the Destination Address (the address receiving the packet), the protocol type (which could be HTTP, TCP, UDP, DNS, etc), the length of the packet (in bytes), the info about the packet (tells you whether a syn-ack request was made, if a GET request was made, a POST, etc.).</li><br><hr><br>
+	<li>By clicking on one of the packets and looking at the lower window, you can see more information on the different layers of the packet selected. Such layers include the Frames, Physical Media, Internet Protocol, Transmission, and the actual data sent by the packet (unless it's encrpyted). Here's an example:<br><br>
+	<img src="https://bedfordsarah.files.wordpress.com/2013/11/wireshark_2_8.jpg"/><br><br></li> 
+	<li>You can also filter packets by their protocol by typing the protocol name (either HTTP, DNS, TCP, etc.) into the filter bar on the top screen. You'd then press ENTER on your keyboard to view all the packets that match that specific protocol. The image above shows, along with packet inspection, the filter bar being used to find packets that utilize the HTTP protocol.</li><br><br>
+</ol>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/> 
+</body> 
+</html> 
+

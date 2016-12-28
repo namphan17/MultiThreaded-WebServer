@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="en" ng-app><head><title>Cam's Network Notes</title><meta charset="UTF-8"><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script><script>hljs.initHighlightingOnLoad();</script><style>.center {
+  text-align: center;
+}</style></head><body><div class="jumbotron"><div class="container"><h1>Cam's Network Notes</h1></div></div><div class="container"><div class="row"><div class="col-sm-8"><h1 class="center">Graded Exercises</h1><div class="row"><div class="col-xs-3"><button class="btn-primary btn btn-block" ng-click="post = 'week0'">Week0</button></div><div class="col-xs-3"><button class="btn-primary btn btn-block" ng-click="post = 'week1'">Week1</button></div><div class="col-xs-3"><button class="btn-primary btn btn-block" disabled>Week2</button></div><div class="col-xs-3"><button class="btn-primary btn btn-block" disabled>Week3</button></div></div></div><div class="col-sm-4"><h1 class="center">Notes</h1><h3>Chapter 3</h3><div class="row"><div class="col-xs-4"><button class="btn-primary btn btn-block" ng-click="post = '3.1'">3.1</button></div><div class="col-xs-4"><button class="btn-primary btn btn-block" ng-click="post = '3.2'">3.2</button></div><div class="col-xs-4"><button class="btn-primary btn btn-block" ng-click="post = '3.3'">3.3</button></div></div></div></div><div class="row"><div class="col-xs-12"><div class="post" ng-show="post == 'week0'"><h1>8 Review Questions</h1>
+<ol>
+<li>
+<p>Which kind of switching is this unfunny joke about?</p>
+<blockquote>
+<p>A man walks into a bar, and orders a beer. The bartender calls the
+wholesaler. The wholesaler calls the brewery. The brewery makes the beer.
+The brewery sells the beer to the wholesaler. The wholesaler sells the beer
+to the bar. The bartender serves the man, and the man starts drinking
+the beer.</p>
+<p>In the meantime, a second person walks into the bar. The bartender yells,
+&quot;Can't you see I'm busy!!&quot;</p>
+</blockquote>
+<p>Answer: circuit switching</p>
+</li>
+<li>
+<p>What kind of loss, suffered by a packet switching network, could be
+alleviated if infinite output buffer sizes were possible?</p>
+<p>Packet loss.</p>
+</li>
+<li>
+<p>What is 'distributed' about a DDoS attack?</p>
+<p>The attack comes from many computers that are geographically distinct, making
+it more difficult to figure out which computers are legitimate requests.</p>
+</li>
+<li>
+<p>Why don't we use two layers of the ISO OSI model?</p>
+<p>We do use them, but we leave the choices there to application developers.
+Most applications do make presentation and session choices.</p>
+</li>
+<li>
+<p>Fill in the network protocol in this joke:</p>
+<blockquote>
+<p>I would tell you a joke about ___, but you might not get it.</p>
+</blockquote>
+<p>Answer: UDP</p>
+</li>
+<li>
+<p>Which network protocol does this joke reflect?</p>
+<blockquote>
+<p>Hello, would you like to hear a joke?</p>
+<p>Yes, I'd like to hear a joke.</p>
+<p>OK, I'll tell you a joke.</p>
+<p>OK, I'll hear a joke.</p>
+<p>Are you ready to hear a joke?</p>
+<p>Yes, I am ready to hear a joke.</p>
+<p>OK, I'm about to send the joke. It will last 10 seconds, it has two
+characters, it does not have a setting, it ends with a punchline.</p>
+<p>OK, I'm ready to hear the joke that will last 10 seconds, has two
+characters, does not have a setting and will end with a punchline.</p>
+<p>I'm sorry, your connection has timed out...Hello, would you like to hear a
+joke?</p>
+</blockquote>
+<p>Answer: TCP</p>
+</li>
+<li>
+<p>Name two protocols that are involved in the sending and retrieval of e-mail.</p>
+<p>Pick two of: SMTP, POP3, IMAP, HTTP</p>
+</li>
+<li>
+<p>Why is the opening of a TCP connection called a &quot;three-way handshake&quot;?</p>
+<p>The opening part of a client's TCP connection goes to a &quot;welcoming socket&quot;,
+which is not unique to the client. Then, a unique socket for the connection
+is created.</p>
+</li>
+</ol>
+<h1>Influential person: Bob Taylor</h1>
+<p>This account was taken from the book, <em>Where Wizards Stay Up Late</em>, by Katie
+Hafner and Matthew Lyon.</p>
+<p>Bob Taylor was the leader of the ARPANET project at ARPA, where he lead the
+development of the Interface Message Processor units that were initially
+installed at each node of the fledgling network.</p>
+<p>ARPANET was one very early incarnation of the Internet that connected four nodes
+across the country at top-level universities. This network was established by
+December of 1969, and shortly thereafter Bob left the project to pursue other
+opportunities.</p>
+<p>He's not as well known as Cerf or Baran as he was the manager of the project
+through an office at the Pentagon known as the IPTO, instead of a direct
+engineering contributor.</p>
+<p>In 1994, when many of the original ARPANET contributors re-assembled to
+celebrate the 25th anniversary of their achievement, the press had already created the
+myth that ARPANET had been created partially to provide communication in the
+event of a nuclear attack on the US. Bob Taylor had attempted to remedy this
+false belief to no avail.</p>
+<p>ARPANET had been created as a scientific enterprise, to link universities
+together so that they could share computing resources. Mainframe computers at
+that time were very expensive, and it would be a time and expense savings if
+researchers from one university could avoid getting their own computer.</p>
+<p>One anecdote from his career I found interesting - the initial pitch for ARPANET
+was for one million dollars, and Taylor got this funding without a laid-out plan
+and in a twenty minute conversation with his boss, the leader of ARPA, Charlie
+Herzfeld.</p>
+<h1>Tutorial on ifdown and ifup, and a little ifconfig</h1>
+<p>If you ever, on Linux, need to change your network configuration, you'll need
+to know the network interface name.</p>
+<p>You can get this from <code>ifconfig</code> - the command without arguments prints all
+the interfaces installed on the computer. An ifconfig listing will have the name
+of the interface in the first line of each block, each block corresponding to
+one interface. Example for an interface named <code>eno1</code>.</p>
+<pre><code>eno1      Link encap:Ethernet  HWaddr 90:b1:1c:88:bc:1d  
+          inet addr:10.101.6.28  Bcast:10.101.6.255  Mask:255.255.255.0
+          inet6 addr: fe80::8c3d:d00f:c95:8a5a/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:73651 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:61284 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:60730681 (60.7 MB)  TX bytes:10256534 (10.2 MB)
+          Interrupt:20 Memory:f7c00000-f7c20000 
+</code></pre>
+<p>Say that you wanted to change your <code>eno1</code> to a static IP address - on Ubuntu
+you would make the necessary changes to <code>/etc/network/interfaces</code>. Then, you
+would run the following to apply those changes:</p>
+<pre><code class="highlight-bash">ifdown eno1
+ifup eno1
+</code></pre>
+</div><div class="post" ng-show="post == 'week1'"><h1>Graded Exercise 1</h1>
+<h2>10 Questions and Answers</h2>
+<ol>
+<li>
+<p>Why is transport-level multiplexing and demultiplexing necessary?</p>
+<p>If it didn't exist, there could only ever be one process running on a host!</p>
+<p>This answer needs some context: at the bare minimum, a transport layer
+takes host-to-host messages and turns them into process-to-process messages.
+This process is known as transport-level multiplexing and demultiplexing.
+It's necessary because some of the segments arriving at the transport
+layer at a particular host are destined for unique processes on that host -
+some segments are for a web server, while others may be for a secure shell
+connection, for example. The transport layer has only one 'pipe' in and one
+'pipe' out - the network layer - and so it must somehow distinguish between
+messages bound for different processes.</p>
+</li>
+<li>
+<p>Why does UDP use a two-tuple for multiplexing and TCP use a four-tuple?</p>
+<p>The critical difference is the privacy of the connection. UDP is said to be
+'connectionless' - this means that all the UDP segments destined for a
+certain port and address arrive at the same place, and it's up to the
+application layer to do any additional demultiplexing. TCP has a notion of
+a private connection - this means that every process-to-process connection
+has a specific private entity that receives and sends data. Sometimes,
+this is useful for an application.</p>
+<p>More technically, UDP identifies one connection per port and address, while
+TCP takes into account the port and address of the sender as well.</p>
+</li>
+<li>
+<p>Given that TCP provides so many more features to an application, why would
+a developer choose UDP?</p>
+<p>Sometimes, the additional overhead of those features is a steep cost. If
+your application has specific tight time demands, and can suffer some
+packet loss, it makes a great deal more sense to use UDP. This is especially
+noticeable when your data consists of many small messages, where the
+transmission overhead of TCP can very quickly add up. One arena where this
+conversation happens over and over again is in networked game development -
+the TCP overhead can make a latency difference on the order of several video frames
+on some kinds of connections. Streaming media is another arena where this
+discussion happens frequently.</p>
+</li>
+<li>
+<p>What are the four key mechanics that allow reliable data transfer over an unreliable
+network, and what does each do?</p>
+<p>The four key mechanics: acknowledgements, timers, retransmissions, and
+sequence numbers.</p>
+<p>Acknowledgements are segments sent from receiver to sender, letting the sender
+know that a particular segment was received properly. They rely on the lower-level
+details of checksums to confirm that a segment was not corrupted on the network.</p>
+<p>Timers control when a segment should be considered lost - if an acknowledgement
+is not received in time, the sender begins a retransmission. This saves a great deal
+of time that would otherwise be spent waiting for acknowledgements.</p>
+<p>Retransmission is the process of resending data for which acknowledgements were
+not received, or not received in time. This is how loss and corruption are corrected.</p>
+<p>Sequence numbers are used to indicate the order in which packets should be re-assembled
+to provide the complete message. This allows a receiver to discover if a packet has been
+lost, as well as re-order packets that are recieved out of order.</p>
+</li>
+<li>
+<p>How does a checksum work?</p>
+<p>It's easiest to begin this thought with how we check a checksum, and then
+move to how one is computed.</p>
+<p>In the most straightforward implementation, a checksum allows all the words
+(usually 16-bit words) in a segment to be summed with overflow to some
+constant number. In practice, a segment is padded to be a multiple of 16-bits
+and then summed, and then the result is checked to see if it is all 1s. This
+means that almost certainly, there was no corruption of the segment on it's
+way across the network. If the sum is anything else, the packet should be
+marked as having an error and discarded.</p>
+<p>Creating a checksum is not much harder. We fill the checksum field with zeros
+and then compute the number that would have to fit in that field to create
+an all ones sum at the receiving end.</p>
+</li>
+<li>
+<p>What are the key points of the alternating-bit protocol?</p>
+<p>In actual TCP packets, there is a relatively large sequence and acknowledgement
+number. For the introductory discussion of sequence and acknowledgement
+numbers in the text, for the alternating-bit protocol, this is simplified
+to a 1-bit number.</p>
+<p>This has some important consequences:</p>
+<p>The protocol becomes a stop-and-wait protocol, because it sends one packet
+and then must wait for a sufficient acknowledgement before continuing. It
+is very slow as a result - there is no pipelining of packets. We explore
+pipelining in the next question.</p>
+<p>As a positive, it is very easy to detect when a duplicate packet has been
+sent - are we expecting packet 0 or packet 1? Also, our ACK messages can
+be very compact and simple.</p>
+<p>Aside from the speed limitation, the alternating-bit protocol is already
+a reliable data transfer, and because it stops and waits, it does not need
+to worry about accepting more than one packet at a time, and does not need
+to worry about out-of-order packets.</p>
+</li>
+</ol>
+<ol start="7">
+<li>
+<p>What are the key points of the go-back-n and selective-repeat protocols?</p>
+<p>These are both pipelined protocols, meaning many packets can be 'in the air'
+at once. As such, they use larger sequence and acknowledgement numbers, and
+are much faster. Go-back-n and selective repeat are two basic approaches to
+recovering from errors that may occur in a pipelined protocol.</p>
+<p>In go-back-n protocols, the sender can send many packets without waiting
+for an acknowledgement, but can't have more than some specified number
+of unacknowledged packets at a time. Essentially, when that maximum is
+reached, it must wait for some acknowledgements before continuing.</p>
+<p>This brings forth the notion of a sliding-window-protocol - there is some
+allowable window of packets that can be sent but haven't yet been acknowledged.
+This window moves forward over the range of sequence numbers as time progresses.</p>
+<p>Another speedup in go-back-n is called cumulative acknowledgement, meaning
+that a reciever can send a single acknowledgement for multiple packets.</p>
+<p>When packets are lost or delayed in go-back-n, the sender retransmits all
+packets that have been sent but not acknowledged. This is where go-back-n
+gets its name.</p>
+<p>One problem with GBN protocols is that we may have to retransmit many packets
+when a single one is lost - which is a problem that is addressed by selective
+repeat protocols.</p>
+<p>Selective repeat improves on GBN by only retransmitting packets for which no
+ACK has been recieved - this does away with cumulative acknowledgements,
+and returns to one ACK per packet, but this is worth it in channels where
+packet loss is relatively high. We again have the notion of a window,
+but the window may not be synchronized. This has the important effect that
+a window cannot be more than half the range of sequence numbers, as sequence
+numbers are usually finite in length.</p>
+</li>
+<li>
+<p>Which is actually used by TCP, go-back-n, or selective repeat?</p>
+<p>This is a trick question - TCP has features of both protocols, with some
+significant differences. For example, TCP uses sequence and ack numbers
+that refer to the bytes expected in the message, not the packet numbers.
+We say that TCP is a hybrid.</p>
+</li>
+<li>
+<p>What's the practical reason why TCP congestion control is additive when boosting
+transmission speed, and multiplicative when reducing it?</p>
+<p>It's not actually discussed in too much detail in the book - but the essential
+answer is that we want to rapidly cut throughput to avoid congestion, and
+slowly probe back up to soak up available bandwidth. If TCP was multiplicative
+both ways, we'd see very unstable performance under load.</p>
+</li>
+<li>
+<p>What's the problem with fairness and UDP? Fairness and TCP?</p>
+<p>UDP applications do not throttle their bandwidth usage when faced with
+congestion - they simply lose packets. Recalling that a lost packet
+uses all the bandwidth up to the point of loss, a lost UDP packet may
+crowd out other TCP connections. This is an intense area of research.</p>
+<p>Something like this problem also happens with TCP - applications that
+use multiple TCP connections in parallel may obtain an unequal share of
+bandwidth, when bandwidth is allocated equally per connection.</p>
+</li>
+</ol>
+<h2>Two back-of-chapter problems</h2>
+<h3>Chapter 3, Problem P1</h3>
+<p>This problem has six parts, dealing mostly with port numbers and your
+understanding of transport level multiplexing.</p>
+<p>There are many possible answers to this problem, but there's a pattern that they
+must follow. Recall that a server process S is running on a single port. Recall
+also that Telnet is a TCP service, so the port numbers will be consistent for
+a single connection.</p>
+<p>With that in mind, parts <em>a</em> through <em>d</em> will share a single port number for
+Server S. The port numbers for A and B should remain consistent - the source
+port for A and the destination port for A will be the same. Here's a sample
+solution for <em>a</em> through <em>d</em> that follows these constraints:</p>
+<p><em>a</em>: source 5678, destination 23</p>
+<p><em>b</em>: source 5689, destination 23</p>
+<p><em>c</em>: source 23, destination 5678</p>
+<p><em>d</em>: source 23, destination 5689</p>
+<p>Parts <em>e</em> and <em>f</em> deserve some additional context. Recall that a port number is
+unique to a host - when a process reserves a single TCP port number on a host,
+no other process on that host can use that port number. Thus, we answer <em>e</em> and
+<em>f</em> like this:</p>
+<p><em>e</em>: Yes, it is possible that A to S and B to S can have the same exact source
+and destination port numbers. This is because a reservation on A does not affect
+the reservations on B.</p>
+<p><em>f</em>: No, this is not possible if they are on the same host. Different port
+numbers will have to be used by Clients A and B.</p>
+<h3>Chapter 3, Problem P3</h3>
+<p>This problem delves into a simple implementation of a checksum. A useful
+definition is <em>1s complement</em>, which simply means:</p>
+<blockquote>
+<p>Substitute each 1 for a 0, and each 0 for a 1.</p>
+</blockquote>
+<p>This substitution is done simultaneously - otherwise you would end up with all
+1s!</p>
+<p>Notice also that the problem leaves it to you to decide that summing bytes
+together may produce an overflow that you need to discard.</p>
+<p>So, for the first part of the exercise, you have the following arithmetic:</p>
+<pre><code>   01010011
+ + 01100110 sum of the first two bytes
+   --------
+   10111001
+   01110100
+ + -------- sum of running total and third byte  
+   00101101
+   
+   11010010 1s complement (inversion)
+</code></pre>
+<p>UDP takes the 1s complement of the sum, because it means that the sum of
+all the words plus the checksum will equal all 1s in binary - this is a simple
+method of error detection that requires only basic programming knowledge to
+understand. It can be implemented simply as the check of the sum of all the
+words in the segment, discarding the overflow.</p>
+<p>The reciever detects those errors by making sure the sum equals
+<code>1111111111111111</code> in binary.</p>
+<p>When we look at what kinds of errors can be detected this way, we see that a one
+bit error cannot go undetected - there will always be a carried effect from that
+bit.</p>
+<p>A 2-bit error, however, cannot always be detected. The bits might be flipped in
+such a way that the first error is 'corrected' by the second, and the checksum
+still equals the same number. This could happen if the flipped bits occupy the
+same place in the words in two different words.</p>
+<h2>Wireshark Lab</h2>
+<p><a href="Wireshark-TCP.pdf">Wireshark-TCP.pdf</a></p>
+</div><div class="post" ng-show="post == '3.1'"><h1>Chapter 3 Section 1</h1>
+<h3>Important Terms:</h3>
+<p><strong>logical communication</strong> - communication as if two processes were directly connected</p>
+<p><strong>segment</strong> - transport-layer packets, created usually by breaking application messages into chunks and adding transport-layer headers</p>
+<p><strong>UDP</strong> - the User Datagram Protocol, providing unreliable, connectionless service</p>
+<p><strong>TCP</strong> - the Transmission Control Protocol, providing reliable, connection-oriented service</p>
+<p><strong>IP</strong> - the network-layer protocol for the internet, Internet Protocol, in which each host has an IP address</p>
+<p><strong>best-effort delivery service</strong> - a service that makes an effort to deliver segments, but makes no guarantees</p>
+<p><strong>unreliable service</strong> - a service without guaranteed delivery, order, or integrity</p>
+<p><strong>transport-layer multiplexing and demultiplexing</strong> - extending host-to-host delivery to process-to-process delivery</p>
+<p><strong>reliable data transfer</strong> - a transfer that guarantees data arrives in order and correct</p>
+<p><strong>congestion control</strong> - preventing any one TCP connection from swamping the network layer with too much traffic</p>
+<h3>Big Ideas</h3>
+<p>There are two transport-layer protocols available on the internet - TCP and UDP.</p>
+<p>TCP has the advantage that it provides additional services on top of the unreliable IP
+protocol that guarantee order and correctness of data. UDP does not provide these
+guarantees, but suffers less additional per-segment overhead as a result. Both
+protocols provide error-checking capability.</p>
+<p>These transport-layer protocols are implemented in the network edge and not
+in the network core. Their job is to extend the network-layer communication
+into the application. We call a message at this level a 'segment', to be
+distinguished from the 'message' at the application level and the 'datagram'
+at the network level.</p>
+</div><div class="post" ng-show="post == '3.2'"><h1>Chapter 3 Section 2</h1>
+<h3>Important Terms:</h3>
+<p><strong>socket</strong> - an entity through which data passes between network and process</p>
+<p><strong>demultiplexing</strong>  - in a transport context, delivery of the data in a segment
+to the correct process</p>
+<p><strong>multiplexing</strong> - in a transport context, gathering data chunks from different
+sockets encapsulating those chunks, and passing them to the network</p>
+<p><strong>source/destination port number field</strong> - fields in a segment that indicate the socket to
+which data is to be delivered. a 16-bit integer.</p>
+<p><strong>well-known port numbers</strong> - the port numbers from 0 to 1023 that are reserved
+for use by well-known application protocols</p>
+<h3>Big Ideas</h3>
+<p>UDP Multiplexing is simpler than TCP multiplexing - a UDP segment contains two
+2-tuples identifying the source and destination. Each tuple contains an IP
+address and a port number. Two UDP segments with the same destination tuple
+will be routed to the same socket. A UDP program may use the source tuple to
+know where to send a reply.</p>
+<p>TCP Multiplexing is more complex. Each TCP socket is identified by a four-tuple,
+containing the same information as the source and delivered tuples from UDP,
+but simply concatenated together. Essentially, each socket is a private connection
+between two hosts. The host uses the entire four-tuple to figure out where to
+send an incoming TCP segment.</p>
+</div><div class="post" ng-show="post == '3.3'"><h1>Chapter 3 Section 3</h1>
+<h3>Important Terms:</h3>
+<p><strong>end-end principle</strong> - it may not be expensive to provide functions at a higher
+level, even if they are implemented at a lower level</p>
+<h3>Big Ideas:</h3>
+<p>UDP is connectionless, compared to TCP which has specific private entities per
+client-server connection. This is one advantage that UDP may have over TCP for
+certain kinds of applications. Other advantages include:</p>
+<ul>
+<li>Greater control over the transport layer from an application level</li>
+<li>Less delay on segment transmission</li>
+<li>No handshake delay (no handshake in general)</li>
+<li>Lower memory requirements (no state-per-connection)</li>
+<li>Smaller overhead</li>
+<li>No congestion control (not throttled as much, theoretically)</li>
+</ul>
+<p>Therefore, UDP is used when some loss is tolerable or when performance under
+stress is important. It used to be the case that streaming media was mostly a
+UDP affair - but TCP is increasingly used instead.</p>
+<p>UDP can be made reliable - but this requires a lot of work on the application
+developer's part.</p>
+<p>The segment structure of UDP is very simple. The header contains four fields,
+each 16 bits. Those fields are the source port number, the destination port
+number, the length of the data field, and a computed checksum. The data follows.</p>
+<p>The checksum is computed essentially by padding the segment to some multiple of
+16 bits, adding together all the 16 bit words, and taking their ones complement.
+At the recieving end, all the 16 bit words, with zero taking the place of the
+checksum, are added, along with the checksum.
+Overflow is thrown away. If the result is not all ones,
+the packet has been corrupted somehow and either a warning is emitted or the
+packet never reaches the application layer.</p>
+</div></div></div></div></body></html>

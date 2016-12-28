@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/18/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 18th
+    </h1>
+<h3>Broadcast Routing</h3>
+<ul>
+    <li>Service delivering a packet from the source node to all other nodes in the network</li>
+    <li>Multiple approaches</li>
+    <ul>
+        <li style="color:chartreuse">N-way Unicast Approach</li>
+        <ul>
+            <li>Given N destination nodes, source node makes N copies and sends one to each node</li>
+            <li>Various problems</li>
+            <ul>
+                <li>Requires source node to have a list of all other nodes</li>
+                <li>If there is only one link between the source node and the rest of the network, that link will be clogged with all N messages</li>
+                <li>Broadcast Routing is often used to update unicast routes, so using unicast routing to do broadcast routing is unwise</li>
+            </ul>
+        </ul>
+        <li style="color:chartreuse">Uncontrolled Flooding Approach</li>
+        <ul>
+            <li>Source node sends a packet to each neighbor</li>
+            <li>When a node receives a packet, it sends it to all neighbors but the sender</li>
+            <li>One big problem</li>
+            <ul>
+                <li style="color:chartreuse">Broadcast storm</li>
+                <li>If there are any cycles in the graph, packets will cycle for eternity, clogging the network</li>
+            </ul>
+        </ul>
+        <li style="color:chartreuse">Sequence-Number-Controlled Flooding</li>
+        <ul>
+            <li>Source node puts its identifier and a packet identifier in the packet header</li>
+            <li>Each node has a list of packet-source pairs it has already received and sent on</li>
+            <li>Any duplicate packets are summarily dropped</li>
+            <li>One small problem</li>
+            <ul><li>Duplicate packets are still sent, even if they're dropped almost immediately</li><ul>
+        </ul>
+        <li style="color:chartreuse">Reverse Path Forwarding</li>
+        <ul>
+            <li>AKA Reverse Path Broadcast</li>
+            <li>Improvement on Sequence-Number-Controlled flooding</li>
+            <li>Each node only duplicates and transmits a packet if the node it was received from is on the shortest path to the source</li>
+            <li>Requires each node to know which of its neighbors is closest to each other node</li>
+        </ul>
+        <li style="color:chartreuse">Spanning-Tree Broadcast</li>
+        <ul>
+            <li>Packets are only forwarded along the <span style="color:chartreuse">minimum spanning tree</span></li>
+            <li>Requires each node to have a list of which of its links are in the tree</li>
+        </ul>
+    </ul>
+    <li>Broadcast Protocols used in higher layers</li>
+    <ul>
+        <li style="color:chartreuse">Gnutella</li>
+        <ul>
+            <li>Application-level</li>
+            <li>Sends content queries to peers in a network</li>
+            <li>Link is a TCP connection</li>
+            <li>Uses sequence-number-controlled flooding with a 16-bit identifier and descriptor</li>
+            <li>Has a TTL to limit the number of hops a query can take</li>
+            <li>Each query only reaches a subset of the network (<span style="color:chartreuse">limited-scope flooding</span>)</li>
+        </ul>
+        <li style="color:chartreuse">Link-State Advertisements</li>
+        <ul>
+            <li>Sent in the OSPF and IS-IS (Intermediate-System-to-Intermediate-System) routing algorithms</li>
+            <li>Uses a 32-bit sequence number and a 16-bit age field to identift LSAs</li>
+            <li>Broadcasts LSAs periodically, when a neighbor link cost changes, or when a link goes up/down</li>
+            <li>With flooding, an older packet can arrive after a newer one</li>
+            <li>Allows nodes to determine which packets in the buffer to drop if it gets too full</li>
+            <li>At one point, incorrectly transmitted LSAs from two broken routers caused an early algorithm to take down ARPAnet</li>
+        </ul>
+    </ul>
+</ul>
+<h3>Minimum Spanning Tree</h3>
+<ul>
+    <li>Tree which contains each node in a graph and whose cost is the minimum of all possible trees</li>
+    <li>Many algorithms exist to create one, the book only looks at one</li>
+    <li>Center based approach</li>
+    <ol>
+        <li>Define a center node/rendezvous point/core</li>
+        <li>Have each node unicast a tree-join message to the center node</li>
+        <li>When the center node or any node on the tree receives a tree-join message, the route the message took to reach that node is added to the tree</li>
+    </ol>
+</ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

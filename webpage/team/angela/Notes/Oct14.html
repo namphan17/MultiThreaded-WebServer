@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+   Oct 14
+</title>
+</head>
+<body><body bgcolor="#9966ff">
+	<h1>
+         <b>(Oct 14)Network Layer</b>
+    	</h1>
+	<h2>4.4.1 Datagram Formate(331-335)</h2>
+	<ul> 
+ 	<li>network-layer packet is referred to as a datagram. and the key feild are as follows:</li>
+<ul>
+<li>Version number: 4 bits that specify the IP protocol version of the data gram and by looking at it the router can determine how to interpret the remainder of the IP datagram</li>
+<li>Header length: 4 bits that specify where in the IP datagram the data actually begins </li>
+<li>Type of service: 8 bit that specify different types of IP datagrams. for instance real time vs. non real time traffic
+</li>
+<li>Datagram length: 16 bit that specify the length and intersting fact:the theoretical maximum size
+of the IP datagram is 65,535 bytes. However, datagrams are rarely larger than
+1,500 bytes!</li>
+<li>Identifier, flags, fragmentation offset: three feilds that are all to do with IP fragmentation but the book was questionable about it because in the future there will be contradtions like that now a days there is no IP framentaion allowed.   </li>
+<li>Time to live: 8 bit and we have delt with this so.. </li>
+<li>Protocal: 8 bit that is only used when it reaches its final destination. That specify transport layer protocol to which data portion to look at. this is super interesting.  </li>
+<li>Header checksum:16 bit which we have also talked about so...</li>
+<li>Source and destination IP addresses:32 bit holds the source IP address into source and ultimate destination into the destination IP address fields</li>
+<li>Options:The options fields allow an IP header to be extended, Header options
+were meant to be used rarely</li>
+<li>Data (payload): the actual data wanting to be sent</li>
+</ul>
+</ul>
+<p>A diagram:</p>
+<img src="http://docstore.mik.ua/orelly/networking/tcpip/figs/tcp2_0105.gif" alt="Smiley face" height="273" width="503">
+</body>
+</html>

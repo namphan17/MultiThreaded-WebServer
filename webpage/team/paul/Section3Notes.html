@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>
+Notes on Section 3 
+</title> 
+<h1>Notes on Section 3</h1>
+<style>
+body{
+	background-color: black;	
+	color: green; 
+}
+</style>
+</head> 
+<body>
+<ol>
+	<li>What is Multiplexing?</li><br>
+	<ul><li>Multiplexing is used in order to direct packets sent to and from hosts to specific processes on a host system (via ports).</li><br>
+	<li>Multiplexing is done by the host sending packets, in which the host specifies a source IP address (the sender), source port (for receiving), destination address, and destination port (to for demultiplexing to a specific process on the host system)</li><br>
+	<li>Multiplexing is useful, even when multiple hosts try to connect to a system, since multiplexing can still be done via the source IP addresses (they will be different for each host) even when the port is the same for all connections (for instance connecting to port 80).</li><br> 
+	</ul> 
+	<li>Multiplexing on UDP vs. TCP</li><br>
+	<ul><li>In essence, TCP and UDP multiplexing work in the same way. However, there are key differences on how the multiplexing occurs based on the protocol.</li><br> ion
+	<li>TCP uses reliable data transfer, congestion control, and requires a 3 way handshake (to establish a reliable connection</li><br>
+	<li>UDP doesn't have congestion control, reliable data transfer, or even have a way to show that a connection was established. UDP has a connectionless (that is, no handshake) transport scheme. </li><br>
+	</ul> 
+	<li>Why use UDP then?</li><br> 
+	<ul><li>Although UDP is seemingly less effective, it does use less data to use multiplexing. TCP uses 20 bytes of overhead data, whereas UDP uses only 8 bytes.</li><br> 
+	</ul><br>
+</ol><br><br><br><br>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/> 
+</body>  
+</html> 
+

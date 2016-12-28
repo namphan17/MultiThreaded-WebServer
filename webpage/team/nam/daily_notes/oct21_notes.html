@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+               <h1 class="section">CHAPTER 5.2: Error-Detection and Correction Techniques</h1>
+               <ul>
+                  <li>
+                     <h3 class="section">Parity Checks</h3>
+                     <ul>
+                        <li>
+                        Suppose that the information to be sent, D, has d bits. In an even parity scheme, the sender simply includes one additional bit and chooses its value such that the total number of 1s in the d + 1 bits (the original information plus a parity bit) is even.
+                        </li>
+                        <li>
+                        Receiver operation is also simple with a single parity bit. The receiver need only count the number of 1s in the received d + 1 bits. If an odd number of 1- valued bits are found with an even parity scheme, the receiver knows that at least one bit error has occurred.
+                        </li>
+                        <li>
+                        Under burst error conditions, the probability of undetected errors in a frame protected by single-bit parity can approach 50 percent
+                        </li>
+                        <li>
+                        We use a two-dimensional generalization of the single-bit parity scheme. Here, the d bits in D are divided into i rows and j columns. A parity value is computed for each row and for each column. The resulting i + j + 1 parity bits comprise the link-layer frame’s error-detection bits.
+                        </li>
+                  </ul>
+                  </li>
+                  <li>
+                     <h3 class="section">Checksuming Methods</h3>
+                     <ul>
+                        <li>The Internet checksum is based on this approach—bytes of data are treated as 16-bit integers and summed. The 1s complement of this sum then forms the Internet checksum that is carried in the segment header.</li>
+                        <li>Checksumming methods require relatively little packet overhead.</li>
+                     </ul>
+                  </li>
+                  <li>
+                     <h3 class="section">Cyclic Redundancy Check</h3>
+                     <ul>
+                        <li>
+                           CRC codes are also known as polynomial codes, since it is possible to view the bit string to be sent as a polynomial whose coefficients are the 0 and 1 values in the bit string, with operations on the bit string interpreted as polynomial arithmetic.
+                        </li>
+                        <li>
+                           All CRC calculations are done in modulo-2 arithmetic without carries in addition or borrows in subtraction. This means that addition and subtraction are identical, and both are equivalent to the bitwise exclusive-or (XOR) of the operands.
+                        </li>
+                        <li>
+                           Each of the CRC standards can detect burst errors of fewer than r + 1 bits. (This means that all consecutive bit errors of r bits or fewer will be detected.)
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+         </div>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

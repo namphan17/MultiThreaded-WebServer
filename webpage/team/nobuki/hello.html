@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Hello
+</title>
+</head>
+<body>
+    <h1>
+        Nobuki Harata
+    </h1>
+    <p>
+        I really like orcas and Pancheros. I love romantic walks on the beach and spontaneous adventures. I'm interested in females below the age of 70.
+        DM me if you want to learn more ;)  
+    </p>
+    <ul>
+        <li>malware: a broad term for malicious things that can enter and infect a device</li>
+        <li>botnet: a network of thousands of similarly compromised devices</li>
+        <li>self-replicating: once it infects one host, from that host it seeks entry into other hosts over the Internet</li>
+        <li>Viruses: malware that require some form of user interaction to infect the user’s device</li>
+        <li>Worms are malware that can enter a device without any explicit user interaction</li>
+        
+        <li>DoS attacks, or Denial-of-Service attacks do exactly what the name implies. It renders a network, host, or other piece
+of infrastructure unusable by legitimate users</li>
+        <li>There are three main types of dos attacks</li>
+        <ul>
+            <li>Vulnerablility attacks: well-crafted messages are sent to a vulnerable application or operating system. The packets sent may stop or crash a service or host.</li>
+            <li>Bandwidth flooding: sends so many packets to a host that it clogs the access link, preventing legitimate packets from reaching the server </li>
+            <li>Connection flooding: similar to dwidth flooding, except it uses TCP connections to prevent other connections </li>
+        </ul>
+        <li>Bandwidth flooding in more detail</li>
+        <ul>
+            <li>if an attacker sends access rate of  R bps, it will cause damage</li>
+            <li>if the attacker has one source of attack, it is easier for the routers to block it off, but if there are multiple sources, it is much harder</li>
+            <li>if there are multiple sources, it is called a DDoS(distributed denial of service)</li>
+            <li>DDoS can use infected botnets for the attacks</li>
+        </ul>
+        <li>Packet sniffer: a passive reciever that is placed near a wireless transmitter that takes in and records all the packets that pass by</li>
+        <ul>
+            <li>wired or LAN networks can also be sniffed</li>
+            <li>packet sniffers are hard to detect because they are passive.</li>
+            <li>the best defense is cryptography</li>  
+        </ul> 
+        <li>IP spoofing: giving a false source to hide the attacker as another user</li>
+    </ul>
+    <h1>Network Applications</h1>
+    <ul>
+        <li>It is important to write programs that run on different types of end systems.</li>
+        <li>When writing the code, it should be written in a way that can be run on multiple end systems (written in java, C, or python)</li>
+        <li>You don't need to write code that runs in network core devices like routers, or linked layer switches, because you can't</li>
+        <li>Application Architecture</li>
+        <ul>
+            <li>Client-Server Architecture: there is an always-oh host called a server. that server services requests from many other hosts called clients</li>
+            <li>two clients don't directly communicate with each other</li>
+            <li>the server has an IP address</li>
+            <li>Client can always contact the server by sending packets to the IP address</li>
+            <li>Data Center: a large virtual server housing a large number of hosts. It is used if only one server is handling all the requests and it is being overwhelmed.</li>
+            <li>Peer-to-peer or P2P doesnt rely on dedicated servers</li>
+            <li>p2p connects hosts directly called peers</li>
+            <li>peers are personal devices</li>
+            <li>self scalability: peers create the workload, but also take the workload.</li>
+        </ul>
+    </ul>
+    <h1>Elctronic Mail in the Internet</h1>
+    <ul>
+        <li>email is asyncronous, which means you don't have to syncronise with other people. You can send and recieve mail when convenient</li>
+        <li>There are three major components to the Internet mail system.</li>
+        <ul>
+            <li>user agents</li>
+            <li>mail servers</li>
+            <li>SMPT(Simple Mail Transfer Protocol)</li>
+            <ul>
+                <li>SMPT transfers messages from the sender to the reciever.</li>
+                <li>SMPT orignally was from 1982</li>
+                <li>SMPT tries to deliver a message to the reciever. If the message is not recieved, it will try again later.</li>
+                <li>SMPT has two sides: a client side and a server side.</li>
+                <li>the client side sends the messages while the server side recieves the messages</li>
+                <li>The SMTP runs on steps. First, the client SMTP establishes a connection at the server SMTP. Then those two perform some application layer handshaking. then the two exchange information such as the email address of both sender and reciever and the message. Then the message is sent.</li>
+            </ul>
+        </ul>
+        
+        <li>There are differences between HTTP and SMTP</li>
+        <li>HTTP uses a pull protocol</li>
+        <li>A pull protocol is when information is loaded to a web server and the information can be pulled at convenience.</li>
+        <li>SMTP uses a push protocol</li>
+        <li>a push protocol pushes the information to the reciever. if the reciever doesn't get it/isn't able to, it will try again at a later time. </li>
+        <li>SMTP requires the message to be in 7-bit ASCII while HTTP does not.</li>
+        <li></li>
+    </ul>
+    <h3>Flow Control</h3>
+    <ul>
+        <li>A receive buffer is set aside for the bytes that are in correct order and sequence</li>
+        <li>The application will read from this buffer, but won’t necessarily read it immediately. It will read it once it is available to do so, so if there is a lot of data being sent to the receive buffer, it can overflow easily.</li>
+        <li>TCP has a flow-control service that changes the speed of the sending to match the speed of the reading application.</li>
+        <li>TCP also has a congestion control that throttles the TCP to prevent the IP network from clogging up(3.6-3.7)</li>
+        <li>Flow-Control controls the sender speed by a dynamic (constantly changing) variable called the Receive Window</li>
+        <ul>
+            <li>This Receive Window shows the sender how much free space is in the receive buffer.</li>
+            <li>It does this by doing the calculation of rwnd =  RcvBuffer - [LastByteRCVD - LastByteRead] where the LastByteRCVD and LastByteRead are numbers associated with the byte that is read or received.</li>
+            <li>Rwnd is initiated as rwnd = RcvBuffer because the buffer will be empty.</li>
+            <li>The receiver will send the rwnd to the sender.</li>
+            <li>The sender will need to keep track of variables of its own: LastByteSent and LastByteAcked (acked = acknowledged)</li>
+            <li>The amount of unacknowledged data is LastByteSent - LastByteAcked</li>
+            <li>The sender will control itself by keeping the unacknowledged data less than the rwnd</li>
+            <li>There is one problem with this. Once rwnd becomes 0, the receiver will tell the sender that rwnd =0, and then the sender will stop sending. Since the sender will stop sending, it will not ask for the rwnd again, because it will not send anything, even though the rwnd will become 0.</li>
+            <li>To solve this, the sender will send one data byte to the receiver so the rwnd will continuously be resubmitted to the sender</li>
+       
+        </ul>
+        <li>UDP will not do flow control, so the buffer will overflow.</li>
+        <li><a href="http://www.awl.com/kurose-ross">Illustrates the TCP receive window</a></li>
+        
+
+    </ul>
+</body>
+</html>

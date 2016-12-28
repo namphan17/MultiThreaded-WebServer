@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Homework Questions</title>
+<style type="text/css">
+ol {font-weight: bold;}
+ol li span {font-weight:normal;}
+</style>
+</head>
+<body>
+<h4>Page 294</h4>
+<b>P29.</b> <i>SYN cookies were discusses in Section 3.5.6.</i><br>
+<ol type="a">
+<li><span><i>Why is it necessary for the server to use a special initial sequence number in the SYNACK?</i><br>
+Because the server does not want to leave itself vulnerable to SYN-flood attacks, it closes each connection after sending an initial SYNACK. In order to validate the final ACK, it must encode a secret number, using the sequence number N as a seed, in a cookie to that client. The client then returns an ACK with a sequence number N+1 and the secret number, so the server subtracts 1 from the sequence number and recalculates the hash to make sure it is the same as the secret number. This makes sure that the client is valid, and not an impostor. 
+</span></li>
+<li><span><i>Suppose an attacker knows that a target host uses SYN cookies. Can the attacker create half-open connections by simply sending an ACK packet to the target? Why or why not?</i><br>
+An attacker would be able to create a fully open connection with a single ACK if it had knowledge of other SYN requests. If a client on a network that an attacker had access to received a SYNACK from a server, the attacker could sniff the packet and send an ACK to the server spoofing its IP and sequence number to initiate a TCP connection. The attacker would not be able to create a half-open connection, because the server drops all SYN request connections immediately after sending a SYNACK.
+</span></li>
+<li><span><i>Suppose an attacker collects a large amount of initial sequence numbers sent by the server. Can the attacker cause the server to create many fully open connections by sending ACKs with those initial sequence numbers? Why?</i><br>
+Yes, if an attacker was able to collect all the initial SYNACK responses, he would be able to spoof all the clients attempting to connect by spoofing the data from the packets they sniffed.
+</span></li>
+</ol>
+<span><i>I collaborated with Columbo on P29.</span></i>
+<br>
+<h4>Page 176</h4>
+<b>P21.</b> <i>Suppose that your department has a local DNS server for all computers in the department. You are an ordinary user (i.e., not a network/system administrator). Can you determine if an external Web site was likely accessed from a computer in your department a couple of seconds ago? Explain.</i><br>
+It is possible to determine if a website has been accessed in the office recently. A website that has not been cached will take an extra half-second to second to resolve the hostname before loading the page. If someone visited a page that loaded instantly, that means it was in the local DNS cache. The maximum Time To Live, or TTL, for DNS entries is 60 minutes, so someone in the office must've visited the page recently.
+</body>
+</html>

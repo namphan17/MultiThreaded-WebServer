@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>
+Notes on Section 3 
+</title> 
+<h1>Notes on Section 3</h1>
+<style>
+body{
+	background-color: black;	
+	color: green; 
+}
+</style>
+</head> 
+<body>
+<ol>
+	<li>How is congestion control done?</li><br>
+	<ul><li>Congestion control within a network is done one of two ways (usually), the most common being an end-to-end system where the router simply sends a bit to the host indicating that there is congestion within the network. Otherwise it's handled by the network passively, by simply injecting packets with indicators that alert the host to network congestion as the are passed from the receiver.</li><br>
+	</ul> 
+	<li>How does TCP manage network congestion?</li><br>
+	<ul><li>TCP manages network connection by altering how many packets it sends based on the estimated delay for the network congestion. Basically, TCP will alter the increment its MSS by 1 or more based on the calculations done CWND (Congestion Window). This approach towards network congestion is called <strong>Slow Start</strong>. </li><br>
+	<li>If the TCP notices a lack of delay, it will increase it's MSS at a continuous rate which is defined by the sender. Otherwise, it's MSS will fall back to the default, and continously rise again based on the delay (so as to detect when congestion has ended).</li><br>
+	<li>If TCP is sent into congestion avoidance, it will increment the MSS at a very slow, fixed rate. For instance, by finding that the delay has increased, it increases the MSS size by 1. TCP can be thrown into congestion avoidance if it receives multiple ACKs</li><br>
+	<li>Because TCP monitors is congestion window size automatically based on acknowledgements from routers or hosts, it's known as a <strong>self-clocking</strong> protocol. <strong>Self-Clocking</strong> meaning that TCP's values needn't be altered manually by the user, rather the calculations for delay and the adjustments for congestion that follow are all done automatically by the protocol itself.</li><br> 
+	</ul> 
+	<li>UDP congestion control?</li> 
+	<ul><li>Unlike TCP, UDP doesn't implement internal congestion control within the protocol. Rather, if congestion control were implemented, it would have to be done via the hosts or the network purposely and manually. Such as by doing end-to-end congestion avoidance, or network controlled congestion avoidance as mentioned above.</li><br> 
+	
+	</ul><br>
+</ol><br><br><br><br>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/> 
+</body>  
+</html> 
+

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="./HenryStyleSheet.css" />
+    <meta charset="utf-8" />
+    <title>Henrys Notes October 10th 2016</title>
+</head>
+<body>
+    <h2 id="pageHeader">Henry's Notes October 11<sup>th</sup></h2>
+
+    <h3>Principles of Reliable Data Transfer</h3>
+
+    <div>
+        <button type="button" id="div1Show">Show</button>
+        <button type="button" id="div1Hide">Hide</button><br/>
+    </div>
+    <div id="div1">
+        <ol>
+            <li>
+                The reliable transfer of data is central to the success of any networking implementation and is an issue at 
+                many levels of computing
+            </li>
+            <li>
+                In this section we see how TCP utilizes the principles of networking that are described herein.
+            </li>
+            <li>
+                On a reliable channel, no transferred bits are corrupted or lost, and are all delivered in the order they 
+                were sent.
+            </li>
+            <li>
+                One of the key troubles of RDT is that the layer below the data transfer protocol may be unreliable.
+            </li>
+            <li>
+                For our purposes we will assume that packets will be delivered in the order that they were sent, with potential 
+                for some being lost, and that the lower layer is simply an unreliable point-to-point channel.
+            </li>
+            <li>
+                Unidirectional data transfer is data sent only from sender to receiver, whereas bidirectional data 
+                transfer (full duplex) sends and receives data both ways.  Here we will discuss only unidirectional.</li>
+            <li>
+                Even in unidirectional data transfer, packets must be sent in both directions.  In addition to packets containing 
+                the data, there will need to be control packets sent back and forth.
+            </li>
+        </ol>
+    </div>
+
+    <h4>Building a Reliable Data Transfer Protocol</h4>
+
+    <div>
+        <button type="button" id="div2Show">Show</button>
+        <button type="button" id="div2Hhide">Hide</button><br/>
+    </div>
+    <div id="div2">
+        <p>
+            Here we examine a series of protocols of increasing complexity until we understand the complete form of
+            reliable data transfer protocol
+        </p>
+        <ol>
+            <li>
+                <p>Reliable Data Transfer over a Perfectly Reliable Channel: rdt1.0</p>
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+</body>
+</html>

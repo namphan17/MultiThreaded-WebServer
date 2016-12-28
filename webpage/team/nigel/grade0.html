@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Graded Assesment 0 - Ticknor</title>
+</head>
+<body>
+You may click on the questions to view the answers.<br>
+You may read my writeup on Vint Cerf <a href='vintcerf.html'>here</a>.<br>
+You may read my bash command reference <a href='bash.html'>here</a>.<br>
+
+<br>
+
+<div id='q1' onclick="toggleA('1')"><b>
+Q1. What are the two link-layer protocols, and when would each be used?
+</b></div>
+<div id='a1' style='display:none;'><i>
+A1. TCP: when data must be reliably transfered, UDP: when data loss is acceptable
+</i></div><br>
+<div id='q2' onclick="toggleA('2')"><b>
+Q2. What are 3 different types of DNS Records?
+</b></div>
+<div id='a2' style='display:none;'><i>
+A2. A, MX, CNAME, TXT, NS
+</i></div><br>
+<div id='q3' onclick="toggleA('3')"><b>
+Q3. What are the three types of DOS attacks
+</b></div>
+<div id='a3' style='display:none;'><i>
+A3. Vulnerability Attack, Bandwidth Flooding, Connection Flooding
+</i></div><br>
+<div id='q4' onclick="toggleA('4')"><b>
+Q4. Name the inventors of the TCP/IP protocol.
+</b></div>
+<div id='a4' style='display:none;'><i>
+A4. Vint Cerf and Robert Kahn
+</i></div><br>
+<div id='q5' onclick="toggleA('5')"><b>
+Q5. Name two issues with P2P networking.
+</b></div>
+<div id='a5' style='display:none;'><i>
+A5. Upstream resedential ISP speeds, finding initial peers, security
+</i></div><br>
+<div id='q6' onclick="toggleA('6')"><b>
+Q6. What two "layers" from OSI must be implemented in the Application Layer?
+</b></div>
+<div id='a6' style='display:none;'><i>
+A6. Presentation and Session
+</i></div><br>
+<div id='q7' onclick="toggleA('7')"><b>
+Q7. What is the difference between a virus and a worm?
+</b></div>
+<div id='a7' style='display:none;'><i>
+A7. A virus is malware that is user-executed, a worm automatically runs
+</i></div><br>
+<div id='q8' onclick="toggleA('8')"><b>
+Q8. What are the three prominent different types of mail server protocols?
+</b></div>
+<div id='a8' style='display:none;'><i>
+A8. IMAP, POP3, and SMTP
+</i></div>
+</body>
+<script language='javascript'>
+    function toggleA(n)
+    {
+        document.getElementById('a'+n).style.display = (document.getElementById('a'+n).style.display=='none')?'block':'none';
+    }
+</script>
+</html>

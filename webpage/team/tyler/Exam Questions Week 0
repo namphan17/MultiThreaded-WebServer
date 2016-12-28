@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Exam Questions
+</title>
+</head>
+<body>
+    <h1>
+        Exam Questions
+    </h1>
+    <p>
+        <u>Short Answer</u>
+        Q. In our text, we covered 3 of the most common methods of physical, guided media. What were they?
+        (Twisted Pair Copper Wire,  Coaxial Cable, and Fiber Optics. Can be found on pages 19 and 20.)
+        
+        Q. In addition to the physical guided media, we covered 2 methods of unguided media as well. Namely, Terrestrial
+        Radio Channels, and Satellite Radio Channels. What are the differences between the two? (Both can be found on page 21)
+        
+        Q. Explain the importance of layered architecture, and the advantages and disadvantages it brings. (Can be found on pages 47-50)
+        
+        Q. Why do most major web sites today use Cookies? And no, its not because they're delicious. (Page 108)
+        
+        <u>Multiple Choice</u>
+        Q. The standards of protocols on the internet, called Internet Standards, are developed by the Internet Engineering
+           Task Force, or the IETF. The IETF releases documents detailing these protocols and their design. These documents
+           are called, what? (Answer can be found on page 5)
+           a. SMTP's
+           b. TCP/IP's
+           c. HTTP's
+           d. RFC's
+           
+        Q. Which of these features does UDP Services feature, but TCP Services does not? (Pages 93 and 94)
+           a. Congestion Control
+           b. Reliable Data Transfer
+           c. A 'handshaking' procedure to prepare the server and client for incoming packets.
+           d. None of the above.
+           
+        
+        <u>Matching</u>
+        Q. Chapter 1.1 Vocab: Match the uppercase terms with their lowercase definitions.
+        
+        A.hosts           a. Protocols that control the sending and receiving of information through the internet.
+        B.packets         b. Packages of information sent through the network.
+        C.router          c. PC's, laptops, smartphones, tablets, TVs, gaming consoles, Web cams, automobiles and other devices that can connect to the internet.
+        D.TCP/IP          d. A type of switch that forwards information towards its destination in a network.
+        
+        Q  Q. HTTP will provide the user with a 'response message' to a users request message. Match the number code with the proper
+           response message. (Pages 106-107)
+           
+        A. 301            a. HTTP Version Not Supported
+        B. 505            b. OK
+        C. 404            c. Not Found
+        D. 200            d. Bad Request
+        E. 400            e. Moved Permanently
+
+    </p>
+</body>
+</html>

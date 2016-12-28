@@ -1,0 +1,42 @@
+<!-- 
+10-05.html
+Notes from October 5th
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>10.05 Notes</title>
+	<style>
+	  body { background-color: #457263;
+	         margin: auto; width: 80%;
+                   font-family: Verdana, sans-serif; }
+            #desc { text-align: center; }
+            a { color: #FFFFFF; }
+	</style>
+</head>
+<body>
+        <h1 id="desc"> Tyler Wians </h1>
+        <h5 id="desc"> CSC 317: Computer Networks</h5>
+        <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./10-05.html">10.05</a></p>	
+  
+	<h3>Client-Server and Peer-To-Peer Applications</h3>
+	
+	<h4> What is a Client-Server Application?</h4>
+	<p>This is a type of application where a host that is always running, called a <i>server</i>, services requests from
+	   many other hosts, called <i>clients</i>. These clients do not communicate directly with each other, but with the
+	   server itself. The server must be appropriately scaled to the expected workload. An example a of client-server 
+	   application is the website for a bank, where the client requests data from the bank's servers.</p>
+	
+	<h4> What is a Peer-to-Peer Application?</h4>
+	<p>In this type of application, two or more computers, or peers, pool their resources and communicate in a
+	decentralized network, meaning that they connect to each other rather than a server. A benefit of using
+	peer-to-peer, or P2P, applications is its self-scalability; however there are many set backs:</p>
+	<ul><li><b>Not ISP Friendly</b>: Most residential ISPs have been dimensioned for "asymmetrical" bandwidth usage.</li>
+	    <li><b>Security Flaws</b>: P2P connections are very vulnerable due to their highly distributed and open nature.</li>
+		<li><b>Incentives</b>: Many people must be convinced to volunteer their resources to applications, which can be a challenge.</li>
+    </ul>
+	
+</body>
+</html>

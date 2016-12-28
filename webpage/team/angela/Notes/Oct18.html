@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+   Oct 18
+</title>
+</head>
+<body><body bgcolor="#ffff66">
+	<h1>
+         <b>(Oct 18)Network Layer</b>
+    	</h1>
+	<h2>4.7.2 Multicast(405-412)</h2>
+<ul>	
+
+<li><b>Multicast</b>: Multicast packets are delieverd only to a subset of network nodes.</li>
+<li><b>Address indirection</b>: Multicast packets can't hold the addresses of all the destinationsit would be <b>too much</b>. Instead use a single identifier for a group of receivers, packets with the identifier are copies and delivered to all the multicast receivers associated with that group.</li>
+<li><b>Multicast group</b>: Group of receivers associated with a class D address (multicast identifier)</li>
+<li>Internet Group Management Protocol (IGMP)</li>
+<ul>
+<li>The IGMP protocol version 3 perates between a host and its directly attached router </li>
+
+<li>IGMP provides the means for a host to inform its attached router that an application
+running on the host wants to join a specific multicast group. Given that the scope of
+IGMP interaction is limited to a host and its attached router, another protocol is clearly required to coordinate the multicast routers throughout the Internet, so that multicast datagrams are routed to their final destinations. This latter
+functionality is accomplished by network-layer multicast routing algorithms, such as
+those we will consider shortly. Network-layer multicast in the Internet thus consists of
+two complementary components: IGMP and multicast routing protocols </li>
+<li>IGMP has only three message types. That are carried within an IP datagram, with an IP protocol number of 2. The membership_query message is sent by a router to all hosts on an attached interface to determine the set of all multicast groups that have been joined by the hosts on that interface.Hosts respond to a membership_query
+message with an IGMP membership_report message.</li>
+<li>the router infers that a host is no longer in the multicast group if it no longer
+responds to a membership_query message with the given group address. This is
+an example of what is sometimes called <b>soft state </b> in an Internet protocol.</li>
+</ul>
+<li><b>Multicast routing problem</b>  Hosts joined to the mul-
+ticast group are shaded in color; their immediately attached router is also shaded in
+color. As shown below, only a subset of routers actually needs to receive the multicast traffic. In  only routers A, B, E, and F need to receive the multicast traffic. Since none of the hosts attached to router D are joined to the multicast group and since router C has no attached hosts, neither C nor D needs to receive the multicast group traffic. <b>The goal of multicast routing, then, is to find a tree of links that connects all of the routers that have attached hosts belonging to the multicast group.</b> </li>
+<p>the diagram:</p>
+<img src="http://www.networkinginfoblog.com/contentsimages/Multicast%20hosts%20their%20attached%20routers%20and%20other%20routers.JPG" height="493" width="546">
+<li>Two approaches have been adopted for determining the multicast
+routing tree</li><ul>
+<li><b>Multicast routing using a group-shared tree</b>:a center-based approach is used to construct the multicast routing tree, with  edge  routers  with  attached  hosts belonging  to  the  multicast  group sending oin messages addressed to the center node</li>
+<li><b>Multicast routing using a source-based tree </b>:The second approach constructs a multicast routing tree for each source in the multicast group. In practice, an RPF algorithm (with source node x) is used to construct  a  multicast  forwarding  tree  for  multicast  datagrams  originating  at source x. The solution to the problem of receiving unwanted multicast  packets  under  RPF  is  known  as  <b>pruning</b>. A  multicast  router that receives multicast packets and has no attached hosts joined to that group will send a prune message to its upstream router</li></ul>
+
+
+</ul>
+</body>
+</html>

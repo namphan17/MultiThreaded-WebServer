@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    4.1-4.3
+</title>
+</head>
+<body>
+    <h1>
+        What's Inside a Router
+    </h1>
+
+    <ul>
+       <li>Forwarding function: the transfer of packets from a router's incoming links to the appropriate outging links at that router.</li>
+       <li>There are four router components.</li>
+            <ul>
+                <li>Input Ports</li>
+                    <ul>
+                        <li>It has several key functions.</li>
+                        <li>It terminates an incoming physical link to a router. </li>
+                        <li>It does functions that are needed to interoperate with the link layer at the other side of incoming links</li>
+                        <li>It consults the forwarding table to determine the output port that an arriving packet will be forwarded to</li>
+
+                    </ul>
+                <li>Switching Fabric</li>
+                    <ul>
+                        <li>This connects the input ports on the router to the output ports.</li>
+                    </ul>
+                <li>Output Ports</li>
+                    <ul>
+                        <li>An output port performs necessary link-layer and physical-layer functions to store packets received from the switching fabric and transmits them to the outging link</li>
+                        <li>If it is bidirectional, it will be paired with an input port on the same linke card.</li>
+                    </ul>
+                <li>Routing Processor</li>
+                    <ul>
+                        <li>This does the hard stuff.</li>
+                        <li>It executes the routing protocols and performs network management functions</li>
+                        <li>It also keeps routing tables and linked state information up to date.</li>
+                        <li>Furthermore, it computes the forwarding table for the router.</li>
+
+                    </ul>
+            </ul>
+       <li>Router forwarding plane: a collective word for forwarding functions that are almost always implemented in hardware.</li>
+       <li>Router control plane: executes the routing protocol, responds to attatched links and perform management functions.</li>
+
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+        
+    </ul>
+
+</body>
+</html>

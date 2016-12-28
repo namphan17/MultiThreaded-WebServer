@@ -1,0 +1,9 @@
+N'	D(b),p(b)	D(c),p(c)	D(d),p(d)	D(e),p(e)	D(f),p(f)
+a	2,a		3,a		4,a		infinity	infinity
+ab			3,a				infinity	7,b
+abc					4,a		4,c		6,c
+abcd							4,c
+abcde									5,e
+abcdef							
+
+

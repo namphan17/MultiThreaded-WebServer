@@ -1,0 +1,15 @@
+digraph g{
+	edge [arrowhead=none];
+	D->E [label=5];
+	C->D [label=5];
+	C->F [label=3];
+	C->E [label=1];
+	B->F [label=5];
+	B->C [label=5];
+	A->B [label=2];
+	A->C [label=3];
+	A->D [label=4];
+	edge[color=red];
+	E->F [label=1];
+	E [color = red];
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <style>
+h1, h2 {
+    text-align:center;
+    color:OrangeRed;
+    }
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    border: none;
+    text-align: left;
+    padding: 8px;
+}
+img {
+width:49%;
+}
+  </style>
+  
+  <head>
+    <title>
+      OCTOBER 11th HOMIE
+      </title>
+  </head>
+  <body>
+    <h1>October 11 Notes</h1>
+    <br>
+    <h2> GO-BACK-N vs SELECTIVE REPEAT </h2>
+    <br>
+    <table>
+      <tr>
+	<th>Basis For Comparison</th>
+	<th>GO-BACK-N</th>
+	<th>SELECTIVE REPEAT</th>
+      </tr>
+      <tr>
+	<th>Basic</th>
+	<th>Retransmits all the frames that sent after the frame which suspects to be damaged or lost.</th>
+	<th>Retransmits only those frames that are suspected to lost or damaged.</th>
+      </tr>
+      <tr>
+	<th>Bandwidth Utilization</th>
+	<th>If error rate is high, it waste a lot of bandwidth</th>
+	<th>Comparatively less bandwidth is wasted in retransmitting.</th>
+      </tr>
+      <tr>
+	<th>Complexity</th>
+	<th>Less complicated</th>
+	<th>More complex as it requires to apply extra logic and sorting and storage, at sender and receiver.</th>
+      </tr>
+      <tr>
+	<th>Window size</th>
+	<th>N-1</th>
+	<th><= (N+1)/2 </th>
+      </tr>
+      <tr>
+	<th>Sorting</th>
+	<th>Sorting is neither required at sender side nor at receiver side.</th>
+	<th>Receiver must be able to sort as it has to maintain the sequence of the frames.</th>
+      </tr>
+      <tr>
+	<th>Storing</th>
+	<th>Receivers do not store the frames received after the damaged frame until the damaged frame is retransmitted.</th>
+	<th>Receivers store the frames received after the damaged frame in the buffer until the damaged frame is replaced.</th>
+      </tr>
+      <tr>
+	<th>Searching</th>
+	<th>No searching of frame is required neither on the sender side nor on the receiver side.</th>
+	<th>The sender must be able to search and select only the requested frame.</th>
+      </tr>
+      <tr>
+	<th>ACK Numbers</th>
+	<th>NAK number refer to the next expected frame number.</th>
+	<th>NAK number refer to the frame lost.</th>
+      </tr>
+    </table>
+    <br>
+    <img src="http://techdifferences.com/wp-content/uploads/2016/05/Go-Back-N.jpg"/>
+    <img src="http://techdifferences.com/wp-content/uploads/2016/05/Selective-repeat.jpg"/>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+No.     Time           Source                Destination           Protocol Length Info
+     22 0.826185       10.200.5.234          128.119.240.90        HTTP     504    GET /~kurose/cover_5th_ed.jpg HTTP/1.1 
+
+Frame 22: 504 bytes on wire (4032 bits), 504 bytes captured (4032 bits) on interface 0
+Ethernet II, Src: Apple_14:39:e8 (88:1f:a1:14:39:e8), Dst: CiscoInc_57:c8:00 (00:17:df:57:c8:00)
+Internet Protocol Version 4, Src: 10.200.5.234, Dst: 128.119.240.90
+Transmission Control Protocol, Src Port: 60343, Dst Port: 80, Seq: 1, Ack: 1, Len: 438
+Hypertext Transfer Protocol
+    GET /~kurose/cover_5th_ed.jpg HTTP/1.1\r\n
+    Host: manic.cs.umass.edu\r\n
+    Connection: keep-alive\r\n
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36\r\n
+    Accept: image/webp,image/*,*/*;q=0.8\r\n
+    DNT: 1\r\n
+    Referer: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html\r\n
+    Accept-Encoding: gzip, deflate, sdch\r\n
+    Accept-Language: en-US,en;q=0.8,ja;q=0.6,fr;q=0.4\r\n
+    \r\n
+    [Full request URI: http://manic.cs.umass.edu/~kurose/cover_5th_ed.jpg]
+    [HTTP request 1/1]
+    [Response in frame: 24]

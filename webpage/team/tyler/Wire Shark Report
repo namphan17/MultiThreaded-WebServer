@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Wire Shark Report
+</title>
+</head>
+<body>
+    <h1>
+        Write a report on an exercise with Wireshark (choose one of the exercises that was given to you).
+        In these exercises, take the role of a teacher. For all parts of this exercise, write for a student who is visiting
+        our class for the first time. You may presume that the visitor has completed courses that are prerequisites for
+        CSC317 Computer Networks. 
+    </h1>
+    <p>
+            Hello! I'm here to show you how to use an interesting tool we've been working with in Computer Networks, Wireshark.
+        Wireshark is whats called a 'packet sniffer'. Packet sniffers are a tool that can read, copy, and then show us those
+        copies, of 'packets' of data being sent through a network. Packets are basically little bundles of data that can
+        contain all sorts of information. While packet sniffers can be extremely useful tools, I'm sure you can guess that they
+        can be used for fairly awful things. The data they copy and display could contain passwords, Social Security Numbers,
+        that sort of thing. And since packet sniffers don't directly interact with any of the packets, but merely make copies
+        of them, they can be extremely difficult to detect. While that data is still normally safe (things of that nature are
+        almost always encrypted), its still important that we understand how packet sniffers work, so we can use them for their
+        intended purpose and stop those from using it for nefarious ones.
+            Lets get started. To begin, if you are currently using Windows, you'll need to log in as a computer science student
+        using Ubutu. To do that,  restart the system on one of the computers in the computer science lab, and before windows
+        boots you should see a black screen with a few options. One is Windows, the second one down is Ubutu. Select Ubuntu
+        using the arrow keys and Enter. Once Ubuntu boots, log in with username: compsci and the password (which I won't
+        reproduce here. Ask your professor.). We have to log in with this account instead of our own, because using
+        Wireshark requires certain permissions that the compsci user has, and students do not.
+            Once you have logged in, you should see the desktop. The first thing we're going to want to do is open up
+        Wireshark. To do this, click the search button. Its the strange looking icon in the top left of your screen. Search
+        for Wireshark, and click the fin icon. Once the program is open, search again for your internet browser of choice,
+        enter moodle, and follow the forum link to the Wireshark labs. Over the past week or so I've been through several of
+        these, including the DNS,TCP, and UDP ones, but I think the HTTP one is probably the best way to get started (well,
+        perhaps excluding the 'Getting Started' lab, but I went over that one last week, so...).
+            Look at the lab, and notice the link to a webpage. We'll be using that link in just a second. So to start, we'll
+        begin capturing packets. Double click 'eno1' to start capturing. Once we start capturing, you'll start seeing lines
+        coming in. These lines are packets, and any of them can be clicked to get a closer look at them. For the time being
+        though, look at the box above that says 'Apply a display filter...'. This box lets us filter which packets we see.
+        Since we're only interested in HTTP packets right now, type in 'http' into the box, without the quotations.
+            Once we only see http packets, click on the link in the lab. This will cause two packets to appear in Wireshark,
+        one with the Info 'Get' (This is the GET message) and one with the info 'HTTP' (this is the RESPONSE message).
+        Once you see those two lines, stop packet capture by hitting the red square in the top left corner. If you click on
+        either one, you'll be able to see more information about that particular packet near the bottom of the screen.
+        (You'll also notice a screen containing ASCII and a bunch of seemingly random numbers. Just shrink that down to nothing
+        for now). You can get more info on any of the lines with an arrow by simply clicking the arrow. This will cause a drop-
+        down list to appear, with more info on that subject. Since we're doing the HTTP lab, click on the arrow next to 'HTTP'.
+            Lets take a look at this info to answer some of the lab questiosn. First, lets see what version of HTTP ourselves
+        and the server are running. If you've displayed additonal HTTP info in wireshark, you'll be able to see in the very
+        next line which version they're running. Clicking through both the GET and RESPONSE messages show the same thing,
+        HTTP/1.1. This tells us that both the server and the ourselves are using HTTP 1.1, not 1.0. Next, lets look at our IP
+        address and the IP address of the server. If you look at the GET message, and take a look at the Internet Protocol
+        line, you should see two IP adresses, one from src (source) and another from dst (destination). Since this is the GET
+        message, the source is our IP address, and the destination is the servers. Finally, lets take a look at what the
+        status code was. We can actually tell this directly from the info line. If you look at the response message, you'll
+        see '304 Not Modified'. This is the status code it returned to us. If you ever see a code you aren't familiar with,
+        googling the three numbers and the words following it will almost certainly bring you to what the code means.
+        Finally, if you look at both the GET and response messages, you can see that the last time they were modified was
+        the time you captured them. That's because the server is setting the 'last modified' time to be the current time.
+            Next, we're going to be moving on to part 3 of the lab. We're skipping part two, as it mostly just goes over what
+        was mentioned above. Part three, however, is supposed to show what happens when you retrieve a very long HTML file. So, close
+        Wireshark and reopen it as before. Begin capturing packets, and then follow the new link in the lab. Stop capture, and
+        filter for HTTP as before. Once again, we see a Get and Response message. Now this is where things get a little strange
+        for me, as supposedly you're supposed to get multiple packets back, but I only ever receive one, no matter how many
+        times I've attempted this section of the lab. Regardless, if it runs smoothly for you, you should receive many packets.
+        TCP packets can only handle so many bytes at one time, and so it breaks it down into many packets. In Wireshark, only
+        one of those packets should give you the status code and phrase to the request.
+            Lets move on to part four, where we deal with downloading embedded objects. These are things like pictures or
+        videos that are stored on another server. Start up wireshark and start sniffing, then follow the link in the lab. It
+        brings us to a page with two images. If you stop packet capture, and once again filter for HTTP, you'll notice that this
+        time you sent several Get requests and got an equal number of response messages. One should be for the HTML page itself,
+        the others for the images on the page (when I ran this lab the first time, I actually sent two Get requests and received
+        two response messages for the kurose cover. I'm unsure why this is, but the two pairs are identical.). If you look at the
+        Get requests, you'll see that their destination IP's are different, each being where that image originates. If I'm not
+        mistaken, I believe the images were downloaded from the two websites in parralel. We can tell this because we send out both
+        GET requests before we get either response message. Had they been serially found, we would have likely seen one Get request
+        and one response message before seeing the other pair. Instead, we see two Get requeests, followed by two response messages.
+            Moving on to the final part of the lab, we're going to see a site thats password protected. The lab itself will give you
+        the password and username for the site it has listed (which I will not reproduce here, again, see the lab). As always,
+        begin sniffing and follow to the site. Enter the log in information, and stop packet capture. If we take a look at the
+        resulting packets, we see that we made two Get requests, and received two responses. The first response we got is a 401
+        Unathorized status code, meaning we don't have permission to access the page. However, once we enter the information, we make
+        another request code. This time, the site allows entry, but we instead get a 404 Not Found response (I am unsure if the site
+        simply isn't there anymore, or the 404 was intentional, but either way this shows that we were accepted and granted entry.)
+            Take a look and compare the second Get request to the first. You should notice theres a new field, 'Authorization: Basic',
+        followed by gibberish. This gibberish is actually your username and password in base-64. If you were to take that line and
+        enter it on a converter site, you could easily see it as your username and password. So, were you looking to cause trouble,
+        you could easily do this with any www site and get users log-in information this way, so long as they hadn't taken additional
+        security measures to encrypt that info. This is why its so important to understand how packet sniffers like wireshark work,
+        so that we can better defend against people who would try to abuse it.
+            And that covers the lab. Despite a couple of hiccups with it due to varying versions of Wireshark, I still feel as though
+        makes for a solid introductory lab to introduce how to use the software, and shows how much of it can be useful. I hope you
+        found it interesting.
+        
+        
+        
+    </p>
+</body>
+</html>

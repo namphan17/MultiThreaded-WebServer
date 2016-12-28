@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+
+<title>
+Oct18
+</title>
+
+
+<head>
+     <style>
+        h1{
+            text-align:center;
+        }
+        /* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+/* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
+div.panel.show {
+    opacity: 1;
+    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+    </style>
+<h1>
+Broadcast Routing Algorithms
+</h1>
+</head>
+
+<body>
+    <p></p>
+     <button class="accordion">N-way unicast</button>
+<div class="panel">
+  <p>Given N destination nodes, the source router makes
+N copies of a packet, addresses each packet to a different destination, and transmits the 
+N packets to the destinations. No new network routing protocol,
+packet-duplication, or forwarding is neccessary.</p>
+<p>Drawbacks</p>
+<ul>
+    <li>Inefficiency:If the source node is connected to the network through a single link, then N separate
+copies of the same packet will go through this single link</li>
+<li>broadcast membership or destination-registration protocol required for additional information like broadcast recipients, and
+their addresses</li>
+<li>adds more overhead and complexity</li>
+</ul>
+</div>
+
+<body>
+     <button class="accordion">Uncontrolled Flooding</button>
+<div class="panel">
+  <p>Technique for achieving broadcast in which the source node sends a copy of the 
+      packet to all of its neighbors. If the graph is connected, 
+      it will eventually deliver a copy of the packet to all nodes in the graph</p>
+      <p>Drawbacks</p>
+      <ul>
+          <li>If the graph has cycles, a copy each broadcast packet could cycle forever</li>
+          <li>Broadcast storm:a node is connected to more than two nodes, it creates and forwards 
+              multiple copies of the packet, each of which creates multiple copies of itself. </li>
+              <li>Endless multiplication of broadcast packets renders the network useless.</li>
+      </ul>
+</div>
+<body>
+     <button class="accordion">Controlled Flooding</button>
+<div class="panel">
+  <p>To avoid a broadcast storm a node msut choose when
+to flood a packet, or not flood a packet. In sequence-number-controlled flooding, 
+a source node puts its addresses
+ as well as a broadcast sequence number into a broadcast
+packet, then sends the packet to all of its neighbors. Each node has a list of
+the source address and sequence number of all packets it has 
+received, duplicated, and forwarded. </p>
+<p>Reverse path forwarding (RPF), also referred to as reverse path broadcast (RPB), is when a router 
+    receives a broadcast packet with a given source address, it transmits the packet on all 
+    of its outgoing links if the packet arrived on the link that is on its own shortest 
+    unicast path back to the source. Else, the router sicards the packet.
+</p>
+<img src = "rpf.png"height="240" width="240">
+</div>
+
+
+
+
+</body>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+
+</html>

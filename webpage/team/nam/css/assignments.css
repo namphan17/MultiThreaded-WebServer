@@ -1,0 +1,88 @@
+
+      	 body {
+         background: url('../img/network.jpg') no-repeat center;
+         background-size: cover;
+         margin: 0;
+      	 }
+         span {
+         font-weight: bold;
+         margin-left: 20px;
+         }
+         button {
+         float:left;
+         }
+         .session {
+         z-index: 1;
+         margin-bottom: 50px;
+         }
+         .header {
+         background: url("../img/headerblue.png") no-repeat center center;
+         background-size: cover;
+         height: 100px;
+         width: 100%;
+         }
+         .title{
+         position: relative;
+         text-align: center;
+         margin: 0;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         }
+         .command {
+         	position: relative;
+         	background-color: orange;
+         	margin: 0, 20px, 0, 20px;
+         }
+         .main {
+         margin: 5px;
+         position: relative;
+         }
+         .cover {
+         	position: relative;
+         	width:100%;
+         	height:100%;
+         	z-index: -1;
+         }
+
+         .content {
+            max-width: 1000px;
+         }
+         .button {
+
+    position: relative;
+    background-color: #A9A9A9;
+    border: none;
+    font-size: 18px;
+    color: #FFFFFF;
+    padding: 20px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+
+    border: 1px solid green;
+    float: left;
+}
+
+.button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}

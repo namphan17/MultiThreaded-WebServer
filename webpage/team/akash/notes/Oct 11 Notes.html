@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    11th October
+</title>
+</head>
+<body>
+    <h1>
+        October 11th Notes
+    </h1>
+    
+    <h3>Principles of Reliable Data Transfer</h3>
+    <ul>
+        <li>Reliable Data Transfer Protocol is responsible for implementing service abstraction</li>
+        <ul>
+            <li>rdt_send(data) is called on the sending side to invoke the sending of packet</li>
+            <li>make_pkt(data) creates a new packet</li>
+            <li>rdt_rcv(packet) is called on the receiving side when the packet arrives</li>
+            <li>deliver_data(data) is used to send data to the upper layer</li>
+            <li>extract(packet, data) removes the data from the packet</li>
+        </ul>
+        <li>Unidirectional data transfer is the transfer of data from the sending side to the receiving side (one-way)</li>
+        <li>Bidirectional data transfer is when the trasnfer of data is done both ways. It moust be noted though that packets are exchanged both ways even for Unidirectional data transfer.</li>
+        <li>Automatic Repeat reQuest(ARQ) protocols are control messages sent back by the receiver to the sender letting them know if the packet was recieved correctly or if there was an error. The following are capabilities required of ARQ</li>
+            <ul>
+                <li>Error Detection</li>
+                <li>Reciever Feedback</li>
+                <li>Retransmission</li>
+            </ul>
+    </ul>
+    
+    <ul>
+    
+    </ul>
+</body>
+</html>

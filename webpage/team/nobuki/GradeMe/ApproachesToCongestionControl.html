@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    3.6-3.8
+</title>
+</head>
+<body>
+    <h1>
+        Approaches to Congestion Control
+    </h1>
+
+    <ul>
+        <li>There are two broad approaches to congestion control</li>
+            <ul>
+                <li>End-to-end congestion control</li>
+                <li>Network-assisted congestion control</li>
+            </ul>
+        <li>End-to-end congestion control</li>
+            <ul>
+                <li>The network layer does not provide explicit support to the transport layer for congestion control purposes. </li>
+                <li>The presence of congestion in the network must be inferred</li>
+                <li>This is necessary because the IP layer provides no feedback to the end systems about network congestion.</li>
+                <li>When there is an indication of packet loss(timeout or a triple duplicate acknowledgement), the TCP will decrease the wondow size to match what is needed. </li>
+
+                
+            </ul>
+        <li>Network-assisted congestion control</li>
+            <ul>
+                <li>Routers (which act as a network-layer component) gives feedback to the sender</li>
+                <li>This feedback gives information about the congestion state in the network</li>
+                <li>This feedback doesn't have to be complex. Many times, it is just a single bit indicator of congestions occuring in the link.</li>
+                <li>Network-assisted congestion control was used in IBM SNA and DEC DECnet architectures.</li>
+                <li>Recently, it was also suggested to be used in TCP/IP networks</li>
+                <li>It is also used in ATM available bit-rate congestion control.</li>
+                <li>The feedback may be simple, but it may also be complex.</li>
+
+                
+            </ul>
+        <li>In network-assisted congestion control, there are usually two ways of feeding the information back from the network to the sender</li>
+        <ul>
+                <li>Network feeback via a receiver</li>
+                <li>Direct network feedback</li>
+        </ul>
+        <li>The direct feedback usually takes the form of a choke packet.</li>
+        <li>This choke packet tells the network that it is congested.</li>
+        <li>The network feedback via a receiver usually happens when a router updates a field in a packet to indicate congestion. This packet then notifies the sender. (It takes atleast a round trip though.)</li>
+
+
+
+
+    </ul>
+
+</body>
+</html>

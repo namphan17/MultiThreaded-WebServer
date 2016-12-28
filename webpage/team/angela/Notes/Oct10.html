@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+   Oct 10
+</title>
+</head>
+<body><body bgcolor="#ccccff">
+	<h1>
+         <b>(Oct 10) Transport Layer pages 186-189</b>
+    	</h1>
+	<h2>3.1 Introduction and Transport-Layer Services</h2>
+	<ul> 
+<li>Transport-Layer is about providing <b>logical communication</b> between two hosts. The application's perspective the host should seem to be directly connected to them. basically this layer sends mesages with out the two worrying about physical infastucture involoved.</li>
+<li><b>Implemented on the end servers but not in the network routers.</b> the sending side transport layer converts the application-layer messages into <b>segments</b>. that can be done by breaking up the applications messages in to smaller chunks then adding the transport layer header to each of the chunks. the receving end network layer extracts the data and sends it up to the transport layer then it is processed and made available to the receiving  application. more than one protcol can be avaibable to any given application</li>
+<h3>3.1.1 Relationship Between transport and Network Layers</h3>
+<li>as opposed to transport layer which is a logical communication between <i>processes</i> running on different hosts the <i>Network</i>-layer protocal provides logical communication between <i>hosts</i>. subtle but important</li>
+<li>the difference is like the postal service is the network layer and yet the people who pick up their mail at the end of the line and seporate it based on who lives there whould be transport layer with the mail being the application messages and end people being the processes </li>
+<li>note that Tansport layer does it all on the ends where as the network layer move the messages throughout the networks</li>
+<li>the level of service that the transport layer is directly dependent on the network layer. servies of the transport layer then cannot really give a max time. </li>
+<li>transport prrotocal can give reliable data transfer serives and can encrypt to make sure not read by intruders. </li>
+</ul> 
+
+</body>
+</html>

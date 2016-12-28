@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+	Chapter 5 notes parts 1
+</title>
+<style>
+	p{ padding-left: 50px
+	}
+	img{ padding-left: 75px
+	}
+</style>
+</head>
+<body>
+	<h3>
+		Chapter 5 notes: 5.1 - 5.3
+	<h3>
+	<h4>
+        &emsp;By: Jeremy Novak
+    </h4>
+	<p><b>Link Layer Vocab</b></p>
+	<ul>
+		<li><b>Node</b>: Any device that runs through a link-layer protocol</li>
+		<li><b>Links</b>: Communication channels that connect adjacent nodes</li>
+		<li><b>Frames</b>: Link Layer packets</li>
+	</ul>
+	<p><b>Services Provided by the Link Layer</b></p>
+	<ul>
+		<li><b>Framing</b>: The encapsulation of Network Layer datagrams into Link Layer frames</li>
+		<li><b>Link Access</b>: Medium Access Control (MAC) protocol that coordinates frame transmission across multiple nodes</li>
+		<li><b>Reliable delivery</b>: The Link Layer guarantees that each network-layer datagram will move with out error</li>
+		&emsp;<i><b>Q:</b> If this safeguard is in place why does the Network layer place so much emphasis on ensuring packet integrity?</i>
+		<li><b>Error detection and Correction</b>: The hardware detects and attempts to fix errors</li>
+	</ul>
+	<p><b>Error-detection and -correction</b></p>
+	<ul>
+		<li><b>Parity checks</b>: This is the  simplest form of error detection and uses an extra <i>parity bit</i>.</li>
+		<p>
+		The <i>parity bit</i> tells if the number of 1's in the data bits is even or odd.<br>
+		EX: The last bit tells us that there is an even number of 1's in the message 1010. 10101
+		</p>
+		<li><b>2D-parity checks</b>: The same as a parity check but now the message is represented in matrix so that if multiple errors occur in the same message they can all be found, rather than cancel each other out.</li>
+		<p>
+		A major problem is the limited number of errors that can be found per message, and that the errors are only found and not fixed.
+		</p>
+		<img src="http://www.quozr.com/courses/folders/3/images/Data/parity.JPG" alt="Whiteboard?" style="width:404px;height:178px;">
+		<li><b>Checksumming methods</b>: The same kind of error checking used in the Network Layer</li>
+		<li><b>Cycle Redundancy Check (CRC)</b>: How they work-</li>
+			<ol>
+				<li>Both sender and receiver agree on a pattern of bits <i>R+1</i> in length, called a generator <i>G</i></li>
+					<ul><li>The most significant bit (leftmost) must be a 1</li>
+					<LI>The generator is labeled "Divisor" in the image below</LI></ul>
+				<li>A packet of Data <I>D</I> is sent with <I>R</I> additional bits, so that the combination of <I>D</I> and <I>R</I> is divisible completely by <I>G</I></li>
+				<li>If <I>(D+R)%G != 0 </I> the an error must have occurred</li>
+			</ol> <br>
+		<img src="https://www.tutorialspoint.com/data_communication_computer_network/images/crc.jpg" alt="Whiteboard?" style="width:539px;height:368px;"><BR><br>
+		
+		<P>CRC can find burts errors in segments less that are <I>R</I> in length or shorter</P>
+	
+	
+	
+</body>
+</html>

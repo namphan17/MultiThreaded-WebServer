@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Hello
+</title>
+</head>
+<body id='bod' style='background-color: #003200;'>
+    <h1>
+        Nigel Ticknor
+    </h1>
+    <p>
+        Hello,<br>My name is Nigel, and I am a 2nd year Computer Science major.<br>I can't connect you to the WiFi right now, but you can come in to Law Hall room 312 between 8AM and 4PM or visit <a href='https://getconnected.cornellcollege.edu/'>this link</a> and attempt it on your own.
+    </p>
+    <p>
+        Click <a href='notes.html'>here</a> for my notes.<br>
+        Click <a href='notes831.html'>here</a> for my notes831.<br>
+        Click <a href='notes832.html'>here</a> for my notes832.<br>
+        Click <a href='notes833.html'>here</a> for my notes833.<br>
+        Click <a href='notes834.html'>here</a> for my notes834.<br>
+        Click <a href='notes841.html'>here</a> for my notes841.<br>
+        Click <a href='notes842.html'>here</a> for my notes842.<br>
+        Click <a href='notes843.html'>here</a> for my notes843.<br>
+        Click <a href='notes844.html'>here</a> for my notes844.<br>
+        Click <a href='notes845.html'>here</a> for my notes845.<br>
+    </p>
+    <p>
+        Click <a href='grade0.html'>here</a> for my Graded Assesment 0.<br>
+        Click <a href='grade1.html'>here</a> for my Graded Assesment 1.<br>
+        Click <a href='grade2.html'>here</a> for my Graded Assesment 2.<br>
+        Click <a href='grade3.pdf'>here</a> for my Graded Assesment 3.<br>
+    </p>
+</body>
+<script language='javascript'>
+    var gv = 50,i=1;
+    setInterval(function()
+    {
+        document.getElementById('bod').style.backgroundColor = 'rgb(0,'+gv+',0)';
+        gv+=i;
+        if(gv==255||gv==50)i*=-1;
+        
+    }, 75);
+</script>
+</html>

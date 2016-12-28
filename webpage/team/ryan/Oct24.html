@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			October 24th
+		</title>
+	</head>
+	<body>
+		<h1>Octobe 24th (The day after the best day, but still 7 days before the second best day)</h1>
+		<h2>Reading</h2>
+			<ul>
+				<li><b>Data Center Network</b>: In every data center, interconnects hosts with eachother and the data center with the internet.  Two types of traffic:</li>
+					<ol>
+						<li>Traffic between external clients and internal hosts</li>
+						<li>Traffic between internal hosts</li>
+					</ol>
+				<li><b>Blades</b>: Hosts in data centers.  Resemble pizza boxes, usually commodity hosts that include CPU, memory, and disk storage.  Stacked in racks, have a TOR switch at the top.</li>
+				<li><b>Top of Rack (TOR) Switch</b>: Switch at the top of eachrack that interconnects the hosts in the rack with eachother and with other switches.</li>
+				<li><b>Border Routers</b>: Connect the data center network to the public internet.</li>
+				<li><b>Data center network deign</b>: Art of designing the interconnection network at protocols that connect the racks with each other and border routers.</li>
+				<li><b>Balancer</b>: Distributes requests to the hosts, balancing the load across the hosts as a function of their current load.  Can be devoted to a set of specfic cloud applications.  Often called "layer-4 switch" since it makes decisions based on destination port number (layer 4).</li>
+				<li><b>Hierarchy of routers and switches</b>: <li>
+					<ul>
+						<li>Top are border router connects to access routers</li>
+						<li>Access routers connect to top-teir switches</li>
+						<li>Top-teir switches connect to multiple second-teir switches and a load balances</li>
+						<li>Second-teir switches connect to multiple TOR switches, and their racks by extention</li>
+					</ul>
+				<li>May have large redundancy between equipment or links, for high availibility</li>
+			</ul>
+			<img src = "data-center-hierarchy.PNG" alt = "data center hierarchy">
+			<ul>
+				<li><b>Fully connected topology</b>: Replaces the hierarchy of switches and routers.</li>
+				<li>One method is to have each teir-1 switch connects to all of the teir-2 switches.  This means two things:</li>
+					<ol>
+						<li>host-to-host traffic never has to rize above the switch teirs</li>
+						<li>With n teir-1 switches then between any two teir-2 switches there are n disjoint paths</li>
+					</ol>
+				<li>Used to improve host-to-host capacity</li>
+				<li><b>Modular data centers</b>: Mini-data center, packed up.  Difficult to service so designed for "graceful preformance degradation", when too much has failed it is replaced with a new one.  Two types of networks:</li>
+					<ol>
+						<li>Containter-internal networks within each of the containers</li>
+						<li>Core network connecting each container</li>
+					</ol>
+			</ul>
+			<h3><b>Scenario: Connecting a computer to the internet and contacting a domain:</h3>
+			<ul>
+					<li><u>DHCP, UDP, IP,  and Ethernet (5.7.1)</u></li>
+						<ol>
+							<li>Operating system of computer creats a <b>DHCP request message</b> and places it inside a <b>UDP sgment</b> with a port destination of 67 (DHCP sever) and a source port of 68 (DHCP client).  UDP segment is placed inside an <b>IP datagram</b> with a broadcast IP destination of 255.255.255.255 and a source IP of 0.0.0.0 (computer does not yet have IP address).</li>
+							<li>IP datagram is placed within an <b>Ethernet frame</b> with a destination MAC address of FF:FF:FF:FF:FF:FF so that it is sent to all devices connected to the switch, and it includes a source MAC address for the computer.</li>
+							<li>Sent to the Ethernet switch, broadcast from the switch on all outgoing ports.</li>
+							<li>Router recieves the message, extracts the IP datagram, and notes that it should be sent to the upper layer for hte DHCP.  It is <b>Demultiplexed</b> to UDP and the DHCP request is extracted.</li>
+							<li>DHCP allocates one of it's allowed IP addresses to the computer by creating a <b>DHCP ACK message that contains the IP address, the IP address of the DNS server, the IP address for the default gateway router, and the subnet block.  This is put into a UDP segment inside an IP datagram, which is placed into the Ethernet frame.  The Ethernet frame has the router's MAC address as the source, and the computer's MAC address as the destination.</li>
+							<li>The Ethernet frame is sent to the switch, since the switch is <b>self learning</b> it knows to forward the frame to the computer.</li>
+							<li>The computer recieves the Ethernet frame, extracts the IP datagram, extracts the UDP segment, and extracts the DHCP ACK message.  The the computer's DHCP client records the IP addresses for itself, the DNS, the gateway, and the subnet block into it's <b>IP forwarding table</b>.
+						</ol>
+					<li><u>DNS and ARP (5.7.2)</u></li>
+						<ol>
+							<li>The OS creates a <b>DNS query messge</b> and puts the string of the desired destination's URL in the question section.  This is placed in a UDP segment with a destionation port of 54 (DNS server).  The UDP segment is put into an IP datagram with the address of the DNS server for the IP destination, and the source IP of the computer.</li>
+							<li>The computer then places the datagram into an Ethernet frame.  The frame is sent to the gateway router for the network.  However it now needs to know the gateway router's MAC address, uses <b>ARP protocol</b>.</li>
+							<li>Computer creates an <b>ARP query</b> with a target IP address of the default gateway, and a MAC broadcast destination address of FF:FF:FF:FF:FF:FF, which is ent from the switch to all conected devices.</li>
+							<li>The gateway recieves the frame, and prepares an <b>ARP reply</b> containing it's MAC address.  IT is placed into an Ethernet frame with the destination address of the computer and sent to the switch and then to the computer.</li>
+							<li>The computer revieves the frame and extracts the MAC address.  Now it can send the DNS query to the gateway router. (IP destination address of the DNS, frame destination address of the gateway router).</li>
+						</ol>
+					<li><u>Intra-Domain Routing to the DNS</u></li>
+						<ol>
+							<li>The router revieves the DNS containing frame, and extracts the IP datagram, it looks up the destination address (DNS) and sends it ot a router in the ISP network.</li>
+							<li>The ISP router looks at the destination address and then uses it's own intra-domain protocols to send the datagram to the DNS.</li>
+							<li>Eventuall it reaches the DNS sever and is extracted.  The query is looked up and the DNS finds the <b>DNS resource record</b> for the URL.  Then it forms a <b>DNS reply message</b> with the hostname-to-IP=address andplaces it into a UDP segment and then an IP datagram to the computer.  It travels back though the network to the computer.</li>
+							<li>The computer now has the IP address of the website.</li>
+						</ol>
+					<li><u>TCP and HTTP</u></li>
+						<ol>
+							<li>The computer creates a <b>TCP socket</b> wich will send the <b>HTTP GET</b> message to the URL server.  Now the computer must preform a <b>Three-Way-Handshake</b> with the webserver.  First the computer creates a <b>TCP SYN</b> segment with port destination 80 (HTTP), and places the TCP segment into an IP datagram with the IP destination of the URL and a source destination of the computer.</li>
+							<li>The routers in the connected networks forward the TCP mesage to the website's server.  Router forwarding table entries are determined by <b>BGP</b>protocol</li>
+							<li>When the TCP SYN message arrives it is demultiplexed and a connection socket is created between the server and the computer.  A TCP SYNACK message is created and placed inside a datagram addressed to the computer and then placed inside a link-layer frame that goes from the server to the outer internet network.</li>
+							<li>The TCP SYNACK segment is forwarded till it reaches the computer and is demultiplexed by the operating system to the socket created earlier (step 1 this section).  Now they are connected.</li>
+							<li>The computer creates an HTTP GET message with the URL that it wants.  This is written into the socket and is made into a TCP segment.  The TCP segment is placed in a datagram and sent to the webserver.</li>
+							<li>The HTTP server reades the HTTP GET request from the TCP socket and creates an <b>HTTP response</b> message.  The HTTP response contains the web page content as it's body.  This is placed into the TCP socket.</li>
+							<li>Finally the HTTP response message is forwarded though the network and recieved by the computer.  It reades the HTTP response and extracts the html to display the webpage.<li>
+						</ol>
+					<li>Now it is finished</li>
+			</ul>
+		<h2>Lecture</h2>
+			<ul>
+				<li>Came in a bit late, had a pdf open, looks like the take home quiz he was talking about for GradedExercise3.</li>
+				<li><b>Even parity</b>: Reciever counts bit if # isn't even then there is an error.  Not fool proof, two errors could go undetected.</li>
+				<li><b>CRC</b>:Cyclic Redundancy check</li>
+					<ul>
+						<li>Long division</li>
+						<li>Exclusive or (XOR) for + and -</li>
+						<li>Multiply dataword by 2<sup>4</sup>.  Shift over by n digits for 2<sup>n</sup>, fill in with 4 0s.</li>
+						<li>Move by 5 digits at a time</li>
+						<li>If # bgins with 1 write generator</li>
+						<li>If # begins with 0 write 5 0s.</li>
+						<li>Write starting diit up top.</li>
+					</ul>
+				<li><u>Nigel: Distance Vector Routing</u></li>
+				<li>Routers periodically send routing updates to all nearby nodes by broadcasting their entire routing tables</li>
+				<li>Calculations are distributed</li>
+				<li><b>Easy triangle:</b><li>
+				<li>3 routers in a triange, with their own routing table.</li>
+				<li>Routing table has a 0 for self refrence.</li>
+				<li>Equation: d<sub>x</sub>(y)=min<sub>v</sub>{C(X,V)}....INCOMPLETE</li>
+				<li>Routing tables update to include eachother and the shorest path</li>
+				<li>Couting to infinity:</li>
+				<li>Tables update recursivly and count upwards</li>
+				<li>Solution = posion reverse</li>
+				<li>Set update to infinity when it updates, instead of real value, keeps them from counting upwards</li>
+			</ul>
+		<h2>Lab</h2>
+			<h3>Paul: ARP</h3>
+			<ul>
+				<li>ARP spoofing</li>
+					<ul>
+						<li>tricks hosts on network into thinking that one host has the attacker's mac address whcih leads to router forwarding to the attacker rather than host.</li>
+						<li>Need to tell the host that you're the router, and the router that you're the host.  Then you can modify and pass information between them.  Able to read and edit packets,</li>
+						<li>New security measures.  Private key encryptions, HTTPS, etc.</li>
+						<li>Ways around such as saying that HTTPS not availible, but new methods to block such as enforced encryption.</li>
+					</ul>
+				<li>DNS spoofing</li>
+					<ul>
+						<li>Similar to ARP spoofing, pretend that you are the DNS, or corrupt the DNS database.</li>
+						<li>Can redirect traffic to a site you made rather than original site</li>
+					</ul>
+				<li>You can inject Javascript into incoming packet's HTML.  (ie. javascript alert, website redirect, etc.) Doesn't work on HTTPS.</li>
+				<li>Fishing</li>
+				<li>Heap overflow?</li>
+				<li>ARP spoof, SSL stripper, etc.  Download data, take it home,extract information.</li>
+				<li>Mask MAC address</li>
+			</ul>
+			<h3>Leon on writing</h3>
+				<ul>
+					<li>Two ways of doing math</li>
+					<li><i>$ x + 1 $</i></li>
+					<li><i>\begin{align*}</br> ...</br> \end{align*}</i></li>
+					<li>in math mode, to type ordinary english use</br> <i>\parbox{8cm}{...}</i></li>
+				</ul>
+		<div style="text-align:left">
+			<a href="">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="">Next</a>
+		</div>
+	</body>
+</html>

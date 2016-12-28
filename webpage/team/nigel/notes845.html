@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notes 8.4.5</title>
+</head>
+<body>
+<h1> Notes 8.4.5</h1>
+<hr>
+<br>
+<b>Data Center Network</b> - A network that connects internal hosts in a data center, and connects the data center to the internet.<br>
+<b>Blades</b> - Short rack-mounted hosts.<br>
+<b>Top of Rack (TOR) Switch</b> - Interconnects the hosts in each rack with eachother and with other switches.<br>
+<b>Border Routers</b> - Connect the data center network to the public internet.<br>
+<b>Data Center Network Design</b> - The art of designing a data center network.<br>
+<b>Load Balancer</b> - Distribute requests to hosts.<br>
+<b>Hierachy of Routers and Switches</b> - Routers and switches are assigned to an access hierarchy.<br><br>
+<u>How does Bob connect to the internet?</u>
+<ol>
+<li>The operating system on Bob's laptop creates a DHCP request message (Section
+4.4.2) and puts this message within a UDP segment (Section 3.3) with
+destination port 67 (DHCP server) and source port 68 (DHCP client). The UDP
+segment is then placed within an IP datagram (Section 4.4.1) with a broadcast IP destination address (255.255.255.255) and a source IP address of 0.0.0.0,
+since Bob's laptop doesn't yet have an IP address.</li>
+<li>The IP datagram containing the DHCP request message is then placed within
+an Ethernet frame (Section 5.4.2). The Ethernet frame has a destination MAC
+addresses of FF:FF:FF:FF:FF:FF so that the frame will be broadcast to all
+devices connected to the switch (hopefully including a DHCP server); the
+frame's source MAC address is that of Bob's laptop, 00:16:D3:23:68:8A.</li>
+<li>The broadcast Ethernet frame containing the DHCP request is the first frame
+sent by Bob's laptop to the Ethernet switch. The switch broadcasts the incoming
+frame on all outgoing ports, including the port connected to the router.</li>
+<li>The router receives the broadcast Ethernet frame containing the DHCP request
+on its interface with MAC address 00:22:6B:45:1F:1B and the IP datagram is
+extracted from the Ethernet frame. The datagram's broadcast IP destination
+address indicates that this IP datagram should be processed by upper layer protocols
+at this node, so the datagram's payload (a UDP segment) is thus demultiplexed
+(Section 3.2) up to UDP, and the DHCP request message is extracted
+from the UDP segment. The DHCP server now has the DHCP request message.</li>
+<li>Let's suppose that the DHCP server running within the router can allocate IP
+addresses in the CIDR (Section 4.4.2) block 68.85.2.0/24. In this example, all
+IP addresses used within the school are thus within Comcast's address block. Let's suppose the DHCP server allocates address 68.85.2.101 to Bob's laptop.
+The DHCP server creates a DHCPACK message (Section 4.4.2) containing
+this IP address, as well as the IP address of the DNS server (68.87.71.226), the
+IP address for the default gateway router (68.85.2.1), and the subnet block
+(68.85.2.0/24) (equivalently, the "network mask"). The DHCP message is put
+inside a UDP segment, which is put inside an IP datagram, which is put inside
+an Ethernet frame. The Ethernet frame has a source MAC address of the
+router's interface to the home network (00:22:6B:45:1F:1B) and a destination
+MAC address of Bob's laptop (00:16:D3:23:68:8A).</li>
+<li>The Ethernet frame containing the DHCP ACK is sent (unicast) by the router
+to the switch. Because the switch is self-learning (Section 5.4.3) and previously
+received an Ethernet frame (containing the DHCP request) from Bob's
+laptop, the switch knows to forward a frame addressed to 00:16:D3:23:68:8A
+only to the output port leading to Bob's laptop.</li>
+<li>Bob's laptop receives the Ethernet frame containing the DHCP ACK, extracts
+the IP datagram from the Ethernet frame, extracts the UDP segment from the
+IP datagram, and extracts the DHCP ACK message from the UDP segment.
+Bob's DHCP client then records its IP address and the IP address of its DNS
+server. It also installs the address of the default gateway into its IP forwarding
+table (Section 4.1). Bob's laptop will send all datagrams with destination
+address outside of its subnet 68.85.2.0/24 to the default gateway. At this point,
+Bob's laptop has initialized its networking components and is ready to begin
+processing the Web page fetch. (Note that only the last two DHCP steps of the
+four presented in Chapter 4 are actually necessary.)</li>
+<li>The operating system on Bob's laptop thus creates a DNS query message (Section
+2.5.3), putting the string "www.google.com" in the question section of the DNS
+message. This DNS message is then placed within a UDP segment with a destination
+port of 53 (DNS server). The UDP segment is then placed within an IP datagram
+with an IP destination address of 68.87.71.226 (the address of the DNS server
+returned in the DHCP ACK in step 5) and a source IP address of 68.85.2.101.</li>
+<li>Bob's laptop then places the datagram containing the DNS query message in
+an Ethernet frame. This frame will be sent (addressed, at the link layer) to the
+gateway router in Bob's school's network. However, even though Bob's laptop knows the IP address of the school's gateway router (68.85.2.1) via the DHCP
+ACK message in step 5 above, it doesn't know the gateway router's MAC
+address. In order to obtain the MAC address of the gateway router, Bob's laptop
+will need to use the ARP protocol (Section 5.4.1).</li>
+<li>Bob's laptop creates an ARP query message with a target IP address of
+68.85.2.1 (the default gateway), places the ARP message within an Ethernet
+frame with a broadcast destination address (FF:FF:FF:FF:FF:FF) and sends the
+Ethernet frame to the switch, which delivers the frame to all connected
+devices, including the gateway router.</li>
+<li>The gateway router receives the frame containing the ARP query message on the
+interface to the school network, and finds that the target IP address of 68.85.2.1 in
+the ARP message matches the IP address of its interface. The gateway router thus
+prepares an ARPreply, indicating that its MAC address of 00:22:6B:45:1F:1B
+corresponds to IP address 68.85.2.1. It places the ARP reply message in an
+Ethernet frame, with a destination address of 00:16:D3:23:68:8A (Bob's laptop)
+and sends the frame to the switch, which delivers the frame to Bob's laptop.</li>
+<li>Bob's laptop receives the frame containing the ARP reply message and extracts
+the MAC address of the gateway router (00:22:6B:45:1F:1B) from the ARP
+reply message.</li>
+<li>Bob's laptop can now ( finally!) address the Ethernet frame containing the DNS
+query to the gateway router's MAC address. Note that the IP datagram in this frame
+has an IP destination address of 68.87.71.226 (the DNS server), while the frame has
+a destination address of 00:22:6B:45:1F:1B (the gateway router). Bob's laptop
+sends this frame to the switch, which delivers the frame to the gateway router.</li>
+<li>The gateway router receives the frame and extracts the IP datagram containing
+the DNS query. The router looks up the destination address of this datagram
+(68.87.71.226) and determines from its forwarding table that the datagram should
+be sent to the leftmost router in the Comcast network in Figure 5.32. The IP datagram
+is placed inside a link-layer frame appropriate for the link connecting the
+school's router to the leftmost Comcast router and the frame is sent over this link.</li>
+<li>The leftmost router in the Comcast network receives the frame, extracts the IP
+datagram, examines the datagram's destination address (68.87.71.226) and
+determines the outgoing interface on which to forward the datagram towards
+the DNS server from its forwarding table, which has been filled in by Comcast's
+intra-domain protocol (such as RIP, OSPF or IS-IS, Section 4.6) as well
+as the Internet's inter-domain protocol, BGP.</li>
+<li>Eventually the IP datagram containing the DNS query arrives at the DNS server.
+The DNS server extracts the DNS query message, looks up the name
+www.google.com in its DNS database (Section 2.5), and finds the DNS resource record that contains the IP address (64.233.169.105) for www.google.com.
+(assuming that it is currently cached in the DNS server). Recall that this cached
+data originated in the authoritative DNS server (Section 2.5.2) for googlecom.
+The DNS server forms a DNS reply message containing this hostname-to-IPaddress
+mapping, and places the DNS reply message in a UDP segment, and the
+segment within an IP datagram addressed to Bob's laptop (68.85.2.101). This
+datagram will be forwarded back through the Comcast network to the school's
+router and from there, via the Ethernet switch to Bob's laptop.</li>
+<li>Bob's laptop extracts the IP address of the server www.google.com from the
+DNS message. Finally, after a lot of work, Bob's laptop is now ready to contact
+the www.google.com server!</li>
+<li>Now that Bob's laptop has the IP address of www.google.com, it can create the
+TCP socket (Section 2.7) that will be used to send the HTTPGET message
+(Section 2.2.3) to www.google.com. When Bob creates the TCP socket, the TCP
+in Bob's laptop must first perform a three-way handshake (Section 3.5.6) with
+the TCP in www.google.com. Bob's laptop thus first creates a TCP SYN segment
+with destination port 80 (for HTTP), places the TCP segment inside an IP datagram
+with a destination IP address of 64.233.169.105 (www.google.com), places
+the datagram inside a frame with a destination MAC address of
+00:22:6B:45:1F:1B (the gateway router) and sends the frame to the switch.</li>
+<li>The routers in the school network, Comcast's network, and Google's network
+forward the datagram containing the TCP SYN towards www.google.com,
+using the forwarding table in each router, as in steps 14-16 above. Recall that
+the router forwarding table entries governing forwarding of packets over the
+inter-domain link between the Comcast and Google networks are determined
+by the BGP protocol (Section 4.6.3).</li>
+<li>Eventually, the datagram containing the TCP SYN arrives at www.google.com.
+The TCP SYN message is extracted from the datagram and demultiplexed to the
+welcome socket associated with port 80. A connection socket (Section 2.7) is
+created for the TCP connection between the Google HTTP server and Bob's
+laptop. ATCP SYNACK (Section 3.5.6) segment is generated, placed inside a
+datagram addressed to Bob's laptop, and finally placed inside a link-layer frame
+appropriate for the link connecting www.google.com to its first-hop router.</li>
+<li>The datagram containing the TCP SYNACK segment is forwarded through the
+Google, Comcast, and school networks, eventually arriving at the Ethernet card
+in Bob's laptop. The datagram is demultiplexed within the operating system to
+the TCP socket created in step 18, which enters the connected state.</li>
+<li>With the socket on Bob's laptop now (finally!) ready to send bytes to www.google
+.com, Bob's browser creates the HTTP GET message (Section 2.2.3) containing the
+URLto be fetched. The HTTPGET message is then written into the socket, with the GET message becoming the payload of a TCP segment. The TCP segment is placed
+in a datagram and sent and delivered to www.google.com as in steps 18-20 above.</li>
+<li>The HTTP server at www.google.com reads the HTTP GET message from the
+TCP socket, creates an HTTP response message (Section 2.2), places the
+requested Web page content in the body of the HTTP response message, and
+sends the message into the TCP socket.</li>
+<li>The datagram containing the HTTP reply message is forwarded through the Google,
+Comcast, and school networks, and arrives at Bob's laptop. Bob's Web browser program
+reads the HTTP response from the socket, extracts the html for the Web page
+from the body of the HTTP response, and finally ( finally!) displays the Web page!</li>
+</ol>
+</body>
+</html>

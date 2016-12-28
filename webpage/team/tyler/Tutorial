@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Wireshark Tutorial
+</title>
+</head>
+<body style="margin-left:200px;margin-right:200px">
+    <h1 style="text-align:center;">
+        Wireshark Basic Tutorial
+    </h1>
+    <p>
+        So, one of the tools we've begun learning about so far is called Wireshark. Wireshark is what's called a 'packet sniffer'.
+    Basically, that means that its a tool that can read, and then display a copy, of all the packets of data being sent from or
+    received by our computer. Packet sniffers can be extremely useful tools, but they can also be used for pretty awful things.
+    Since the packet sniffer just reads and copies packets, and doesn't actually interact with the actual packets themselves or
+    try to add anything to them, they can be really hard to detect. And so they can be easy to sneak in somewhere, and if the
+    person using it can decrypt the packets, they can potentially get access to all sorts of things. Passwords, SSN's, that sort
+    of thing. So its important we know how they work, both to use them for their intended purposes, and to better be able to
+    protect ourselves from them.
+    <br><br>
+        Anyways, so Wireshark. Go ahead and open the wireshark application by searching for it on your computer. Once you get it
+    open, you'll see that it we get an error message, permission denied. I don't remember entirely why that happens, something
+    about not having admin priveleges to the network, which would make sense. Thankfully Paul was kind enough to send everyone
+    test packages to open with Wireshark that simulate what we'd get if we actually ran the program. Go ahead and open one of
+    them. Any of them will do really. They seem to default to opening with Wireshark on these computers, so its pretty handy.
+    Normally, instead of getting an error message, it'd show you a list of interfaces. Simply clicking on one of them would
+    open up a similar screen.
+    <br><br>
+        Once you've got a test package up, take a look at the buttons up top. Hovering over the buttons will tell you what
+    those buttons are. Honestly, all of the options are self-explanatory to anyone whos ever used something as simple as Word.
+    And considering this is a 300 level comp-sci course, I'm going to assume you've used something similar to Word before.
+    <br><br>
+        Beneath those buttons, you'll see a line that asks you for a display filter. Honestly, we haven't used that a ton yet,
+    but it lets us filter out what sorts of packets we want to see. For instance, try typing 'http' without the quotes. You'll
+    probably get far fewer results.
+    <br><br>
+        Moving on, beneath the filter,you'll see a list of all the various packets Wiresharks captured, along with that
+    packets info in the window below. Finally, below that is the packet-content window. This window shows the contents of
+    the packet in ASCII, and hexadecimal.
+    <br><br>
+        That's about all we've covereso far , as far as I can remember. It's a pretty easy tool to use. Good lucK!
+    </p>
+</body>
+</html>

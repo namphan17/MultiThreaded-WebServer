@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+	</script>
+	<script src="js/functions.js">
+	</script>
+	<script type="text/javascript" async
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+	<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+	<title>
+		Simon Fink's Notes Page
+	</title>
+	<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+<button id="home" class="dropbtn">Home</button>
+<button id="asn0" class="dropbtn" style="display:none;">Back</button>
+<button id="asn1" class="dropbtn" style="display:none;">Back</button>
+<button id="asn2" class="dropbtn" style="display:none;">Back</button>
+<img src="collegelogo.png" style="float:right;width:18%;">
+<br><br>
+<div class="content">
+	<div id="welcome">
+		<h1>
+			Simon Fink
+		</h1>
+		<p>
+			I'm a Physics major attempting to finish a CS major this <br>
+			year, with my only previous course being CSC 141. I am also <br>
+			a senior. I enjoy piano, cooking, and progressive metal. <br>
+			<br>
+		</p>
+
+		<div class="dropdown">
+      <button onclick="openMenu()" class="dropbtn">Notes and Files</button>
+			<div id="menu" class="dropdown-content">
+				<p id="notesLink">Oct. 4 Notes</p>
+				<p id="oct10Link">Oct. 10 Notes</p>
+				<p id="oct11Link">Oct. 11 Notes</p>
+				<p id="spanningLink">Spanning Trees</p>
+				<p id="randomLink">Random Access Protocol</p>
+				<p id="assignmentLink">Assignment 0</p>
+				<p id="assignmentLink1">Assignment 1</p>
+				<p id="assignmentLink2">Assignment 2</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="subcontent">
+		<div id="assignment"  style="display:none;">
+			<h1>
+				Assignment 0
+			</h1>
+
+			<div class="dropdown">
+				<button onclick="openMenu1()" style="width:250px;" class="dropbtn">
+					Assignments
+				</button>
+				<div id="menu1" class="dropdown-content">
+					<p id="synchLink">Clock Synchronization Quiz</p>
+					<p id="daviesLink">Donald Davies Biography</p>
+					<p id="tutorialLink">WiFiDirect Tutorial</p>
+				</div>
+			</div>
+		</div>
+		<div id="assignment1"  style="display:none;">
+			<h1>
+				Assignment 1
+			</h1>
+
+			<div class="dropdown">
+				<button onclick="openMenu2()" style="width:250px;" class="dropbtn">
+					Assignments
+				</button>
+				<div id="menu2" class="dropdown-content">
+					<p id="textQALink">Text Problems</p>
+					<p id="myQALink">Week Two Quiz</p>
+					<p id="wsLabLink">Wireshark Lab</p>
+				</div>
+			</div>
+		</div>
+		<div id="assignment2"  style="display:none;">
+			<h1>
+				Assignment 2
+			</h1>
+
+			<div class="dropdown">
+				<button onclick="openMenu3()" style="width:250px;" class="dropbtn">
+					Assignments
+				</button>
+				<div id="menu3" class="dropdown-content">
+					<p id="dijkstraLink">Dijkstra's Algorithm</p><br>
+					<a href="https://github.com/sfink17/UDPExamples">UDP Projects</a><br>
+					<a href="https://www.linkedin.com/in/simon-fink-572092126">LinkedIn</a>
+				</div>
+			</div>
+		</div>
+		<div id="wsLab"  style="display:none;">
+			<h1>Wireshark Lab</h1>
+			<h2><u>Looking at 802.11 Frames</u></h2>
+			<br><br>
+			<p>Using a packet sniffer doesn't solely reveal the inner workings of wired networks. WiFi networks have their own unique architecture, with protocol set by IEEE 802.11 specifications. WLAN networks are linked via access points (APs), each of which converts 802.11 frames into Ethernet frames which can be interpreted by a parent router. Each AP can link multiple hosts to a router; the branches consisting of these hosts, the AP, and the router are each known as subnets.<br><br>
+				Packet sniffers operate over link layer transactions, and unfortunately, 802.11 drivers often lack the proper "hooks" that Ethernet drivers have to allow capture. There are workarounds for this, but for the purposes of this lab, a sample 802.11 trace has been provided.
+				<br><br>
+			<ol>
+				<li>Launch Wireshark and open the provided 802.11 capture file.</li><br>
+				<li>Highlight the very first frame. Each frame has space for three MAC addresses(technically four, but only when APs are linked directly), frame control tags that correspond to categories of messages, and a checksum. For the first frame, in the frame control field, you should see a type of 0 and a subtype of 8. This signifies a broadcast. Broadcasts are frames sent periodically by APs across 802.11 frequency channels. You'll notice that the destination MAC address is simply filled with "ff"s in every hexidecimal place. This means that the frame has no specific destination, and is simply being sent across the entire channel. When a 802.11 capable host enters the range of a network, passive scanning will pick up the broadcast and notify the user of the APs presence.</li><br>
+				<li>Now, scroll down to around 24.82 seconds. Here, the host makes a request to an off network server. Look first at the TCP SYN packet. The transmitter address field will always contain the address of the currently transmitting device, and the receiver field will accordingly contain the address of the transmitted-to device. In this case, the transmitter is the host making the request (IntelCor_d1:b6:4f) and the receiver is the AP associated with that host (Cisco-Li_f7:1d:51). Notice that the destination field here is different. This is the MAC address for the parent router; when the AP converts the 802.11 data into Ethernet, it will use this field as the new receiver address. IP protocol data rides higher in the protocol stack, and once the packet reaches the router, it will be forwarded to the IP address of the server.</li><br>
+				<img src="wifi.png" align="right" style="width:50%;padding:20px;" alt="802.11 network architecture.">
+				<li>Looking at the SYN ACK packet tells us a bit more about the addresses. When the parent router is involved, whether it be the source or the destination, it will always be indicated in those fields; in fact, these two fields are actually different names for the same field. Notice here that the source address is now occupied by the router.</li><br>
+				<li>Finally, let's look at protocol for authentication. At t=49.58, the host requests to disassociate from the AP. It sends two messages: the first is an IP layer message to the parent router which removes it from the subnet, and the second is a frame directly to the AP to deauthenticate the host.</li><br>
+				<li>After this, the host attempts to associate and authenticate with a linksys AP (Cisco-Li_f5). You can look through these attempts if you want; for whatever reason, there is never a reply from this AP. The host then authenticates once more with the previous AP. This process is much shorter and sweeter, consisting of only two exchanges at around t=63. It also includes another IP layer message to the router, requesting to be placed on the subnet again.</li><br>
+				<li>Hosts can elect to actively scan instead of passively scan. These attempts are denoted by the probe requests you may have seen while scrolling through the trace. These play out in the opposite manner of passive scanning: the host broadcasts a request over several 802.11 channels and waits for a direct response from nearby APs.</li><br>
+			</ol>
+		</div>
+		<div id="textQA" style="display:none;">
+			<h1>Problems from the Text</h1>
+			<h2>C1.P24</h2>
+			<p>This problem explores the comparisons between transmission delay and propagation delay. The transmission delay of a physical package is representative of the time taken to load the data onto the truck; this is likely negligible. The propagation delay of the truck, on the other hand, will be about a day. The propagation delay of a data link will be a number of milliseconds, but the transmission delay will be far longer. This amount of time will be equal to:<br><br>
+				T = ( 40 TB / (( 100 Mb/s / 8 B/b) / 1,000,000 MB/TB )) x 86400 s/day = 37 days<br><br>
+				Obviously, in this case, the time cost of a slow transmission delay far outweighs the cost of slow propagation.<br><br>
+			<h2>C3.P45</h2>
+			<p>The following overview will walk you through the steps to derive the average throughput of a TCP connection. The following notation will be used:<br><br>
+				W: max congestion window size in number of segments<br>
+				RTT: Round trip time of a segment in seconds<br>
+				MSS: Maximum Segment Size in bits<br>
+				L: Loss rate<br><br>
+				TCP throughput can be approximated by estimating that transmission rate will bounce between W/2RTT and W/RTT, increasing linearly and then halving when triplicate ACK segments are received. Because the change in the rate is constant, the average rate is the average of these two values, or &frac34;W/RTT. Over a single cycle, a single segment will be lost (indicated by the triplicate ACKs). Considering this, the loss rate will be <br><br>1/(segments sent per cycle) =
+				1/(average rate)(time per cycle).<br><br> To find the time per cycle, consider that the rate increases by 1 segment every RTT, and that the difference between max and min rates is W/2 packets, yielding a time per cycle of RTT x W/2. But this isn't quite right, as the rate holds at the maximum value for another RTT before dropping, raising time per cycle to RTT x (W/2+1). Plugging this into our loss rate formula, we get <br><br>L = 1/(&frac34;W/RTT)(RTT x (W/2+1)) = 1/(&#8540;W^2 + &frac34;W)<br><br>
+				This is the correct value as indicated by the book. But if we want to use this value to calculate the average throughput, we need to note a tricky little detail. When W becomes sufficiently large, the second term in the denominator of L will become negligible. To illustrate this, assume a W of 1000 segments. 3W^2/8 = 375,000, and 3W/4 = 750. The second term changes our value of L by only 2 tenths of one percent. Knowing this, we can safely estimate that L = 1/&#8540;W^2, and by the same logic, time per cycle = W/2. Solving for W yields <br><br>W = (8/3L)<sup>&frac12;</sup><br><br>Average throughput will be equal to:<br><br>(Bits per segment)(Segments sent per cycle)/(Average segment transmission rate)<br><br>Plugging in all our values, we get:<br><br>MSS*(1/2L)/(RTT*(8/3L)<sup>&frac12;</sup>) = MSS/RTT x (1/L)/(2/3L)<sup>&frac12;</sup> = MSS/RTT x (3/2L)<sup>&frac12;</sup>
+
+		</div>
+		<div id="myQA" style="display:none;">
+			<h1>Quiz: Sections 1-3</h1>
+			<h2>Chapter 1</h2>
+			<br>
+			<em>True or False: Transmission delay is the time taken for a packet to transmit across the physical medium.</em>
+			<p><mark>False: This describes the propagation delay. Transmission delay describes the time it takes the data to be pushed into the network.</mark></p>
+			<br><br>
+			<em>Name all five layers in the IP stack, in descending order.</em>
+			<p><mark>Application, transport, network, link, and physical.</mark></p>
+			<br><br>
+			<h2>Chapter 2</h2>
+			<em>Name 3 of the 4 error codes noted in the book, and their meanings (404 not included).</em>
+			<p><mark>200: OK. 301: Moved Permanently. 400: Bad request. 505: HTTP Version not supported.</mark></p>
+			<br><br>
+			<em>Define the term "DNS Caching."</em>
+			<p><mark>After a DNS request is made, the domain-name/IP information is stored locally at the client. The next time a request is made to the corresponding server, this information is used instead of making a new DNS request.</mark></p>
+			<br><br>
+			<em>True or False: P2P networking requires no external server whatsoever.</em>
+			<p><mark>False (sort of): P2P requires a tracking server to keep track of peers. However, the storage and congestion control required is miniscule, since that load is passed to the networked peers.</mark></p>
+			<br><br>
+			<h2>Chapter 3</h2>
+			<em>Briefly describe UDP checksum protocol.</em>
+			<p><mark>Three random 16 bit numbers are summed, and this sums 1's compliment is taken. These four numbers are sent in the UDP header. if all of these numbers sum to 1111111111111111 at the receiver, the checksum is successful.</mark></p>
+			<br><br>
+			<em>Name two advantages of UDP over TCP.</em>
+			<p><mark>UDP does not throttle bandwidth, can support more simultaneous connections, and does not require a handshake to send data.</mark></p>
+			<br><br>
+			<em>What are the two main transport layer error recovery protocols? Which of these methods does TCP use?</em>
+			<p><mark>Go-Back-N, and Selective Repeat. GBN utilizes a timeout for each acknowledgement, after which it retransmits all unacknowledged segments. SR utilizes a timeout for all segments and sends acknowledgements even after a segment has been lost. TCP uses a combination of these, using cumulative acknowledgement like GBN, but also only retransmitting segments selectively, like SR.</mark></p>
+			<br><br>
+			<em>What are the two ways that TCP recognizes a dropped packet?</em>
+			<p><mark>Through either a timeout, or after three duplicate acknowledgements for a segment.</mark></p>
+			<br><br>
+			<em>In what manner does the TCP congestion window grow? Linearly, exponentially, or some combination of the two?</em>
+			<p><mark>A combination. The congestion window intitially grows exponentially, but begins to grow linearly after reaching the halfway point from where the last packet was lost.</mark></p>
+			<br><br>
+
+		</div>
+
+		<div id="dijkstra" style="display:none;">
+			<h1>
+				A Lesson on Dijkstra's Algorithm
+			</h1>
+			<br>
+			<p>
+				When thinking about traveling in a network, several questions naturally arise.
+				If you're leaving your home to travel somewhere you may not have been, you will
+				likely first seek, through whatever means, to find the shortest path to your
+				destination. This common query has relevance to many kinds of networks, and as
+				such, routing algorithms are employed to find solutions. A particularly well known
+				example of these is known as "Dijkstra's algorithm," conceived by Dutch computer scientist
+				Edsger Dijkstra in 1956.
+				<br><br>
+				Dijkstra's algorithm is a protocol used to find the shortest path between two points in a weighed graph.
+				Using one designated node as a starting point, the algorithm will iterate across the entire graph, finding
+				all shortest path data for the starting point. To understand Dijkstra's algorithm, let's start by looking
+				at some pseudocode.
+				<br><br>
+				<div class="code"><code>
+					node source = s;<br>
+					node[] graph = [s, a, b, c...]<br>
+					make queue q;<br><br>
+
+					for node in graph {<br><blockquote>
+					    node.distance = null;<br>
+					    node.previous = null;<br>
+					    add to q;<br></blockquote>
+					}<br><br>
+
+					source.distance = 0;<br><br>
+
+					do for each node in q {<br><blockquote>
+					    node u = node with min source.distance;<br>
+					    for neighbors v of u {<br><blockquote>
+					        if u.distance + pathLength(u, v) < v.distance {<br>
+					        v.distance = u.distance + pathLength(u, v);<br>
+					        v.previous = u;<br></blockquote>
+						remove u from q;<br></blockquote>
+					}
+				</code></div>
+				<br><br>
+				Dijkstra's algorithm starts at the source node, first checking all nodes surrounding and noting their respective path lengths.
+				These path lengths are the defacto shortest paths to each of these nodes; after iterating through all nodes, the one with the
+				shortest path length is queued next, and the same process is repeated. If a shorter path to a node that already has a "shortest
+				path" is found, that value is replaced and noted in the queueing order. This process continues until all nodes have been visited.
+				An example of the algorithm in action may prove helpful, so let's run through the protocol for the given graph:<br>
+				<br><img src="dijkstras-graph.gif"><br>
+			<ol>
+				<li>Starting at A, the two neighboring paths to C and D are noted. The path to C (distance = 1) is shortest, so it is queued next.</li><br>
+				<li>At C, new paths are found to reach B and E, which are noted. A new path to D also exists, but as it is not shorter
+					than the one previously found, the value is discarded.</li><br>
+				<li>The function now moves to D, as it has the next shortest path in the queue. A new path to G is found, and noted.</li><br>
+				<li>Node B is visited, which results in a path being found for F.</li><br>
+				<li>Node G is visited. Because G's neighbor path to F is shorter than the one we just found from B,
+					this value replaces the old one in the function, and its new parent is subsequently noted.</li><br>
+				<li>Node E is visited. No shorter paths are found, so no values are updated.</li><br>
+				<li>Node F is visited. No shorter paths are found, and because F is the last remaining node, the process terminates.</li><br>
+			</ol>
+			<p>
+				This process can also be illustrated using the following table (Notes that for each of the found nodes in the
+				table, the parent node is given, followed by the path length):<br><br>
+			<table>
+				<tr>
+					<th>Step</th>
+					<th>Queue</th>
+					<th>B</th>
+					<th>C</th>
+					<th>D</th>
+					<th>E</th>
+					<th>F</th>
+					<th>G</th>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>A</td>
+					<td></td>
+					<td>A,1</td>
+					<td>A,2</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>AC</td>
+					<td>C,3</td>
+					<td>A,1</td>
+					<td>A,2</td>
+					<td>C,4</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>ACD</td>
+					<td>C,3</td>
+					<td>A,1</td>
+					<td>A,2</td>
+					<td>C,4</td>
+					<td></td>
+					<td>D,3</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>ACDB</td>
+					<td>C,3</td>
+					<td>A,1</td>
+					<td>A,2</td>
+					<td>C,4</td>
+					<td>B,6</td>
+					<td>D,3</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>ACDBG</td>
+					<td>C,3</td>
+					<td>A,1</td>
+					<td>A,2</td>
+					<td>C,4</td>
+					<td><del>B,6</del> G,4</td>
+					<td>D,3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>ACDBGE</td>
+					<td>C,3</td>
+					<td>A,1</td>
+					<td>A,2</td>
+					<td>C,4</td>
+					<td>G,4</td>
+					<td>D,3</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>ACDBGEF</td>
+					<td>C,3</td>
+					<td>A,1</td>
+					<td>A,2</td>
+					<td>C,4</td>
+					<td>G,4</td>
+					<td>D,3</td>
+				</tr>
+			</table><br>
+			<p>By noting the parent in the shortest path at each node, a shortest path can easily be derived.
+				Beginning at the destination node, the path can be found by working backwards, hopping from parent
+				to parent, to the source.</p>
+
+		</div>
+
+		<div id="notes"  style="display:none;">
+			<h1>
+				Oct. 4 Notes
+			</h1>
+			<h2>
+				<u>Day One</u>
+			</h2>
+			<p>
+				I chose to expand on 1.7.5, <em> The New Millenium, </em> as
+				the statistics that this text are based on were taken in 2012. Each
+				bullet point given had the potential for future addendum, and as
+				technical statistics swiftly, inevitably change, I am highlighting
+				some of the larger trends and changes in networking since the text's publication.
+			</p>
+			<ul style="text-align:left;">
+
+				<li>84% of households in developed countries have internet access.</li><br>
+				<li>LTE exploded after 2012, developing from covering less than 1 billion to nearly
+					4 billion in 2016. 3G networks cover 2.5 billion more people. Over 90 percent of the
+					developed world has mobile internet access in some form.</li><br>
+				<li>Deployed in 2013, IEEE 802.11ac allows theoretical transmission rates of 1 Gbps,
+					vastly overshadowing 802.11b's max speed of 54 Mbps (as mentioned in the book).</li><br>
+				<li>In 2012, US average internet speeds hovered around 6.6 Mbps. By 2016, this figure
+					had risen to 15.3 Mbps.</li><br>
+				<li>Cloud computing has expanded rapidly. By 2017, it is expected to comprise the
+					majority of all IT spending by organizations.</li><br>
+				<li>IoT (Internet of Things) is a newer trend, describing the addition of internet
+					functionality into existing technology. It is predicted that over 22 billion IoT
+					devices will exist by 2018.</li><br>
+
+			</ul>
+			<h3>
+				<u>References:</u>
+			</h3>
+
+			<ol style="text-align:left;">
+
+				<li><a href="https://www.akamai.com/uk/en/multimedia/documents/state-of-the-internet/akamai-state-of-the-internet-report-q1-2016.pdf">Akamai <em>State of the Internet Q1 2016</em></a></li>
+				<li><a href="http://standards.ieee.org/news/2014/ieee_802_11ac_ballot.html">IEEE Standards</a></li>
+				<li><a href="http://www.itu.int/en/ITU-D/Statistics/Documents/facts/ICTFactsFigures2016.pdf">ICT Facts and Figures 2016</a></li>
+				<li><a href="http://www.idc.com/research/viewtoc.jsp?containerId=259850">IDC 2016 Predictions</a></li>
+
+			</ol>
+		</div>
+		<div id="random" style="display:none;">
+			<h1>
+				<u>Random Access Protocols:</u>
+			</h1>
+			<h2>
+				ALOHA and Efficiency
+			</h2>
+			<p>
+				The division of bandwidth between competing nodes must be handled at the link layer. One class of protocols that handles this is called <b>Random Access</b>, and as its name implies, utilizes probability to ensure proper data handling. Like TDM, frames are sent over single timeslots. These timeslots are synchronized across the network, so that each discrete frame begins simultaneously at all nodes. Nodes may send frames on demand, without limitation, so when networks consist of multiple nodes, collisions are inevitable. When these collisions occur, each node has a set probability, <i>p</i>, that they will retransmit their data during each subsequent timeslot. When the frame is successfully transmitted, retransmission will stop. <br><br>
+				One of the simplest implementations of RAP is slotted ALOHA, which adheres to the previously defined rules with little modification. To find the efficiency of this protocol in larger networks, we must first find the ideal probability, <i>p*</i>. The probability that a node will successfully retransmit is equal to <b>p</b> multiplied by the probability of all other nodes not retransmitting, or $P = p ( 1 - p ) ^ {N - 1}$. To utilize our maximum bandwidth, we only need a single node to successfully retransmit at a time, given by the previous function multiplied by the number of nodes, or $P_t = Np(1 - p)^{N-1}$. Let's investigate the properties of this function. We want to find the local maxima between 0 and 1, so let's try taking the derivative: $$P_t' = N (1 - p )^{N-2}(1 - pN)$$<br>
+				We're interested in the points where $P_t' = 0$. Thus, we can divide out the first part of the right side of the function, leaving $1 - pN = 0$, or $p = \frac{1}{N}$. Thus, as N grows to infinity, p reduces to zero. Now we can find the efficiency. We now know that $nP = 1$, so our function reduces to: $$P_t = (1 - p)^{N-1}$$<br>
+				We also know that $p = 1/N$. Substituting this into our equation and taking the limit as N goes to infinity, we get: $$\lim_{N\to\infty} (1 - \frac{1}{N})^{N-1} = \frac{1}{e}$$
+			</p>
+		</div>
+
+		<div id="spanning"  style="display:none;">
+			<h1>
+				Spanning Trees
+			</h1>
+			<p>
+				In many broadcast protocols, such as RPF, the proliferation of packets is complete and safe from broadcast storms, but may be inefficient. Despite the fact that links not on the shortest path go unnoticed, packets are still broadcast to all adjacent routers; even to deaf ears, bandwidth is bandwidth. To stop this unchecked flow in practice, a <b>spanning tree</b> may be utilized. Spanning trees prevent redundant packages by making an abbreviated graph, including all nodes and only one edge connecting each of them. A broadcast emnating from any of the included nodes will know to travel only to the adjacent nodes in the spanning tree, and to ignore any edges that are not noted as such.<br><br>
+				The first, and most pressing issue in the utilization of spanning trees is that of their creation itself. Several algorithms exist that might serve our purposes. The only one mentioned in the text is known as the <b>center-based approach</b>. The protocol is as follows:<br><br>
+			<ol>
+				<li>Establish a single node to be the "center." This will serve as the root of the spanning tree.</li><br>
+				<li>Tree-join messages are sent from every node in the graph through adjacent links. Nodes one hop from the center will join the tree first.</li><br>
+				<li>The nodes now newly part of the spanning tree will act as hubs for the two-hop nodes, accepting their requests and incorporating them into the tree. This continues ad infinitum.</li><br>
+			</ol>
+			<br><br>
+			Evidently, this algorithm is extremely simple. Another algorithm that might be used to create a spanning tree, one not mentioned in the text, is called a <b>breadth-first search.</b> BFS was initially created in the 50's by E.F. Moore to find the shortest route through a maze, but although it is primarily used to measure path length in unweigted graphs, it just happens to yield a very nice tree with only one link connecting each node. The protocol for this is as follows:<br><br>
+			<ol>
+				<li>Start again from a single root node. Create an empty queue for later use.</li><br>
+				<li>Search for all adjacent nodes. For each node found that is not yet part of the tree (currently, all of them), append them to the tree, mark the current base as its parent, and then add them to the queue.</li><br>
+				<li>Once all adjacent nodes at the root have been dealt with, go to the next node in the queue and repeat steps two and three.</li><br>
+			</ol>
+
+			</p>
+		</div>
+
+		<div id="davies"  style="display:none;">
+			<h1>
+				<u> Donald Davies</u>
+			</h1>
+			<h2>
+				Pioneer of Packet Switching
+			</h2>
+			<div style="text-align:left;">
+				<p>
+					Core to the inner workings of the Internet is the concept of packet switching; the versatility and efficiency of such a system, as opposed to circuit switching, makes such a massively complex network possible. This concept was not birthed wholly in the mind of one, and in fact, many researchers working just before the advent of the Internet had similar ideas. Among the most notable of these researchers was Donald Davies, a Welsh computer scientist who went on to coin the term &#34;packet switching&#34; itself.
+				</p>
+				<p>
+					Davies was born in Treorchy, a small village in the Rhonnda Valley of Wales, in June of 1924. Despite a modest upbringing, he went on to attend the Imperial College in London where he received subsequent BSc&#39;s in Physics and Mathematics, both times receiving the highest honors. During his last year of schooling, Davies attended a lecture by John Womersley, head of the mathematics division at NPL (National Physical Laboratory), where he first learned of the facility&#39;s emergent computer research. After graduating, Davies NPL&#39;s research team developing the ACE computer, a project led by Alan Turing. There was little comradery between Turing and Davies. The young researcher, hoping to achieve Turing&#39;s respect, elucidated several mathematical errors in the paper proposing the &#34;universal Turing machine.&#34; &#34;I went along to tell him and I was rather cock-a-hoop ...  he was very annoyed,&#34; Davies later recounted.
+				</p>
+				<img src="davies_donald.jpg" align="right" style="padding:20px;">
+				<p>
+					The ACE project proved overambitious, but Turing departed, Davies stayed on to lead the development of a smaller device, the Pilot ACE, known primarily as the first computer in London and the basis of several successful commercial spin-offs.. Davies would only invest more time into the development of computer software, developing programs for simulating road traffic and translating technical Russian to English. He advanced quickly through the ranks of NPL, becoming the technical manager of their Advanced Computer techniques division in 1963 and subsequently leading the entirety of the computing division in 1966.
+				</p>
+
+				<p>
+					After his promotion, Davies steered the department towards a problem he&#39;d witnessed during a visit to MIT  in 1965. It was here that one of the first computer networks had been instituted, based on circuit switching technology; students could sit at a personal terminal with a direct connection to the mainframe, and reserve a fixed percentage of networks bandwidth to issue commands. Because the students spent so much of their time thinking, and so little time actually inputting commands, much of the bandwidth went unutilized. Davies sought to rectify this by designing a system around the bursty nature of human communication, reducing the multiple parallel connections to a single, shared link and splitting the messages sent through it into discrete packets. He called this system &#34;packet switching,&#34; and lofty plans to incorporate it into the national telecommunications infrastructure. Despite successful trials in an experimental network at NPL, the British government resisted Davie&#39;s ambitions for many years. Before any further progress was made in the UK, DARPA researcher Larry Roberts decided to incorporate Davie&#39;s research into his own fledgling network, Arpanet, a prototype that paved the way for the future development of the internet.
+				</p>
+				<p>
+					After relinquishing his position at NPL in 1979, Donald Davies continued private research in the field of communications, focusing the bulk of his efforts in network security. After his retirement in 1984, he was known for some time as a great authority on wartime cryptography, a natural consequence of his knowledge of computer history and experience in security.
+				</p>
+				<p>
+					Davies passed away in May of 2000, and was survived by his wife of 45 years, Diane Burton, and their three children.
+
+				</p>
+			</div>
+
+			<h3>
+				<u>References:</u>
+			</h3>
+
+			<ol>
+
+				<li><a href="http://www.computerconservationsociety.org/resurrection/res44.htm">Computer Conservation Society - Pioneer Profiles</a></li>
+				<li><a href="http://www.thocp.net/biographies/davies_donald.htm">The History of Computing Project - Donald Davies</a></li>
+				<li><a href="https://books.google.com/books?id=w4YSDAAAQBAJ&pg=PA21&lpg=PA21&dq=&source=bl&ots=FNaV1Gu42w&sig=tqlf82E67pEgyJgw3GClfORAxH0&hl=en&sa=X&ved=0ahUKEwiu2s--z8nPAhUg0IMKHS9FBHsQ6AEIKTAB#v=onepage&q&f=false">Turing: Pioneer of the Information Age</a></li>
+
+			</ol>
+		</div>
+
+		<div id="synch"  style="display:none;">
+			<h1>
+				<u> Clock Synchronization</u>
+			</h1>
+			<h2>
+				A Problem in Packet Switching Delays
+			</h2>
+
+			<p>
+				This past Summer, I worked on a project for the Physics department
+				involving audio phased arrays, a technology that requires extremely
+				precise synchronization between multiple devices. Researching solutions,
+				I discovered that there are inherent issues with packet based networking
+				that make precise synchronization impossible. These problems are explainable
+				<img src="NTP-Algorithm.png" align="right" style="padding:20px;">
+				using concepts in section 1.3 of the textbook. <br><br>
+
+				For the sake of this exercise, Processing, queuing, transmission, and propagation
+				delays will be labeled P, Q, T, and L, respectively. To make the exercise less
+				infuriating, you may use D as the sum of these delays. To label delays pertaining
+				to an outgoing message, type D1 and to label incoming delays, type D2. <br><br><br>
+
+
+			</p>
+
+
+			<p id="ans0"></p>
+			<p id="ans1"></p>
+			<p id="ans2"></p>
+			<p id="ans3"></p>
+			<p id="ans4"></p>
+			<p id="ans5"></p>
+			<p id="ans6"></p>
+			<p id="ans7"></p>
+			<p id="ans8"></p>
+			<script>
+      Answer("");
+  </script>
+
+			<p>Answer:
+				<input type="text" id="input" name="answer">
+				<span><button onclick='Answer(document.getElementById("input").value)'>
+      Submit
+	    </button></span></p>
+			<br>
+
+			<p id="res"><p>
+
+
+		</div>
+
+		<div id="tutorial"  style="display:none;">
+			<h1>
+				Tutorial
+			</h1>
+			<h2>
+				<u>WiFi Direct Tutorial</u>
+			</h2>
+			<p>
+				For this tutorial, I&#39;ll be walking you through a brief look at the foundation of Android WiFi Direct Application
+				layer protocol. This is part of a Networking class, not an Android Programming class, so I&#39;ll provide the basic framework
+				for the app. You may be prompted to provide a couple of examples of code to finish the app. Here are a couple of basic Android
+				programming terms that will be helpful to know:
+				<br><br>
+				Activity: Each new, interactable screen a user sees has an underlying &#34;activity.&#34; Code written in activities dictate each discrete action a user can make.
+				<br><br>
+				Broadcast Receiver: A service that listens over the app&#39;s WiFi Direct channel and sends commands to an underlying activity after certain events occur.
+				<br><br>
+				You&#39;ll be looking through a series of in app steps that will end in a functional WiFi Direct app. This app will send basic messages,
+				but can be easily modified for sharing other types of data.
+			</p>
+			<ol>
+
+				<li>In the provided folder, navigate to app/src/main/java/com/example/simplewifidirectchat. This contains all of the core java files for the program. MainActivity.java contains the code for the main screen of the app. The OnCreate method is executed when the app starts up. There are three core Objects and one core Class. You&#39;ll see the former of these initiated here: the WiFi P2P Manager, the Channel, and the Broadcast Receiver. You can look at the core of the Broadcast Receiver class if you&#39;d like; it&#39;s an always-on service that listens for specific state changes. We&#39;ll now follow the path around the app.</li>
+				<br>
+				<li>The app has an options menu that initiates the connection. Scroll down to the bottom of the class, and look for the OnOptionItemSelected method. When a certain icon is chosen (the only icon in this case), a linked activity that searched for nearby devices will be launched. After searching, you&#39;ll be able to choose from a selection. The chosen device info is forwarded to the connectDevice method.</li>
+				<br>
+				<li>This method extracts some important information from the raw device data. We&#39;ll take the MAC address and some configuration info and send them to a series of client connect threads.</li>
+				<br>
+				<li>The client will connect through ConnectedThread. A new socket is created, with pointers to the Server&#39;s MAC address and the port to connect to. Specify this port here, after the comma following the address in the socket.connect method. You may use any unused port. Keep in mind you&#39;ll be initiating this port on the Server thread, so remember this number.</li>
+				<br>
+				<li>The Server initiates a similar thread, but only needs to specify a port number and wait for the client to connect. In mConnectServerStream, there is a declaration for a new ServerSocket object. In the empty parentheses after ServerSocket, type the same port you specified for the client.</li>
+				<br>
+				<li>Your devices should be able to connect now. Both the Client and Server threads are still running. When both of them started, they set up input and output streams. Each has an underlying buffer of an array of bytes. Within the declaration, specify the size of this buffer. A large buffer size will reduce the probability of packet loss, but a smaller buffer size will reduce queueing delay (A power of two is pretty standard).</li>
+
+			</ol>
+		</div>
+		<div id="oct10"  style="display:none;">
+			<h1>
+				Oct. 10 Notes
+			</h1>
+			<h2>
+				<u>UDP Highlights</u>
+			</h2>
+			<p>Although UDP is less reliable than TCP, it still finds use in many applications where its flexibility, speed, and lightweight nature outweigh its inherent flaws.
+			</p>
+
+			<ul>
+				<li>UDP is no frills, and as such, there is no throttling of its handled messages. TCP attempts to handle congestion through the restriction of bandwidth, but any messages sent through UDP will be immediately handled. UDP can also send messages, as needed, in immediate succesion, where its counterpart would require acquisition confirmation after each message before sending the next.
+				</li>
+				<li>UDP establishes no consistent connection, and so no tracking of connection state is required. This necessity limits the number of possilbe concurrent TCP connections, a weakness UDP does not share.
+				</li>
+				<li>UDP uses significantly less header space than TCP (8 to 20 bytes, respectively).
+				</li>
+			</ul>
+			<br><br>
+			<p>Applications that often utilize UDP include media streaming services, routing protocol, network management, and DNS.
+			<p>
+
+			<h3><u>UDP Checksum</u></h3>
+			<p>Because UDP operates independently from lower level protocols, it cannot guarantee that any of these will provide their own error detection. UDP provides its own in the form of an 8 byte checksum. At the message source, three random 16 bit numbers are added; the 1's complement* of this sum is calculated, and then appended to the segment. When the message arrives at its destination, the receiver sums all of the numbers. If this yields a new 16 bit number of all 1's, the checksum is successful.
+			</p>
+			<br>
+			<h4><em>Thoughts: Liabilities?</em></h4>
+			<p>It seems as if it might be possible that the checksum would yield a false positive under some, rare circumstances. What if an error causes differences in both the sum and the complement, such that said errors cancel? What if the bits in the segment sections surrounding the checksum have been altered, while the checksum itself remains intact?</p>
+			<br>
+			<h5 style="text-align:right;"><em>*The 1's compliment of a binary number is simply a conversion of all of its 1's to 0's, and vice versa.</em></h5>
+		</div>
+
+		<div id="oct11" style="display:none;">
+			<h1>
+				Oct. 11 Notes
+			</h1>
+			<h2>
+				<u>TCP - Timeout Calculation</u>
+			</h2>
+			<p>TCP is, at its heart, an rdt protocol, and so it has a set 'time-out' period after which it will retransmit the previous segment. The time chosen for this interval is not immediately obvious; it clearly must be greater than the expected round trip time of the segment, but how does TCP calculate this, and how long beyond this time should TCP idle? THere must be some compromise, as too little time may cause recurring retransmissions while confirmation is in transit, but too much time will stall transmission longer than necessary and reduce throughput.<br><br>
+				TCP has a series of algorithms to achieve this compromise. The first is a weighted function utilized to calculate the estimated RTT, while the second calculates the average deviation of the RTT; the timeout duration is acquired through the repeated iteration of these functions.<br><br>
+				These algorithms are as follows:<br><br>
+				<u>RTT Algorithm</u><br>
+				<span style="font-size: 18px">&epsilon;<sub>n</sub> = (1 - &alpha;)&epsilon;<sub>n-1</sub> + &alpha;s<sub>n</sub></span>
+				<br><br>
+				<u>Deviation Algorithm</u><br>
+				<span style="font-size: 18px">&sigma;<sub>n</sub> = (1 - &beta;)&sigma;<sub>n-1</sub> + &beta;|s<sub>n</sub> - &epsilon;<sub>n</sub>|</span>
+				<br><br>
+				In the above formulas, &epsilon; represents the estimated RTT, <i>s</i> represents the measured RTT, and &sigma; represents the deviation. &alpha; and &beta; are both unitless weighting factors (by convention, 0.125 and 0.25, respectively). There is an equivalence between &epsilon; and <i>s</i> here, as &epsilon;<sub>0</sub> must equal <i>s</i><sub>0</sub> as the basis of fucture iterations. A little algebra will yield an expansion of the previous first algorithm:
+				<br><br>
+				<span style="font-size: 18px">&epsilon;<sub>n</sub> = (1 - &alpha;)<sup>N</sup>s<sub>0</sub> + <span style="font-size: 30px">&Sigma;</span> (1 - &alpha;)<sup>n-1</sup>&alpha;s<sub>N-(n-1)</sub> + &alpha;s<sub>n</sub></span>
+				<br><br>
+				The final timeout interval is calculated through the following equation:<br><br>
+				<span style="font-size: 18px">T = &epsilon;<sub>n</sub> + 4&sigma;<sub>n</sub><br><br></span>
+				I could express this function in terms of the measured RTT as well, but frankly, I would rather not.
+			</p>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

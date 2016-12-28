@@ -1,0 +1,35 @@
+<html> 
+<head>
+<title> 
+Notes on Routing Algorithms
+</title>
+<style> 
+body{
+	background-color: black; 
+	color: green; 
+}
+</style> 
+</head>
+<body> 
+<h1>Notes on Routing Algorithms</h1> 
+<ol> 
+	<li>Distance-Vector Multicast Routing Protocol</li><br> 
+	<ul><li>This algorithm implements source-based multicast routing with reverse path forwarding and includes pruning techniques. </li><br>
+	<li>Reverse path forwarding used by this algorithm broadcasts the packets to all surrounding nodes within a specific subset. When the packet is split among nodes, it uses a pruning technique to get rid of the packets heading to nodes that don't need them (they aren't part of the multicast group). Simply put, if a router or node, receives a packet that is directed towards hosts that aren't in it's multicast, then it will let all other routers know by sending prune messages via the upstream route.</li><br>
+	Example of DVMRP:<br>
+	<img src="http://www.cisco.com/c/dam/en/us/td/i/100001-200000/120001-130000/121001-122000/121931.ps/_jcr_content/renditions/121931.jpg"/>
+	</ul><br><hr><br> 
+	<li>Protocol Independent Multicast Routing Protocol</li><br>
+	<ul><li>This algorithmic protocol has two states that it can be in on a network. That is, it can be set in either <strong>Dense</strong> mode or <strong>Sparse</strong> mode. </li><br> 
+	<li>The <strong>Dense</strong> mdoe of this networking algorithm is similar to that of DVMRP in structer in which it uses RPF and pruning to contact all hosts in a multicast.</li><br>
+	<li>The <strong>Sparse</strong> mode, however, rendezvous points are used to set up the multicast distribution tree. For an example, see the image below.</li><br>
+	Example of Sparse Mode in PIM:<br>
+	<img src="http://docwiki.cisco.com/w/images/a/aa/Nd202401.jpg"/> 
+</ul><br><hr><br> 
+	
+	
+</ol>
+<br><br>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/><br>
+</body>
+</html> 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+   Oct 11
+</title>
+</head>
+<body><body bgcolor="#99ccff">
+	<h1>
+         <b>(Oct 11) Transport Layer pages 215-219</b>
+    	</h1>
+	<h2>3.4.2 Pipelined Reliable Data Transfer Protocols</h2>
+	<ul> 
+<li>The main problem with the rdt3.0 its stop-and-wait protcol. which makes the two senders wait inbetween each packet delivery to send back a postive fact that the packet was ok. This takes too much time. In turn the <b>utilization</b>(the fraction of time the sender is actually busy) of the sender is too low and therefore ineffecent </li>
+<li>The fix would be this tecnique known as <b>pipelining</b> which allows sender to send multipul packets without waiting for acknowledgments. are you actually reading these or are you just looking at lenght of each section.</li>
+<li>the concequences of pipelining is the reange or sequence numbers must increase each time, both sending and reciveing have to buffer more than one packet, requirements  will depend on the manner in which a data transfer protocol responds to lost, corrupted, and overly delayed packets</li>
+<li> Two basic approaches toward pipelined error recovery can be identified: Go-Back-N and selective repeat. Go-Back-N: the sender is allowed to transmit multiple packets
+(when available) without waiting for an acknowledgment, but is constrained to have no
+more than some maximum allowable number,N,of unacknowledged packets in the pipeline.</li>
+
+</ul> 
+
+</body>
+</html>

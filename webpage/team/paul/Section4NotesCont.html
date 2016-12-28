@@ -1,0 +1,35 @@
+<html> 
+<head>
+<title> 
+Section 4 Notes Continued
+</title>
+<style> 
+body{
+	background-color: black; 
+	color: green; 
+}
+</style> 
+</head>
+<body> 
+<h1>Section 4 Notes Continued</h1> 
+<ol> 
+	<li>Internet Protocol Datagram (IPv4)</li><br> 
+	<ul><li>The Internet Protocol Datagram (Version 4) is made up of the following: A version number (this is version 4) which is composed of 4 bits, a header length which is to determine where the IP datagram header begins (4 bits long), a TOS (Type of Service) to specify whether or not the datagram requires reliability, thoroughput, etc., a datagram length which can be composed of 32 bits to tell how large the datagram is, a TTL field which tells how long the packet should "stay alive" before being dropped,  a protocol field to indicate what's going through the transport layer (UDP, TCP, etc.), a checksum to check for corrupted bits or data loss, a source and destination IP address, an options field (allows the IP header to be extended), and a data payload field.</li></ul><br>
+	<img src="http://www.freesoft.org/CIE/RFC/791/iphdr.gif"/><br><hr><br> 
+	<li>IP Datagram Fragmentation</li><br>
+	<ul><li>A router has a MTU (Maximum Transmission Unit), which can only allow for a specific number of bytes to be transferred at one time. If a router receives a packet with more bytes than the MTU, then IP fragmentation occurs to even out the load.</li><br> 
+	<li>When IP fragmentation occurs, a packet is split into tinier packets, each being consistent with the router's MTU, and then those packets are sent out to hosts with flags ranging from 1 to 0 (0 indicates the ending packets), with the same identifiers (that way the routers know that all the packets are meant to be together). The tinier packets also have bits that determine where the packet is meant to be assembled amongst the many bytes (for instance, one packet may start at 1000 bytes from the very first packet).</li></ul><br><hr><br> 
+	<li>IP fragmentation attacks ("Teardrop" Attacks)</li><br> 
+	<ul><li>This type of attack is when an attacker sends fragmented IP packets that have no end (that is, there's no flag that ends the packet). This quickly consumes the end hosts' processing power, and causes a DoS (Denial of Service). It should be noted that these types of attacks don't usually work anymore, unless they're <strong>Teardrop</strong> attacks.</li><br>
+	<li>Teardrop attacks are similar since they also use fragmentation. However, these types of attacks take advantage of how an OS reassembles packets in general. Teardrop attacks are specific to certain vulnerabilities and generally don't work as universally as general fragmentation attacks.</li></ul><br><hr><br> 
+	<li>Glorious IPv6</li><br> 
+	<ul><li>IPv6 has a similar structure to an IPv4 packet, save a few differences: Fragmentation has been completely dropped, and is no longer allowed (to stop the DoS attacks mentioned above).</li><br> 
+	<img src="http://docs.oracle.com/cd/E23823_01/html/816-4554/figures/HeaderFormat.png"/><br> 
+	<li>Most headers are used in the "Next Header" portion of the packet, so as to minimize the size of the IP datagram. A hop limit is introduced as similiar to a TTL, where the packet can only go through a certain number of routers before being dropped. A flow label to indicate some ToS.</li><br><hr><br>
+	</ul> 
+	
+</ol>
+<br><br>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/><br>
+</body>
+</html> 

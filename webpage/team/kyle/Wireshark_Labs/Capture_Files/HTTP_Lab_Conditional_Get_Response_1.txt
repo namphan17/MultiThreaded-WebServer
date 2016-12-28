@@ -1,0 +1,20 @@
+No.     Time           Source                Destination           Protocol Length Info
+     47 9.632667       128.119.245.12        10.200.5.234          HTTP     307    HTTP/1.1 304 Not Modified 
+
+Frame 47: 307 bytes on wire (2456 bits), 307 bytes captured (2456 bits) on interface 0
+Ethernet II, Src: CiscoInc_57:c8:00 (00:17:df:57:c8:00), Dst: Apple_14:39:e8 (88:1f:a1:14:39:e8)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.200.5.234
+Transmission Control Protocol, Src Port: 80, Dst Port: 58562, Seq: 1219, Ack: 1418, Len: 241
+Hypertext Transfer Protocol
+    HTTP/1.1 304 Not Modified\r\n
+    Date: Tue, 11 Oct 2016 18:33:44 GMT\r\n
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16 mod_perl/2.0.9dev Perl/v5.16.3\r\n
+    Connection: Keep-Alive\r\n
+    Keep-Alive: timeout=5, max=98\r\n
+    ETag: "173-53e9092b68b46"\r\n
+    \r\n
+    [HTTP response 3/3]
+    [Time since request: 0.046957000 seconds]
+    [Prev request in frame: 38]
+    [Prev response in frame: 39]
+    [Request in frame: 46]

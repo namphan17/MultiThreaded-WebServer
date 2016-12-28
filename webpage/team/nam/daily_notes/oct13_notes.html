@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"> 
+      	<a class="home" href="../hello.html"><h4 class="home">HOME</h4></a>
+      </div>
+      <div style="overflow: hidden">
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+            <ul>
+               <h1 class="section">CHAPTER 3.5: Connection-Oriented Transport - TCP</h1>
+               <li>Connection-oriented</li>
+               <li>A TCP connection provides a full-duplex service</li>
+               <li>A TCP connection is also always point-to-point, that is, between a single sender and a single receiver.</li>
+               <li>Multicasting—the transfer of data from one sender to many receivers in a single send operation—is not possible with TCP.</li>
+               <li>Maximum segment size (MSS) is typically set by first determining the length of the largest link-layer frame that can be sent by the local sending host (the so-called maximum transmission unit, MTU), and then setting the MSS to ensure that a TCP segment (when encapsulated in an IP datagram) plus the TCP/IP header length (typically 40 bytes) will fit into a single link-layer frame.</li>
+               <li>The TCP header is typically 20 bytes (12 bytes more than the UDP header).</li>
+               <figure>
+                  <img class="display" src="../img/TCP-segment.PNG"/>
+                  <figcaption class="display">Fig1. A TCP segment structure</figcaption>
+               </figure>
+               <figure>
+                  <img class="display" src="../img/simplified-TCP-sender.PNG"/>
+                  <figcaption class="display">Fig2. Simplified TCP sender</figcaption>
+               </figure>
+               <li>TCP’s error-recovery mechanism is probably best categorized as a hybrid of GBN and SR protocols.</li>
+            </ul>
+         </div>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+  </div>
+   </body>
+</html>

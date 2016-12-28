@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../css/notes.css"/>
+   </head>
+   <body>
+      <script src="jquery-3.1.1.min.js"></script>
+      <div class="nav-bar"><a class="home" href="../hello.html"><h4 class="home">HOME</h4></a></div>
+      <div class="col-1"></div>
+      <div class="col-2">
+         <div class="title">
+         <h1 class="section">CHAPTER 1.6 Networks Under Attack</h1>
+      </div>
+         <ol>
+            <li>
+               <h3 class="section">
+               Malware
+               <h3>
+            </li>
+            <p>Malware can: deleting our files, installing spyware the steal private information.</p>
+            <p>A botnet: is a network of infected devices, controlled by bad guys.</p>
+            <p>Self-replication: once malware infects one host, from that host, it seeks entry into other hosts over the Internet</p>
+            <ul>
+               <li>Viruses</li>
+               <p>Are malware that require some form of user interaction to infect the user's device.</p>
+               <li>Worms</li>
+               <p>Are malware that can enter a device without any explicit user interaction.</p>
+            </ul>
+            <li>
+               <h3 class="section">Attacking servers and network infrastructure</h3>
+            </li>
+            <h5>Denial-of-service (DOS) attack</h5>
+            <ul>
+               <li>Vulnerability Attack</li>
+               <p>This involves sending a few well-crafted messages to a vulnerable
+                  application or operating system running on a targeted host. If the right
+                  sequence of packets is sent to a vulnerable application or operating system, the
+                  service can stop or, worse, the host can crash.
+               </p>
+               <li>Bandwidth flooding</li>
+               <p>The attacker sends a deluge of packets to the targeted
+                  host—so many packets that the target’s access link becomes clogged, preventing
+                  legitimate packets from reaching the server.
+               </p>
+               <p>Distributed DOS (DDOS) attack: the attacker controls multiple sources
+                  and has each source send traffic at the target. With this approach, the aggregate traffic
+                  rate across all the controlled sources needs to be approximately R to cripple the service.
+               </p>
+               <li>Connection Flooding</li>
+               <p>The attacker establishes a large number of half-open or
+                  fully open TCP connections at the target host. The host can become so bogged down with 
+                  these bogus connections that it stops accepting legitimate connections.
+               </p>
+            </ul>
+            <li>
+               <h3 class="section">Sniffing packets</h3>
+            </li>
+            <ul>
+               <li>
+                  <p>Packet sniffer: a passive receiver that records a copy of every packet that flies by, 
+                     when it's placed in the vicinity of the wireless transmitter.
+                  </p>
+               </li>
+               <li>
+                  <p>Sniffer can be deployed also in wired environment.</p>
+               </li>
+               <li>
+                  <p>Sniffed packets can then be analyzed offline for sensitive information.</p>
+               </li>
+            </ul>
+            <li>
+               <h3>Pretending as someone you trust</h3>
+            </li>
+            <ul>
+               <li>
+                  <p>IP spoofing: The ability to injectpackets into the Internet with a false source address,
+                     and is but one of many ways in which one user can masquerade as another user.
+                  </p>
+               </li>
+               <li>
+                  <p>End-point authentication: a mechanism that will allow us to determine with certainty if a message originates from where we think it does.</p>
+               </li>
+            </ul>
+         </ol>
+      </div>
+      <script src="script.js"></script>
+      <div class="col-3"></div>
+   </body>
+</html>

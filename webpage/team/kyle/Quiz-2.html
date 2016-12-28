@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	body {background-color: palegreen;}
+	h1, h3, p, tr, td, li {font-family: Arial, Helvetica, sans-serif;}
+	.Answers:hover{ background-color: #000000}
+	.Answers{color: palegreen}
+	h1 {text-decoration: underline}
+	table{border-collapse: collapse}
+    table, td, th {border: 1px solid black}
+</style>
+	<title>Quiz 2</title>
+</head>
+<body>
+<h1>Quiz 2</h1>
+	<h3>Short Answer</h3>
+			<p>1. Describe the key difference(s) between connectionless and connection-oriented transport.</p>
+			<br>
+			<p>2. Describe the difference between flow control and congestion control in a transport protocol.</p>
+			<br>
+			<p>3. What information does the "Acknowledgment Number" field in a TCP header hold?</p>
+			<br>
+			<p>Hover over the next 3 lines to reveal answers:</p>
+			<!-- Answers edited by Jeremy to make background hover over background color black-->
+			<p class = "Answers">1. In connection-oriented transport, there is a handshaking process between the sender and receiver before any payload data is sent. In connectionless, there is not. <br>
+			2. Flow control limits sent data in order to prevent buffer overflow on the receiving end. Congestion control limits sent data in response to perceived congestion in the network.<br>
+			3. The number of the first byte in the next segment that the sender expects to receive.</p>
+		<h3>Multiple Choice</h3>
+			<p>1. Which approach to congestion control does TCP utilize?</p>
+			<form>
+				<input type="radio" name="Answer1" value="End-to-end congestion control"> a. End-to-end congestion control <br>
+				<input type="radio" name="Answer1" value="Network-assisted congestion control"> b. Network-assisted congestion control <br>
+			</form>
+			<p>2. The "Sequence Number" field in a TCP header refers to:</p>
+			<form>
+				<input type="radio" name="Answer2" value="The number of the packet"> a. The number of the packet <br>
+				<input type="radio" name="Answer2" value="The number of the first byte in the packet"> b. The number of the first byte in the packet <br>
+			</form>
+			<p>3. The term for the amount of unused space in a receiver's buffer is the:</p>
+			<form>
+				<input type="radio" name="answer3" value="Receive window"> a. Receive window<br>
+				<input type="radio" name="answer3" value="Buffer window"> b. Buffer Window<br>
+			</form>
+			<p>Hover over the next 3 lines to reveal answers:</p>
+			<!-- Answers edited by Jeremy to make background hover over background color black-->
+			<p class = "Answers">
+			1. a
+			<br>
+			2. b
+			<br>
+			3. a
+			</p>
+		<h3>Matching</h3>
+			<TABLE>
+				<tr>
+					<th>Event</th>
+					<th>TCP Receiver Action</th>
+				</tr>
+				<tr>
+					<td>1. Arrival of out-of-order segment with higher-than-expected sequence number. Gap detected.</td>
+					<td>a. Immediately send ACK, provided that segment starts at the lower end of gap.</td>
+				</tr>
+				<tr>
+					<td>2. Arrival of in-order segment with expected sequence number. All data up to expected sequence number already acknowledged.</td>
+					<td>b. Immediately send single cumulative ACK.</td>
+				</tr>
+				<tr>
+					<td>3. Arrival of segment that partially or completely fills in gap in received data.</td>
+					<td>c. Immediately send duplicate ACK, indicating sequence number of next expected byte.</td>
+				</tr>
+				<tr>
+					<td>4. Arrival of in-order segment with expected sequence number. One other in-order segment waiting for ACK transmission. </td>
+					<td>d. Delayed ACK. Wait up to 500 msec for arrival of another in-order segment. If next in-order segment does not arrive in this interval, send an ACK.</td>
+				</tr>
+			</TABLE>
+			<p>Hover over the next 4 lines to reveal answers:</p>
+			<!-- Answers edited by Jeremy to make background hover over background color black-->
+			<p class="Answers">
+			1. c
+			<br>
+			2. d
+			<br>
+			3. a
+			<br>
+			4. b
+			<br>
+			</p>
+</body>
+</html>

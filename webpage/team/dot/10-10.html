@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/10/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 10th
+    </h1>
+<ul>
+	<li>Modern Internet uses one of two transport protocols: TCP or UDP</li>
+	<li>Transmission Control Protocol</li>
+	<li>User Datagram Protocol</li>
+	<li>Network application developer chooses TCP or UDP based on the needs of the application</li>
+	<li>A packet in the transport layer is called a segment</li>
+	<li>(some things call UDP packets datagrams, but this textbook says nah that's too confusing)</li>
+	<li>TCP/UDP as a whole is called the Internet Protocol (IP)</li>
+	<li>Best-effort delivery service - makes every attempt to deliver segments, but makes no guarantees</li>
+	<li>Not guaranteed -> unreliable service</li>
+	<li>TCP/UDP extend IP's delivery service between two end systems to a delivery service between two processes on those systems</li>
+	<li>^Transport-layer Multiplexing and Demultiplexing^</li>
+	<li>Integrity checking: include error-detection fields in segment headers</li>
+	<li>UDP</li>
+	<ul>
+		<li>Only provides data delivery and error checking, no frills</li>
+		<ul>
+			<li>Unreliable service - does not guarantee that data will arrive intact or at all</li>
+			<li>No congestion control - any connection can send as much as it wants for as long as it wants</li>
+		</ul>
+	</ul>
+	<li>TCP</li>
+	<ul>
+		<li>Ensures reliable data transfer</li>
+		<ul>
+			<li>Flow control, sequence numbers, acknowledgements, timers</li>
+			<li>Keeps sending data until all of it has been confirmed to arrive in the correct order</li>
+		</ul>
+		<li>Provides congestion control</li>
+		<ul>
+			<li>Prevents any one TCP connection from swamping links and routers with excessive traffic</li>
+			<li>Attempts to give each connection in a congested link an equal share of bandwidth</li>
+			<li>Regulates rate at which sending sides of a TCP connection can send information</li>
+		</ul>
+	</ul>
+</ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

@@ -1,0 +1,160 @@
+ls<!DOCTYPE html>
+<html>
+   <header>
+      <title>Assignment 1</title>
+      <link rel="stylesheet" type="text/css" href="../css/assignments.css"></link>
+   </header>
+   <body>
+      <div class="header">
+         <h1 class="title">Assignment 1</h1>
+      </div>
+      <div class="main">
+      <div class="section">
+         <h2>PART I: Q&A</h2>
+         <ol>
+            <li>
+               <h4>What is a packet called in the transport layer?</h4>
+               <p><span>Answer:</span> Segment.</p>
+            </li>
+            <li>
+               <h4>Name 4 components of cookies</h4>
+               <p><span>Answer:</span> (1) a cookie header line in the HTTP response message; (2) a cookie header line in the HTTP request message; (3) a cookie file kept on the user's end system and managed by the user's browser; and (4) a back-end database at the Web site.</p>
+            </li>
+            <li>
+               <h4>In a HTTP response message, what does the status code: 200 mean?</h4>
+               <p><span>Answer:</span> It means the server successfully returned the file for the client, which could be an .html, .shtml, .php, etc.</p>
+            </li>
+            <li>
+               <h4>FTP uses two parallel connections to transfer a file, name these connections and their junction.</h4>
+               <p><span>Answer:</span> The control connection (port 21) is used for sending control information between the two hosts - information such as user identification, password, commands to change remote directory, and commands to "put" and "get" files. The data connection (port 20) is used to actually send a file</p>
+            </li>
+            <li>
+               <h4>Throughout a session, the FTP server must maintain state about the user. Does HTTP work this way?</h4>
+               <p><span>Answer:</span> No. HTTP a stateless protocol meaning that it doesn't save any information about the user after the connection is finished (rather, it just grabs the data, or sends data, then ends the connection without any fuss). However, HTTP can be made a non-stateless protocol by adding cookies into the connection (which saves user information on the client side to interpret server side later). </p>
+            </li>
+            <li>
+               <h4>What is <b>multiplexing</b> and <b>demultiplexing</b>?</h4>
+               <p><span>Answer:</span> The job of gathering data about the source host and port, destination host and port, and passing the data into the network layer is called multiplexing. The job of delivering the data in a transport-layer segment to the correct socket is called demultiplexing.</p>
+            </li>
+            <li>
+               <h4>What is Checksum and how is it useful?</h4>
+               <p><span>Answer:</span> The 1s complement of the sum of all the 16-bit words in the segment, with any overflow encountered during the sum being wrapped around. If no errors are introduced into the packet, then the sum at the receiver will be 1111111111111111. This is useful because it can be used to check for corrupted data in the packet, or missing information, which could have been caused for any number of reasons.</p>
+            </li>
+            <li>
+               <h4>What is a finite-state machine?</h4>
+               <p><span>Answer:</span>An abstract machine that can be in one of a finite number of states. The machine is in only one state at a time; the state it is in at any given time is called the current state. It can change from one state to another when initiated by a triggering event or condition; this is called a transition. A particular FSM is defined by a list of its states, its initial state, and the triggering condition for each transition (source: <a href="https://en.wikipedia.org/wiki/Finite-state_machine">wikipedia</a>).</p>
+            </li>
+            <li>
+               <h4>What does <b>SMTP</b> stand for?</h4>
+               <p><span>Answer:</span>Simple Mail Transfer Protocol.</p>
+            </li>
+            <li>
+               <h4>What is the size of the <b>sequence number field</b> and the <b>acknowledgment number field</b> are used by the TCP sender and receiver</h4>
+               <p><span>Answer:</span> The size of the sequence number field and acknowledgement number field is 1 bit.</p>
+            </li>
+         </ol>
+      </div>
+      
+      <div class="section">
+         <h2>PART II: Practice with Problems</h2>
+         <ul>
+            <li>
+               <h3>P5 (p.289 Computer Networks textbook)</h3>
+               <p>Suppose that the UDP receiver computes the Internet checksum for the received UDP segment and finds that it matches the value carried in the checksum field.Can the receiver be absolutely certain that no bit errors have occurred? Explain.</p>
+               <p>Solution: Yes because the result after adding need to be exact 1111111111111111. Any of the bit error will give us a different result.</p>
+            </li>
+            <li>
+               <h3>P4 (p.171)</h3>
+               <p>Consider the following string of ASCII characters that were captured by Wireshark when the browser sent an HTTP GET message (i.e., this is the actual content of an HTTP GET message). The characters <cr><lf> are carriage return and line-feed characters (that is, the italicised character string <cr> in the text below represents the single carriage-return character that was contained at that point in the HTTP header). Answer the following questions, indicating where in the HTTP GET message below you find the answer.</p>
+               <div style="width:350px">
+               <p>GET /cs453/index.html HTTP/1.1<cr><lf>Host: gai a.cs.umass.edu<cr><lf>User-Agent: Mozilla/5.0 ( Windows;U; Windows NT 5.1; en-US; rv:1.7.2) Gec ko/20040804 Netscape/7.2 (ax) <cr><lf>Accept:ex t/xml, application/xml, application/xhtml+xml, text /html;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5 <cr><lf>Accept-Language: en-us,en;q=0.5<cr><lf>Accept- Encoding: zip,deflate<cr><lf>Accept-Charset: ISO -8859-1,utf-8;q=0.7,*;q=0.7<cr><lf>Keep-Alive: 300<cr> <lf>Connection:keep-alive<cr><lf><cr><lf></p>
+               a. The URL is displayed by the host field, which is <b>gai a.cs.umass.edu</b><br>
+               b. The browser running HTTP version 1.1<br>
+               c. The browser requests a persistent connection since the value in <b>Connection</b> field is <b>keep-alive</b><br>
+               d. There is no IP address associated this HTTP message<br>
+               e. The type of browser initiates this message is <b>Mozilla/5.0</b>. This is require because the server can actually send different versions of the same object to different types of user agents.<br>
+            </div>
+            </li>
+         </ul>
+
+      </div>
+      <div class="content">
+      <div class="section">
+         <h2>PART III: Wireshark Lab</h2>
+            <h3>UDP</h3>
+            <ul>
+               <li>We first fire up Wireshark and <b>choose the interface</b> we want to capture packets and then <b>start capturing</b> packets</li><br>
+               <br>
+               <br>
+               <img src="../img/firingup-wireshark.png"/>
+               <br>
+               <br>
+               <li>Open a browser and go to a favorite Website. Here we use <a href="https://www.facebook.com/"><i>facebook.com</i></a> as an example</li><br>
+               <li>Stop capturing packets. In the display filter, type in "udp"</li><br>
+               <br>
+               <br>
+               <img src="../img/udp-filter.png"/>
+               <br>
+               <br>
+               <li>Now the Wireshark GUI is displaying packets that communicated through end systems by UDP protocol.</li><br>
+               <li>In the Info column, find the packets that has "facebook.com"</li><br>
+               <li>This message is using by DNS application, our computer sending the query for the alias hostname "facebook.com" to get the canonical hostname and then the IP address.</li><br>
+               <li>
+                  The length field specifies the number of bytes in the UDP segment (header plus data), which in this case is 38 bytes.
+               </li><br>
+               <li>
+                  With 2 bytes in the <b>Length</b> field, the UDP segment can be up to (2^8)^2 = 65535 bytes. This also means that the maximum size of data delivered by UDP protocol is 65535 - 6 = 65529 bytes.
+               </li><br>
+               <li>
+                  The port source and destination numbers in the header field is in the range from port 0 to port 65535, represent by 2 bytes.
+               </li><br>
+               <br>
+               <br>
+               <img src="../img/choosing-one-packet.png"/>
+               <br>
+               <br>            
+               <li>
+                  A new window opens displaying the packet information underlying 5 layers: Physical, Link, Network, Transport, and Application Layers from top to bottom respectively.
+               </li><br>
+               <li>
+                  Under the User Datagram Protocal shows the information of this UDP segment.
+                  There are 4 fields in the UDP header, which are <b>Source Port</b>, <b>Destination Port</b>, <b>Length</b>, and <b>Checksum</b>.
+                  The bottom window is displaying the data encoded in hexadecimal number. Each field in the header is represented by
+                  4 digit, which is equals to 16^4 = (2^8)^2. This mean we need 2 bytes for each header field.
+               </li><br>
+               <br>
+               <br>
+               <img src="../img/header-fields-question.png"/>
+               <br>
+               <br>
+               <li>
+                  Taking a look at the network layer, which implements the IP protocol in this case. We can see under the Protocol field the value of <b>UDP (17)</b>.
+                  This field is used only when an IP datagram reaches its final destination. The value of this field indicates the specific transport-layer protocol to which the data portion of this IP datagram should be passed. For example, a value of 6 indicates that the data portion is passed to TCP, while a value of 17 indicates that the data is passed to UDP.
+               </li><br>
+               <br>
+               <br>
+               <img src="../img/protocol-number.png"/> 
+               <br>
+               <br>
+               <li>
+                  Now we analyze the relationship between the sending and the receiving packets.
+               </li><br>
+               <br>
+               <img src="../img/pair-of-packets.png"/>
+               <br>
+               <li>These packets are sent from DNS appliction (the Domain Name System).</li><br>
+               <li>As we already know, whenever we browse for a Website, we need to retrieve the IP address of the server of that Website by making the query to DNS server.</li><br>
+               <li>The DNS server then will send back the response message to our query.</li><br>
+               <li>In this expample, the left window shows the query message. Under the transport layer header fields, we can see these information:</li><br>
+               <ul>
+               <li><b>Source port: 13425</b></li><br>
+               <li><b>Destination port: 53</b></li><br>
+               <li><b>Length: 38 bytes</b> - which means the size of this query is 30 bytes  </li><br>
+               </ul>
+               <li>In the right window, we can see, from the server, the source port and the destination port are now switch around. The response data has the length of 54 - 8 = 46 bytes.</li><br>
+         </ul>
+      </div>
+      </div>   
+      <div>
+   </body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Wireshark Lab - UDP</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+<h1>Wireshark Lab - UDP</h1>
+<ol>
+<li><i>Select one UDP packet from your trace. From this packet, determine how many
+fields there are in the UDP header. Name these fields.</i><br>
+There are <u>4 fields</u> in a UDP packet: Source Port, Destination Port, Length, and Checksum.<br>
+<img src="ws1.png"/></li>
+<li><i>By consulting the displayed information in Wireshark&#39s packet content field for
+this packet, determine the length (in bytes) of each of the UDP header fields.</i><br>
+Each header field is <u>2 bytes</u>, for a total of 8 bytes.<br>
+<img src="ws2.png"/></li>
+<li><i>The value in the Length field is the length of what? Verify your claim with your captured UDP packet.</i><br>
+The Length field is the length of all the packet's enclosed data plus the header length, so it will always be the <u>length of the enclosed data + 8</u>.<br>
+<img src="ws3.png"/></li>
+<li><i>What is the maximum number of bytes that can be included in a UDP payload?</i><br>
+As Length is a 16-bit (2-byte) number, a UDP packet must be 2^16-1 bytes at maximum. Because there are always 8 header bytes, a UDP payload must contain no more than 2^16-1-8, or <u>65,527 bytes</u>.
+</li>
+<li><i>What is the largest possible source port number?</i><br>
+A port must also be a 16-bit number, so there will be 2^16 possible port numbers. Starting at port 0 gives us a maximum of 2^16-1, <u>or 65535</u>, as the maximum port number.
+</li>
+<li><i>What is the protocol number for UDP? Give your answer in both hexadecimal and
+decimal notation. To answer this question, you&#39ll need to look into the Protocol
+field of the IP datagram containing this UDP segment.</i><br>
+The UDP protocol number is <u>17</u>.<br>
+<img src="ws4.png"/></li>
+<li><i>Examine a pair of UDP packets in which your host sends the first UDP packet and
+the second UDP packet is a reply to this first UDP packet. 
+Describe the relationship between the port numbers in the two packets.</i><br>
+The port numbers, like the Source & Destination addresses, have switched places.<br>
+<img src="ws5.png"/></li>
+</ol>
+</body>
+</html>

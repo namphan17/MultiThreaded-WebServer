@@ -1,0 +1,61 @@
+<!-- 
+10-17.html
+Notes from October 17th
+Tyler Wians
+CSC 317: Computer Networks
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>10.17 Notes</title>
+	<style>
+	  body { background-color: #457263;
+	         margin: auto; width: 80%;
+           font-family: Verdana, sans-serif; }
+    #desc { text-align: center; }
+            a { color: #FFFFFF; }
+	</style>
+</head>
+<body>
+
+        <h1 id="desc"> Tyler Wians </h1>
+        <h5 id="desc"> CSC 317: Computer Networks</h5>
+        <p id="desc"><a href="./hello.html">Home</a> &rarr; <a href="./10-17.html">10.17</a></p>
+	
+		<h3>The Link-State (LS) Routing Algorithm</h3>
+		
+		<p>The link-state routing algorithm is also known as Dijkstra's algorithm. It computes the least-cost path from one
+		node, the source, to all other nodes in the network. The algorithm is iterative and has the property that after the
+		<i>k</i>th iteration of the algorithm, the least-cost paths are known to <i>k</i> destination nodes. Of all the
+		least-cost paths to all destination nodes, these <i>k</i> paths will have the <i>k</i> smallest costs.</p>
+		
+		<ul><li><i>D(v)</i>: cost of the least-cost path from the source node to destination <i>v</i> as of this iteration
+		of the algorithm</li><br>
+		<li><i>p(v)</i>: previous node (neighbor of <i>v</i>) along the current least-cost path from the source to <i>v</i></li><br>
+		<li><i>N'</i>: subset of nodes; <i>v</i> is in <i>N'</i> if the least-cost path from the source to <i>v</i> is
+		definitively known</li><br>
+		</ul>
+		
+		<img src="lsalgorithm.jpeg" alt="Link State Algorithm" style="width:500px;height:300px;" border="3">
+		<br><br>
+		<img src="DT005.jpeg" alt="Link State Data Table" style="width:480px;height:160px;" border="3">
+		<br><br>
+		
+		<p>When the algorithm terminates, we get each node's predecessor along the least-cost path from the source node. For
+		each predecessor we have its predecessor, so an entire path can be contructed from the source to all destinations. The
+		forwarding table in a node can then be constructed by storing this information for each destination, the next-hop node
+		on the least-cost path from <i>u</i> to the destination.</p>
+		
+		<p>How much computation must be done in the worst case to find the least-cost paths from the source to all destinations?</p>
+		
+		<ul><li>In the first iteration, search through all <i>n</i> nodes to determine the node <i>w</i>, not in <i>N'</i>, that
+		has the minimum cost</li><br>
+			<li>In the second iteration, check <i>n</i> - 1 nodes to determine the minimum cost</li><br>
+			<li>In the third iteration, check <i>n</i> - 2 nodes, and so on...</li><br>
+			<li>Overall, the total number of nodes needed to search though over all the iterations is
+			<i>n</i>(<i>n</i> + 1) / 2, meaning worst-case complexity of order <i>n</i> squared</li><br></ul>
+		
+		
+		<img src="lsdiagram.jpeg" alt="Link State Diagram" style="width:400px;height:170px;" border="3">
+</body>
+</html>

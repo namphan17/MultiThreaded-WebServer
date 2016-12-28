@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Link-State Routing Algorithm</title>
+	<style type="text/css">
+		body {background-color: wheat;}
+		h1, p, li, h3 {font-family: Tahoma, Geneva, serif;}
+	</style>
+</head>
+<body>
+	<h1>The Link-State Routing Algorithm</h1>
+		<p>
+			&emsp;The Link-State Algorithm is a global routing algorithm, which means it calculates routing information using knowledge of the entire network. I believe the textbook could have done better in choosing their variable and node designations as there is overlap between them, leading to there being multiple things represented by "v" and "w" in the given example.
+		</p>
+		<p>
+			For this lesson, we will construct a graph containing 6 nodes and 10 edges (in a similar configuration to Figure 4.27 from the textbook).
+			<br>
+			The graph is defined as such:
+			<br>
+			Graph LS = (N, E)
+			<br>
+			N = (a, b, c, d, e, f)
+			<br>
+			E = {(a,b,1),(a,d,2),(b,c.2),(b,d,3),(c,d,1),(c,e,1),(c,f,3),(d,e,4),(d,f,4),(e,f,1)}
+			<br>
+			Note: I have included the cost of each edge/path as a third value in their subsets. Normally, the subsets would consist solely of the nodes which form the edge.
+		</p>
+		<p>
+			The Link-State Algorithm is based on Dijkstra's shortest path algorithm. It keeps track of two things for each node:
+			<ol>
+				<li>D(v): The distance value, which is the cost of the least cost path from the origin to this particular node.</li>
+				<li>p(v): Previous node along the least cost path from the origin to this node.</li>
+			</ol>
+		</p>
+		<p>
+			It is a looping algorithm which follows these steps:
+		</p>
+		<h3>
+			Initialization
+		</h3>
+		<p>
+			Create a subset of N called N' which contains all visited nodes
+			<br>
+			Add the origin node (a) to N'
+			<br>
+			For all nodes v
+			<br>
+			If v is a neighbor (shares an edge) with a
+			<br>
+			Then: D(v) = c(a,v)
+			<br>
+			And p(v) = a
+			<br>
+			Else: D(v) = infinite
+			<br>
+			(What this does is set the distance value of all of a's neighbors to the cost from a to them)
+		</p>
+		<h3>
+			Loop
+		</h3>
+		<ol>
+			<li>
+				Find the unvisited node (not in N') with the lowest distance value (D) and set it as the current node
+			</li>
+			<li>
+				For each node that is a neighbor of the current node, calculate a new distance value using the distance value of the current node + the cost from the current node to the neighbor. If the new value is lower than the previous value, replace it (take the minimum), and set the current node as the neighbor's previous node (p).
+			</li>
+			<li>
+				Mark the current node as visited by adding it to N'
+			</li>
+			<li>
+				Repeat until every node has visited (added to N') or the smallest distance value is infinite.
+			</li>
+		</ol>
+		<p>
+			Therefore, the steps for running the algorithm with Graph LS are as follows:
+		</p>
+		<ol>
+			<li>
+				Add a to N'
+			</li>
+			<li>
+				D(b) = 1, p(b) = a
+			</li>
+			<li>
+				D(d) = 2, p(d) = a
+			</li>
+			<li>
+				Set b as the current node
+			</li>
+			<li>
+				D(c) = 2+1 = 3
+			</li>
+			<li>
+				p(c) = b
+			</li>
+			<li>
+				D(d) = 1+3 vs 2 = 2 (unchanged)
+			</li>
+			<li>
+				Add b to N'
+			</li>
+			<li>
+				Set d as the current node
+			</li>
+			<li>
+				D(c) = 2+1 vs 3 = 3 (unchanged)
+			</li>
+			<li>
+				D(e) = 2+4 = 6
+			</li>
+			<li>
+				p(e) = d
+			</li>
+			<li>
+				D(f) = 2+4 = 6
+			</li>
+			<li>
+				p(f) = d
+			</li>
+			<li>
+				Add d to N'
+			</li>
+			<li>
+				Set c as the current node
+			</li>
+			<li>
+				D(e) = 3+1 vs 6 = 4
+			</li>
+			<li>
+				p(e) = c
+			</li>
+			<li>
+				D(f) = 3+3 vs 6 = 6 (unchanged)
+			</li>
+			<li>
+				Add c to N'
+			</li>
+			<li>
+				Set e as the current node
+			</li>
+			<li>
+				D(f) = 4+1 vs 6 = 5
+			</li>
+			<li>
+				p(f) = e
+			</li>
+			<li>
+				Add e to N'
+			</li>
+			<li>
+				Set f as the current node
+			</li>
+			<li>
+				Add f to N'
+			</li>
+			<li>
+				Finished
+			</li>
+		</ol>
+</body>
+</html>

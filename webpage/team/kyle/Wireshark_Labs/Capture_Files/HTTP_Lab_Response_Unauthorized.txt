@@ -1,0 +1,35 @@
+No.     Time           Source                Destination           Protocol Length Info
+     19 6.601620       128.119.245.12        10.200.5.234          HTTP     785    HTTP/1.1 401 Unauthorized  (text/html)
+
+Frame 19: 785 bytes on wire (6280 bits), 785 bytes captured (6280 bits) on interface 0
+Ethernet II, Src: CiscoInc_57:c8:00 (00:17:df:57:c8:00), Dst: Apple_14:39:e8 (88:1f:a1:14:39:e8)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.200.5.234
+Transmission Control Protocol, Src Port: 80, Dst Port: 61501, Seq: 1, Ack: 469, Len: 719
+Hypertext Transfer Protocol
+    HTTP/1.1 401 Unauthorized\r\n
+    Date: Tue, 11 Oct 2016 20:10:41 GMT\r\n
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16 mod_perl/2.0.9dev Perl/v5.16.3\r\n
+    WWW-Authenticate: Basic realm="wireshark-students only"\r\n
+    Content-Length: 381\r\n
+        [Content length: 381]
+    Keep-Alive: timeout=5, max=100\r\n
+    Connection: Keep-Alive\r\n
+    Content-Type: text/html; charset=iso-8859-1\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.043624000 seconds]
+    [Request in frame: 17]
+    File Data: 381 bytes
+Line-based text data: text/html
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">\n
+    <html><head>\n
+    <title>401 Unauthorized</title>\n
+    </head><body>\n
+    <h1>Unauthorized</h1>\n
+    <p>This server could not verify that you\n
+    are authorized to access the document\n
+    requested.  Either you supplied the wrong\n
+    credentials (e.g., bad password), or your\n
+    browser doesn't understand how to supply\n
+    the credentials required.</p>\n
+    </body></html>\n

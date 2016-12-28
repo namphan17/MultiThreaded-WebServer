@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Hello
+</title>
+</head>
+<body>
+    <h1>
+        Tyler Langtimm
+    </h1>
+    <p>
+        <u>October 3rd, Introduction</u>
+        Hi! I'm Tyler. I enjoy Tennis, Game Design, and Esports. In particular, I enjoy competitive Super Smash Bros.
+        I look forward to meeting you all.
+        
+        Notes: October 4th 2016
+        <u>Section1.6: Networks Under Attack</u>
+        
+        Malware: Data from the internet that infects hosts for malicious intent. Examples include spyware (collects private
+        information, to send back to the origin of the spyware for their use), or deleting files from the host.
+        
+        Once infected with malware, hosts may inadvertently be enrolled in a botnet.
+        Botnet: A network of hosts infected with malware, controlled by the malware distributor, to be used to further spread
+        malware through spam email, or to perform a DoS attack against some host they have a bone to pick with.
+        
+        Most malware is Self Replicating: Can spread itself from one host to another, growing at a potentially exponential
+        pace.
+        
+        Malware is spread in two ways, Viruses, and Worms.
+        Viruses: Malware that requires the host's user to interact with it in some way. The text uses a very simple email
+        spam example, where a user opens an attached document that runs malicious code of some sort, such as installing
+        spyware.
+        Worms: Malware that can enter a device without the host's user interaction. The text again provides an example.
+        If you were to run a network application that was vulnerable to the worm, the application could accept this
+        malware and install it without the user knowing it. Once in a host, worms scan other computers in the network, and
+        attack any other hosts that are running the same vulnerable application.
+        
+        DoS attacks: an attack that renders a host, network, or infrastructure unusable by legitimate users.
+        DoS attacks typically come in one of three flavors:Vulnerability Attacks, Bandwith Flooding, and Connection Flooding.
+        The only type that the text goes into are Bandwithd Flooding, which is typically performed via
+        DDoS attack. DDoS stands for Distributed Denial of Service attack. Essentially, the attackers uses 'slave' hosts
+        from a botnet to send traffic to the target, until it cant handle the stress of the increased traffic.
+        
+        Packet Sniffers are programs that 'sniff' packets being sent through a network. Wireshark, which we used in class
+        today, is a packet sniffer, for instance. People can place packet sniffers and attempt to aquire packets containing
+        users personal information. Packet sniffers are hard to detect, since they don't actually add anything to the network,
+        just read from it.
+        
+        IP Spoofing: Sending a packet with a fake source address. Basically, this would be like sending someone a letter with
+        an address from one of their friends, so that they are more likely to open it. Though in this case that letter would
+        containt malware. So for a real world example, if that letter contained nothing but exploding glitter. And then that
+        glitter burned your house down.
+        
+        
+        <u>October 5th Lab Notes (helpful Linux network commands)</u>
+        Ping (ping ip_or_host_name): Sends an echo request to the given host or ip, then returns with the response and round
+            trip time. IMPORTANT: To stop the ping, use Ctrl+C.
+        Trace Route (traceroute machine_name_or_ip): Shows the route a packet takes to the given destination, by giving a
+            series of hosts it travels through.
+        Trace Path (tracepath machine_name_or_ip): Same as Trace Route, except it doesn't take 'complicated' options, whatever
+            that means, I'm unsure.
+        IfConfig (ifconfig): Lists all information on all network devices currently up.
+        ifup (ifup devicename): Brings the chosen device up if currently down.
+        ifdown (ifdown devicename): Brings the chosen device down if currently up.
+        hostname (hostname): Tells you the hostname of the computer thats being used.
+        
+        October 5th Textbook Notes
+        <u>Transport Services Provided by the Internet</u>
+        When you create a new network application for the internet, you have to choose between using TCP and UDP for a transport protocol.
+        TCP
+            TCP Provides two main services:
+            Connection Oriented Service:Client and server exchange  transport control information before they begin exchanging messages.
+                This is called the 'handshaking procedure'. After the 'handshake', a "TCP Connection" exists. Once the connection exists,
+                the two processes can send messages to each other at the same time. After they finish, the connection must be 'torn down'.
+            Reliable Data Transfer service:
+            All data will be sent without error and in the proper order. No missing or duplicate bytes.
+        UDP
+            Connectionless
+            Not reliable. Messages may arrive out of order or not at all.
+            Less 'frilly'. Very lightweight transfer protocol.
+        
+        <u>October 10th Textbook Notes</u>
+        The Transport-layer provide a <b>logical connection</b> between two applications. This means that the two applications can act
+        as though they were directly connected, even if they actually have to go through dozens of steps to reach each other. I imagine
+        this is critically important in things such as online videogames, or other such applications, where real time interaction is a 
+        must. Transport layer protocols are implemented in the end systems, not the network routers. 
+        <u> The Transport Layer of the Internet</u>
+        The internet makes two transport-layer protocols available to the application layer, TCP and UDP.
+        UDP (User Datagram Protocol) is unreliable, and connectionless.
+        TCP (Transmission Control Protocol) is reliable, and connection-oriented.
+        The application developer must choose between these two transport-layer protocols.
+        
+        As a brief aside, the Internet's network layer protocol is called <b>IP</b>. IP provides logical connections between hosts, but
+        its a <b>best effort delivery service</b>. This means that it will try its best to deliver segments between hosts, but its
+        ultimately unreliable. It doesn't guarentee that the segments are delivered, it doesn't guarentee they'll arrive in the same
+        order that they were sent, and it doesn't guarentee the integrity of those segments. Every host has atleast one network-layer
+        address, aka, an <b>IP Address</b>
+        
+        The most important function of TCP and UDP is <b> Transport layer multiplexing and demultiplexing</b>. Basically, this is
+        extending the IP delivery service between two end systems, into a delivery service between two <i>applications</i> running on 
+        those end systems.
+        
+        In addition, TCP and UDP also provide some of the integrity checking that IP doesn't, using error detection fields in their
+        headers.
+        
+        As mentioned above, UDP is unreliable. These are the only functions UDP provides, and so it doesn't guarentee that data sent will
+        be received. However, TCP provides several more services.
+        
+        Using techniques called flow control, sequence numbers, acknowledgements, and timers, TCP provides reliable data transfer. This
+        is its biggest benefit over UDP by far.
+        
+        TCP also provides congestion control, which prevents any one connection from swamping routers and links with heavy traffic.
+        It does this by basically capping the rate that a connection can send traffic into the network. However, UDP is unregulated, and
+        so can send as much or as little traffic as it pleases.
+        
+        
+        October 11th Textbook Notes
+        <u>Section 3.5.5: Flow Control</u>
+        Both sides of a TCP connection use whats called a 'receive buffer' for the particular connection. When data arrives correctly and
+        in sequence, it is placed in that applications receive buffer. That application will then read that data from the receive buffer,
+        but only if it has the chance to. Sometimes the application is forced to be doing other tasks, and so the data waits in the
+        receive buffer for some time before it is read. If the other host sends too much data too quickly and the receiving application
+        is too slow to read the data in the receive buffer, it can cause overflow.
+        
+        TCP, luckily, has Flow Control, which eliminates this problem. TCP matches the speeds of the sender sending data, and the receivers
+        ability to read it. In this way, the receiving application is reading the data at the same speed it is coming in.
+        
+        As an aside, be careful when reading texts, as many people confuse flow control and congestion control. Congestion control works
+        very similarly to flow control, except congestion control is done so that the network isn't backed up by increased traffic.
+        
+        TCP forces its sender to use a variable called 'receive window'. The receive window's size is determined by a fairly simple
+        algorithm.
+        First, the receiver allocates a receive buffer and notes its size in a variable. At times, the receiver will read from that buffer.
+        While the receive buffer has data in it, the application checks to make sure it won't overflow. It looks at the last byte sent, and
+        the last byte it took out of the buffer, and if the difference between the two is larger than the buffer, that means that it will
+        overflow if any new data is accepted. The receiver sends this information over to the sender with its data packets,
+        which will then stop sending data if it would cause overflow.
+        
+        Of course, this comes with a pretty big problem. If the receiver doesn't have anything to send, the sender won't ever be told
+        when there's space in the receive buffer again! This causes the sender to stop sending data, even though the receiver has an
+        empty receive bin. To solve this issue, TCP forces the receiver to send a single packet whenever its receive bin is empty.
+        
+        This function, Flow Control, is not provided by UDP.
+        
+        
+        October 12th Textbook Notes
+        <u>TCP Congestion Control</u>
+        One of the key features of TCP is its congestion control. TCP uses an end to end congestion control as opposed to network-
+        assisted congestion control because the IP layer doesn't provide feedback to hosts about the state of the network. So, instead
+        TCP relies on the results of its sent messages to infer the state of the network.
+        
+        TCP has each of its senders limit their rate of transfer into the network, based on how badly it thinks the network is congested.
+        If the network has little congestion, then the sender can inscrease its send rate. If theres a lot of congestion, it slows down. 
+        
+        In addition to how TCP senders have a receive buffer, a send buffer, and a whole bunch of variables, TCP senders also have an
+        additional variable, the congestion window. The congestion window constrains the limit at which it can send things out into the
+        network. The exact rate is roughly the senders congestion window (cwnd) divided by RTT.
+        
+        Since TCP is using end to end congestion control, it has to determine if the network is clogged or not. To do this, TCP looks
+        for "Loss events". Loss events happen when a router buffer on the path overflows, which causes part of a TCP segment to be dropped.
+        Which, in turn, causes a timeout. When TCP gets a loss event, it uses them to determine how congested the network is. The more
+        loss events, the worse the congestion.
+        
+        Should there be no congestion in the network, then the sender will receive acknoledgements from the receiver, and it takes these
+        as a sign that all is well in the network. Depending on the ratio of data sent vs acknowledments received, the sender will use this
+        either increase or decrease its congestion window, and thus its rate of transfer. This is called <b>self clocking</b>.
+        
+        
+        
+        
+        October 13th Textbook Notes
+
+
+
+
+
+
+        
+        
+ </p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>
+Section 4 Notes
+</title>
+<style> 
+body{
+	background-color: black; 
+	color: green;
+}
+</style> 
+<h1>Section 4 Notes</h1> 
+</head>
+<body>
+<ol>	<li>Virtual Circuit Networks</li><br> 
+	<ul><li>Virtual circuit networks provide a connection for data transfer at the network level.</li><br>
+	<li>Virtual Circuit Networks setup a connection between routers to allow for a path for consistent (and reliable) host to host data transfer (as opposed to connectionless data transfer which can send packets out of order).</li><br>
+	<li>This relay connection provided is possible due to each of the routers sharing a VC number (which can be different). If the numbers had to be the same, each router would have to negotiate which numbers would be appropriate (this would end up taking too much time for it to be efficient).</li><br>
+	<li>In order to setup a VC connection, signaling messages are sent to the routers to let them know that a VC connection is going to be established. Protocols that setup these connections between routers are known as <strong>signaling protocols</strong>.</li><br> 
+	 </ul> 
+	<li>Datagram Networks: Connectionless Networking</li><br>
+	<ul><li>Unlike setting up a VC network, alternatively packets can be sent through routers without a base connection, although this doesn't provide a good gurantee as to whether packets sent between hosts will arrive in order.</li><br>
+	<li>Generally, Datagram network send packets through various routers (which map the packets towards a destination), packets don't necessarily get sent along a specific path.</li><br>
+	</ul> 
+	<li>How do routers worK?</li><ul><br> 
+	<li>On the hardware end, routers physically take packet inputs and forward them to their destination (after mapping their route). During the software side, router processing occurs in order to determine network congestion, handle packet parameters, and perform the actual mapping processes on packets going through.</li></ul><br>
+	<ul><li>When packets are sent to the router, they're stored in a queue while in order to wait while the first packets that arrived are being processed and handled. After the first packets are done being processed, the router then takes packets from the queue, and processes them in the same way.</li><br>
+	<li>Depending on the processing speed and bandwidth, having packets in the queue of a router could eventually lead to packet loss if there's a large amount of network congestion; if all hosts send packets too fast to the router, the router will inevitably drop packets due to its buffer being full. The better the router, the more packets it can handle before it's queue becomes too full and packets start to be dropped.</li><br>
+</ol>
+<br><br><br><br><br><br>
+<input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/> 
+</body>
+</html>

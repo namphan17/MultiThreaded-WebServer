@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Wireshark Lab
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+<h1>Wireshark Lab: HTTP 7.0</h1>
+<h3>Changes from listed instructions</h3>
+<ol>
+	<li>I always restricted all captures to my computer's IP, to avoid cluttering the window with unnecessary information</li>
+	<li>The school's internet is too fast for their 'long' page to be divided, so I used the sample capture for that problem</li>
+</ol>
+<h3>Lab</h3>
+<ol>
+  <li>Capture all HTTP packets when visiting <a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html">this site</a> (standard practice capture)</li>
+  <ul>
+    <li><image src="./images/wireshark01.png" alt="Capture for Lab 1" style="width:1079;height:451;"></li>
+  </ul>
+  <ol>
+    <li>Both the server and client seem to be running HTTP 1.1</li>
+    <li>The lab asks what languages the server supports, but I could only find a language line in the client request, and it only allowed english (american or otherwise)</li>
+    <li>The server returned the status code '200 OK'</li>
+    <li>The file was last modified a few seconds before I accessed it</li>
+  </ol>
+  <li>Clear the cache and capture all HTTP packets when visiting <a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html">this site</a>, then immediately refresh the page (examine page caching)</li>
+  <ul>
+    <li><image src="./images/wireshark02.png" alt="Capture for Lab 1" style="width:1074;height:615;"></li>
+  </ul>
+  <ol>
+    <li>The second time the page was loaded, the browser recognized that it already had the most recent version of the page in its cache and didn't actually send the HTML data</li>
+    <li>Because of this, the second request received a status code of '304 Not Modified'</li>
+  </ol>
+  <li>Capture all HTTP packets when visiting <a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file3.html">this page</a> (very long page)</li>
+  <ul>
+    <li><image src="./images/wireshark03.png" alt="Capture for Lab 1" style="width:1184;height:529;"></li>
+  </ul>
+  <ol>
+	  <li>Two HTTP messages were sent: a GET and a 200 OK response.</li>
+	  <li>However, the response was contained in 4 packets due to the length.</li>
+	  <li>Expanding the view to include TCP packets allowed me to see the contents of each packet</li>
+	  <ol>
+		  <li>Acknowledgement</li>
+		  <li>200 OK and start of HTML document</li>
+		  <li>Continuation of HTML document</li>
+		  <li>End of HTML document</li>
+	  </ol>
+  </ol>
+  <li>Capture all HTTP packets when visiting <a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html">this page</a> (page with images)</li>
+  <ul>
+    <li><image src="./images/wireshark04.png" alt="Capture for Lab 1" style="width:1076;height:531;"></li>
+  </ul>
+  <ol>
+    <li>The browser sent 4 HTTP GET messages:</li>
+    <ol>
+      <li>GET the HTML page</li>
+      <li>GET the first image</li>
+      <li>GET the second image</li>
+      <li>GET the second image</li>
+    </ol>
+    <li>The second image needed two messages because the first one returned that the image had been moved elsewhere</li>
+    <li>The images seem to have been downloaded in serial, based on the timestamps on the response messages</li>
+  </ol>
+  <li>Capture all HTTP packets when visiting <a href="http://gaia.cs.umass.edu/wireshark-labs/protected_pages/HTTP-wireshark-file5.html">this page</a> (password protected page)</li>
+  <ul>
+    <li><img src="./images/wireshark05.png" alt="Capture for Lab 1" style="width:1073;height:450;"></li>
+  </ul>
+  <ol>
+    <li>The server responds to the initial HTTP GET message with the error code 401 Unauthorized</li>
+    <li>When the browser sends the second HTTP GET message, it has a new field: Authorization, containing the username and password</li>
+  </ol>
+</ol>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>
+Error Code Matching Quiz
+</title>
+<link href="css/styles.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js">
+</script>
+<style>
+
+body{
+
+background:#173256;
+
+}
+.matched {
+    background: #E97B20;
+}
+
+.unmatched {
+    background: white;
+}
+
+</style>
+</head>
+<body>
+
+<h1 style = "text-align:center;margin-bottom:30px;color:white">Error Code Matching Quiz</h1>
+
+
+<table align="center">
+
+<tr>
+<th style = "color:white">error</th>
+<th style = "color:white">phrase</th>
+
+<tbody data-bind="foreach: rows()">
+<tr data-bind="css: matchStatus">
+<td data-bind="click: leftResponder, text: leftList.error" style = "text-align:center">
+</td>
+<td data-bind="click: rightResponder, text: rightList().phrase">
+</td>
+</tbody>
+
+
+<tr>
+
+</tr>
+
+</table>
+
+<script>
+function viewModel(){
+
+    var that = {};
+
+
+    /* shuffle (scramble) the elements of an array */
+    function shuffle( list ) {
+
+
+        /* exchange the values at 2 specified indices in an array */
+        function swap( list, i, j ) {
+            var temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        } // swap()
+
+        /* generate a uniformly distributed random integer in the interval [lo,hi] */
+        function randomInteger( lo, hi ) {
+            return lo + Math.floor( Math.random() * (hi - lo + 1) );
+        } // randomInteger()
+
+        /* generate a permutation without fixed points of the integers 0, 1, ..., n */
+        function derangement( n ) {
+            var result = [], i, j;
+
+            for( i = 0; i <= n; i++ ) {
+                result.push( i );
+            } // for
+
+            // permute the integers
+            function permute(){
+                for( i = 0; i < n - 1; i++ ) {
+
+                    j = randomInteger( i + 1, n );
+                    swap( result, i, j );
+
+                } // for
+            }; // permute()
+
+            function containsFixedPoints(){
+                var found = false;
+                for( i = 0; i <= n; i++ ) {
+                    if( result[i] === i ) {
+                        found = true;
+                    } // if
+                } // for
+                return found;
+            }; // containsFixedPoints()
+
+            while( containsFixedPoints() ) {
+                permute();
+            } // while
+
+            return result;
+        }; // derangement()
+
+        var result = list.slice(0); // copy( list );
+
+        var indices = derangement( result.length - 1 );
+
+        var i;
+        for( i = 0; i < result.length; i++ ) {
+            result[i] = list[indices[i]];
+        } // for
+
+        return result;
+    }; // shuffle()
+
+    function stitch( leftList, rightList ) {
+        var prevRow = -1;
+        var prevCol = -1;
+
+        function responder( row, column ) {
+            return function() {
+
+                if( prevRow >= 0 && prevCol >= 0 ) {
+                    if( that.rows()[prevRow]().leftList.error === that.rows()[row]().rightList().error ) {
+                        var temp = that.rows()[prevRow]().rightList();
+                        that.rows()[prevRow]().rightList( that.rows()[row]().rightList() );
+                        that.rows()[row]().rightList( temp );
+                    } // if
+                } // if
+
+                prevRow = row;
+                prevCol = column;
+            };
+        }; // responder()
+
+        function stitchHelper( index, partialResult ) {
+            var nextTuple = {};
+            if( (index < leftList.length) && (index < rightList.length) ) {
+                nextTuple.index = index;
+                nextTuple.leftList = leftList[index];
+                nextTuple.rightList = ko.observable(rightList[index]);
+
+                nextTuple.leftResponder = responder( index, 0 );
+                nextTuple.rightResponder = responder( index, 1 );
+
+                nextTuple.matchStatus = ko.pureComputed( function() {
+                    if( nextTuple.leftList.error === nextTuple.rightList().error ) {
+                        return "matched";
+                    } // if
+                    else {
+                        return "unmatched";
+                    } // else
+                }, that);
+
+                partialResult.push( ko.observable(nextTuple) );
+                return stitchHelper( index + 1, partialResult );
+            } // if
+            else {
+                return partialResult;
+            } // else
+        }; // stitchHelper()
+
+        return stitchHelper( 0, [] );
+    }; // stitch()
+
+
+    var questions = [];
+    
+	questions.push( { "error": "200", "phrase": "OK" } );
+    questions.push( { "error": "301", "phrase": "Moved Permanently" } );
+    questions.push( { "error": "400", "phrase": "Bad Request" } );
+    questions.push( { "error": "404", "phrase": "Not Found" } );
+	questions.push( { "error": "505", "phrase": "HTTP Version Not Supported" } );
+
+
+    var scrambledQuestions = shuffle( questions );
+
+    that.tuples = stitch( questions, scrambledQuestions );
+
+    that.rows = ko.observableArray();
+
+    that.tuples.forEach( function( pair ) { that.rows.push( pair ); } );
+
+    return that;
+}; // viewModel()
+
+
+var vm = viewModel();
+ko.applyBindings( vm );
+
+</script>
+
+</body
+</html>
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		h1{text-align: center;}
+		</style>
+		<title>
+			Graded Exercise 1
+		</title>
+	</head>
+	<body>
+		<h1>Graded Exercise 1</h1>
+		<h2>Questions</h2>
+			<ol>
+			<li>What version of TCP does not use Fast Recovery as part of it's congestion handling?</li>
+				<ul>
+					<li>TCP Tahoe. (p. 276)</li>
+				</ul>
+			<li>During the Slow Start of TCP congestion control the MMS amount starts at what value?  How does it increment? When does it stop?</li>
+				<ul>
+					<li>Slow start begins with an MMS transfer rate of 1 MMS.  It adds 1 MMS each time a confirmation is received, this doubles the amonut each RTT. It stops when either a packet is dropped, or when triple duplicate ACK messages are received. If a packet is dropped it goes back to 1 MMS and sets the ssthresh to half of the cwnd when the drop occurred. Then it switches to congestion avoidance.  If triple duplicate ACKs are received then it also goes back to 1 MMS and sets the ssthresh to half the cwnd when the triple ACKs arrived.  However it switches over to fast recovery rather than congestion avoidance. (p. 272)</li>
+				</ul>
+			<li>What is the main difference between go-back-n, and selective repeat?</li>
+				<ul>
+					<li>Go-back-n resends all packets after a missed packet, even ones that were received.  Selective repeat allows the receiver to buffer out of order packets and will resend only those packets that aren't acknowledged. (p. 218-225)</li>
+				</ul>
+			<li>Advantages of UDP over TCP, disadvantages?</li>
+				<ul>
+					<li>Advantages:</li>
+						<ul>
+							<li>More flexibility</li>
+							<li>Faster speed</li>
+							<li>Light weight</li>
+						</ul>
+					<li>Disadvantages:</li>
+						<ul>
+							<li>Less reliable</li>
+							<li>No throttling</li>
+							<li>No constant connection</li>
+						</ul>
+					<li>(p. 199-200)</li>
+				</ul>
+			<li>What is a 'bean' in regards to a java webserver?</li>
+				<ul>
+					<li>A bean is a java class, one of the beans must take no parameters. (Lecture with Leon)</li>
+				</ul>
+			<li>Define DNS?  What is it?</li>
+				<ul>
+					<li>Domain name system.  A data base that links hostnames to IP addresses. Distributed database and an API.  Runs on Port 53 (sometimes port 80). (p. 130)</li>
+				</ul>
+			<li>Define load distribution.</li>
+				<ul>
+					<li>For large websites with multiple IP addresses DNS rotates which address is used to avoid overloading one server. This balances the amount of users requesting each server. (p. 132)</li>
+				</ul>
+			<li>What is the amount of bytes in the UDP header? How many bytes per header field?</li>
+				<ul>
+					<li>8 bytes in the header total, and 2 bytes per header field. (Wireshark lab: UDP)</li>
+				</ul>
+			<li>Define queuing delay.</li>
+				<ul>
+					<li>Delay that packet experiences when it waits to be transmitted onto the link/node. (p. 37)</li>
+				</ul>
+			<li>What two formats does the packet-contents window display the data of the captured packet in Wireshark?</li>
+				<ul>
+					<li>ASCII and hexadecimal. (Wireshark lab: Intro)</li>
+				</ul>
+			</ol>
+		<h2>Text Book Questions</h2>
+		<ol>
+			<li>Suppose that the UDP receiver computer the internet checksum for the received UDP segment and finds that it matches the value carried in the checksum field.  Can the receiver be absolutely certian that no bit errors have occurred? Explain. (p. 289, problem 5)</li>
+				<ul>
+					<li>No.  If the corresponding bits, that are normally added, for two of the 16-bit words are flipped when they are 0 and 1 or 1 and 0 then the sum is still the same.  And the 1s complement would also be the same.  The checksum would fail to realize that there is an error.</li>
+				</ul>
+			<li>Answer the following questions: </br>(p. 293, problem 24)</li>
+				<ol>
+					<li>With the SR protocol, it is possible for the sender to receive an ACK for a packet that falls outside of its current window.</li>
+						<ul>
+							<li>Yes, if the receiver's ACKs arrive after the sender times out then it will receive a second group ACKs for the resent packets, even though it would have advanced it's window past those packets.</li>
+						</ul>
+					<li>With GBN, it is possible for the sender to receive an ACK for a packet that falls outside of its current window.</li>
+						<ul>
+							<li>Yes, this is more or less the same as it is in question 1. (difference being that it may get intermediate ACKs (ie. 2 and 3) in time, but still timeout for a previous one (ie. 1) and thus would resend 1 and get a second ACK after the first ACK had arrived and the window had incremented)</li>
+						</ul>
+					<li>The alternating-bit protocol is the same as the SR protocol with a sender and receiver window size of 1.</li>
+						<ul>
+							<li>Yes.</li>
+						</ul>
+					<li>The alternating-bit protocol is the same as the GBN protocol with a sender and receiver window size of 1.</li>
+						<ul>
+							<li>Yes, with a window size of 1 then there is no way that packets can occur out of order.</li>
+						</ul>
+				</ol>
+		</ol>
+		<h2>Wireshark Lab</h2>
+		<p>Follow link</br>Focus mainly on <b>Intro lab</b>, <b>HTTP lab</b> and <b>UDP lab</b>, but I have attempted others, and taken notes as well as answered questions about them.</p>
+		<a href="Wireshark.html">Wireshark Labs webpage</a>
+		</br>
+		</br>
+		</br>
+		<div style="text-align:left">
+			<a href="gradedexercize0.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="gradedexercize2.html">Next</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    14th October
+</title>
+</head>
+<body>
+    <h1>
+        October 14th Notes
+    </h1>
+    
+    <h3>IP: Forwarding and Addressing the Internet</h3>
+    
+    <ul>
+        <li>Two versions of the internet: IPv4 which is currently used and IPv6 which is proposed to replace the current version</li>
+        <img src="../images/notes/InternetNetworkLayer.png" alt="Internet Network Layer">
+        
+        <h4>IPv4 datagram format</h4>
+        <img src="../images/notes/IPv4Datagram.png" alt="IPv4 Datagram Format">
+        <ul>
+            <li><b>Version Number:</b> 4 bits that specify the IP protocol version of the datagram</li>
+            <li><b>Header Length:</b> 4 bits that determine where in the IP datagram the data begins</li>
+            <li><b>Type of service:</b> Included in the IPv4 header to allow different types of IP datagrams to be distinguished from each other</li>
+            <li><b>Datagram Length:</b> 16 bits long. Used to measure the total length of the datagram in bytes</li>
+            <li><b>Identifier, flags, fragmentation offset:</b> Responsible for IP fragmentation</li>
+            <li><b>Time-to-live:</b> Ensures that datagrams do not circulate in the network forever</li>
+            <li><b>Protocol:</b> This field comes into effect once the datagram reaches its destination. It is used to specify which transport layer protocol to which the data portion of this IP datagram should be passed</li>
+            <li><b>Header checksum:</b> It aids routers detect bit errors in the received IP datagram</li>
+            <li><b>Source and destination IP address:</b> Used to communicate between the source and destination</li>
+            <li><b>Options:</b> Used to extend the IP header to be extended</li>
+            <lI><b>Data (payload):</b> the data field of the IP datagram contains the transport-layer segment (TCP or UDP) to be delivered to the destination</lI>
+        </ul>
+        
+        <h4>IP Datagram Fragmentation</h4>
+        <li><b>Maximum Transmission Unit</b> is the maximum amount of data that a link layer frame can carry</li>
+        <li>When an IP datagram is split and encapsulated into smaller IP datagrams they are called <b>fragment</b></li>
+        
+        <h4>IPv4 Addressing</h4>
+        <li>The boundary between the host and the physical link is called an <b>interface</b>. This term is also used to define the boundary between the router and any one of its links.</li>
+        <li>Since every host and router is capable of sending and receiving IP datagrams, IP requires each host and router interface to have its own IP address.</li>
+        <li>IP addresses are written in <b>dotted-decimal notation</b> in which each byte of the address is written in its decimal form and is separated by a period (dot) from other bytes in the address</li>
+        <li>A <b>subnet</b> is defined as a smaller identifable part of a larger network</li>
+        <li><b>Classless Interdomain Routing (CIDR)</b> is the internet's address assignment strategy and it generalizes the notion of subnet addressing.</li>
+            <ul>
+                <li>In subnet addressing the 32-bit IP address is divided into two parts and has the dotted-decimal form <i>a.b.c.d/x</i>, where <i>x</i> indivates the number of bits in the first part of the address</li>
+                <li>These <i>x</i> bits constitute the network portion of the IP address and are referred to as the <b>prefix</b></li>
+                <li>Before CIDR was adopted, the network portions of an IP address were constrained to be 8, 16, or 24 bits in length, an addressing scheme known as <b>classful addressing</b></li>
+            </ul>
+        
+        <h4>The Dynamic Host Configuration Protocol</h4>
+        <li>The DHCP allows a host to get a IP address allocated to itself automatically. It can be configured by the network administrator to give the host the same IP address each time or allocate a new temoporary IP address whenever the host connects to the network</li>
+        <li>Since the DHCP automates network related aspects of connecting a host into a network, it is referred to as a <b>plug-and-play protocol</b></li>
+        <li>DHCP is a client-server protocol</li>
+        <li>The DHCP is a four step process</li>
+        <ol>
+            <li><b>DHCP server discovery:</b> The host looks for a DHCP server to interact with using the <b>DHCP discover message</b></li>
+            <li><b>DHCP server offer(s):</b> The server receiving the message respongs with a <b>DHCP offer message</b>. This offer message contains the proposed IP address for the client, the network mask, and an <b>IP address lease time</b>, the amount of time for which the IP address will be valid</li>
+            <li><b>DHCP request:</b> The host receives the offer message and responds with a <b>DHCP request message</b> echoing the requested parameters</li>
+            <li><b>DHCP ACK:</b> The server responds with a <b>DHCP ACK message</b> confirming the requested parameters</li>
+        </ol>
+    </ul>
+    
+    <h3>ICMP</h3>
+    
+</body>
+</html>

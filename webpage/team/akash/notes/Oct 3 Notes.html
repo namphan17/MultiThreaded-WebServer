@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    13th October
+</title>
+</head>
+<body>
+    <h1>
+        October 13th Notes
+    </h1>
+    
+    <h3>The Network Layer</h3>
+    <ul>
+        <li><b>Forwarding</b> involves the transfer of a packet from an incoming link to an outgoing link within a single router</li>
+        <li><b>Routing</b> refers to the network-wide process that determines the end-to-end paths that packets take from source to destination</li>
+        <li><b>Routing Algorithms</b> are responsible for determining good paths from senders to receivers</li>
+        <ul>
+            <li>Link State</li>
+            <li>Distance Vector</li>
+        </ul>
+        <li><b>Forwarding Table</b> is used to store a value in the arriving packet's header, that is used to indicate the router's outgoing link interface to which that packet is forwarded</li>
+        <img src="../images/notes/ForwardingTables.png" alt="Forwarding Tables">
+        <li><b>Connection Setup</b> is when the routers along a chosen path from source to destination handshake with each other before network-layer data packets flow</li>
+        <li><b>Network Service Model</b> defines the characteristics of end-to-end transport of packets between sending and receiving end systems</li>
+        <li>Network Layer Services:</li>
+        <ul>
+            <li>Guaranteed delivery: Makes sure that the packet arrives at its destination </li>
+            <li>Guaranteed delivery with bounded delay: Makes sure a packet is delivered within a specified host-to-host delay bound</li>
+            <li>In-order packet delivery: Guarantees that the packet arrives at the destination in order</li>
+            <li>Guaranteed minimal bandwidth: Emulates the behaviour of a transmission link of a specified bit rate</li>
+            <li>Guaranteed maximum jitter: Guarantees the amount of time between the transmission of two successive packets at the sender is equal to the amount oftime between the receipt at the destination</li>
+            <li>Security service: Using a secret session key known only by a source and destination host which can be used for the purpose of encryption</li>
+        </ul>
+        <li>ATM Service Models</li>
+        <ul>
+            <li><b>Constant Bit Rate:</b> The goal is to provide a flow of packets with a virtual pipe whose properties are the same as if a dedicated fixed-bandwidth transmission link exisited between the sending and receiving hosts</li>
+            <li><b>Available Bit Rate:</b> </li>
+        </ul>
+        <li></li>
+    </ul>
+</body>
+</html>

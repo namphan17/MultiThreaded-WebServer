@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+   <header>
+      <title>Assignment0</title>
+      <link rel="stylesheet" type="text/css" href="../css/assignments.css"></link>
+   </header>
+   <body>
+      <div class="header">
+         <h1 class="title">Assignment 0</h1>
+      </div>
+      <div class="main">
+      <div class="session">
+         <h2>PART I: Q&A</h2>
+         <ol>
+            <li>
+               <h4>What is a packet?</h4>
+               <p><span>Answer:</span> It is a formatted unit of data carried at the transport layer in the protocol stack. It's also called message, datagram, frame in the application layer, network layer, and link layer respectively.</p>
+            </li>
+            <li>
+               <h4>What is SSH protocol?</h4>
+               <p><span>Answer:</span> The Secure Shell File Transfer Protocol provides secure file transfer functionality over any reliable data stream. It is the standard file transfer protocol for use with the Secure Shell Remote Login Protocol.</p>
+            </li>
+            <li>
+               <h4>Name 3 different ways that a DOS attack can happen.</h4>
+               <p><span>Answer:</span>Vulnerability Attack, Bandwidth flooding, and Connection Flooding</p>
+            </li>
+            <li>
+               <h4>What are 5 layers in the Internet protocol stack? How are they different from the OSI reference model?</h4>
+               <p><span>Answer: </span>application, transport, network, link, and physical</p>
+               <p>It's different from the OSI reference model, which has 2 more layers: presentation and session.</p>
+            </li>
+            <li>
+               <h4>What is socket?</h4>
+               <p><span>Answer:</span>A software interface that helps the processsends messages into, and receives messages from the network through.</p>
+            </li>
+            <li>
+               <h4>What does this linux command do: "ifconfig"?</h4>
+               <p><span>Answer:</span>  command is used for displaying current network configuration information, setting up an ip address, netmask or broadcast address to an network interface, creating an alias for network interface, setting up hardware address and enable or disable network interfaces.</p>
+            </li>
+            <li>
+               <h4>Comparing TCP and UDP (in terms of reliable data transfer, throughput, timing, and security</h4>
+               <p><span>Answer:</span>TCP is better than UDP in terms of reliable data transfer and security, but UDP is better in throughtput and timing.</p>
+            </li>
+            <li>
+               <h4>What is DNS?</h4>
+               <p><span>Answer:</span> Internet domain name system (DNS) is a directory service that translates hostnames to IP addresses, a distributed database implemented in a hierarchy of DNS servers, and an application-layer protocol that allows hosts to query the distributed database.</p>
+            </li>
+         </ol>
+      </div>
+      
+      <div class="session">
+         <h2>PART II: Historical Figure</h2>
+
+         <p>Robert Metcalfe is an American inventor, a scientist, an engineer, and a professor. In an interview in 2012, he said he had been through 5 career as a professional. He’s most famous for the Ethernet intention, which is a crucial element in the computer network. Bob is also a successful entrepreneur, who found 3Com Corporation. He also worked for Info World Magazine as a publisher and a journalist. Later in his career, he was a venture capitalist with Polaris Venture Partners for ten years. And now, he is teaching Electrical Engineering and is a Director of Innovation at The University of Texas. His versatility has been proved through a long successful career in many challenging fields. He has an interesting relationship with Steve Jobs, who helped Metcalfe start his company. </p>
+         <p>Early life of Metcalfe started with two S.B degrees from MIT, one in Electrical Engineering and the other in Industrial Management from the MIT Sloan School of Management. Later, he went to Harvard for graduate school, earning his M.S. in Applied Mathematics in 1970 and his PhD in Computer Science 1973. He has achieve many glorious award during his career, which include the IEEE Medal of Honor, the National Medal of Technology from President Bush, and the Fellow Award from the Computer History Museum, etc.</p>
+         <p>Talking about the invention that brought the fame to Metcalfe as a great engineer, we know that Ethernet is a computer networking technology that used in local area network (LAN). Metcalfe said that Ethernet had been built on years of prior work in developing the early phases of the internet packet switched network, then people needed the LAN version of the internet.</p>
+         <p>The invention of Ethernet came when he was working with network at Xerox Research, Xerox Palo Alto Research Center. And then he was turned in a problem that was really serious at that time, since it had never occurred before. That problem was about having too many computer in their building. Then he started working on that. Interestingly, he was also sent to pick up another project, named SIGNet. Signet was initiated by Charles Simony, the father of Microsoft Office. SIGNet stands for Simonyi's Infinitely Glorious Network was in fact infinitely glorious and much had too many moving parts to be a LAN, Bob said. To solve this problem of organizing this LAN that I ran into a packet, he got the idea from Aloha Net, a packet radio network at the University of Hawaii. The thing is Aloha Net had a solved a distributed problem. For the hardware side, he didn’t get much trouble with that. On the other hand, the software side was more challenging. We did have to take the bit, make a packet of bits, and then send them one at a time down this cable, and he would encode them. And then a packet was going by, marking the birth of the Ethernet.</p>
+
+      </div>
+
+      <div class="session">
+      	<h2>PART III: SHH Instructions with Linux</h3>
+      	<h4>Basic Syntax</h4>
+	      	<p>The most basic form of command is:</p>
+	      	<div class="command"><p>$ ssh remote_host</p></div>
+	      	<p>The remote_host in this example is the IP address or domain name that you are trying to connect to.</p>
+			<p>This command assumes that your username on the remote system is the same as your username on your local system.</p>
+			<p>If your user name is different on the remote system, you can specify using this syntax</p>
+			<div class="command"><p>$ ssh remote_username@remote_host</p></div>
+			<p>Once you have connected to the server, you will probably be asked to verify your identity by providing a password.</p>
+		<h4>Log Into SSH with Key</h4>
+			<p>Key-based authentication works by creating a pair of keys: a private key and a public key.</p>
+			<p>The private key is located on the client machine and is secured and kept secret.</p>
+			<p>The public key can be given to anyone or placed on any server you wish to access.</p>
+			<p>When you attempt to connect using a key-pair, the server will use the public key to create a message for the client computer that can only be read with the private key.</p>
+			<p>The client computer then sends the appropriate response back to the server and the server will know that the client is legitimate.</p>
+			<p>To Create SSH Keys, enter the following into the command line</p>
+			<div class="command"><p>$ ssh-keygen -t rsa</p></div>
+			<p>Press enter to accept the defaults. Your keys will be created at ~/.ssh/id_rsa.pub and ~/.ssh/id_rsa.</p>
+			<p>Change into the .ssh directory</p>
+			<div class="command"><p>$ cd ~/.ssh</div>
+			<p>You can copy the public key to the remote server by issuing this command:</p>
+			<div class="command"><p>$ ssh-copy-id remote_host</p></div>
+			<p>This will start an SSH session, which you will need to authenticate with your password.</p>
+			<p>After you enter your password, it will copy your public key to the server's authorized keys file, which will allow you to log in without the password next time.</p>
+      </div>
+      <div>
+   </body>
+</html>

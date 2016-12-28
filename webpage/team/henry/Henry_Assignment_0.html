@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="HenryStyleSheet.css">
+    <meta charset="utf-8" />
+    <title>Henry Weeks Graded Assignment 0</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#questionsListShow").click(function () {
+                $("#questionsListDiv").animate({ height: 'show' }, 1000);
+            });
+            $("#questionsListHide").click(function () {
+                $("#questionsListDiv").animate({ height: 'hide' }, 1000);
+            });
+
+            $("#descriptionShow").click(function () {
+                $("#description").animate({ height: 'show' }, 1000);
+            });
+            $("#descriptionHide").click(function () {
+                $("#description").animate({ height: 'hide' }, 1000);
+            });
+
+            $("#instructionsShow").click(function () {
+                $("#instructionsDiv").animate({ height: 'show' }, 1000);
+            });
+            $("#instructionsHide").click(function () {
+                $("#instructionsDiv").animate({ height: 'hide' }, 1000);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 id="pageHeader">Henry Weeks: Graded Assignment 0</h1>
+
+    <h3 id="questionsHeader">Sample Questions About The Material With Answers</h3>
+    <div class="buttons">
+    <button type="button" id="questionsListShow">Show Questions</button>
+    <button type="button" id="questionsListHide">Hide Questions</button>
+    </div>
+    <div id="questionsListDiv">
+        <ol id="questionsList">
+            <li id="question1">
+                <p>
+                    Q:  What are the two overlaying protocols that control the sending and receiving
+                    of information on the internet?
+                </p>
+                <p>
+                    A:  TCP (Transmission Control Protocol) and IP (Internet Protocol)
+                </p>
+            </li>
+            <li id="question2">
+                <p>
+                    Q:  What are distributed applications and why are they considered distributed?
+                </p>
+                <p>
+                    A:  Distrubted applications are applications which run on end systems.  That is
+                    to say, these applications run on separate hosts and use the internet to send and
+                    receive data with applications running on other remote host machines.  They are
+                    therefore considered distributed because they communicate across a network as opposed
+                    to internally with applications on the same machine.
+                </p>
+            </li>
+            <li id="question3">
+                <p>
+                    Q:  In our context, what is a protocol?
+                </p>
+                <p>
+                    A:  A protocol defines the format and the order of messages exchanged between
+                    two or more communicating entities, as well as the actions taken on the transmission
+                    and/or receipt of a message or other event.
+                </p>
+            </li>
+            <li id="question4">
+                <p>
+                    Q:  Name three physical mediums for transmitting data on the internet.
+                </p>
+                <p>
+                    A:  Possibilities: Fiber Optic Cable, Coaxial Cable, Twisted Pair Copper Wire (Insulated
+                    and Unshielded), Satellite Radio Channels, Terrestrial Radio Channels.
+                </p>
+            </li>
+            <li id="question5">
+                <p>
+                    Q:  What is meant by the phrase "A Network of Networks"?
+                </p>
+                <p>
+                    A:  This is part of our theme of layers of abstraction.  There are routers and communication
+                    links which span the entire globe, and this in itself is a network.  However, there is not
+                    one single ISP which manages this entire global network.  Instead, ISPs charge and segment
+                    networks on an individual basis, or sometimes in small chunks of routers.  These are each networks
+                    as well, and we therefore call this system a network of interconnected networks.
+                </p>
+            </li>
+            <li id="question6">
+                <p>
+                    Q:  What are the different types of delay at a node in a packet-switch network?
+                </p>
+                <p>
+                    A:  A node in a packet-switch network may suffer from processing, queuing, transmission, and
+                    propogation delays together make up what is called total nodal delay.
+                </p>
+            </li>
+            <li id="question7">
+                <p>
+                    Q:  For what kind of application is it critical to have low delay, and for what kind is it not
+                    ciritical for low delays, but desirable for high throughput?
+                </p>
+                <p>
+                    A:  Internet telephony, video calling, and gaming requires low delay because the real-time information
+                    is critical.  For file transfering it is not critical to have low delays, but it is desirable
+                    to have high throughput to get the entire file quickly.
+                </p>
+            </li>
+            <li id="question8">
+                <p>
+                    Q:  Please name the two network application architectures and give one advantage of each.
+                </p>
+                <p>
+                    A:  The two architectures are client-server and peer to peer or P2P.  Client-server models
+                    have many advantages, the primary one being a simple structure which allows end users to
+                    access the entire network by connecting solely to the central server, providing ease of access
+                    as well as relative security.  Peer to peer has the advantage of a direct connection to other
+                    users, so that the network connections are not dependent on a single point of failure.
+                </p>
+            </li>
+        </ol>
+    </div>
+    
+    <h3 id="descriptionHeader">Description Of An Important Figure</h3>
+    <div class="buttons">
+    <button type="button" id="descriptionShow">Show Description</button>
+    <button type="button" id="descriptionHide">Hide Description</button>
+    </div>
+    <div id="description">
+        <p id="descriptionP">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Leonard Kleinrock is an important American computer 
+            scientist who, among other things, worked very closely with the development of the first 
+            pieces of hardware that comprised the internet in the early days.&nbsp;&nbsp;He graduated from 
+            MIT with a doctorate in computer science in 1963, and then joined the faculty at UCLA where he 
+            remains today.<br/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kleirock's most recognized and significant work was 
+            done on queuing theory, which is instrumental to packet switching and in turn the concepts of 
+            computer networks that we are learning about in this class.&nbsp;&nbsp;In his PhD research 
+            Kleinrock describes his work as being to, "establish a mathematical theory of packet networks...".
+            &nbsp;&nbsp;This work would become critical not only in his work at MIT on the first ARPANET 
+            message, but also for the operation of the world wide web today.<br/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We saw in the movie "Lo and Behold" the machine that 
+            Charley Kline used to send the first message on October 29th, 1969.&nbsp;&nbsp;Kleinrock oversaw this 
+            operation and after the first system crash the system was recovered and a month later the first 
+            permanent ARPANET link between Stanford and MIT was established.<br/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Leonard Kleinrock has since made a number of contributions 
+            to the bureaucratic acceptance of the use of the internet for personal reasons, and was inducted into 
+            the Internet Hall of Fame in 2012, among receiving a number of other nationally significant awards.
+            &nbsp;&nbsp;These include the National Medal of Science, which he received in 2008, and an induction into IEEE-Eta 
+            Kappa Nu in 2011.  This man has lead an incredible life, and his work has undoubtedly help shape the 
+            landscape of modern society.
+        </p>
+    </div>
+    <h3 id="instructionsHeader">Instructions For Basic GitHub Repository Manipulations</h3>
+    <div class="buttons">
+    <button type="button" id="instructionsShow">Show Instructions</button>
+    <button type="button" id="instructionsHide">Hide Instructions</button>
+    </div>
+    <div id="instructionsDiv">
+        <p id="instructions">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GitHub is a version control software application which can be accessed both as a web application or 
+            a desktop application.&nbsp;&nbsp;This means that it is very useful for teams of individuals who are working 
+            in parallel on a project who need a way to keep track of changes that are made to the project or authorship 
+            of individual portions of the work.<br/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To get started with GitHub you will need to create an account.
+            &nbsp;&nbsp;This process is quite simple and can be done at github.com by filling out the sign-up form.
+            &nbsp;&nbsp;Now that you have an account, we can learn about repositories.&nbsp;&nbsp;Repositories are the way that 
+            GitHub delineates different projects or packages of files.&nbsp;&nbsp;A repository has branches and is created with 
+            a single master branch which represents the official project.&nbsp;&nbsp;The purpose of branches is to allow users who 
+            are working on the project to create new branches of the project where they can experiment with making changes 
+            without affecting the integrity of the master branch; the official project.<br/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creating branches is as simple as the click of a button, and 
+            requires only that you name the branch and give a brief description of its purpose.&nbsp;&nbsp;The only 
+            tricky part of operating with these different branches is the push and pull functionality, along with the 
+            ability to clone branches.&nbsp;&nbsp;GitHub stores its data in a cloud, on a remote server.&nbsp;&nbsp;When you "pull" 
+            a branch off of the master branch, it does not create a physical copy of the files on your machine.&nbsp;&nbsp;To do 
+            this, you will need to "clone" the project, or download it to your local machine.&nbsp;&nbsp;You can then make changes 
+            to those files as you see fit.<br/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The key to getting your changes incorporated into the master branch 
+            involve "committing" your changes to your own branch.&nbsp;&nbsp;GitHub will automatically track the differences between 
+            your version of the files in the project, and those of your branch and the master branch.&nbsp;&nbsp;Once changes have been 
+            made, you can click on the "commit" button, merely give a description of the changes you made, and they will 
+            become the new version of your branch.&nbsp;&nbsp;When you are ready to make your changes part of the master branch, you will 
+            create a "pull request"  which is the same as a commit except that the administrator of the project will have to 
+            approve the changes.&nbsp;&nbsp;Once they do, your changes will become part of the master project.&nbsp;&nbsp;Congratulations, you 
+            can now perform basic operations in GitHub!
+        </p>
+    </div>
+</body>
+</html>

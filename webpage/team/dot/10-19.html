@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    10/19/2016
+</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script src="sparkles.js"></script>
+</head>
+<body>
+    <h1>
+        Notes for October 19th
+    </h1>
+<ul>
+    <li><span style = "color:chartreuse">Node</span>: any device which runs a link-layer protocol</li>
+    <li>hosts, routers, switches, wifi access points, etc</li>
+    <li><span style = "color:chartreuse">link</span>: communication channel connecting adjacent nodes</li>
+    <li>transmitting node encapsulates datagram ina link-layer frame and sends frame into link</li>
+    <li>REAL LIFE EXAMPLE: travel agent planning a trip from new jersey to switzerland</li>
+    <ul>
+        <li>agent decides it's best to take a taxi to the jersey airport, a plane to the switzerland airport, and a train to the specific town in switzerland</li>
+        <li>once reservations are made and tickets are bought, it is the various transport companies' jobs to get the traveller to the destination</li>
+        <li>traveller = datagram, transportation companies = links, agent = routing protocol</li>
+    </ul>
+    <li>possible link-layer protocol services</li>
+    <ul>
+        <li style = "color:chartreuse">framing</li>
+        <ul>
+            <li>data field where datagram is inserted and some header fields</li>
+            <li>structure specified by link-layer protocol</li>
+        </ul>
+        <li style = "color:chartreuse">link access</li>
+        <ul>
+            <li><span style = "color:chartreuse">Medium Access Control</span> protocol specifies rules for transmitting frame onto link</li>
+            <li>simplest for point-to-point links directly connection exactly two nodes</li>
+            <li>more complicated when multiple nodes share one broadcast link (<span style = "color:chartreuse">multiple access problem</li>)</li>
+            <li>coordinates frame transmissions of nodes</li>
+        </ul>
+        <li style = "color:chartreuse">reliable delivery</li>
+        <ul>
+            <li>guarantees to move each datagram across the link without error</li>
+            <li>acheived similar to TCP, with ACKs and retransmissions</li>
+            <li>often used for links with high error rates (like wifi)</li>
+            <li>aims to correct error locally instead of forcing source to retransmit the whole thing</li>
+            <li>considered unnecessary overhead for more reliable methods (fiber, coax, twisted-pair)<li>
+        </ul>
+        <li style = "color:chartreuse">error detection and correction</li>
+        <ul>
+            <li>bit errors introduced by attenuation and noise</li>
+            <li>more sophisticated than checksum, implemented in hardware</li>
+            <li>able to determine exactly where the error is and then fix it</li>
+        </ul>
+    </ul>
+    <li>link layer mostly implemented in a network adapter (aka <span style = "color:chartreuse">Network Interface Card</span>)</li>
+    <ul>
+        <li>heart of NIC, link-layer controller, a single special-purpose chip that implements many services</li>
+        <li>most functionality in hardware</li>
+        <li>NIC originally on a separate card, modern day integrated into motherboard (<span style = "color:chartreuse">LAN-on-motherboard</span>)</li>
+    </ul>
+    <li>Actual sending of packets</li>
+    <ul>
+        <li>sending side</li>
+        <ul>
+            <li>controller takes a datagram, encapsulates it in a link-layer frame and fills out header fields, and transmits into communication link as per link-access protocol</li>
+            <li>possibly sets error detection bits, if link is prone to errors</li>
+        </ul>
+        <li>receiving side</li>
+        <ul>
+            <li>controller receives frame, extracts datagram</li>
+            <li>possibly checks for and corrects errors, if error detection bits were set</li>
+        </ul>
+    </ul>
+    <li>server link software does high-level tasks like assembling addressing info and activating hardware</li>
+    <li>receiver link software handles interrupts, errors, and passing the extracted datagram up</li>
+</ul>
+<p class="help">There are no hugs in computer science</p>
+<a href="./hello.html">Home</a>
+</body>
+</html>

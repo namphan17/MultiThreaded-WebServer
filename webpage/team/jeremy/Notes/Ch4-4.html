@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+	Chapter 4 notes parts 3
+</title>
+<style>
+	p{ padding-left: 50px
+	}
+</style>
+</head>
+<body>
+	<h3>
+		Chapter 4 notes: 4.5 - 4.6
+	<h3>
+<h4>
+        By: Jeremy Novak
+    </h4>
+	<h4>
+		Link State vs. Distance Vector
+	</h4>
+	<p>
+		<b>Link State Protocol</b><br>
+		Link state protocol creates a map of the network and then determines the fastest path through the network using 
+		<i>Dijkstra's algorithm</i>, but before the algorithm can be run a map of the network needs to be built. To do
+		this the following steps are taken:
+	</p>
+	<ol>
+		<li>The neighbours of each node, in case the routers, are found</li>
+		<li>Each router periodically checks its connection with each of its neighbours, and uses this to figure out each connections &ldquo;weight&rdquo;</li>
+		<li>Using the weights, a map of the fastest path  from any two routers can be created</li>
+		<br>
+	</ol>
+	
+		<img class= "padding" src="https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif" alt="Use the whiteboard Luke" style="width:283px;height:222px;" >
+	<p>	
+		<br>
+		<b>Distance Vector Protocol</b><br>
+		Each node (router) knows only two things about the network around it:
+	</p>
+	<ol>
+		<li>The direction the packet is going</li>
+		<li>The distance of that packet from its destination</li>
+	</ol>
+	<p>
+		Using this information each router passes the packet roughly in the direction that it needs to go, using the shortest path.
+	</p>
+	
+	
+</body>
+</html>

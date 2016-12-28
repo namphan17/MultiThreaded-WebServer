@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E51616;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			October 18th
+		</title>
+	</head>
+	<body>
+		<h1>October 18th</h1>
+		<h2>Reading</h2>
+			<ul>
+				<li><b>Broadcast routing</b>: Network laer provides a service of delivering a packet sent from a sourc node to all other nodes in the network.</li>
+				<li><b>Multicast routing</b>: Enables a single source node to send a copy of a packet to a subset of the other netowrk nodes.</li>
+				<li><b>N-way-multicasting</b>: Given N destination nodes, the source node simply makes N copies of hte packet, addresses each copy to a different destination, and then transmits the N copies to the N destinations using unicast routing.</li>
+					<ul>
+						<li>Drawbacks:</li>
+						<li>Clearly more eficent to send only a single copy of a packet and have routers split and duplicate packets when necessary.</li>
+						<li>More overhead needed, obtaining addresses, etc.</li>
+						<li>Relies on unicast routing infastructre to achieve broadcast.</li>
+					</ul>
+				<li>Network graph G = (N,E).  G = graph, N = nodes, E = edges.</li>
+				<li><b>Flooding</b>: Source node sends a copuy of the packet to all neighbors.  When a node recieves a packet it duplicates and forwards it to all its neighbors.</li>
+					<ul>
+						<li>If the graph has cycles then packets will cycle indefinitely</li>
+						<li>May result in a broadcast storm</li>
+					</ul>
+				<li><b>Broadcast storm</b>: Packets create multipule copies of themselves as they get forwarded between nodes, eventually there is an endless multiplication of broadast packets.</li>
+				<li><b>Sequence-number-controlled flooding</b>: A source node puts its address (or other identifier) an a broadcast sequence number into a broadcast packet.  Then the packet is sent to all neighbors.  The nodes maintain a list of source addresses and sequence numbers of broadcast packets it already recived.  When it gets a packet it checks if it is in the list.  If it is then the packet is dropped.</li>
+				<li><b>Broadcast sequence number</b>: A number placed into a broadcast packet by the source node to help identify the packet for future nodes</li>
+				<li><b>Reverse path forwarding (RPF)</b>: When a router receives a broadcast packet with a given source address it transmits the packet on all of its outgoing links, only if the packet on that link is on the shourtest unicast path back to the source.</li>
+					<ul>
+						<li>Doesn't use unicast to deliver to destination</li>
+						<li>does not require router to know the complete shortest path from itself to source, just next neighbor on shortest path</li>
+					</ul>
+				<li><b>Spanning tree</b>: A tree that contains each and every node in a graph.  Part of graph G = (N,E) defined as G' = (N,E'), where E' is subset of E, G' contains no cycles, G' containse all the original nodes in G.  Eliminates redundant broadcast packets.</li>
+				<li><b>Minimum spanning tree</b>: A spanning tree whose cost is the minimum of all the graph's spanning trees.  (least amount of E').</li>
+				<li><b>Center-based approach</b>: Center node (rendezvous point/core) is defined.  Nodes then unicast tree-join messages addressed to the center node.  Forwarded until it either arrives at a node that belongs to the spanning tree, or the center node.</li>
+				<li><b>Rendezvois point/core</b>: Center node in a center-based approach to creating a spanning tree.</li>
+				<li>Gnutela</li>
+					<ul>
+						<li>uses application-level broadcast for content among Gnutella peers</li>
+						<li>TCP connection</li>
+						<li>Identifier (16 bit), payload descriptior (16 bit) to identify packets so nodes can determine if they've already been recieved</li>
+						<li>Time-to-live field, when it recieves a broadcast it decriments this before copying and broadcasting the packet</li>
+						<li>Due to TTL field packet will only reach peers within a given number of hops from source.  Called <i>limited scope flooding</i></li>
+					</ul>
+				<li><b>Multicast</b>: Multicast packets are delieverd onl to a subset of network nodes.</li>
+				<li><b>Address indirection</b>: Multicast packets can't hold the addresses of all the destinations as this would be too much.  Instead use a single identifier for a group of receivers, packets with the identifier are copies and delivered to all the multicast receivers associated with that group.  Class D multicast IP address.</li>
+				<li><b>Multicast group</b>: Group of receivers associated with a class D address (multicast identifier)</li>
+				<li>Internet Group Management Protocol (IGMP)</li>
+					<ul>
+						<li>Operates between a host and its directly attached router.</li>
+						<li>Allows host to inform attached router than an application running on the host wants to join a specific multicast group.</li>
+						<li>Along with network-layer multicast routing algorithms allows coordination b/w multicast routers</li>
+						<li>Three message types, in IP datagram with IP protocol number of 2</li>
+							<ol>
+								<li><i>Membership_query</i> sent by router to all hosts on attached interface to determine the set of all multicast groups that are joined by hosts on that interface.</li>
+								<li><i>Membership_report</i> sent in response to membership_query.  Also generated by a host when an application first joins a multicast group without witing for a membership_query from the router.</li>
+								<li><i>leave_group</i> optional. Can also be infered if host no longer replies to membership_queries</li>
+							</ol>
+						<li><b>soft state</b>: The state is removed via a timeout event if it is not explicityly refreshed.</li>
+					</ul>
+				<li><b>Multicast routing problem</b>: Only a subset of routers actually need to recieve the multicast traffic.  Need to find a tree of links that connects all of the routers that have attached hosts belonging to the multicast group.  Two approaches</li>
+					<ol>
+						<li><i>Multicast routing using a group-shared tree</i>: Build a tree (like spanning tree) which includes all edge routers with attached hosts belonging to multicast group.  Uses center-based approach with edge routers sending messages (muliticast routers) to send messages addressed to center node.</li>
+						<li><i>Multicast routing using a source-based tree</i>: Constructs a muliticast routing tree for /each/ source in the group.  Uses modified RPF algorithm (involves pruning messages, that prevent messages being sent down dead end paths).</li>
+					</ol>
+				<li><b>Distance-vector multicast routing protocol (DVMRP)</b>: First multicast routing protocol.  Uses source based trees with reverse path forwarding (RPF) and pruning.</li>
+				<li><b>Protocol-independent multicast (PIM) routing protocol</b>: Most widely used multicast protocol.  Recognizes two multicast distribution scenarios.</li>
+					<ol>
+						<li><i>dense mode</i>: Multicast routers are densely located (most of the routers in area needed to be involved in routing).  Uses a flood-and-prune path forwarding technique (Like DVMRP).</li>
+						<li><i>sparse mode</i>: Number of routers with attached group members is small vs total number of routers.  Uses rendezvous points to set up multicast distribution tree.</li>
+					</ol>
+				<li><b>Source-specific multicast (SSM)</b>: Only a single sender is allowed to send traffic into the multicast tree.  Simplifies tree contruction.</li>
+			</ul>
+		<h2>Lecture</h2>
+			<ul>
+				<li>Finite State Machine (FSM): An abstract machine that can be in only a finite number of states.  A method for recognizing if a string belongs or does not belong to a regular language.</li>
+				<li>Finite Automaton (FA): Same as FSM</li>
+				<li>Regular language</li>
+				<li>Regular expressions--expresses regular language. Used in search functions in many programming languages and text editors.</li>
+				<li>FA = (Q, Σ (sigma), δ (Delta), q0, F).  This is a Tuple~=(roughly the same as) a Vector</li>
+					<ul>
+						<li>Q = set of states</li>
+						<li>Sigma = alphabet: set of symbols</li>
+						<li>Delta = A transition function. δ(9,a)->9'</li>
+						<li>q0 = Starting state.</li>
+						<li>F = Set of final (accepting) states.</li>
+					</ul>
+				<li>Let A be a set: A = {1,2,3}</br>Let B be a set: B = {a,b,c}</br>What is A*B?</li>
+					<ul>
+						<li>{(1,a),(2,a),(3,a),(1,b),(2,b),(3,b),(1,c),(2,c),(3,c)}</li>
+					</ul>
+				<li>What is a relation?</li>
+					<ul>
+						<li>A subset of A*B</li>
+					</ul>
+				<li>G = (V,E).  This is a graph.</li>
+					<ul>
+						<li>V = verticies/nodes</li>
+						<li>E = edges = subset of all possible pairs of vertices/nodes</li>
+						<li>V * V = set of pair of vertices/nodes</li>
+						<li>E is less than or equal to V * V</li>
+					</ul>
+				<li>Edges might be weighted</li>
+				<li>Dijkstra's Algorithm</li>
+					<ul>
+						<li>At each stage, we will have:</li>
+							<ol>
+								<li>A set of verticies whose distance from the starting point is <u>known.  Subset of V.</u></li>
+								<li>A set of verticies for which we have only <u>estimates</u> of distances from the starting point.  Remainder of V (another subset)</li>
+								<li>For each <u>known</u> vertex, we know preceding vertex on shortest path to that vertex (from starting point).</li>
+							</ol>
+						<li>While(there are still vertices whose distance from starting point is not yet known with certianty){<br> Add one more vertex to the set whose distance is known</br>}
+					</ul>
+			</ul>
+		<h2>Lab</h2>
+		<div style="text-align:left">
+			<a href="Oct17.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="Oct19.html">Next</a>
+		</div>
+	</body>
+</html>

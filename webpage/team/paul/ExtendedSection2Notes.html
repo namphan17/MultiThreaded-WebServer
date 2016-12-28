@@ -1,0 +1,54 @@
+<html>
+<head>
+<title> 
+Section 2 Notes Extended
+</title> 
+<style>
+body{
+	background-color: black;
+	color: green;
+}
+</style>
+</head> 
+<body>
+<h1>Notes on Emails and File Sharing Protocols</h1> 
+<h4>SMTP</h4>
+<li>Client Connects to SMTP Server, creates message, and queues message to be delivered to another clients SMTP Server. The other client will then connect to their email server to read the emails, and respond.</li> 
+<br><li>If Client Server is down, or message cannot be transmitted, then the email will be sent as soon as the SMTP Server comes back online (by retrying the connection every 30 min or so).</li> 
+<br>
+<strong><p>Example of SMTP Connection:</strong><br><br> 
+<br>telnet gud.mystmpserver.domain 25 EHLO ("Hail" the server, this isn't always needed).<br><br>
+HELO gud.mysmtpserver.domain<br><br>
+<strong>"Response: Hello from gud.mysmtpserver.domain, nice to to meet you [IP address]"</strong><br><br>
+MAIL TO: root@mysmtpserver.domain<br><br>
+<strong>"Response: 250 root@mysmtpserver.domain... Sender ok"</strong> <br><br>
+RCPT TO: somebody@something.domain<br><br>
+<strong>"Response: 250 somebody@somethingr.domain... Recipient ok"</strong><br><br>
+DATA<br><br>
+(message here)<br><br>
+.<br><br>
+<strong>"Response: 250 Message accepted"</strong><br><br>
+QUIT<br> <br>
+<strong>"Response: 221 gud.mysmtpserver.domain closing connection"</strong><br></p>
+<br><hr> 
+<br>
+<h4>POP3 and IMAP</h4><br>
+<p><li>Similar to SMTP in terms of how emails are handled: POP3 is very simple in design, yet is limited while IMAP is more complex.</li><br>
+<li>POP3 has a download-and-delete method, where a user who reads an email from one machine will be unable to read it from a different one due to the message being removed.</li><br>
+<li>Remote folders cannot be created to store messages in with POP3.</li><br>
+<li>IMAP provides more functionality than POP3, which can store messages in remote folders, manage an inbox more efficiently, etc.</li></p> 
+<br><hr><br> 
+<h4>FTP</h4><br>
+<p><li>Used to share files P2P, and controls data <strong>out-of-band</strong> as opposed to HTTP's <strong>in-band</strong> data control. This means that the FTP protocol uses separate control connections to send files as opposed to sending header information and other data within the same connection sending the file. HTTP, on the other hand, sends header information as well as other identifiers along with the file in the response, which is a <strong>in-band</strong> connection.</li><br>
+<li>When connecting to an FTP Server, the client will login using the commands using the following commands: <br><br>
+	<strong>USER username</strong><br><br>
+	<strong>PASS password</strong><br> <br>
+	
+The the user can display the files to be grabbed by using the command LIST (newer ftp servers also accept the unix command "ls"), and download, upload, or delete files by using GET, DELETE, or PUT. 
+</li><br>
+<li>If the client would like to close the connection, they simply type "BYE".</li></p><br> 
+<br><br><br><br><br>
+<center><input type="button" value="Back to Main Page" onclick="window.location='hello.html';"/></center>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Wireshark Lab
+</title>
+</head>
+<body>
+<style>
+.answer{color:red;}
+
+a:visited{
+text-decoration:underline;
+color:black;
+}
+
+a:link{
+text-decoration:underline;
+color:black;
+}
+
+a:hover{color:#73e600}
+
+.qa{margin-top:10px}
+.aq{	margin-bottom:10px;
+	color:red;
+}
+</style>
+
+<h1>Wireshark Lab</h1>
+<h2>HTTP</h2>
+<div class = "qa">1. Is your browser running HTTP version 1.0 or 1.1?  What version of HTTP is the 
+server running?</div>
+<div class = "aq">Answer: HTTP/1.1. The server is also running on HTTP/1.1.
+</div>
+
+<div class = "qa">2. What languages (if any) does your browser ind
+icate that it can accept to the 
+server?</div>
+<div class = "aq">Answer: English and United States English.</div>
+
+<div class = "qa">3. What is the IP address of your computer? Of the gaia.cs.umass.edu server?</div>
+<div class = "aq">Answer: My Ip is 10.101.6.13 and the server is 128.119.245.12</div>
+
+<div class = "qa">4. What is the status code returned from the server to your browser?</div>
+<div class = "aq">Answer: 200 OK</div>
+
+<div class = "qa">5. When was the HTML file that you are retrieving last modified at the server?</div>
+<div class = "aq">Answer: Friday 14 October 2016 05:59:01 GMT</div>
+
+<div class = "qa">6. How many bytes of content are being returned to your browser?</div>
+<div class = "aq">Answer: 128 bytes.</div>
+
+<div class = "qa">7. By inspecting the raw data in the packet content window, do you see any headers within the data that are not displayed in the packet-listing window?  If so, name 
+one.</div>
+<div class = "aq">Answer: There is a html tag that is not in the window’s content.</div>
+
+<div class = "qa">8. Inspect the contents of the first HTTP GET request fr
+om your browser to the 
+server.  Do you see an “IF-MODIFIED-SINCE” line in the HTTP GET?</div>
+<div class = "aq">Answer: If-Modified-Since: Tue, 11 Oct 2016 05:59:01 GMT\r\n
+</div>
+
+<div class = "qa">9. Inspect the contents of the server response. Did the server explicitly return the 
+contents of the file?   How can you tell?</div>
+<div class = "aq">Answer: No, but it returned content because the main server had not been modified</div>
+
+<div class = "qa">10. Now inspect the contents of the second HTTP 
+GET request from your browser to 
+the server.  Do you see an “IF-MODIFIED-SINCE:” line in the HTTP GET? If 
+so, what information follows the “IF-MODIFIED-SINCE:” header?</div>
+<div class = "aq">Answer: Yes, Tue, 11 Oct 2016 05:59:01 GMT\r\n</div>
+
+<div class = "qa">11. What is the HTTP status code and phrase returned from the server in response to this second HTTP GET?  Did the server explicitly return the contents of the file?   
+Explain.</div>
+<div class = "aq">Answer: 304 Not Modified, no because I already cached</div>
+
+<div class = "qa">12. How many HTTP GET request messages 
+did your browser send? Which packet number in the trace contains the GET message for the Bill or Rights?</div>
+<div class = "aq">Answer: One, 89. Since there was a lot of other packets sent before this was sent.</div>
+
+<div class = "qa">13. Which packet number in
+the trace contains the status code and phrase associated 
+with the response to the HTTP GET request?</div>
+<div class = "aq">Answer: 91, 200 OK</div>
+
+<div class = "qa">14. What is the status code and phrase 
+in the response?</div>
+<div class = "aq">Answer: 200 OK</div>
+
+<div class = "qa">15. How many data-containing TCP segments were needed to
+carry the single HTTP response and the text of the
+Bill of Rights?</div>
+<div class = "aq">Answer: Only one</div>
+
+<div class = "qa">16. How many HTTP GET request messages
+did your browser send?  To which Internet addresses were these GET requests sent?</div>
+<div class = "aq">Answer: 3 HTTP GETs were sent, Initial Page address and the image: 128.119.245.12 and the 5th addition picture is from 128.119.245.90</div>
+
+<div class = "qa">17. Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel?  Explain.</div>
+<div class = "aq">Answer: serially because the date for one pecket is later than the second packet.</div>
+
+<div class = "qa">18. What is the server’s response (status code and phrase) in response to the initial HTTP GET message from your browser?</div>
+<div class = "aq">Answer: 401 Unauthorized</div>
+
+<div class = "qa">19. When your browser’s sends the HTTP GET message for the second time, what new field is included in the HTTP GET message?</div>
+<div class = "aq">Answer: Authorization is the new field and this is what it looks like for me.  Authorization: Basic d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms=\r\n</div>
+
+<h2>TCP</h2>
+<div class = "qa">1. What is the IP address and TCP port number used by the client computer (source) that is transferring the file to gaia.cs.umass.edu?  To answer this question, it’s probably easiest to select an HTTP message and explore the details of the TCP packet used to carry this HTTP message, using the “details of the selected packet 
+header window” (refer to Figure 2 in the “Getting Started with Wireshark” Lab if 
+you’re unce
+rtain about the Wireshark windows.</div>
+<div class = "aq">Answer: Ip: 192.168.1.102  port:1161</div>
+
+<div class = "qa">2. What is the IP address of gaia.cs.umass.edu? On what port number is it sending and receiving TCP segments for this connection?</div>
+<div class = "aq">Answer: Ip: 128.119.245.12</div>
+
+<div class = "qa">3. What is the IP address and TCP port number used by your client computer (source) to transfer the file to gaia.cs.umass.edu?</div>
+<div class = "aq">Answer: Ip: 192.168.1.102 port:1161</div>
+
+<div class = "qa">4. What is the sequence number of the TCP SYN segment that is used to initiate the TCP connection between the client computer and gaia.cs.umass.edu?  What is it in the segment that identifies the segment as a 
+SYN segment?</div>
+<div class = "aq">Answer: The sequence number is 0.  Next to the flags segment has the (SYN).</div>
+
+<div class = "qa">5. What is the sequence number of the SYNACK segment sent by gaia.cs.umass.edu to the client computer in reply to the SYN?  What is the value of the 
+Acknowledgementfield in the SYNACK segment?  How did gaia.cs.umass.edu 
+determine that value? What is it in the segment that identifies the segment as a 
+SYNACK segment?</div>
+<div class = "aq">Answer: The sequence number is 0.  The sequence number is 1.  Next to the flags segment has the (SYN, ACK).</div>
+
+<div class = "qa">6. What is the sequence number of the TCP segment containing the HTTP POST command?  Note that in order to find the POST command, you’ll need to dig into 
+the packet content field at the bottom of the Wireshark window, looking for a 
+segment with a “POST” within its DATA field.</div>
+<div class = "aq">Answer: 164041.</div>
+
+
+
+
+<script>
+function oc(id){
+	if(document.getElementById(id).style.display == "none"){
+		document.getElementById(id).style.display = "block";
+	} else {
+		document.getElementById(id).style.display = "none";
+	}
+}
+</script>
+<!-- style="height:3px;border:none;color:#333;background-color:#333;" was taken from http://stackoverflow.com/questions/4151743/how-i-change-the-thickness-of-my-hr-tag  and I take no credit!
+-->
+</body>
+</html>

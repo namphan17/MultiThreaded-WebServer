@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			October 5th
+		</title>
+	</head>
+	<body>
+		<h1>October 5th</h1>
+			<h2>Lecture</h2>
+				<ul>
+					<li>Packets: Different names in different layers</li>
+						<ul>
+							<li>How big? (how many bits?)</li>
+							<li>What kinds of info does packet carry?</li>
+							<li>How is packet divided/organized? (Which group of bits fot which info)</li>
+						</ul>
+					<li>Naming/Addressing</li>
+						<ul>
+							<li>IP Addresses</li>
+							<li>Ports</li>
+							<li>Mac Addresses</li>
+						</ul>
+					<li>Routing (Describe and classify algorithms)</li>
+						<ul>
+							<li>Dijkstra's Shortest path algorithm -- finds shortest distance between nodes, picks starting node, and checks distance between all adjacent nodes.</li>
+						</ul>
+					<li>Reliable Transport--Finite State Machine</li>
+				</ul>
+			<h2>Lab</h2>
+				<ul>
+					<li>Linux commands for checking networks</li>
+						<ul>
+							<li>netstat: Displays the contents of /proc/net files.  The status of ports (open, closed, waiting, etc.).</li>
+							<li>tcpdump: captures packets off the network interface and interprets them (sniffer).  Can save packets for later inspection</li>
+							<li>ping: sends ech requests to the specified host on the command line.  List responses.</li>
+							<li>hostname: Tells user the host name of the computer</li>
+							<li>traceroute: Shows the route of a packet.  Lists the series of host that the packet passes though to the destination.</li>
+							<li>tracepath: same as traceroute, but won't take complicated options</li>
+							<li>findsmb: list info about machines that respond to SMB queries</li>
+							<li>nmap: queries machines as to whether they are up and what ports are open</li>
+							<li>ifconfig: lists all information on all network devices currently up</li>
+							<li>ifconfig eth0 down: takes eth0 down, and won't reciece or send till back up</li>
+							<li>ifup: brings any device back up.  ifup eth0 will bring eth0 if it is off</li>
+							<li>ifdown: brings down any device that is currently down</li>
+							<li>ifcfg: configures a particular interface</li>
+							<li>route: displys or modifies the routing table</li>
+							<li>netstat command: displays network connections, routing tables, interfaces and more.</li>
+							<li>ss -s: displays currently established, closed, orphaned and waiting TCP sockets.</li>
+							<li>netstat -s:  same as <i>ss -s</i></li>
+							<li>ss -l: displays all open network ports</li>
+							<li>netstat -tulpn: same as <i>ss -l</i></li>
+							<li>ss -t -a: displays all TCP sockets</li>
+							<li>netstat -nat:same as <i>ss -t -a</i></li>
+							<li>ss -u -a: displays all UDP sockets</li>
+							<li>netstat -nau: same as <i>ss -u -a</i></li>
+							<li>nslookup: queries DNS lookup name</li>
+							<li>telnet: communicate with another hostname</li>
+							<li>finger: view user information</li>
+							<li>ftp: File Transfer Protocol.  Standard network protocol to transfer computer files between a client and server</li>
+							<li>rsync: copies files across a network</li>
+							<li>scp: securly copies files and directories between remote hosts wihout starting an FTP session or logging into the remote system, uses SSH to transfer data</li>
+							<li>ssh: program for loggin into a remote machine and for executing commands on a remote machine.  Replaces rlogin and rsh</li>
+						</ul>
+				</ul>
+		<div style="text-align:left">
+			<a href="Oct3.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="Oct6.html">Next</a>
+		</div>
+	</body>
+</html>

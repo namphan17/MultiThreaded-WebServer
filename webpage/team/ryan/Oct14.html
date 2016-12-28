@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<body style="background-color:#E52826;">
+		<text style="color:#00EADC;">
+		<style>
+		body{ cursor: url('alsobestcursor.cur'), auto;}
+		</style>
+		<title>
+			October 14th
+		</title>
+	</head>
+	<body>
+		<h1>October 14th</h1>
+		<!--<h2>Reading<h2>-->
+		<h2>Lecture</h2>
+		<h3>Student talks</h3>
+			<ul>
+				<li><b>Tyler</b>(4.2 virtual circuits)</li>
+				<li>Network-layer services are host-to-host while transport layer is process-to-process</li>
+				<li>In computer network architecture is either host-to-host connection or host-to-host connectionless.  Networks that provide only connections are virtual circuit networks.</li>
+				<li>Virtual circuit is a path between source and destination host, VS numbers (one for each link along the path), and entries in a forwarding table in each router.</li>
+				<li>Packets have VC numbers in header, when they got though a link the router replaces the VC number with a new VC number.</li>
+				<li>Each router has a forwarding table where VC numbers are stored.</li>
+				<li>Eliminates need for communication between routers</li>
+				<li>Routers must maintain connection state information, so they must update forwarding table</li>
+				<li><b>Salem</b>(4.1 switches)</li>
+				<li>Router forwarding--refers to the router-local action of transferring a packet from input link interface to appropritate output link interface.</li>
+				<li>Switching via memory: Takes imput, stores in memeory, finds matching output, sends it though.  Only one at a time.</li>
+				<li>Switching via bus: Has an imput pre-pend (assigned spot), enters bus, transferred, sends though to destination.  One at a time.</li>
+				<li>Switching via interconnected network: netowrk consisting of 2N bueses that connect N imput ports to N output.  Each vertical bus intersects each horizontal at cross point.  Opened or closed at any time.  Can send multipule if the route is clear (?)</li>
+				<li>Output processing: takes packets that have been stored in the output port's memory nad transmits them over the output link.</li>
+				<li>Routing processor: maintains routing tables and attached link state information and computes the forwarding table for the router.</li>
+				<li>Head of line: Have to wait for packets in front to be sent, before later packets can be sent to their destination. (Red and blue example Jeremy did).</li>
+				<li><b>Angela</b>(4.1.1)</li>
+				<li>Routing: network-wide process that determins end-to-end paths that packets take from source to destinatino.  Network layer must determin the route or path taken by packets at the flow from sender to receiver.  Algorithms that determin this are routing algorithms.</li>
+				<li>Forwarding: router-local action of transferring a packet from an input link to the appropriate output link.</li>
+				<li><b>Wireshark demo (student name unknown)</b>HTTP lab</li>
+				<li>He used a text file to break down exactly what was in each part of a packet.  Kinda confusing when laid out that way, but still readable.</li>
+				<li>GET request.  His was in english (normal), french, and japanese.</li>
+				<li>Both ran HTTP 1.1</li>
+				<li>status code 200 OK</li>
+				<li>128 bytes of application data</li>
+				<li>Header data that wasn't displayed was "Congradualtions, you downloaded the file", which was in text.</li>
+				<li>Long documents, reassembeled from 4 TCP segments.  Lists that in header.  Can view them frame-by-frame/packet-by-packet.  Only one GET request.</li>
+				<li>302 FOUND: image had been moved</li>
+				<li>Downloads images serially, not parallel.  Can tell from time stamp.</li>
+				<li>For login, recieve 401 unauthorized, after entering password get Authorization field.</li>
+				<li><b>Paul</b>(Tor)</li>
+				<li>Talked about Proxys and Tor browser.</li>
+				<li>Proxy is basically another inbetween connection that handles your requests before sending them, so that you are not traceable to the destination (or the destination at least only sees the proxy IP address)</li>
+				<li>Tor is a browser that automatically creates a link/network of proxies that will handle your requests for you before connecting you to the end destination.</li>
+				<li>VPNs may be a better option than Tor, Paid or open.</li>
+			</ul>
+		<h2>Lab</h2>
+			<p>Nothing, worked on Graded Assignments</p>
+		<div style="text-align:left">
+			<a href="Oct13.html">Previous</a>
+		</div>
+		<div style="text-align:center">
+			<a href="hello.html"> Home </a>
+		</div>
+		<div style="text-align:right">
+			<a href="Oct17.html">Next</a>
+		</div>
+	</body>
+</html>
