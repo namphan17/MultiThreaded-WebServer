@@ -2,6 +2,14 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+/**
+ * A simple WebServer that listens and handles multiple requests using thread.
+ * 
+ * @author Nam Phan
+ *
+ */
+
+
 public final class WebServer {
 	public static void main(String argv[]) throws Exception {
 		// Set the port number
